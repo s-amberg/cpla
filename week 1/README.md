@@ -82,6 +82,14 @@ Implement your own `Fraction` type that can represent fraction numbers more prec
 * You shall use boost/operators to avoid writing unnecessary code yourself.
 * Provide input and output operators 
 
+``` cpp
+Fraction half{1, 2};
+auto quarter = +half * -half / -Fraction{1};
+quarter++;
+--quarter;
+std::cout << quarter << ' ' << static_cast<double>(half) << '\n'; //prints 1/4 0.5
+```
+
 
 # `dynArray` Repetition (Optional)
 At the end of the C++ module you had an assignment in the exercises to create a `vector`-like container that features the capabilities to access its elements with negative indices (https://wiki.ifs.hsr.ch/CPlusPlus/ExW12). In the C++ Advanced module we will have an in-depth look at the implementation of bounded buffer container. We will expect that you are familiar and can easily implement containers like the `dynArray` example. Revisit the implementation of this task, implement it again or study the code carefully, in order to be properly prepared for the upcomming testat assignments. 
