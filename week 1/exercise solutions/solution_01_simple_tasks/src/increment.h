@@ -91,12 +91,13 @@ inline int incrementByValue(int const value) {
 //...
 
 //7. & 8. simplified predicate and default parameter
+
 template<typename T>
 constexpr bool allowOverflow { std::numeric_limits<T>::is_integer && std::is_unsigned<T>::value };
 
 template<typename T>
 void increment(T & value, T const limit = std::numeric_limits<T>::max()) {
-	if (!allowOverflow<T> && value > limit - 1) {
+	if (!(allowOverflow<T>) && value > limit - 1) {
 		throw std::overflow_error{"cannot increment max value"};
 	}
 	value++;
