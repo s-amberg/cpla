@@ -67,7 +67,7 @@ ASSERT_EQUALS(0, increment(maxValue));
 
 Implement your own `Fraction` type that can represent fraction numbers more precisely than the `double` type.
 
-* Your type will need to store the `numerator` and `denominator` as the largest possible integral type.
+* Your type will need to store the `numerator` and `denominator` as the largest available integral type.
 * Your type should be explicitly convertible to `double`
 * Implement the basic arithmetic operations `+`, `-` (unary and binary), `*` and `/`. After every operation try to reduce `numerator` and `denominator`
 * Add increment and decrement operators for your `Fraction` type.
