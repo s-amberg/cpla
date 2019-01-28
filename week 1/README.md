@@ -62,6 +62,14 @@ ASSERT_EQUALS(0, increment(maxValue));
 
 8. Can you also pass an iterator to your `increment` function? You might experience different outcomes depending on your compiler. It might not be happy if you want to get `numeric_limits` for your iterator. Adapt your `increment` function to also have the capability to take a second parameter to have a user-provided limit. Your previous tests should still remain working. Therefore, add a default argument to that parameter. You probably used comparisons and a `-1` operation to your limit. Does this restrict the iterators you can use with `increment`?
 
+``` cpp
+std::vector<int> v{1};
+auto it = std::end(v);
+ASSERT_THROWS(increment(it, std::end(v)), std::overflow_error);
+
+double d{9.5};
+ASSERT_THROWS(increment(d, 9.0), std::overflow_error);
+```
 
 # Fraction Type
 
