@@ -20,14 +20,13 @@ Cevelop offers helpful plug-ins, you should install:
 For the following tasks write test cases first!
 
 1. Create a function that takes an `int` as parameter and returns the next value (`increment`).
-
 ``` cpp
 int const value = 19;
 auto const next = increment(value);
 ASSERT_EQUALS(20, next);
 ```
 
-1. Add an overload of `increment` that modifies the parameter as side-effect. Do you encounter any problems when calling increment in the presence of both overloads? Stick with the side-effect version for the following exercises.
+2. Add an overload of `increment` that modifies the parameter as side-effect. Do you encounter any problems when calling increment in the presence of both overloads? Stick with the side-effect version for the following exercises.
 
 ``` cpp
 int value = 19;
@@ -35,14 +34,14 @@ increment(value);
 ASSERT_EQUALS(20, value);
 ```
 
-1. Signed integers overflow is undefined behavior in C++. Make your function safe. If such an overflow would happen throw an exception instead of incrementing the value (`std::overflow_error`).
+3. Signed integers overflow is undefined behavior in C++. Make your function safe. If such an overflow would happen throw an exception instead of incrementing the value (`std::overflow_error`).
  
 ``` cpp
 int const maxValue = std::numeric_limits<int>::max();
 ASSERT_THROWS(increment(maxValue), std::overflow_error);
 ```
 
-1. Change your `increment` to accept parameters of arbitrary type and increments them - given they support the prefix increment operator and `std::numeric_limits` provides a corresponding maximum value. Start your test cases with `double`.
+4. Change your `increment` to accept parameters of arbitrary type and increments them - given they support the prefix increment operator and `std::numeric_limits` provides a corresponding maximum value. Start your test cases with `double`.
  
 ``` cpp
 double value = 1.5;
@@ -50,18 +49,18 @@ increment(value);
 ASSERT_EQUALS(2.5, value);
 ```
 
-1. Overflow for `unsigned` is well defined. Add an overload for this case that does not throw. Does it need to be a template specialization?
+5. Overflow for `unsigned` is well defined. Add an overload for this case that does not throw. Does it need to be a template specialization?
 
 ``` cpp
 unsigned const maxValue = std::numeric_limits<unsigned>::max();
 ASSERT_EQUALS(0, increment(maxValue));
 ```
 
-1. Several overloads are required to cover all cases of `unsigned` type (i.e. `unsigned`, `unsigned long`) because the template has an exact match for the overload resolution unless you provide an overload for the specific type. Example: If you provide the overload for `unsigned long long` and call increment with an `unsigned` variable as argument the template will be chosen instead of the `unsigned long long` overload. Therefore, try an alternative approach to tackle overflows. Create a predicate (as template) `allow_overload` that returns `false` by default but can and should be specialized for `unsigned` types to be `true`. You can implement the predicate as variable, class or function template for that matter.
+6. Several overloads are required to cover all cases of `unsigned` type (i.e. `unsigned`, `unsigned long`) because the template has an exact match for the overload resolution unless you provide an overload for the specific type. Example: If you provide the overload for `unsigned long long` and call increment with an `unsigned` variable as argument the template will be chosen instead of the `unsigned long long` overload. Therefore, try an alternative approach to tackle overflows. Create a predicate (as template) `allow_overload` that returns `false` by default but can and should be specialized for `unsigned` types to be `true`. You can implement the predicate as variable, class or function template for that matter.
 
-1. With all the template specializations for the different `unsigned` types there is still much code, at least it avoids duplication in the logic. As usual, the standard library can help. Have a look at `std::numeric_limits::is_integer` and the `is_unsigned` type trait. Can you implement your predicate with those?
+7. With all the template specializations for the different `unsigned` types there is still much code, at least it avoids duplication in the logic. As usual, the standard library can help. Have a look at `std::numeric_limits::is_integer` and the `is_unsigned` type trait. Can you implement your predicate with those?
 
-1. Can you also pass an iterator to your `increment` function? You might experience different outcomes depending on your compiler. It might not be happy if you want to get `numeric_limits` for your iterator. Adapt your `increment` function to also have the capability to take a second parameter to have a user-provided limit. Your previous tests should still remain working. Therefore, add a default argument to that parameter. You probably used comparisons and a `-1` operation to your limit. Does this restrict the iterators you can use with `increment`?
+8. Can you also pass an iterator to your `increment` function? You might experience different outcomes depending on your compiler. It might not be happy if you want to get `numeric_limits` for your iterator. Adapt your `increment` function to also have the capability to take a second parameter to have a user-provided limit. Your previous tests should still remain working. Therefore, add a default argument to that parameter. You probably used comparisons and a `-1` operation to your limit. Does this restrict the iterators you can use with `increment`?
 
 
 # Fraction Type
