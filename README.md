@@ -30,18 +30,18 @@ We recommend to use the [Cevelop](https://www.cevelop.com) for our C++ courses. 
 ## Lecture Plan and Resources
 | Week | Lecture | Topics | Remarks |
 | ---- | ------- | ------ | ------- |
-|01|L1|Introduction / C++ Recap||
-|02|L2|New Features in C++17||
-|03|L3|Rvalue References / Move Semantics||
-|04|L4|Type Deduction / Perfect Forwarding|**Testat 1**|
-|05|L5|Explicit Heap Memory Management||
-|06|L6|Iterators / Advanced Templates / Deduction Guides ||
-|07|L7|Compile-Time Computation / User-Defined Literals||
-|08|L8|Multiple Inheritance / Exception Safety||
-|09|L9|Memory Model / Multi-Threading||
-|10|L10|Advanced Library Design||
-|11|L11|Sane Class Design / Whole Value Types||
-|12|L12|Core Guidelines||
-|13|L13|Build Systems||
-|14|L14|C++ Standardization (Insights by a Committee Member)||
-|15|Ascension Day||**No Lecture**|
+|01    |L1|Introduction / C++ Recap||
+|02    |L2|New Features in C++17||
+|03    |L3|Rvalue References / Move Semantics||
+|04    |L4|Type Deduction / Perfect Forwarding|**Testat 1**|
+|05    |L5|Explicit Heap Memory Management||
+|06    |L6|Iterators / Advanced Templates / Deduction Guides ||
+|07    |L7|Compile-Time Computation / User-Defined Literals||
+|08    |L8|Multiple Inheritance / Exception Safety||
+|09    |L9|Memory Model / Multi-Threading||
+|10    |L10|Advanced Library Design||
+|11    |L11|Sane Class Design / Whole Value Types||
+|12    |L12|Core Guidelines||
+|13    |L13|Build Systems||
+|14    |L14|C++ Standardization (Insights by a Committee Member)||
+|15    |Ascension Day||**No Lecture**|
