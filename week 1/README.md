@@ -4,7 +4,7 @@ Goals of this weeks exercises:
 * Solve small tasks to refresh your C++ knowledge accross the board.
 * Prepare for the upcomming testat by refurbishing your template writing skills.
 
----
+
 
 # Set Up Your Development Environment
  If you don't already have a development environment with [Cevelop](https://www.cevelop.com) and a recent compiler take care of this first. [Here](https://wiki.ifs.hsr.ch/CPlusPlus/ExW1) is a guide from CPl on how to do it.
@@ -23,7 +23,7 @@ Cevelop offers helpful plug-ins, you should install:
 * Install the Ctylechecker and Constificator plug-ins from the predefined update site (Help -> Install new software...)
 * The required update site is preconfigured (https://www.cevelop.com/update/latest)
 
----
+
 
 # Easy C++ Repetition Tasks
 For the following tasks write test cases first!
@@ -80,7 +80,7 @@ double d{9.5};
 ASSERT_THROWS(increment(d, 9.0), std::overflow_error);
 ```
 
----
+
 
 # Fraction Type
 
@@ -101,7 +101,7 @@ quarter++;
 std::cout << quarter << ' ' << static_cast<double>(half) << '\n'; //prints 1/4 0.5
 ```
 
----
+
 
 ## `dynArray` Repetition (Optional)
 At the end of the C++ module you had an assignment in the exercises to create a `vector`-like container that features the capabilities to access its elements with negative indices (https://wiki.ifs.hsr.ch/CPlusPlus/ExW12). In the C++ Advanced module we will have an in-depth look at the implementation of bounded buffer container. We will expect that you are familiar and can easily implement containers like the `dynArray` example. Revisit the implementation of this task, implement it again or study the code carefully, in order to be properly prepared for the upcomming testat assignments. 
