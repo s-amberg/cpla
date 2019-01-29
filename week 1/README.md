@@ -1,4 +1,8 @@
-#Exercises Week 1
+# Exercises Week 1
+Goals of this weeks exercises:
+* You will setup or update your development environment, in order to be able to solve the exercises of this course properly. This includes installing a recent IDE and a compiler capable of C++17.
+* Solve small tasks to refresh your C++ knowledge accross the board.
+* Prepare for the upcomming testat by refurbishing your template writing skills.
 
 ## Set Up Your Development Environment
  If you don't already have a development environment with [Cevelop](https://www.cevelop.com) and a recent compiler take care of this first. [Here](https://wiki.ifs.hsr.ch/CPlusPlus/ExW1) is a guide from CPl on how to do it.
