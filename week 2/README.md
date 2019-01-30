@@ -23,6 +23,7 @@ ASSERT(!poppedValue);
 
 Your test cases (probably), and the test cases of the solution of `DynArray` don't benefit from the template argument deduction for class templates yet. Go though the test cases and figure out in which declarations the explicit specification of the template arguments can already be omittet.
 
+**Note:** Cevelop currently is not capable of deducing the class template arguments. Subsequently, it will complain heavily about the code using that feature. Ignore this for the current exercise and trust the compiler (as most of the time). In general in this lecture we recommend specifying the template arguments for class templates explicitly, unless your IDE supports it properly.
 
 
 ## Directory-Sizer 
@@ -70,10 +71,12 @@ void doread(std::istream &in, FIRST &var, I&...vars) {
     in >> var;
     doread(in, vars...);
 }
-
 ```
-    Take your solution of the `readln` exercise, or use the exercise project on github (Ex02_03_FoldRead) and simplify the `doread` function with a fold expression.
-    Do you still need the base case? 
+
+Take your solution of the `readln` exercise, or use the exercise project on github (Ex02_03_FoldRead) and simplify the `doread` function with a fold expression.
+Do you still need the base case? 
+
+**Note:** Cevelop also does not understand the Syntax of fold expressions yet. However, your compiler should be able to cope with them.
 
 ## if constexpr (Preview Exercise, Optional)
 
