@@ -3,14 +3,16 @@
 #include <string>
 
 struct VariantHandler {
+	std::ostream & out;
+
 	void operator()(int & i) const {
-		std::cout << "int: " << i << '\n';
+		out << "int: " << i << '\n';
 	}
 	void operator()(float & f) const {
-		std::cout << "float: " << f << '\n';
+		out << "float: " << f << '\n';
 	}
 	void operator()(std::string & s) const {
-		std::cout << "string: " << s << '\n';
+		out << "string: " << s << '\n';
 	}
 };
 
@@ -27,7 +29,7 @@ void variant_example(std::ostream & out) {
 	}
 
 	value = 15.0f;
-	std::visit(VariantHandler{}, value);
+	std::visit(VariantHandler{out}, value);
 
 	//value = 10L; //Compile error
 }
