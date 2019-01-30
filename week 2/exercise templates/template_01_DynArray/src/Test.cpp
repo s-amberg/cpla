@@ -107,18 +107,7 @@ void makedynArrayFactory() {
 	ASSERT_EQUAL(3.0, da.at(-1));
 }
 
-//Sol CPlA Ex02: Test cases for pop_back() function returning std::optional<T>
-void test_dynArray_pop_empty_container_returns_empty_optional() {
-	DynArray<int> empty { };
-	std::optional popped_value = empty.pop_back();
-	ASSERTM("Popping an empty dynArray shall return an empty optional.", !popped_value.has_value());
-}
-
-void test_dynArray_pop_non_empty_container_returns_back_element() {
-	DynArray<std::string> values { "one", "two", "three" };
-	std::optional popped_value = values.pop_back();
-	ASSERT_EQUAL("three", popped_value.value());
-}
+//TODO: Add pop_back tests
 
 void runAllTests(int argc, char const *argv[]) {
 	cute::suite s;
@@ -135,8 +124,6 @@ void runAllTests(int argc, char const *argv[]) {
 	s.push_back(CUTE(makedynArrayFactory));
 	s.push_back(CUTE(n_times_value_constructeddynArray));
 	s.push_back(CUTE(testtwoparaemterconstructorambiguity));
-	s.push_back(CUTE(test_dynArray_pop_empty_container_returns_empty_optional));
-	s.push_back(CUTE(test_dynArray_pop_non_empty_container_returns_back_element));
 	cute::xml_file_opener xmlfile(argc, argv);
 	cute::xml_listener<cute::ide_listener<> > lis(xmlfile.out);
 	cute::makeRunner(lis, argc, argv)(s, "AllTests");

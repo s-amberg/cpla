@@ -83,8 +83,10 @@ public:
 		return values.back();
 	}
 
-	//TODO: Sol CPlA Ex02: Implementation of the pop_back() function returning std::optional<T>
-
+	//TODO: Sol CPlA Ex02: Change the implementation of the pop_back() function returning std::optional<T>
+	void pop_back() {
+		values.pop_back();
+	}
 
 	iterator begin() {
 		return values.begin();
