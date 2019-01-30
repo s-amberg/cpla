@@ -1,0 +1,149 @@
+#include "DynArray.h"
+#include "cute.h"
+#include "ide_listener.h"
+#include "xml_listener.h"
+#include "cute_runner.h"
+
+#include <boost/iterator/counting_iterator.hpp>
+#include <optional>
+#include <string>
+
+
+
+void defaultconstructdynArray() {
+	DynArray<int> const da { };
+	ASSERT_EQUAL(0, da.size());
+	ASSERT(da.empty());
+}
+void initializerlistconstructeddynArrayisNotEmpty() {
+	DynArray<unsigned> da { 1u, 2u, 3u, 4u };
+	ASSERT_EQUAL(4, da.size());
+	ASSERT(!da.empty());
+	ASSERT_EQUAL(1u, da[0]);
+	ASSERT_EQUAL(4u, da[-1]);
+	ASSERT_EQUAL(2, da[-3]);
+	ASSERT_EQUAL(3, da[2]);
+}
+
+void rangeconstructeddynArray() {
+	auto iter = boost::make_counting_iterator(0.0);
+	auto e = boost::make_counting_iterator(11.0);
+	DynArray<double> const da(iter, e);
+	ASSERT_EQUAL(11, da.size());
+	ASSERT_EQUAL(1.0, da.at(1));
+	ASSERT_EQUAL(10.0, da.at(-1));
+	ASSERT_EQUAL(5.0, da[5]);
+	ASSERT_EQUAL(6.0, da[-5]);
+}
+void n_times_value_constructeddynArray() {
+	DynArray<double> da(10u, 3.14);
+	ASSERT_EQUAL(10u, da.size());
+	ASSERT_EQUAL(3.14, da.at(-1));
+}
+void testtwoparaemterconstructorambiguity() {
+	DynArray<unsigned> da(10u, 1u); // must use parentheses
+	ASSERT_EQUAL(10u, da.size());
+}
+
+// the following is a lazy and bad test case, because it tests too much at once
+void sequencecontainerfunctions() {
+	DynArray<int> da { 1, 2, 3 };
+	da.push_back(4);
+	ASSERT_EQUAL(4, da.size());
+	ASSERT_EQUAL(1, da.front());
+	ASSERT_EQUAL(4, da.back());
+	da.front() = 42;
+	ASSERT_EQUAL(42, da.front());
+	da.back() = 42;
+	ASSERT_EQUAL(42, da.back());
+	da.pop_back();
+	ASSERT_EQUAL(3, da.size());
+}
+
+void const_iterator_functions() {
+	DynArray<char> da { 'a', 'b', 'c' };
+	std::string s { da.begin(), da.end() };
+	ASSERT_EQUAL("abc", s);
+}
+void nonconst_iterator_functions() {
+	DynArray<std::string> da { "one", "two" };
+	ASSERT_EQUAL("one", *da.begin());
+	*da.begin() = "none";
+	ASSERT_EQUAL("none", *da.begin());
+	*(da.end() - 1) = "on";
+	ASSERT_EQUAL("on", *(da.begin() + 1));
+}
+void reverse_iterator_functions() {
+	DynArray<char> da { '1', '2', '3', '4' };
+	std::string s { da.rbegin(), da.rend() };
+	ASSERT_EQUAL("4321", s);
+}
+void nonconst_reverse_iterator_functions() {
+	DynArray<int> da { 4, 3, 2, 1 };
+	*da.rbegin() = 42;
+	ASSERT_EQUAL(42, da.at(-1));
+	*(da.rend() - 1) = 42;
+	ASSERT_EQUAL(42, da[0]);
+}
+
+void const_iterator_functions_availability() {
+	DynArray<char> da { 'p', 'e', 't', 'e', 'r' };
+	std::string peter { da.cbegin(), da.cend() };
+	std::string retep { da.crbegin(), da.crend() };
+	ASSERT_EQUAL("peter", peter);
+	ASSERT_EQUAL("retep", retep);
+}
+
+void resizeAvailable() {
+	DynArray<int> da{};	//Sol CPlA Ex02: Template argument cannot be omitted.
+	da.resize(10);
+	ASSERT_EQUAL(10, da.size());
+	ASSERT_EQUAL(0, da[-1]);
+}
+
+void makedynArrayFactory() {
+	auto da = make_dynArray( { 1.0, 2.0, 3.0 });
+	ASSERT_EQUAL(3, da.size());
+	ASSERT_EQUAL(3.0, da.at(-1));
+}
+
+//Sol CPlA Ex02: Test cases for pop_back() function returning std::optional<T>
+void test_dynArray_pop_empty_container_returns_empty_optional() {
+	DynArray<int> empty { };
+	std::optional popped_value = empty.pop_back();
+	ASSERTM("Popping an empty dynArray shall return an empty optional.", !popped_value.has_value());
+}
+
+void test_dynArray_pop_non_empty_container_returns_back_element() {
+	DynArray<std::string> values { "one", "two", "three" };
+	std::optional popped_value = values.pop_back();
+	ASSERT_EQUAL("three", popped_value.value());
+}
+
+void runAllTests(int argc, char const *argv[]) {
+	cute::suite s;
+	s.push_back(CUTE(defaultconstructdynArray));
+	s.push_back(CUTE(initializerlistconstructeddynArrayisNotEmpty));
+	s.push_back(CUTE(rangeconstructeddynArray));
+	s.push_back(CUTE(sequencecontainerfunctions));
+	s.push_back(CUTE(const_iterator_functions));
+	s.push_back(CUTE(nonconst_iterator_functions));
+	s.push_back(CUTE(reverse_iterator_functions));
+	s.push_back(CUTE(nonconst_reverse_iterator_functions));
+	s.push_back(CUTE(const_iterator_functions_availability));
+	s.push_back(CUTE(resizeAvailable));
+	s.push_back(CUTE(makedynArrayFactory));
+	s.push_back(CUTE(n_times_value_constructeddynArray));
+	s.push_back(CUTE(testtwoparaemterconstructorambiguity));
+	s.push_back(CUTE(test_dynArray_pop_empty_container_returns_empty_optional));
+	s.push_back(CUTE(test_dynArray_pop_non_empty_container_returns_back_element));
+	cute::xml_file_opener xmlfile(argc, argv);
+	cute::xml_listener<cute::ide_listener<> > lis(xmlfile.out);
+	cute::makeRunner(lis, argc, argv)(s, "AllTests");
+}
+
+int main(int argc, char const *argv[]) {
+	runAllTests(argc, argv);
+	return 0;
+}
+
