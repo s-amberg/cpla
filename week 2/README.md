@@ -46,7 +46,7 @@ How can you write test cases for your functionality? Note: you can employ the fi
 
 **Hints:**
 * On Windows: MinGW GCC 8.2 has a knwon bug in the `<filesystem>` header. It should be fixed with MinGW GCC 9.0. Instead you can use boost's filesystem library, which behaves identical in regard of this exercise.
-..* Include: `<boost/filesystem>` - it is located in `<MinGW-Directory>/include`
+..* Include: `<boost/filesystem.hpp>` - it is located in `<MinGW-Directory>/include`
 ..* Library: `boost_filesystem` - it is located in `<MinGW-Directory>/lib`
 
 * For older compilers: Your compiler might not feature the filesystem library as expected by the C++17 standard. You might need to include `<experimental/filesystem>` instead of `<filesystem>` and use the namespace `std::experimental::filesystem` instead of `std::filesystem`.
