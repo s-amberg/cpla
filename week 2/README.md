@@ -68,7 +68,7 @@ void doread(std::istream &in, I&...vars);
 template<typename FIRST, typename ...I>
 void doread(std::istream &in, FIRST &var, I&...vars) {
     in >> var;
-    doread(in,vars...);
+    doread(in, vars...);
 }
 
 ```
