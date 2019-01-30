@@ -73,7 +73,7 @@ void doread(std::istream &in, FIRST &var, I&...vars) {
 }
 ```
 
-Take your solution of the `readln` exercise, or use the exercise project on github (Ex02_03_FoldRead) and simplify the `doread` function with a fold expression.
+Take your solution of the `readln` exercise, or you can take the template we have prepared for you [here](week 2/exercise templates/template_03_FoldRead) and simplify the `doread` function with a fold expression.
 Do you still need the base case? 
 
 **Note:** Cevelop also does not understand the Syntax of fold expressions yet. However, your compiler should be able to cope with them.
