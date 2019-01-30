@@ -5,35 +5,24 @@ Goals of this weeks exercises:
 
 ## dynArray Extension ^
 
-You have either already implemented the `dynArray` known from the C++ module previously, or you can take the solution of that exercise as a starting point for the tasks of the following exercises. You will add some extensions to the `dynArray` container.
-
-1 https://github.com/PeterSommerlad/CPlusPlusLecture/tree/master/solws12/dynArray
-
-**Important**: If you import the project, you need to adjust the compiler flag settings: Set the dialect to `-std=c++1z`! (`Project Properties -> C++ Build -> Settings -> GCC C++ Compiler -> Dialect.` Use the input field to enter the dialect, as C++17 is not available in the dropdown menu.
+You have either already implemented the `dynArray` known from the C++ module previously, or you can take the template we have prepared for you [here](week 2/exercise templates/template_01_DynArray). You will add an extension to the `DynArray` container.
 
 ### `pop_back` with `std::optional<T>`
 
-The `pop_back` call, which gets forwarded to `vector::pop_back` features undefined behavior in case of an empty container. And due to separation of action and query functions does not return the popped value. Change the implementation of the `dynArray::pop_back` member function to return a copy of the popped value wrapped in an `std::optional<T>`. If the container is empty, the `std::optional<T>` shall be empty too.
+The `pop_back` call, which gets forwarded to `vector::pop_back` features undefined behavior in case of an empty container. And due to separation of *action* and *query* functions does not return the popped value. Change the implementation of the `DynArray::pop_back` member function to return a copy of the popped value wrapped in an `std::optional<T>`. If the container is empty, the `std::optional<T>` shall be empty too.
 
 
 **Hint:** Write test cases first, for example:
 ``` cpp
-dynArray<int> empty{};
+DynArray<int> empty{};
 std::optional<int> poppedValue = empty.pop_back():
 ASSERT(!poppedValue);
 ```
 
-
 ### Class Template Deduction
 
-Your test cases (probably), and the test cases of the solution of dynArray don't benefit from the template argument deduction for class templates yet. Go though the test cases and figure out in which declarations the explicit specification of the template arguments can already be omittet.
+Your test cases (probably), and the test cases of the solution of `DynArray` don't benefit from the template argument deduction for class templates yet. Go though the test cases and figure out in which declarations the explicit specification of the template arguments can already be omittet.
 
-
-### Not an exercise for now
-
-Later in the course, we will write deduction guides for the missing cases that still need the explicit specification of the template arguments.
-
-**Experiment:** When the `dynArray` is initialized with string literals (`"Hello"`) the deduced type will be `char const *`. However, deducing the type `std::string` might be preferable. If you are very eager you can try to facilitate class templates and specializations thereof to replace `char const *` with `std::string` for this case. We will cover this topic later in the semester though.
 
 
 ## Directory-Sizer 
