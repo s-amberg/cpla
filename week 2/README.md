@@ -41,30 +41,32 @@ Later in the course, we will write deduction guides for the missing cases that s
 Write a program using the filesystem library to compute the total size of all files in a given directory recursively. If no commmand line arguments are given take the current directory. If multiple command-line arguments are given sum up each individually and also present the total. Check if the information you can obtain from your OS corresponds with the output from your program.
 
 call it like:
-
+```
    $ mydirsize
-
+```
 or
-
+```
    $ mydirsize /tmp
-
+```
 or
-
+```
    $ mydirsize dirA dirB
+```
 
 How can you write test cases for your functionality? Note: you can employ the filesystem library also in your test cases!
 
-**Hints:*
+**Hints:**
+* On Windows: MinGW GCC 8.2 has a knwon bug in the `<filesystem>` header. It should be fixed with MinGW GCC 9.0. Instead you can use boost's filesystem library, which behaves identical in regard of this exercise.
+..* Include: `<boost/filesystem>` - it is located in `<MinGW-Directory>/include`
+..* Library: `boost_filesystem` - it is located in `<MinGW-Directory>/lib`
 
-    Your compiler might not feature the filesystem library as expected by the C++17 standard. You might need to include <experimental/filesystem> instead of <filesystem> and use the namespace std::experimental::filesystem instead of std::filesystem.
-    Add the stdc++fs library to your linker options (Project Properties -> C/C++ Build -> Settings -> Linker -> Libraries). 
-    
-    Windows Issues with MinGW 8.2: Use boost
+* For older compilers: Your compiler might not feature the filesystem library as expected by the C++17 standard. You might need to include `<experimental/filesystem>` instead of `<filesystem>` and use the namespace `std::experimental::filesystem` instead of `std::filesystem`.
+    Add the `stdc++fs` library to your project (`Project Properties -> C/C++ General -> Paths and Symbols -> Library Tab`). 
     
 
 ## Fold Expressions
 
-You already implemented the readln template function, which takes an `std::istream` and a variadic number of further arguments (by reference). It reads from the stream "into" each argument. The implementation required the specification of a variadic template and a base case (or a `sizeof...` check), for a call without arguments. The implementation could have looked as follows:
+You already implemented the `readln` template function, which takes an `std::istream` and a variadic number of further arguments (by reference). It reads from the stream "into" each argument. The implementation required the specification of a variadic template and a base case (or a `sizeof...` check), for a call without arguments. The implementation could have looked as follows:
 
 ``` cpp
 void doread(std::istream &) {
@@ -86,10 +88,10 @@ void doread(std::istream &in, FIRST &var, I&...vars) {
 
 ## if constexpr (Preview Exercise, Optional)
 
-One new feature in C++17 we have not discussed in the lecture yet, are if constexpr statements. Using if constexpr provides the possibility to tell the compiler to conditionally enable code (at compile time), depending on some expression. This can be useful if you either have a system with distinct configurations for a target device, if your code depends on different versions of a library with more or less capabilities or to enable/disable certain sections in template code. It has already been possible to deal with such cases using the preprocessor or advanced template programming, but if constexpr features a much more readable way of achieving such things.
+One new feature in C++17 we have not discussed in the lecture yet, are if constexpr statements. Using if `constexpr` provides the possibility to tell the compiler to conditionally enable code (at compile time), depending on some expression. This can be useful if you either have a system with distinct configurations for a target device, if your code depends on different versions of a library with more or less capabilities or to enable/disable certain sections in template code. It has already been possible to deal with such cases using the preprocessor or advanced template programming, but if `constexpr` features a much more readable way of achieving such things.
 
-Let's have a look a a possible solution for the increment function from the last exercises. We provide the code on _Compiler Explorer_: https://godbolt.org/g/JG5FKX
+Let's have a look a a possible solution for the `increment` function from the previous week's exercises. We provide the code on _Compiler Explorer_: https://godbolt.org/g/JG5FKX
 
-    Have a look at the code.
-    If you change the type of the value variable from int to unsigned the overflow check is not required anymore. You should be able to observe that the corresponding section is not present in the compiled code anymore in the function increment_constexpr. However, it is still present in the increment function.
-    When you change the compiler from clang to gcc. You will observe that gcc also eliminates the overflow check for increment even though we have not enabled optimization. 
+* Have a look at the code.
+* If you change the type of the `value` variable from `int` to `unsigned` the overflow check is not required anymore. You should be able to observe that the corresponding section is not present in the compiled code in the function `increment_constexpr`. However, it is still present in the `increment` function.
+* When you change the compiler from `clang` to `gcc`. You will observe that `gcc` also eliminates the overflow check for `increment` even though we have not enabled optimization. 
