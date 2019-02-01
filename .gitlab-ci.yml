@@ -29,7 +29,7 @@ before_script:
   - >
     for n in "$(find "$JOB_DIR" -maxdepth $MaxDepth "(" -name $SourceFiles -o -iname README.md ")" -print )"; do
     echo $n;
-    fn=$(basename $n);
+    fn="$(basename $n)";
     ( cd "$(dirname $n)" &&
     pandoc -f markdown+emoji
     -t latex
