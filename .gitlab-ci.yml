@@ -75,16 +75,16 @@ before_script:
   only:
     - /^.*-Solutions$/
 
-week\ 1:
+week 1:
   <<: *job_definition_exercise
 
-week\ 1-Solutions:
+week 1-Solutions:
   <<: *job_definition_solution
 
-week\ 2:
+week 2:
   <<: *job_definition_exercise
 
-week\ 2-Solutions:
+week 2-Solutions:
   <<: *job_definition_solution
 
 Create-Solutions-And-Cleanup-Markdown:
