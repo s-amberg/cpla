@@ -11,7 +11,7 @@ From CPlusPlus you might already be familiar with the tracer class as used in th
 
 **Important:** Since the released versions of GCC (7.2.0) and Clang (5.0.0) seem to be actually creating a function for deduction guides, you should refrain from relying on class template argument deduction for this exercise! Otherwise, you might observe additional copies, which are not neccessary. For this exercise: Prefer `std::vector<Tracer>` over `std::vector`.
 
-We have prepared an exercise project for you. It contains the `Tracer` class and code it is used in. You find the exercise [here](week03/exercise templates/w03_template_01_Tracer).
+We have prepared an exercise project for you. It contains the `Tracer` class and code it is used in. You find the exercise [here](week03/exercise_templates/w03_template_01_Tracer).
 
 ## Output of Tracer
 
