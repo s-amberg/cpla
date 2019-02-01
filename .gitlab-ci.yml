@@ -26,6 +26,7 @@ before_script:
   - git checkout $CI_COMMIT_SHA
   - git clean -dxf
   - ( cd "$JOB_DIR" && 7z a ../"${CI_JOB_NAME}.zip" . )
+  - find "$JOB_DIR" -maxdepth $MaxDepth "(" -name $SourceFiles -o -iname README.md ")" -print
   - >
     for n in $(find "$JOB_DIR" -maxdepth $MaxDepth "(" -name $SourceFiles -o -iname README.md ")" -print ); do
     echo $n;
@@ -39,7 +40,7 @@ before_script:
     --filter=plantuml.py --filter=svg_convert.py
     -Vdate=$(date "+%Y-%m-%d")
     -o "$CI_PROJECT_DIR/${JOB_DIR}.pdf" $fn $CI_PROJECT_DIR/pandoc_meta.yaml ) &
-    done;
+    done;.
     wait;
   - >
     for n in $(find "$JOB_DIR" -maxdepth $MaxDepth "(" -name $SourceFiles -o -iname README.md ")" -exec grep -q "SOLUTION" {} \; -print ); do
