@@ -45,19 +45,19 @@ Your Tracer type does not provide an assignment operator. Add one which adds `" 
 ```cpp
 int main() {
   //...
-  std::cout << "\t\t--- creating sink and source ----" << std::endl;
+  std::cout << "\n--- creating sink and source ---\n";
   Tracer sink {"sink"}, source {"source"};
 
-  std::cout << "\t\t--- assigning source to sink ----" << std::endl;
+  std::cout << "\n--- assigning source to sink ---\n";
   sink = source;
 
-  std::cout << "\t\t--- showing sink ----" << std::endl;
+  std::cout << "\n--- showing sink ---\n";
   sink.show();
 
-  std::cout << "\t\t--- showing source ----" << std::endl;
+  std::cout << "\n--- showing source ---\n";
   source.show();
 
-  std::cout << "\t\t--- end of main ----" << std::endl;
+  std::cout << "\n--- end of main ---\n";
 }
 ```
 
@@ -100,9 +100,9 @@ What about the state of source after the move assignment?
 ```cpp
 int main() {
   ...
-  std::cout << "\t\t--- std::move(m) ----" << std::endl;
+  std::cout << "\n--- std::move(m) ---\n";
   std::move(m);
-  std::cout << "\t\t--- end of main ----" << std::endl;
+  std::cout << "\n--- end of main ---\n";
 }
 ```
 
