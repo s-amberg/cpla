@@ -24,7 +24,7 @@ logo: True
 colorlinks: True
 links-as-notes: True
 lof: False
-gitinfo: True
+gitinfo: False
 gitinfo-options:
   - notags={HEAD}
 link-citations: true
