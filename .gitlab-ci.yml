@@ -17,6 +17,7 @@ before_script:
   tags:
   - docker
   script:
+  - set -x
   # do not fetch lfs content for docu jobs, change if job requires lfs files
   - git config --global --remove-section filter.lfs || true
   - export JOB_DIR=${JOB_DIR:-${CI_JOB_NAME/-Solutions/}}
@@ -98,6 +99,7 @@ Create-Solutions-And-Cleanup-Markdown:
   tags:
   - docker
   script:
+  - set -x
   - export JOB_DIR=${JOB_DIR:-$CI_JOB_NAME}
   # do not fetch lfs content for docu jobs, change if job requires lfs files
   - git config --global --remove-section filter.lfs || true
