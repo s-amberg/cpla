@@ -1,6 +1,10 @@
 # Exercises Week 2
 Goals of this weeks exercises:
-* You get familiar with language and library features new in C++17
+* You get familiar with language and library features new in C++17:
+..* Apply `std::optional<T>` to `DynArray`
+..* Explore where Class Template Argument Deduction can be applied
+..* Use the file system library to query information
+..* Simplify a variadic template with fold expressions
 
 
 ## DynArray Extension
