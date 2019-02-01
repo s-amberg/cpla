@@ -30,8 +30,8 @@ We recommend to use the [Cevelop](https://www.cevelop.com) for our C++ courses. 
 ## Lecture Plan and Resources
 | Week | Lecture      | Topics                 | Remarks |
 | ---- | ------------ | ---------------------- | ------- |
-|01    |[L1](week 1)  |Introduction / C++ Recap|         |
-|02    |[L2](week 2)  |New Features in C++17   ||
+|01    |[L1](week01)  |Introduction / C++ Recap|         |
+|02    |[L2](week02)  |New Features in C++17   ||
 |03    |L3|Rvalue References / Move Semantics||
 |04    |L4|Type Deduction / Perfect Forwarding|**Testat 1**|
 |05    |L5|Explicit Heap Memory Management||
