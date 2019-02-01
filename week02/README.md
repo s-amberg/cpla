@@ -1,10 +1,10 @@
 # Exercises Week 2
 Goals of this weeks exercises:
 * You get familiar with language and library features new in C++17:
-..* Apply `std::optional<T>` to `DynArray`
-..* Explore where Class Template Argument Deduction can be applied
-..* Use the file system library to query information
-..* Simplify a variadic template with fold expressions
+    * Apply `std::optional<T>` to `DynArray`
+    * Explore where Class Template Argument Deduction can be applied
+    * Use the file system library to query information
+    * Simplify a variadic template with fold expressions
 
 
 ## DynArray Extension
@@ -51,8 +51,8 @@ How can you write test cases for your functionality? Note: you can employ the fi
 
 **Hints:**
 * On Windows: MinGW GCC 8.2 has a knwon bug in the `<filesystem>` header. It should be fixed with MinGW GCC 9.0. Instead you can use boost's filesystem library, which behaves identical in regard of this exercise.
-..* Include: `<boost/filesystem.hpp>` - it is located in `<MinGW-Directory>/include`
-..* Library: `boost_filesystem` - it is located in `<MinGW-Directory>/lib`
+    * Include: `<boost/filesystem.hpp>` - it is located in `<MinGW-Directory>/include`
+    * Library: `boost_filesystem` - it is located in `<MinGW-Directory>/lib`
 
 * For older compilers: Your compiler might not feature the filesystem library as expected by the C++17 standard. You might need to include `<experimental/filesystem>` instead of `<filesystem>` and use the namespace `std::experimental::filesystem` instead of `std::filesystem`.
     Add the `stdc++fs` library to your project (`Project Properties -> C/C++ General -> Paths and Symbols -> Library Tab`). 
