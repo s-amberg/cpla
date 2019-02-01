@@ -26,9 +26,8 @@ before_script:
   - git checkout $CI_COMMIT_SHA
   - git clean -dxf
   - ( cd "$JOB_DIR" && 7z a ../"${CI_JOB_NAME}.zip" . )
-  - find "$JOB_DIR" -maxdepth $MaxDepth "(" -name $SourceFiles -o -iname README.md ")" -print
   - >
-    for n in $(find "$JOB_DIR" -maxdepth $MaxDepth "(" -name $SourceFiles -o -iname README.md ")" -print ); do
+    for n in "$(find "$JOB_DIR" -maxdepth $MaxDepth "(" -name $SourceFiles -o -iname README.md ")" -print )"; do
     echo $n;
     fn=$(basename $n);
     ( cd $(dirname $n) &&
