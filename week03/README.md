@@ -1,5 +1,12 @@
 # Tracing Calls
 
+Goals of this weeks exercises:
+
+* You experiment and observe the behavior of moved objects
+    * See the behavior of objects when used as lvalue and rvalue
+    * Observing copying and moving operations
+    * Understand when elements living in a `std::vector` are copied and moved
+
 From CPlusPlus you might already be familiar with the tracer class as used in the extra exercises.
 
 **Important:** Since the released versions of GCC (7.2.0) and Clang (5.0.0) seem to be actually creating a function for deduction guides, you should refrain from relying on class template argument deduction for this exercise! Otherwise, you might observe additional copies, which are not neccessary. For this exercise: Prefer `std::vector<Tracer>` over `std::vector`.
@@ -115,7 +122,7 @@ Now as your Tracer is movable:
     * If not, try to figure out why.
     * It's a really advanced problem. Discuss it with your colleagues. 
 
-# Moving vs. Copying Large Objects
+## Moving vs. Copying Large Objects
 
 Large objects can benefit from move operations. An `std::vector`, for example, allocates memory on the heap for storing its values. Copying a vector requires additional heap space and copies all values to this new memory location. Moving a vector just needs to move the pointers, which access this memory, to the move-constructed/assigned vector.
 
