@@ -1,9 +1,9 @@
 ---
 #title: "Document Title" # taken from specific documents metadata
 subtitle: 'C++ Advanced, FS 2019'
-subject: 'C++ Advanced, FS 20189'
-mycopyright: '`\copyright 2019 Thomas Corbat. All rights reserved.`{=latex}'
-author: ["Thomas Corbta"]
+subject: 'C++ Advanced, FS 2019'
+mycopyright: '`\copyright 2019 Thomas~Corbat. All rights reserved.`{=latex}'
+author: ["Thomas Corbat"]
 institute: ["HSR Hochschule für Technik Rapperswil", "IFS", "Oberseestrasse 10", "CH-8640 Rapperswil"]
 contact: ["T +41 55 222 46 30", "F +41 55 222 46 29", "ifs@hsr.ch", "\\url{https://ifs.hsr.ch}"]
 keywords: []
@@ -12,7 +12,7 @@ titlepage: True
 documentclass: scrartcl # scrreprt #scrartcl
 disable-fancy-override: False
 lang: en
-otherlangs: [en]
+otherlangs: [de]
 papersize: a4paper
 mainfont: FreeSerif
 #fontsize: 10pt
