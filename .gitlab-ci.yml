@@ -25,14 +25,14 @@ before_script:
   # checkout again to execute custom git-hooks
   - git checkout $CI_COMMIT_SHA
   - git clean -dxf
-  - ( cd "$JOB_DIR" && 7z a ../"${CI_JOB_NAME}.zip" . )
+  - ( cd $JOB_DIR && 7z a ../${CI_JOB_NAME}.zip . )
   - >
-    for n in "$(find "$JOB_DIR" -maxdepth $MaxDepth "(" -name $SourceFiles -o -iname README.md ")" -print )"; do
+    for n in $(find $JOB_DIR -maxdepth $MaxDepth "(" -name $SourceFiles -o -iname README.md ")" -print ); do
     echo $n;
-    fn=$(basename "$n");
-    dir=$(dirname "$n");
+    fn=$(basename $n);
+    dir=$(dirname $n);
     ls -al;
-    ( cd "$dir" &&
+    ( cd $dir &&
     pandoc -f markdown+emoji
     -t latex
     --pdf-engine=xelatex
@@ -40,11 +40,11 @@ before_script:
     --filter=gfm_cleanup.py --filter=gitlab_links.py
     --filter=plantuml.py --filter=svg_convert.py
     -Vdate=$(date "+%Y-%m-%d")
-    -o "$CI_PROJECT_DIR/${JOB_DIR}.pdf" $fn $CI_PROJECT_DIR/pandoc_meta.yaml ) &
+    -o $CI_PROJECT_DIR/${JOB_DIR}.pdf $fn $CI_PROJECT_DIR/pandoc_meta.yaml ) &
     done;
     wait;
   - >
-    for n in $(find "$JOB_DIR" -maxdepth $MaxDepth "(" -name $SourceFiles -o -iname README.md ")" -exec grep -q "SOLUTION" {} \; -print ); do
+    for n in $(find $JOB_DIR -maxdepth $MaxDepth "(" -name $SourceFiles -o -iname README.md ")" -exec grep -q "SOLUTION" {} \; -print ); do
     echo $n;
     fn=$(basename $n);
     ( cd $(dirname $n) &&
@@ -55,7 +55,7 @@ before_script:
     --filter=gfm_cleanup.py --filter=gitlab_links.py
     --filter=plantuml.py --filter=svg_convert.py
     -Vdate=$(date "+%Y-%m-%d") -Vsolution=1
-    -o "$CI_PROJECT_DIR/${JOB_DIR}-Solutions.pdf" $fn $CI_PROJECT_DIR/pandoc_meta.yaml ) &
+    -o $CI_PROJECT_DIR/${JOB_DIR}-Solutions.pdf $fn $CI_PROJECT_DIR/pandoc_meta.yaml ) &
     done;
     wait;
   artifacts:
@@ -78,17 +78,23 @@ before_script:
   only:
     - /^.*-Solutions$/
 
-week 1:
+week01:
   <<: *job_definition_exercise
 
-week 1-Solutions:
-  <<: *job_definition_solution
+# week01-Solutions:
+#  <<: *job_definition_solution
 
-week 2:
+week02:
   <<: *job_definition_exercise
 
-week 2-Solutions:
-  <<: *job_definition_solution
+# week02-Solutions:
+#  <<: *job_definition_solution
+
+week03:
+  <<: *job_definition_exercise
+
+# week03-Solutions:
+#  <<: *job_definition_solution
 
 Create-Solutions-And-Cleanup-Markdown:
   image: $PANDOC_IMAGE
