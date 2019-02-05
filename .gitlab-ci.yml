@@ -81,20 +81,11 @@ before_script:
 week01:
   <<: *job_definition_exercise
 
-# week01-Solutions:
-#  <<: *job_definition_solution
-
 week02:
   <<: *job_definition_exercise
 
-# week02-Solutions:
-#  <<: *job_definition_solution
-
 week03:
   <<: *job_definition_exercise
-
-# week03-Solutions:
-#  <<: *job_definition_solution
 
 Create-Solutions-And-Cleanup-Markdown:
   image: $PANDOC_IMAGE
