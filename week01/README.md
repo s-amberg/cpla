@@ -118,16 +118,14 @@ For the following tasks write test cases first!
     and a `-1` operation to your limit. Does this restrict the iterators
     you can use with `increment`?
 
-<!-- -->
-
-``` cpp
-std::vector<int> v{1};
-auto it = std::end(v);
-ASSERT_THROWS(increment(it, std::end(v)), std::overflow_error);
+    ``` cpp
+    std::vector<int> v{1};
+    auto it = std::end(v);
+    ASSERT_THROWS(increment(it, std::end(v)), std::overflow_error);
  
-double d{9.5};
-ASSERT_THROWS(increment(d, 9.0), std::overflow_error);
-```
+    double d{9.5};
+    ASSERT_THROWS(increment(d, 9.0), std::overflow_error);
+    ```
 
 # Fraction Type
 
