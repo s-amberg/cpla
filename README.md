@@ -44,23 +44,23 @@ courses. While it is possible to use other IDEs, only Cevelop is:
 
 ## Lecture Plan and Resources
 
-| Week | Lecture                | Topics                                               | Remarks        |
-|------|------------------------|------------------------------------------------------|----------------|
-| 01   | [L1](week01/README.md) | Introduction / C++ Recap                             |                |
-| 02   | [L2](week02/README.md) | New Features in C++17                                |                |
-| 03   | [L3](week03/README.md) | Rvalue References / Move Semantics                   |                |
-| 04   | L4                     | Type Deduction / Perfect Forwarding                  | **Testat 1**   |
-| 05   | L5                     | Explicit Heap Memory Management                      |                |
-| 06   | L6                     | Iterators / Advanced Templates / Deduction Guides    |                |
-| 07   | L7                     | Compile-Time Computation / User-Defined Literals     |                |
-| 08   | L8                     | Multiple Inheritance / Exception Safety              |                |
-| 09   | L9                     | Memory Model / Multi-Threading                       |                |
-| 10   | L10                    | Advanced Library Design                              |                |
-| 11   | L11                    | Sane Class Design / Whole Value Types                |                |
-| 12   | L12                    | Core Guidelines                                      |                |
-| 13   | L13                    | Build Systems                                        |                |
-| 14   | L14                    | C++ Standardization (Insights by a Committee Member) |                |
-| 15   | Ascension Day          |                                                      | **No Lecture** |
+| Week | Lecture                | PDF                                                                       | Topics                                               | Remarks        |
+|------|------------------------|---------------------------------------------------------------------------|------------------------------------------------------|----------------|
+| 01   | [L1](week01/README.md) | [E1](/../-/jobs/artifacts/exercise_pdf/file/week01/week01.pdf?job=week01) | Introduction / C++ Recap                             |                |
+| 02   | [L2](week02/README.md) | [E2](/../-/jobs/artifacts/exercise_pdf/file/week02/week02.pdf?job=week02) | New Features in C++17                                |                |
+| 03   | [L3](week03/README.md) | [E3](/../-/jobs/artifacts/exercise_pdf/file/week03/week03.pdf?job=week03) | Rvalue References / Move Semantics                   |                |
+| 04   | L4                     |                                                                           | Type Deduction / Perfect Forwarding                  | **Testat 1**   |
+| 05   | L5                     |                                                                           | Explicit Heap Memory Management                      |                |
+| 06   | L6                     |                                                                           | Iterators / Advanced Templates / Deduction Guides    |                |
+| 07   | L7                     |                                                                           | Compile-Time Computation / User-Defined Literals     |                |
+| 08   | L8                     |                                                                           | Multiple Inheritance / Exception Safety              |                |
+| 09   | L9                     |                                                                           | Memory Model / Multi-Threading                       |                |
+| 10   | L10                    |                                                                           | Advanced Library Design                              |                |
+| 11   | L11                    |                                                                           | Sane Class Design / Whole Value Types                |                |
+| 12   | L12                    |                                                                           | Core Guidelines                                      |                |
+| 13   | L13                    |                                                                           | Build Systems                                        |                |
+| 14   | L14                    |                                                                           | C++ Standardization (Insights by a Committee Member) |                |
+| 15   | Ascension Day          |                                                                           |                                                      | **No Lecture** |
 
 ---
 keywords:
