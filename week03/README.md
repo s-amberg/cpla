@@ -38,23 +38,19 @@ Observe the behavior of the Tracer type when used in an `std::vector`.
 -   What happens to the elements of the vector?
 -   How many times is `T1` copied?
 
-<!-- -->
-
-``` cpp
-std::vector<Tracer> v{};
-v.push_back(Tracer{"T1"});
-v.push_back(Tracer{"T2"});
-v.push_back(Tracer{"T3"});
-v.push_back(Tracer{"T4"});
-```
+    ``` cpp
+    std::vector<Tracer> v{};
+    v.push_back(Tracer{"T1"});
+    v.push_back(Tracer{"T2"});
+    v.push_back(Tracer{"T3"});
+    v.push_back(Tracer{"T4"});
+    ```
 
 -   Make a copy of your vector. What happens?
 
-<!-- -->
-
-``` cpp
-std::vector<Tracer> v_copy{v};
-```
+    ``` cpp
+    std::vector<Tracer> v_copy{v};
+    ```
 
 ## Copy Assignment
 
@@ -99,12 +95,10 @@ class with a move constructor and a move-assignment operator:
     the name of the moved from Tracer and add `" moved"`. Change the
     parameter object's name to name plus `" moved away"`. Example:
 
-<!-- -->
-
-``` cpp
-Tracer origin{"origin"};
-Tracer target{std::move(origin)};
-```
+    ``` cpp
+    Tracer origin{"origin"};
+    Tracer target{std::move(origin)};
+    ```
 
 Afterwards, target shall contain the name `"orgin moved"` and origin
 shall contain the name `"origin moved away"`.
@@ -147,16 +141,14 @@ What about the state of source after the move assignment?
     `std::move` on a tracer object?
 -   What is the output of the call below? Why?
 
-<!-- -->
-
-``` cpp
-int main() {
-  ...
-  std::cout << "\n--- std::move(m) ---\n";
-  std::move(m);
-  std::cout << "\n--- end of main ---\n";
-}
-```
+    ``` cpp
+    int main() {
+      ...
+      std::cout << "\n--- std::move(m) ---\n";
+      std::move(m);
+      std::cout << "\n--- end of main ---\n";
+    }
+    ```
 
 ## Vector Again
 
