@@ -46,9 +46,9 @@ courses. While it is possible to use other IDEs, only Cevelop is:
 
 | Week | Lecture                | PDF                                                                       | Topics                                               | Remarks        |
 |------|------------------------|---------------------------------------------------------------------------|------------------------------------------------------|----------------|
-| 01   | [L1](week01/README.md) | [E1](/../-/jobs/artifacts/exercise_pdf/file/week01/week01.pdf?job=week01) | Introduction / C++ Recap                             |                |
-| 02   | [L2](week02/README.md) | [E2](/../-/jobs/artifacts/exercise_pdf/file/week02/week02.pdf?job=week02) | New Features in C++17                                |                |
-| 03   | [L3](week03/README.md) | [E3](/../-/jobs/artifacts/exercise_pdf/file/week03/week03.pdf?job=week03) | Rvalue References / Move Semantics                   |                |
+| 01   | [L1](week01/README.md) | [E1](/../-/jobs/artifacts/exercise_pdf/file/week01.pdf?job=week01)        | Introduction / C++ Recap                             |                |
+| 02   | [L2](week02/README.md) | [E2](/../-/jobs/artifacts/exercise_pdf/file/week02.pdf?job=week02)        | New Features in C++17                                |                |
+| 03   | [L3](week03/README.md) | [E3](/../-/jobs/artifacts/exercise_pdf/file/week03.pdf?job=week03)        | Rvalue References / Move Semantics                   |                |
 | 04   | L4                     |                                                                           | Type Deduction / Perfect Forwarding                  | **Testat 1**   |
 | 05   | L5                     |                                                                           | Explicit Heap Memory Management                      |                |
 | 06   | L6                     |                                                                           | Iterators / Advanced Templates / Deduction Guides    |                |
