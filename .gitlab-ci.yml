@@ -1,0 +1,135 @@
+variables:
+  PANDOC_IMAGE: gitlab.dev.ifs.hsr.ch:45023/ifs/gitlabmarkdowntopdf/pandoc:v19.02-1
+
+stages:
+- build
+
+before_script:
+
+.job_template:
+  image: $PANDOC_IMAGE
+  stage: build
+  variables:
+    LANG: en_US.UTF-8
+    MaxDepth: "1"
+    SourceFiles: "NotThere.Md"
+    GIT_CHECKOUT: "false"
+  tags:
+  - docker
+  script:
+  # do not fetch lfs content for docu jobs, change if job requires lfs files
+  - git config --global --remove-section filter.lfs || true
+  - export JOB_DIR=${JOB_DIR:-${CI_JOB_NAME/-Solutions/}}
+  - git config core.hooksPath /gitinfo-hooks/
+  # checkout again to execute custom git-hooks
+  - git checkout $CI_COMMIT_SHA
+  - git clean -dxf
+  - ( cd $JOB_DIR && 7z a ../${CI_JOB_NAME}.zip . )
+  - >
+    for n in $(find $JOB_DIR -maxdepth $MaxDepth "(" -name $SourceFiles -o -iname README.md ")" -print ); do
+    echo $n;
+    fn=$(basename $n);
+    ( cd $(dirname $n) &&
+    pandoc -f markdown+emoji
+    -t latex
+    --pdf-engine=xelatex
+    --template=hsrtemplate
+    --filter=gfm_cleanup.py
+    --filter=gitlab_links.py
+    --filter=plantuml.py
+    --filter=svg_convert.py
+    -Vdate=$(date "+%Y-%m-%d")
+    -o $CI_PROJECT_DIR/${JOB_DIR}.pdf $fn $CI_PROJECT_DIR/pandoc_meta.yaml ) &
+    done;
+    wait;
+  - >
+    for n in $(find $JOB_DIR -maxdepth $MaxDepth "(" -name $SourceFiles -o -iname README.md ")" -exec grep -q "SOLUTION" {} \; -print ); do
+    echo $n;
+    fn=$(basename $n);
+    ( cd $(dirname $n) &&
+    pandoc -f markdown+emoji
+    -t latex
+    --pdf-engine=xelatex
+    --template=hsrtemplate
+    --filter=inline_solutions.py
+    --filter=gfm_cleanup.py
+    --filter=gitlab_links.py
+    --filter=plantuml.py
+    --filter=svg_convert.py
+    -Vdate=$(date "+%Y-%m-%d")
+    -Vsolution=1
+    -o $CI_PROJECT_DIR/${JOB_DIR}-Solutions.pdf $fn $CI_PROJECT_DIR/pandoc_meta.yaml ) &
+    done;
+    wait;
+  artifacts:
+    expire_in: 1 day
+    paths:
+    - ./${JOB_DIR}*.pdf
+    - ./${CI_JOB_NAME}.zip
+
+.job_template_exercise:
+  extends: .job_template
+  except:
+  - /^.*-Solutions$/
+
+.job_template_solution:
+  extends: .job_template
+  only:
+  - /^.*-Solutions$/
+
+week01:
+  extends: .job_template_exercise
+
+week02:
+  extends: .job_template_exercise
+
+week03:
+  extends: .job_template_exercise
+
+Create-Solutions-And-Cleanup-Markdown:
+  image: $PANDOC_IMAGE
+  stage: build
+  variables:
+    LANG: en_US.UTF-8
+    LANGUAGE: ''
+    LC_ALL: ''
+    GIT_CHECKOUT: "false"
+  tags:
+  - docker
+  script:
+  - export JOB_DIR=${JOB_DIR:-$CI_JOB_NAME}
+  # do not fetch lfs content for docu jobs, change if job requires lfs files
+  - git config --global --remove-section filter.lfs || true
+  - git checkout $CI_COMMIT_SHA
+  - >
+    for n in $(find . -mindepth 1 "(" -iname README.md ")" -print); do
+    echo $n;
+    fn=$(basename $n);
+    ( cd $(dirname $n) &&
+    cat ${fn} 2>/dev/null | sed -e 's|[„“”]|"|g' -e "s|[’]|'|g" -e "s|[–]|-|g" |
+    pandoc -f markdown+emoji
+    -t markdown+pipe_tables-grid_tables-simple_tables-multiline_tables-header_attributes-fenced_code_attributes-fenced_code_blocks+backtick_code_blocks+emoji
+    --template=MetadataAtEOF
+    --atx-headers --standalone
+    -o ${fn} ) &
+    done;
+  - >
+    for n in $(find . -mindepth 1 "(" -iname README.md ")" -exec grep -q SOLUTION {} \; -print); do
+    echo ${n/.md/.solutions.md};
+    fn=$(basename $n);
+    ( cd $(dirname $n) &&
+    cat ${fn} 2>/dev/null | sed -e 's|[„“”]|"|g' -e "s|[’]|'|g" -e "s|[–]|-|g" |
+    pandoc -f markdown+emoji
+    -t markdown+pipe_tables-grid_tables-simple_tables-multiline_tables-header_attributes-fenced_code_attributes-fenced_code_blocks+backtick_code_blocks+emoji
+    --template=MetadataAtEOF
+    --atx-headers
+    --standalone
+    --filter=inline_solutions.py
+    -o ${fn/.md/.solutions.md} ) &
+    done;
+    wait;
+  artifacts:
+    expire_in: 1 day
+    paths:
+    - './*.md'
+    - '**/*.md'
