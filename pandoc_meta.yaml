@@ -9,7 +9,8 @@ contact: ["T +41 55 222 46 30", "F +41 55 222 46 29", "ifs@hsr.ch", "\\url{https
 keywords: []
 date: 2019-02-01
 titlepage: True
-documentclass: scrartcl # scrreprt #scrartcl
+# scrreprt scrartcl
+documentclass: scrartcl
 disable-fancy-override: False
 lang: en
 otherlangs: [de]
@@ -29,4 +30,6 @@ gitinfo-options:
   - notags={HEAD}
 link-citations: true
 header-includes:
+# override gitMark default revision format
+#  - '`\renewcommand{\gitMark}{\gitReln-g\gitAbbrevHash}`{=latex}'
 ---
