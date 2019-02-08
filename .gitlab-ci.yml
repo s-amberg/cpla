@@ -1,5 +1,5 @@
 variables:
-  PANDOC_IMAGE: gitlab.dev.ifs.hsr.ch:45023/ifs/gitlabmarkdowntopdf/pandoc:v19.02-1
+  PANDOC_IMAGE: gitlab.dev.ifs.hsr.ch:45023/ifs/gitlabmarkdowntopdf/pandoc:v19.02-2
 
 stages:
 - build
@@ -110,7 +110,8 @@ Create-Solutions-And-Cleanup-Markdown:
     pandoc -f markdown+emoji
     -t markdown+pipe_tables-grid_tables-simple_tables-multiline_tables-header_attributes-fenced_code_attributes-fenced_code_blocks+backtick_code_blocks+emoji
     --template=MetadataAtEOF
-    --atx-headers --standalone
+    --atx-headers
+    --standalone
     -o ${fn} ) &
     done;
   - >
