@@ -1,5 +1,5 @@
 variables:
-  PANDOC_IMAGE: gitlab.dev.ifs.hsr.ch:45023/ifs/gitlabmarkdowntopdf/pandoc:v19.02-2
+  PANDOC_IMAGE: gitlab.dev.ifs.hsr.ch:45023/ifs/gitlabmarkdowntopdf/pandoc:v19.02.4
 
 stages:
 - build
@@ -38,6 +38,7 @@ before_script:
     --filter=gitlab_links.py
     --filter=plantuml.py
     --filter=svg_convert.py
+    --listings
     -Vdate=$(date "+%Y-%m-%d")
     -o $CI_PROJECT_DIR/${JOB_DIR}.pdf $fn $CI_PROJECT_DIR/pandoc_meta.yaml ) &
     done;
@@ -56,6 +57,7 @@ before_script:
     --filter=gitlab_links.py
     --filter=plantuml.py
     --filter=svg_convert.py
+    --listings
     -Vdate=$(date "+%Y-%m-%d")
     -Vsolution=1
     -o $CI_PROJECT_DIR/${JOB_DIR}-Solutions.pdf $fn $CI_PROJECT_DIR/pandoc_meta.yaml ) &
