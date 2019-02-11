@@ -12,8 +12,8 @@ Goals of this weeks exercises:
 
 You have either already implemented the `dynArray` known from the C++
 module previously, or you can take the template we have prepared for you
-[here](week02/exercise_templates/template_01_DynArray). You will add an
-extension to the `DynArray` container.
+[here](/../tree/master/week02/exercise_templates/w02_template_01_DynArray).
+You will add an extension to the `DynArray` container.
 
 ### `pop_back` with `std::optional<T>`
 
@@ -114,9 +114,9 @@ void doread(std::istream &in, FIRST &var, I&...vars) {
 
 Take your solution of the `readln` exercise, or you can take the
 template we have prepared for you
-[here](week02/exercise_templates/w02_template_03_FoldRead) and simplify
-the `doread` function with a fold expression. Do you still need the base
-case?
+[here](/../tree/master/week02/exercise_templates/w02_template_03_FoldRead)
+and simplify the `doread` function with a fold expression. Do you still
+need the base case?
 
 **Note:** Cevelop also does not understand the Syntax of fold
 expressions yet. However, your compiler should be able to cope with
