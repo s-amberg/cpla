@@ -20,7 +20,7 @@ not neccessary. For this exercise: Prefer `std::vector<Tracer>` over
 
 We have prepared an exercise project for you. It contains the `Tracer`
 class and code it is used in. You find the exercise
-[here](week03/exercise_templates/w03_template_01_Tracer).
+[here](/../tree/master/week03/exercise_templates/w03_template_01_Tracer).
 
 ## Output of Tracer
 
