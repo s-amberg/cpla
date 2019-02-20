@@ -96,7 +96,7 @@ So far the implicitly available constructors have been sufficient. Now explicitl
 
 
 
-# Type Deduction
+# Type Deduction Trivia
 
 In the lecture you have been taught about type deduction for function templates (and `auto`), e.g. in source code as follows:
 
@@ -108,10 +108,8 @@ void f(T && t) {...}
 When the template above is instantiated, the type `T` is deduced, which also implies the specific type of the parameter `t`. This deduction follows specific rules, depending on the declared template parameter type (above `T&&`). If you don't recall them exactly, have a look at the corresponding slides. If you have trouble understanding the rules, discuss them with your colleagues or ask your supervisor.
 
 Once you are confident, you can play a game we have prepared for you. It's a console-based trivia game which asks you about ten specific cases with a given function template declaration and a corresponding call. You will be asked about the deduced type of `T` and `t`.
-
-Here are the sources of the game. Create a new empty C++ project (and add the boost library to the includes if necessary). Have fun!
-
-Sources: https:files/TypeDeductionTrivia.zip
+Have fun!
+***Note:*** Maybe you need to add the *Boost* library to the trivia project.
 
 
 ***Remarks:*** 
