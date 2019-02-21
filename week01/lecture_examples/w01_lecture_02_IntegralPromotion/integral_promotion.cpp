@@ -17,8 +17,11 @@ int main() {
 
 	int negativeInt = -50;
 
+	std::cout << "intValue1 " << intValue1 << '\n';
+	std::cout << "unsignedIntSum " << unsignedIntSum << '\n';
 	if (intValue1 < -unsignedIntSum) {
 		std::cout << "intValue1 < -unsignedIntSum\n";
+//		std::cout << "-unsignedIntSum " << -unsignedIntSum << '\n';
 	}
 
 	std::cout << "--- loop ---\n";
