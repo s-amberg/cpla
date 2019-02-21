@@ -1,9 +1,10 @@
 #ifndef FRACTION_H_
 #define FRACTION_H_
-#include <ostream>
+#include <boost/operators.hpp>
+#include <cmath>
 #include <istream>
 #include <numeric>
-#include <boost/operators.hpp>
+#include <ostream>
 
 struct Fraction : 	boost::equality_comparable<Fraction>,
 					boost::less_than_comparable<Fraction>,
@@ -23,11 +24,11 @@ struct Fraction : 	boost::equality_comparable<Fraction>,
 		return static_cast<double>(num) / denom;
 	}
 
-	int numerator() const {
+	long long numerator() const {
 		return num;
 	}
 
-	int denominator() const {
+	long long denominator() const {
 		return denom;
 	}
 
