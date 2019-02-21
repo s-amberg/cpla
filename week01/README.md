@@ -98,7 +98,7 @@ For the following tasks write test cases first!
     as argument the template will be chosen instead of the
     `unsigned long long` overload. Therefore, try an alternative
     approach to tackle overflows. Create a predicate (as template)
-    `allow_overload` that returns `false` by default but can and should
+    `allowOverflow` that returns `false` by default but can and should
     be specialized for `unsigned` types to be `true`. You can implement
     the predicate as variable, class or function template for that
     matter.
