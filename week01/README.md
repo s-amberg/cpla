@@ -46,7 +46,7 @@ For the following tasks write test cases first!
     ``` cpp
     int const value = 19;
     auto const next = increment(value);
-    ASSERT_EQUALS(20, next);
+    ASSERT_EQUAL(20, next);
     ```
 
 2.  Add an overload of `increment` that modifies the parameter as
@@ -57,7 +57,7 @@ For the following tasks write test cases first!
     ``` cpp
     int value = 19;
     increment(value);
-    ASSERT_EQUALS(20, value);
+    ASSERT_EQUAL(20, value);
     ```
 
 3.  Signed integers overflow is undefined behavior in C++. Make your
@@ -77,7 +77,7 @@ For the following tasks write test cases first!
     ``` cpp
     double value = 1.5;
     increment(value);
-    ASSERT_EQUALS(2.5, value);
+    ASSERT_EQUAL(2.5, value);
     ```
 
 5.  Overflow for `unsigned` is well defined. Add an overload for this
@@ -86,7 +86,7 @@ For the following tasks write test cases first!
 
     ``` cpp
     unsigned const maxValue = std::numeric_limits<unsigned>::max();
-    ASSERT_EQUALS(0, increment(maxValue));
+    ASSERT_EQUAL(0, increment(maxValue));
     ```
 
 6.  Several overloads are required to cover all cases of `unsigned` type
