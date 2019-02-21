@@ -80,13 +80,14 @@ For the following tasks write test cases first!
     ASSERT_EQUAL(2.5, value);
     ```
 
-5.  Overflow for `unsigned` is well defined. Add an overload for this
+5.  Overflow for `unsigned` types is well defined. Add an overload for this
     case that does not throw. Does it need to be a template
     specialization?
 
     ``` cpp
-    unsigned const maxValue = std::numeric_limits<unsigned>::max();
-    ASSERT_EQUAL(0, increment(maxValue));
+    auto maxValue = std::numeric_limits<unsigned long long>::max();
+    increment(maxValue);
+    ASSERT_EQUAL(0, maxValue);
     ```
 
 6.  Several overloads are required to cover all cases of `unsigned` type
