@@ -65,7 +65,7 @@ For the following tasks write test cases first!
     instead of incrementing the value (`std::overflow_error`).
 
     ``` cpp
-    int const maxValue = std::numeric_limits<int>::max();
+    int maxValue = std::numeric_limits<int>::max();
     ASSERT_THROWS(increment(maxValue), std::overflow_error);
     ```
 
