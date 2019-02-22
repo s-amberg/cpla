@@ -17,7 +17,9 @@ Create a factory function for your `BoundedBuffer` type that takes one argument 
 
 We recommend to create this `make_buffer` function as static member function, as it is easier to specify the arguments of the `BoundedBuffer`.
 
-Here are some test cases for you:
+***Note:*** We have prepared tests cases for this exercise as a project template. This project template contains all tests from the previous week and additional tests for this week's exercises. We recommend creating a new project from this template and copy your `BoundedBuffer.h` (and if you have your additional tests).
+
+Here is an overview of the added test cases for part *a)*:
 ```
 void test_make_bounded_buffer_from_rvalue_argument_contains_one_element() {
   BoundedBuffer<MemoryOperationCounter, 15> buffer = BoundedBuffer<MemoryOperationCounter, 15>::make_buffer(MemoryOperationCounter{});
@@ -49,7 +51,7 @@ void test_bounded_buffer_constructed_with_const_lvalue_argument_object_copied() 
 * Integrate the test cases above into your existing (or a copy of) *BoundedBuffer* project. You might need to make the type `MemoryOperationCounter` available to the context of the test cases. This type already exists in the tests of your BoundedBuffer, in `bounded_buffer_semantic_suite.cpp`. ***Recommendation:*** Since the `MemoryOperationCounter` type is now used by multiple test suites it should reside in its own header file.
 * Create a static template member function, which satisfies the tests above.
 ** It must take a forward reference. This implies that template type deduction must happen. Subsequently, it must be a function template.
-** The factory function initializes the `!BoundedBuffer` using the default constructor.
+** The factory function initializes the `BoundedBuffer` using the default constructor.
 ** Additionally, pass the parameter of the factory function to a call of the `push` function.
 
 
@@ -59,6 +61,9 @@ As statet in part *a)* of the exercise, we actually want to pass an arbitrary nu
 
 ***Hint:*** Create a private helper member function `push_many` to push multiple elements to the `BoundedBuffer`. You need this function since it is easier to call a function recursively than a constructor.
 
+***Note:*** The test cases for this part of the exercise are already in the provided project, but have been disabled by comments.
+
+Here is an overview of the added test cases for part *b)*:
 ```
 void test_make_bounded_buffer_from_two_rvalue_arguments_contains_two_elements() {
   BoundedBuffer<MemoryOperationCounter, 15> buffer = BoundedBuffer<MemoryOperationCounter, 15>::make_buffer(MemoryOperationCounter{}, MemoryOperationCounter{});
