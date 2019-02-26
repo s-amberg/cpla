@@ -6,6 +6,7 @@
 #include <stdexcept>
 #include <utility>
 #include <cstddef>
+#include <sstream>
 
 template<typename T>
 struct bad_get: std::logic_error {
