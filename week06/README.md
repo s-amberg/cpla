@@ -11,7 +11,7 @@ Take the class `not_on_heap` and write CUTE unit tests that demonstrate the inab
 * Write a test that checks whether using an `std::vector<not_on_heap>` still works.
 * What happens if you attempt to use `std::make_unique` with that class?
 * What happens if you attempt to use `(new not_on_heap)` as constructor argument to `std::unique_ptr`?
-* What happens if you use `std::make_shared` to allocate such an object on the heap?
+* What happens if you use `std::make_shared` to allocate such an object on the heap? ***Hint:*** This requires you to apply the global placement new operator, as `not_on_heap` does not offer one: `::new (ptr) not_on_heap{}`.
 * Can you allocate heap memory separately in a test and then cheat by putting such an object there? ***Note:*** you might need to add a member variable to the class to avoid problems with memory allocation.
 
 ```cpp
