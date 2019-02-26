@@ -31,6 +31,8 @@ struct not_on_heap {
 };
 ```
 
+You can find the solution for this exercise in the [lecture examples](lecture_examples/w06_05_NewDeleteOverload).
+
 ## BoundedBuffer with dynamic allocation
 
 ### Overview
