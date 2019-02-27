@@ -1,5 +1,5 @@
 # Exercises Week 06 - Heap Memory Management
-In these exercises you will modify your `BoundedBuffer` to always use heap memory for storing its elements.
+In these exercises you will modify your `BoundedBuffer` to always use heap memory for storing its elements and see the possible impact of overloading the `new` and `delete` operators when using the affected type in your code and in conjunction with the standard library.
 
 ## Experimenting with Class-specific Overloads of `operator new/operator delete`
 Take the class `not_on_heap` and write CUTE unit tests that demonstrate the inability to allocate objects of this class on the heap. Attempt the following:
@@ -104,12 +104,23 @@ You find an updated set of test cases in the exercise template. Our suggestion i
 ### Advanced: Make your BoundedBuffer work with non-default-constructible classes
 For example, the following class would not be default-constructible.
 ```
-struct X{
+struct X {
   X(int i) : x{i}{}
   int x;
 };
 ```
-The solution will require you to allocate "raw" storage by using `operator new[]` for a reasonably sized character array and placement new into that array. Please make sure, that alignment and sizing of the array follow the rules for the template argument type.
+Allocating arrays (`std::array<X, 5>` or plain C-arrays `X[5]`) of a type that cannot be default constructed, requires specifying the elements of that array upon allocation. Therefore, it is not possible to use an array of `X` as a buffer, as we would need to supply all elements upfront.
+
+The solution will require you to allocate "raw" storage by using `operator new[]` for a reasonably sized array and placement `new` into that array. The most suitable type is `std::byte`. Please make sure, that alignment and sizing of the array follow the rules for the template argument type.
+
+You have to consider the following properties when implementing this feature:
+* All constructors have to allocate that `std::byte` array with enough size to hold all elements of the buffer. `sizeof(Type[capacity])` allows you to figure out how many bytes you need to store `capacity` number of `Type` elements.
+* The copy constructor must copy all valid elements from the buffer argument.
+* The move constructor can simply swap its state with the buffer argument's state.
+* Copy assignment can use the copy constructor to clone the other buffer and then just swap the content of the `this` object with the content of the copy.
+* Move assigment can just swap the contents
+* However, both assignments should to nothing when the argument is the same object as the `this` object.
+* The destructor must delete all elements in the buffer before releasing the memory. It must not release non-allocated elements. This is cruicial as the memory (`std::byte[]`) is not aware of its content. Even when managed through a `std::unique_ptr` this will not change.
 
 Here are example test cases for non-default-constructible elements: https:files/NonDefaultConstructibleTypeTests.zip
 
