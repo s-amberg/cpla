@@ -51,7 +51,7 @@ courses. While it is possible to use other IDEs, only Cevelop is:
 | 03   | [L3](week03)           | [E3](week03/README.md) ([PDF](/../-/jobs/artifacts/master/file/week03.pdf?job=week03)) | Rvalue References / Move Semantics                     |                |
 | 04   | [L4](week04)           | [E4](week04/README.md) ([PDF](/../-/jobs/artifacts/master/file/week04.pdf?job=week04)) | Type Deduction /                                       | **Testat 1**   |
 | 05   | [L5](week05)           | [E5](week05/README.md) ([PDF](/../-/jobs/artifacts/master/file/week05.pdf?job=week05)) | Perfect Forwarding                                     |                |
-| 06   | L6                     |                                                                                        | Explicit Heap Memory Management                        |                |
+| 06   | [L6](week06)           | [E5](week06/README.md) ([PDF](/../-/jobs/artifacts/master/file/week06.pdf?job=week06)) | Explicit Heap Memory Management                        |                |
 | 07   | L7                     |                                                                                        | Iterators / Advanced Templates / Deduction Guides      | **Testat 2**   |
 | 08   | L8                     |                                                                                        | Compile-Time Computation / User Defined Literals       |                |
 | 09   | L9                     |                                                                                        | Memory Model / Multi-Threading                         | **Testat 3**   |
