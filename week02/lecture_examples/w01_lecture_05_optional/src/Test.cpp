@@ -21,7 +21,7 @@ namespace fs = boost::filesystem;
 std::optional<std::ifstream> openFile(std::string const name) {
   std::ifstream file{name};
   if (file.is_open()) return std::move(file);
-  return{};
+  return {};
 }
 
 void testNonExistingFile() {

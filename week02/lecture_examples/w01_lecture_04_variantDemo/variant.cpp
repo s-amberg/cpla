@@ -28,9 +28,6 @@ struct overloaded : Ts... {
 	explicit overloaded(Ts const &...f) : Ts{f}...{}
 };
 
-//template<class... Ts>
-//overloaded(Ts...) -> overloaded<Ts...>;
-
 struct Device {
 	std::variant<OffState, OnState, MuteState> state;
 
@@ -84,17 +81,6 @@ struct Device {
 };
 
 }
-
-struct Base {
-	void foo() {}
-	void bar() {}
-};
-
-struct Sub : Base {
-	void foo(int){}
-	void bar(int){}
-	using Base::foo, Base::bar;
-};
 
 int main() {
 	Television::Device dev{};

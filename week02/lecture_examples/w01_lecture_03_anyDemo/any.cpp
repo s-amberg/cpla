@@ -54,5 +54,6 @@ int main() {
 	dispatcher message_dispatcher{};
 
 	Message turn_led_red{command::turnOnLed, LedData{255, 0, 0}};
+
 	message_dispatcher.handle_message(turn_led_red);
 }
