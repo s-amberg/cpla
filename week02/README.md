@@ -28,7 +28,7 @@ the container is empty, the `std::optional<T>` shall be empty too.
 
 ``` cpp
 DynArray<int> empty{};
-std::optional<int> poppedValue = empty.pop_back():
+std::optional<int> poppedValue = empty.pop_back();
 ASSERT(!poppedValue);
 ```
 
