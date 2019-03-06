@@ -94,6 +94,9 @@ week04:
 week05:
   extends: .job_template_exercise
 
+week06:
+  extends: .job_template_exercise
+
 Create-Solutions-And-Cleanup-Markdown:
   image: $PANDOC_IMAGE
   stage: build
