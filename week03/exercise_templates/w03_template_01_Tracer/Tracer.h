@@ -7,7 +7,7 @@
 
 struct Tracer {
   explicit Tracer(std::string name = "") : name { std::move(name) } {
-    std::cout << "Tracer created: " << name << std::endl;
+    std::cout << "Tracer created: " << this->name << std::endl;
   }
   ~Tracer() {
     std::cout << "Tracer destroyed: " << name << std::endl;
