@@ -9,6 +9,9 @@ Please form groups of 2-4 students for testat hand-in:
 * You will get feedback as soon as possible
 * Hand-in deadline: Sunday 24. March 23:59 (MEZ)
 
+
+A project template with predefined tests is available [here](exercise_templates/w04_template_01_BoundedBuffer).
+
 ## Introduction
 `BoundedBuffers` are used in environments that have one or many producers and an consumers. The `BoundedBuffer` is used as a shared data structure for passing elements from the producer to the consumer. A `BoundedBuffer` has a fixed capacity and therefore, features an upper limit of maximum number of elements it can contain. Usually, it is implemented as a *FIFO* queue. Consumers must not be able to retrieve data from an empty buffer and likewise a producer on the other hand, must not be able to write data into a full buffer.
 
