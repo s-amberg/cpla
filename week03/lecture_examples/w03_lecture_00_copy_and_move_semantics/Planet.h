@@ -5,7 +5,7 @@
 #include <iterator>
 #include <vector>
 
-struct Species{};
+using Species = unsigned;
 
 template<unsigned nOfSpecies>
 struct Planet {
