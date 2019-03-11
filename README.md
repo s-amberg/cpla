@@ -58,8 +58,8 @@ courses. While it is possible to use other IDEs, only Cevelop is:
 | 10   | L10                    |                                                                                        | Advanced Library Design                                |                |
 | 11   | L11                    |                                                                                        | Exception Safety / Sane Classes / Multiple Inheritance |                |
 | 12   | L12                    |                                                                                        | Whole Value Types / Core Guidelines                    |                |
-| 13   | L13                    |                                                                                        | Build Systems                                          |                |
-| 14   | L14                    |                                                                                        | C++ Standardization (Insights by a Committee Member)   |                |
+| 13   | L13                    |                                                                                        | C++ Standardization (Insights by a Committee Member)   |                |
+| 14   | L14                    |                                                                                        | Build Systems                                          |                |
 | 15   | Ascension Day          |                                                                                        |                                                        | **No Lecture** |
 
 ---
