@@ -52,9 +52,9 @@ courses. While it is possible to use other IDEs, only Cevelop is:
 | 04   | [L4](week04)           | [E4](week04/README.md) ([PDF](/../-/jobs/artifacts/master/file/week04.pdf?job=week04)) | Type Deduction /                                       | **Testat 1**   |
 | 05   | [L5](week05)           | [E5](week05/README.md) ([PDF](/../-/jobs/artifacts/master/file/week05.pdf?job=week05)) | Perfect Forwarding                                     |                |
 | 06   | [L6](week06)           | [E6](week06/README.md) ([PDF](/../-/jobs/artifacts/master/file/week06.pdf?job=week06)) | Explicit Heap Memory Management                        |                |
-| 07   | L7                     |                                                                                        | Advanced Templates / Iterators                         | **Testat 2**   |
+| 07   | L7                     |                                                                                        | Iterators / Advanced Templates                         | **Testat 2**   |
 | 08   | L8                     |                                                                                        | Compile-Time Computation / User Defined Literals       |                |
-| 09   | L9                     |                                                                                        | Memory Model / Multi-Threading                         | **Testat 3**   |
+| 09   | L9                     |                                                                                        | Multi-Threading / Memory Model                         | **Testat 3**   |
 | 10   | L10                    |                                                                                        | Advanced Library Design                                |                |
 | 11   | L11                    |                                                                                        | Exception Safety / Sane Classes / Multiple Inheritance |                |
 | 12   | L12                    |                                                                                        | Whole Value Types / Core Guidelines                    |                |
