@@ -120,9 +120,9 @@ You have to consider the following properties when implementing this feature:
 * Copy assignment can use the copy constructor to clone the other buffer and then just swap the content of the `this` object with the content of the copy.
 * Move assigment can just swap the contents
 * However, both assignments should to nothing when the argument is the same object as the `this` object.
-* The destructor must delete all elements in the buffer before releasing the memory. It must not release non-allocated elements. This is cruicial as the memory (`std::byte[]`) is not aware of its content. Even when managed through a `std::unique_ptr` this will not change.
+* The destructor must delete all elements in the buffer before releasing the memory. It must not release non-allocated elements. This is cruicial as the memory (`std::byte[]`) is not aware of its content. Even when managed through a `std::unique_ptr` this will not change. Make sure that elements in the buffer get destructed exactly once (no undestroyed elements and no double deletes)!
 * Accessing the elements (`at()`, etc.) requires correct determination of the memory location and a forceful cast of that location to the element type: `* reinterpret_cast<Type*>(memoryLocation)`.
 
-***Note:*** An updated project with test cases for this exercise is available. We suggest you import this project and copy the `BoundedBuffer.h` from your previous exercise as a starting point.
+***Note:*** An updated project with test cases for this exercise is available. We suggest you import this project and copy the `BoundedBuffer.h` from your previous exercise as a starting point. Since you do not allocate arrays of the element type anymore the test cases for `new` and `delete` change, i.e. those operators of the element type are not used anymore. The `bounded_buffer_heap_memory_suite` has been adapted accordingly and is available in the corresponding template project.
 
 
