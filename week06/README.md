@@ -103,7 +103,7 @@ You find an updated set of test cases in the exercise template. Our suggestion i
 
 ### Advanced: Make your BoundedBuffer work with non-default-constructible classes
 For example, the following class would not be default-constructible.
-```
+```cpp
 struct X {
   X(int i) : x{i}{}
   int x;
