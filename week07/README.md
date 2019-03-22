@@ -9,7 +9,7 @@ In many of the exercises in the CPlusPlus module you had to process input line b
 
 You can use boost to simplify your solution.
 
-***Hint:*** The iterator will have a reference to an `std::istream` as member variable. 
+**Hint:** The iterator will have a reference to an `std::istream` as member variable. 
 
 ## Fibonacci Iterator
 In this first exercise you will implement a simple iterator similar to the iterator for integers from the lecture.
@@ -31,7 +31,7 @@ You can implement two versions of this iterator:
 * Implement all operators yourself.
 * Use the facilities of boost iterators (i.e. based on a counting iterator).
 
-***Note:*** Don't worry about efficiency in this exercise.
+**Note:** Don't worry about efficiency in this exercise.
 
 
 ## TESTAT 2: BoundedBuffer with iterators (const and non-const) and allowing non-default-constructible elements 
@@ -45,7 +45,7 @@ In this exercise you have to implement `begin` and `end` for your dynamic bounde
 
 Create constant and non-constant iterators. Const iterators provide read-only access to the elements, while the non-const iterators allow changing the elements through the iterator. Don’t just copy-waste your const iterator implementation! Try to find a smart way to reuse the parts of your implementation and let the compiler do the work of duplicating your code.
 
-'''Hints:'''
+**Hints:**
 * Define the iterator type as member of the bounded buffer.
 * You are allowed to have two iterator classes (one for `const_iterator` and one for non-const `iterator`).
 * Create corresponding type alias members in `BoundedBuffer`(`iterator` and `const_iterator`).
