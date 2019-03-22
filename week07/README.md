@@ -36,7 +36,7 @@ You can implement two versions of this iterator:
 
 ## TESTAT 2: BoundedBuffer with iterators (const and non-const) and allowing non-default-constructible elements 
 
-Due date: Sunday 21. April 2019 23:59
+Due date: Sunday 14. April 2019 23:59
 
 ### Iterator for Dynamic Bounded Buffer
 Last week you have implemented a dynamic version of the bounded buffer. Finish that exercise first if you have not already completed it.
