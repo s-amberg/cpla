@@ -28,17 +28,17 @@ We suggest you store the index (`i`th number) and not the Fibonacci value itself
 You find the prepared project containing the given unit tests [here](exercise_templates/w07_template_02_FibonacciIterator).
 
 You can implement two versions of this iterator:
-# Implement all operators yourself.
-# Use the facilities of boost iterators (i.e. based on a counting iterator).
+* Implement all operators yourself.
+* Use the facilities of boost iterators (i.e. based on a counting iterator).
 
-'''Note:''' Don't worry about efficiency in this exercise.
+***Note:*** Don't worry about efficiency in this exercise.
 
 
 ## TESTAT 2: BoundedBuffer with iterators (const and non-const) and allowing non-default-constructible elements 
 
 Due date: Sunday 21. April 2019 23:59
 
-## Iterator for Dynamic Bounded Buffer
+### Iterator for Dynamic Bounded Buffer
 Last week you have implemented a dynamic version of the bounded buffer. Finish that exercise first if you have not already completed it.
 
 In this exercise you have to implement `begin` and `end` for your dynamic bounded buffer. This requires your own iterator type, which can cope with the non-consecutive nature of the elements in your heap memory. The implementation of your iterator must be robust, i.e. accesses outside the range specified by `begin` (inclusive) and `end` (exclusive) have to throw exceptions. It is not allowed to increment/decrement your iterator beyond these points (`begin`/`end`).
