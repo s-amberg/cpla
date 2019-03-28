@@ -5,7 +5,7 @@ In these exercises you will modify your `BoundedBuffer` to always use heap memor
 Take the class `not_on_heap` and write CUTE unit tests that demonstrate the inability to allocate objects of this class on the heap. Attempt the following:
 
 * Create an instance of `not_on_heap` as a local variable
-** How can you check that this actually works? You can extend the class!
+  * How can you check that this actually works? You can extend the class!
 * Write a test that demonstrates one can not use `new` to allocate an object of such a class on the heap.
 * Write a test that demonstrates one can not use array-`new` to allocate an array of that class on the heap.
 * Write a test that checks whether using an `std::vector<not_on_heap>` still works.
@@ -41,8 +41,8 @@ Take your `BoundedBuffer.h` file and change the implementation and interface.
 * Add a `size_type` constructor parameter and a corresponding member
 * Replace the `std::array` container member by a pointer to an array that is allocated dynamically on the heap
 * Adjust move and copy operations to deal with the dynamically allocated buffer space.
-** Make sure, that you do not produce memory leaks and that you do not unnecessarily copy buffer elements when moving from another buffer
-** You should not copy elements from the *empty* part of the source buffer, since that memory might be uninitialized and thus could result in Undefined Behavior if accessed.
+  * Make sure, that you do not produce memory leaks and that you do not unnecessarily copy buffer elements when moving from another buffer
+  * You should not copy elements from the *empty* part of the source buffer, since that memory might be uninitialized and thus could result in Undefined Behavior if accessed.
 * Otherwise, your BoundedBuffer should behave similarly to the original one.
 
 
@@ -81,17 +81,17 @@ values[23] = copy;   //writing the 24th element
 The most interesting part is the implementation of the constructor's and assignment operators. Think about how every special member function should behave:
 * Default-Constructor: It probably does not make sense to provide a default constructor. Or what size would it have? zero?
 * `BoundedBuffer(size_type capacity)`: Obviously we need a constructor that allows to specify the capacity of our dynamic `BoundedBuffer`. It needs to establish the invariant of the `BoundedBuffer`. Theoretically, it could be allowed to create a buffer of capacity `0`. Our test cases don't allow that though.
-** Prevent creation of a `BoundedBuffer` with capacity `0`
-** Allocate the required memory on the heap
-** Initialize all members correctly
+  * Prevent creation of a `BoundedBuffer` with capacity `0`
+  * Allocate the required memory on the heap
+  * Initialize all members correctly
 * Copy-Constructor: It creates a new `BoundedBuffer` that represents a copy of the argument. After the constructor both `BoundedBuffer` objects must have their own memory for storing the elements.
-** Allocate the required memory on the heap
-** Copy the elements from the other `BoundedBuffer`
-** Initialize the members correctly
+  * Allocate the required memory on the heap
+  * Copy the elements from the other `BoundedBuffer`
+  * Initialize the members correctly
 * Move-Constructor: This constructor steals the internal values of the argument. It is imporant that the `BoundedBuffer` passed as argument does not share the heap memory with the `this` object *after* the construction, even though the moved-from object should not be used afterwards (it's in coma state). ***Important Question:*** Why is that?
 * Assignment-Operators: The assignment operators are similar to the corresponding constructor. ***Beware*** similar does not mean exactly the same! While construction always creates new object only the already existing object is involved. This is different during a (copy/move)-assignment, which involves always two existing objects, each with their own resources.
-** Move-Assignment Operator: The simplest implementation of the move-assignment operator is swapping the `BoundedBuffer` objects. As the argument of move-assignment operator is about to be expiring, the destructor will take care of resource deallocation and we don't need to do that explicitly.
-** Copy-Assignment Operator: Here the case is different. We need to create a copy of the argument and its resources. That is not very difficult, as we already did that in the copy-constructor. But there's a catch! The resources of the overwritten object need to be released explicitly. Think carefully about what you have to release.
+  * Move-Assignment Operator: The simplest implementation of the move-assignment operator is swapping the `BoundedBuffer` objects. As the argument of move-assignment operator is about to be expiring, the destructor will take care of resource deallocation and we don't need to do that explicitly.
+  * Copy-Assignment Operator: Here the case is different. We need to create a copy of the argument and its resources. That is not very difficult, as we already did that in the copy-constructor. But there's a catch! The resources of the overwritten object need to be released explicitly. Think carefully about what you have to release.
 * Destructor: While implementing the Copy-Assignment Operator you have already thought about what resources/memory to explicitly release. Here you have to do the same.
 
 ***Remark:*** You will recognize, if you have implemented the move operations properly, that you now need less move operations. Because only the pointers to the heap allocated array need to be moved the elements are left untouched.
