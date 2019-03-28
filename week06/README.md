@@ -37,6 +37,7 @@ You can find the solution for this exercise in the [lecture examples](lecture_ex
 
 ### Overview
 Take your `BoundedBuffer.h` file and change the implementation and interface.
+
 * Remove the integral type template parameter
 * Add a `size_type` constructor parameter and a corresponding member
 * Replace the `std::array` container member by a pointer to an array that is allocated dynamically on the heap
@@ -79,6 +80,7 @@ values[23] = copy;   //writing the 24th element
 #### Special Member Functions
 
 The most interesting part is the implementation of the constructor's and assignment operators. Think about how every special member function should behave:
+
 * Default-Constructor: It probably does not make sense to provide a default constructor. Or what size would it have? zero?
 * `BoundedBuffer(size_type capacity)`: Obviously we need a constructor that allows to specify the capacity of our dynamic `BoundedBuffer`. It needs to establish the invariant of the `BoundedBuffer`. Theoretically, it could be allowed to create a buffer of capacity `0`. Our test cases don't allow that though.
   * Prevent creation of a `BoundedBuffer` with capacity `0`
@@ -114,6 +116,7 @@ Allocating arrays (`std::array<X, 5>` or plain C-arrays `X[5]`) of a type that c
 The solution will require you to allocate "raw" storage by using `operator new[]` for a reasonably sized array and placement `new` into that array. The most suitable type is `std::byte`. Please make sure, that alignment and sizing of the array follow the rules for the template argument type.
 
 You have to consider the following properties when implementing this feature:
+
 * All constructors have to allocate that `std::byte` array with enough size to hold all elements of the buffer. `sizeof(Type[capacity])` allows you to figure out how many bytes you need to store `capacity` number of `Type` elements.
 * The copy constructor must copy all valid elements from the buffer argument.
 * The move constructor can simply swap its state with the buffer argument's state.
