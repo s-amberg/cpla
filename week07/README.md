@@ -3,7 +3,7 @@
 In the following exercises you will practice the implementation of you own iterator types. You will create an iterator for input streams, for creating a sequence of numbers and eventually for your own `BoundedBuffer`.
 
 
-## TESTAT 2: BoundedBuffer with iterators (const and non-const) and allowing non-default-constructible elements 
+## TESTAT 2: BoundedBuffer with iterators (const and non-const) and allowing non-default-constructible elements (from last week)
 
 Due date: Sunday 14. April 2019 23:59
 
