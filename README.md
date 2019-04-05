@@ -62,6 +62,37 @@ courses. While it is possible to use other IDEs, only Cevelop is:
 | 14   | L14                    |                                                                                        | Build Systems                                          |                |
 | 15   | Ascension Day          |                                                                                        |                                                        | **No Lecture** |
 
+### Useful Links
+
+Language References:
+* CPP Reference: https://www.cppreference.com/
+* CPlusPlus.com: http://www.cplusplus.com
+* MSDN Langauge Reference: https://docs.microsoft.com/en-us/cpp/cpp/cpp-language-reference
+* MSDN Standard Library Reference: https://docs.microsoft.com/en-us/cpp/standard-library/cpp-standard-library-reference
+ 
+Online Compilers:
+* Godbolt: https://godbolt.org/
+* Online GDB: https://www.onlinegdb.com/online_c++_compiler
+* Wandbox: https://wandbox.org/
+
+Links from the Lecture:
+* Structured Bindings: https://skebanga.github.io/structured-bindings/
+* Problems with Move Semantics (You Tube): https://www.youtube.com/watch?v=PNRju6_yn3o
+* Rvalue References and Move Semantics: http://thbecker.net/articles/rvalue_references/section_01.html
+* Too Perfect Forwarding: https://akrzemi1.wordpress.com/2013/10/10/too-perfect-forwarding/
+* Fun with Blinky (You Tube): https://www.youtube.com/watch?v=6pmWojisM_E
+* Reading Declarations: https://cdecl.org/
+* Overhead of Dynamic Dispatching: http://eli.thegreenplace.net/2013/12/05/the-cost-of-dynamic-virtual-calls-vs-static-crtp-dispatch-in-c
+* Long Compile-Times with Template Meta Programming: http://cpptruths.blogspot.ch/2005/11/c-templates-are-turing-complete.html
+
+IDE and Compiler:
+* Cevelop: https://www.cevelop.com
+* MinGW (from STL): https://nuwen.net/mingw.html
+* Boost Library: https://www.boost.org/
+
+Collection of C++ Resources:
+* https://github.com/MattPD/cpplinks
+
 ---
 keywords:
 - c++
