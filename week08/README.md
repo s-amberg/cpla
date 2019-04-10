@@ -22,6 +22,8 @@ Your task:
 * Import the project in Cevelop or build it on console (`make`). It is a Makefile project that will compile two versions of a program. One will compute the hash of a password at runtime (`runtime.cpp`) the other will compute the hash of the password at compile-time (`compile_time.cpp`). The make file will also dump (with `objdump`) and scan the contents of the resulting binaries for the expected hash and the password.
 * Check the output to see which implementation contains the password in plain text and which only contains the hash value.
 
+**Credits:** We have not implemented the compile-time hash functions ourselves, but use an existing implementation of [Chocobo1](https://github.com/Chocobo1/Hash), that is published under GPL3.0.
+
 ## Literal Vector Type
 
 Implement an N-dimensional `Vector` literal type. Don't worry, we don't want you to implement a STL-like container here. We rather want you to implement a simple type in the mathematical sense of vector, that can be used at compile-time. We have prepared a project template containing test cases [here](week08/exercise_templates/w08_template_02_VectorLiteralType).
