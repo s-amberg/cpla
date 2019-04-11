@@ -1,10 +1,16 @@
 .PHONY = all clean
 
+RUNTIME_EXECUTABLE     = runtime.exe
+COMPILETIME_EXECUTABLE = compile_time.exe
+
 CXX      = g++
 CXXFLAGS = -Os -std=c++17 -pedantic-errors
 
 ODMP      = objdump
-ODMPFLAGS = -s -j .rdata -j .data
+#ODMPSECTION = -j .rodata
+#ODMPSECTION = -j .rdata
+ODMPSECTION = -j .data
+ODMPFLAGS = -s $(ODMPSECTION)
 
 STRS = strings
 GREP = grep
@@ -21,39 +27,39 @@ clean:
 
 
 objdump: compile_time runtime
-	@echo "Dumping data sections of 'compile_time'"
+	@echo "Dumping data sections of '$(COMPILETIME_EXECUTABLE)'"
 	@echo "=============================================================================="
-	@$(ODMP) $(ODMPFLAGS) compile_time.exe
+	@$(ODMP) $(ODMPFLAGS) $(COMPILETIME_EXECUTABLE)
 	@echo "=============================================================================="
 	@echo
-	@echo "Dumping data sections of 'runtime'"
+	@echo "Dumping data sections of '$(RUNTIME_EXECUTABLE)'"
 	@echo "=============================================================================="
-	@$(ODMP) $(ODMPFLAGS) runtime.exe
+	@$(ODMP) $(ODMPFLAGS) $(RUNTIME_EXECUTABLE)
 	@echo "=============================================================================="
 	@echo
 
 search_pass: compile_time runtime
-	@echo "Searching for password in 'compile_time'"
+	@echo "Searching for password in '$(COMPILETIME_EXECUTABLE)'"
 	@echo "=============================================================================="
-	@$(STRS) compile_time.exe | $(GREP) $(PASS) || echo "Password not found"
+	@$(STRS) $(COMPILETIME_EXECUTABLE) | $(GREP) $(PASS) || echo "Password not found"
 	@echo "=============================================================================="
 	@echo
-	@echo "Searching for password in 'runtime'"
+	@echo "Searching for password in '$(RUNTIME_EXECUTABLE)'"
 	@echo "=============================================================================="
-	@$(STRS) runtime.exe | $(GREP) $(PASS) || echo "Password not found"
+	@$(STRS) $(RUNTIME_EXECUTABLE) | $(GREP) $(PASS) || echo "Password not found"
 	@echo "=============================================================================="
 	@echo
 
 search_hash: compile_time runtime
-	@echo "Searching for hash in 'compile_time'"
+	@echo "Searching for hash in '$(COMPILETIME_EXECUTABLE)'"
 	@echo "=============================================================================="
 	@echo -n "searching for hash in 'compile_time'... "
-	@$(STRS) compile_time.exe | $(GREP) $(HASH) || echo "Hash not found"
+	@$(STRS) $(COMPILETIME_EXECUTABLE) | $(GREP) $(HASH) || echo "Hash not found"
 	@echo "=============================================================================="
 	@echo
-	@echo "Searching for hash in 'runtime'"
+	@echo "Searching for hash in '$(RUNTIME_EXECUTABLE)'"
 	@echo "=============================================================================="
-	@$(STRS) runtime.exe | $(GREP) $(HASH) || echo "Hash not found"
+	@$(STRS) $(RUNTIME_EXECUTABLE) | $(GREP) $(HASH) || echo "Hash not found"
 	@echo "=============================================================================="
 	@echo
 
