@@ -6,6 +6,7 @@
 
 void testFactorialCompiletime() {
   constexpr auto result = fact<5>::value;
+  static_assert(result == 2 * 3 * 4 * 5);
   ASSERT_EQUAL(result, 2 * 3 * 4 * 5);
 }
 
