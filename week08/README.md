@@ -21,6 +21,12 @@ Your task:
 
 * Import the project in Cevelop or build it on console (`make`). It is a Makefile project that will compile two versions of a program. One will compute the hash of a password at runtime (`runtime.cpp`) the other will compute the hash of the password at compile-time (`compile_time.cpp`). The make file will also dump (with `objdump`) and scan the contents of the resulting binaries for the expected hash and the password.
 * Check the output to see which implementation contains the password in plain text and which only contains the hash value.
+  * When checking the content you can use the `objdump` command, which is also included in the `Makefile`. Depending on your system and the binary format you will have to check different sections. Umcomment either of the `ODMPSECTION` variables in the `Makefile` to enable showing the corresponding section. Only one section can be displayed:
+    ```make
+    #ODMPSECTION = -j .rodata
+    #ODMPSECTION = -j .rdata
+    ODMPSECTION = -j .data
+    ```
 
 **Credits:** We have not implemented the compile-time hash functions ourselves, but use an existing implementation of [Chocobo1](https://github.com/Chocobo1/Hash), that is published under GPL3.0.
 
