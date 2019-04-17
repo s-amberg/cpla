@@ -54,10 +54,10 @@ courses. While it is possible to use other IDEs, only Cevelop is:
 | 06   | [L6](week06)           | [E6](week06/README.md) ([PDF](/../-/jobs/artifacts/master/file/week06.pdf?job=week06)) | Explicit Heap Memory Management                        |                |
 | 07   | [L7](week07)           | [E7](week07/README.md) ([PDF](/../-/jobs/artifacts/master/file/week07.pdf?job=week07)) | Advanced Templates / Iterators                         | **Testat 2**   |
 | 08   | [L8](week08)           | [E8](week08/README.md) ([PDF](/../-/jobs/artifacts/master/file/week08.pdf?job=week08)) | Compile-Time Computation / Literal Types / SFINAE      |                |
-| 09   | L9                     |                                                                                        | Compile-Time Computation #2 / UDL / Values as Types    |                |
-| 10   | L10                    |                                                                                        | Multi-Threading / Memory Model                         | **Testat 3**   |
-| 11   | L11                    |                                                                                        | Advanced Library Design / Whole Value Types            |                |
-| 12   | L12                    |                                                                                        | Exception Safety / Sane Classes                        |                |
+| 09   | [L9](week09)           | [E9](week09/README.md) ([PDF](/../-/jobs/artifacts/master/file/week09.pdf?job=week09)) | Traits for Conversion / User Defined Literals          |                |
+| 10   | L10                    |                                                                                        | Multi-Threading / Networking (ASIO)                    |                |
+| 11   | L11                    |                                                                                        | Memory Model                                           | **Testat 3**   |
+| 12   | L12                    |                                                                                        | Exception Safety / Advanced Library Design             |                |
 | 13   | L13                    |                                                                                        | C++ Standardization (Insights by a Committee Member)   |                |
 | 14   | L14                    |                                                                                        | Build Systems                                          |                |
 | 15   | Ascension Day          |                                                                                        |                                                        | **No Lecture** |
