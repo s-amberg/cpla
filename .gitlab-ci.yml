@@ -102,6 +102,9 @@ week07:
   
 week08:
   extends: .job_template_exercise
+  
+week09:
+  extends: .job_template_exercise
 
 Create-Solutions-And-Cleanup-Markdown:
   image: $PANDOC_IMAGE
