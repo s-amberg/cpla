@@ -16,11 +16,11 @@ In these exercises you will...
 * c) With a user defined literal operator `5_fibo` that is evaluated at compile-time
 * d)  Measure and compare the compilation and run-time for computing the 46th fibonacci number
 
-2. Implement similar constructs to the above that return an `std::array<int, n>` filled with the `n` first fibonacci numbers instead.
+2. Implement similar constructs to the above that return an `std::array<int, n>` filled with the `n` first fibonacci numbers instead. Unfortunately, even though `std::array` is a literal type in C++17, its comparison operations are not `constexpr`. First implement a function for comparing the content of `std::array` at compile time: `arrayEquals`.  
 
 * a) With a constexpr template function `fiboa` that takes the size of the array as template parameter. E.g. fiboa<5>()
 * b) With a variable template `fiboa_v<int>`
-* c) ***Optional (for experts):*** A user defined literal operator `10_fiboa` (returns an `array<int, 10>`). 
+* c) ***Optional (for experts):*** A user defined literal operator `10_fiboa` (returns an `array<int, 10>`). You will need to create infrastructure to parse the value of the literal.
 
 
 ## Conversion with Tags and Traits
