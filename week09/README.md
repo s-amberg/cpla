@@ -21,3 +21,8 @@ In these exercises you will...
 * a) With a constexpr template function `fiboa` that takes the size of the array as template parameter. E.g. fiboa<5>()
 * b) With a variable template `fiboa_v<int>`
 * c) ***Optional (for experts):*** A user defined literal operator `10_fiboa` (returns an `array<int, 10>`). 
+
+
+## Conversion with Tags and Traits
+
+Implement a `temperature` literal type.
