@@ -25,4 +25,15 @@ In these exercises you will...
 
 ## Conversion with Tags and Traits
 
-Implement a `temperature` literal type.
+Implement a `temperature` literal type, similar to the `Speed` type you have seen in the lecture. The `Temperature` type shall be taggable with the units `Kelvin`, `Celcius` and `Fahrenheit`.
+
+* Add the required tag types to the namespace `units::tags`.
+* Specify the `Temperature` class template that stores the temperature in a `double` value.
+* Implement comparison operations for the `Temperature` template for comparison with other objects of the same template instance (`==`, `!=`, `<`, `>`, `<=` and `>=`).
+* Implement arithmetic operations for the `Temperature` template (`+`, `-`) - unary and binary.
+* Implement the `ConversionTraits` class template with a `convert` member function and add a specialization for every possible conversion. You can lookup the conversion formula on the web.
+* Implement a `temperatureCast` function template that delegates conversion to the `ConversionTraits` template.
+* Add comparison operation templates to allow comparison of objects of arbitrary `Temperature` instances.
+* Add user defined literal operators (`_K`, `_C`, `_F`) to the `unit::literals` namespace.
+
+***Note:*** The project template for this exercies does not contain test cases for all operations above.
