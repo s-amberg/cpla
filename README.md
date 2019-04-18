@@ -90,6 +90,10 @@ IDE and Compiler:
 * MinGW (from STL): https://nuwen.net/mingw.html
 * Boost Library: https://www.boost.org/
 
+Libraries:
+* Boost Units: https://www.boost.org/doc/libs/1_69_0/doc/html/boost_units/Units.html
+* ASIO: https://think-async.com/Asio/ 
+
 Collection of C++ Resources:
 * https://github.com/MattPD/cpplinks
 
