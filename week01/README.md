@@ -36,7 +36,7 @@ Cevelop offers helpful plug-ins, you should install:
 -   The required update site is preconfigured
     (https://www.cevelop.com/update/latest)
 
-# Easy C++ Repetition Tasks
+# 1. Easy C++ Repetition Tasks
 
 For the following tasks write test cases first!
 
@@ -128,7 +128,7 @@ For the following tasks write test cases first!
     ASSERT_THROWS(increment(d, 9.0), std::overflow_error);
     ```
 
-# Fraction Type
+# 2. Fraction Type
 
 Implement your own `Fraction` type that can represent fraction numbers
 more precisely than the `double` type.
@@ -154,7 +154,7 @@ quarter++;
 std::cout << quarter << ' ' << static_cast<double>(half) << '\n'; //prints 1/4 0.5
 ```
 
-## `dynArray` Repetition (Optional)
+## 3. `dynArray` Repetition (Optional)
 
 At the end of the C++ module you had an assignment in the exercises to
 create a `vector`-like container that features the capabilities to
