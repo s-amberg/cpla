@@ -12,7 +12,7 @@ using namespace units::literals;
 
 template <typename scale>
 constexpr bool willWaterFreeze(Temperature<scale> const & temperature) {
-	return temperatureCast<Celcius>(temperature) <= Temperature<Celcius>{0.0};
+	return units::temperatureCast<Celcius>(temperature) <= Temperature<Celcius>{0.0};
 }
 
 void waterFreezesAt273Kelvin() {
