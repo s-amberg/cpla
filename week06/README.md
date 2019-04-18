@@ -1,7 +1,7 @@
-# Exercises Week 06 - Heap Memory Management
+# Exercises Week 6 - Heap Memory Management
 In these exercises you will modify your `BoundedBuffer` to always use heap memory for storing its elements and see the possible impact of overloading the `new` and `delete` operators when using the affected type in your code and in conjunction with the standard library.
 
-## Experimenting with Class-specific Overloads of `operator new/operator delete`
+# 1. Experimenting with Class-specific Overloads of `operator new/operator delete`
 Take the class `not_on_heap` and write CUTE unit tests that demonstrate the inability to allocate objects of this class on the heap. Attempt the following:
 
 * Create an instance of `not_on_heap` as a local variable
@@ -33,9 +33,9 @@ struct not_on_heap {
 
 You can find the solution for this exercise in the [lecture examples](lecture_examples/w06_05_NewDeleteOverload).
 
-## BoundedBuffer with dynamic allocation
+# 2. BoundedBuffer with dynamic allocation
 
-### Overview
+## Overview
 Take your `BoundedBuffer.h` file and change the implementation and interface.
 
 * Remove the integral type template parameter
@@ -47,7 +47,7 @@ Take your `BoundedBuffer.h` file and change the implementation and interface.
 * Otherwise, your BoundedBuffer should behave similarly to the original one.
 
 
-### Detailed Description
+## Detailed Description
 
 A major disadvantage of the `BoundedBuffer`, developed for the first Testat, is requirement to specify the size at compile-time. In this exercise you will change that. You have learned about dynamic heap memory management in the lecture using `new` and `delete`. Apply what you have learned about dynamic heap memory management to improve your `BoundedBuffer` this lifts the necessity to specify the capacity as a template argument. The adapter version allows specifying the capacity through a constructor argument. This does not mean that the buffer now should be resizable, the size is still fix, but it can be specified at run-time.
 
@@ -62,13 +62,13 @@ BoundedBuffer<S> buffer{23};
 ```
 
 
-#### Data Structure
+### Data Structure
 You will not be able to use an `std::array` for storing the elements anymore (since it requires knowing the number of elements at compile-time). Instead, allocate an array of `T` objects on the heap using `new T[]`. And store the pointer to that array in your `BoundedBuffer`.
 
 * What is the type of the member variable for storing the elements?
 
 
-#### Element Access
+### Element Access
 Element access using `at` does not work using the plain array on the heap anymore. Therefore, you need to access the elements with the array index operator `[]`.
 
 ```cpp
@@ -77,7 +77,7 @@ values[23] = copy;   //writing the 24th element
 ```
 
 
-#### Special Member Functions
+### Special Member Functions
 
 The most interesting part is the implementation of the constructor's and assignment operators. Think about how every special member function should behave:
 
@@ -103,7 +103,7 @@ The most interesting part is the implementation of the constructor's and assignm
 You find an updated set of test cases in the exercise template. Our suggestion is again that you import them as a new project and copy your existing `BoundedBuffer.h` file into the tests.
 
 
-### Advanced: Make your BoundedBuffer work with non-default-constructible classes
+## Advanced: Make your BoundedBuffer work with non-default-constructible classes
 For example, the following class would not be default-constructible.
 ```cpp
 struct X {
