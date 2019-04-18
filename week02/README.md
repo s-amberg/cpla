@@ -8,14 +8,14 @@ Goals of this weeks exercises:
     -   Use the file system library to query information
     -   Simplify a variadic template with fold expressions
 
-## DynArray Extension
+# 1. DynArray Extension
 
 You have either already implemented the `dynArray` known from the C++
 module previously, or you can take the template we have prepared for you
 [here](/../tree/master/week02/exercise_templates/w02_template_01_DynArray).
 You will add an extension to the `DynArray` container.
 
-### `pop_back` with `std::optional<T>`
+## `pop_back` with `std::optional<T>`
 
 The `pop_back` call, which gets forwarded to `vector::pop_back` features
 undefined behavior in case of an empty container. And due to separation
@@ -32,7 +32,7 @@ std::optional<int> poppedValue = empty.pop_back();
 ASSERT(!poppedValue);
 ```
 
-### Class Template Deduction
+## Class Template Deduction
 
 Your test cases (probably), and the test cases of the solution of
 `DynArray` don't benefit from the template argument deduction for class
@@ -47,7 +47,7 @@ the compiler (as most of the time). In general in this lecture we
 recommend specifying the template arguments for class templates
 explicitly, unless your IDE supports it properly.
 
-## Directory-Sizer
+# 2. Directory-Sizer
 
 Write a program using the filesystem library to compute the total size
 of all files in a given directory recursively. If no commmand line
@@ -88,7 +88,7 @@ employ the filesystem library also in your test cases!
     `std::filesystem`. Add the `stdc++fs` library to your project
     (`Project Properties -> C/C++ General -> Paths and Symbols -> Library Tab`).
 
-## Fold Expressions
+# 3. Fold Expressions
 
 You already implemented the `readln` template function, which takes an
 `std::istream` and a variadic number of further arguments (by
@@ -122,7 +122,7 @@ need the base case?
 expressions yet. However, your compiler should be able to cope with
 them.
 
-## if constexpr (Preview Exercise, Optional)
+# 4. if constexpr (Preview Exercise, Optional)
 
 One new feature in C++17 we have not discussed in the lecture yet, are
 if constexpr statements. Using if `constexpr` provides the possibility
