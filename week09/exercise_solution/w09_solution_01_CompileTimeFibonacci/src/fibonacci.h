@@ -31,7 +31,7 @@ inline constexpr unsigned long long operator"" _fibo(unsigned long long n) {
 }
 
 
-template <unsigned long long n>
+template <std::size_t n>
 inline constexpr auto fiboa() {
 	std::array<unsigned long long, n> fibs{};
 	for (auto index = 0u; index < n; index++) {
@@ -40,7 +40,7 @@ inline constexpr auto fiboa() {
 	return fibs;
 }
 
-template <unsigned long long n>
+template <std::size_t n>
 constexpr auto fiboa_v = fiboa<n>();
 
 

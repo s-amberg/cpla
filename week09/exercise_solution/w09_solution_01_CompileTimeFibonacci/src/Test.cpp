@@ -7,6 +7,7 @@
 #include "measure.h"
 
 #include <array>
+#include <cstddef>
 #include <utility>
 
 //--------- 1a) ---------
@@ -67,25 +68,25 @@ void testFiboDDT() {
 constexpr std::array<unsigned long long, 6> expected{0, 1, 1, 2, 3, 5};
 
 
+template <typename T, std::size_t N>
+constexpr bool arrayEquals(std::array<T, N> const & lhs, std::array<T, N> const & rhs) {
+	for (auto index = 0u; index < N; index++) {
+		if (lhs[index] != rhs[index]) {
+			return false;
+		}
+	}
+	return true;
+}
+
+//template <typename T, unsigned long long N, unsigned long long...I>
+//constexpr bool allEqualFold(std::array<T, N> const & lhs, std::array<T, N> const & rhs, std::index_sequence<I...>) {
+//	return ((lhs[I] == rhs[I]) && ...);
+//}
+//
 //template <typename T, unsigned long long N>
 //constexpr bool arrayEquals(std::array<T, N> const & lhs, std::array<T, N> const & rhs) {
-//	for (auto index = 0u; index < N; index++) {
-//		if (lhs[index] != rhs[index]) {
-//			return false;
-//		}
-//	}
-//	return true;
+//	return allEqualFold(lhs, rhs, std::make_index_sequence<N>());
 //}
-
-template <typename T, unsigned long long N, unsigned long long...I>
-constexpr bool allEqualFold(std::array<T, N> const & lhs, std::array<T, N> const & rhs, std::index_sequence<I...>) {
-	return ((lhs[I] == rhs[I]) && ...);
-}
-
-template <typename T, unsigned long long N>
-constexpr bool arrayEquals(std::array<T, N> const & lhs, std::array<T, N> const & rhs) {
-	return allEqualFold(lhs, rhs, std::make_index_sequence<N>());
-}
 
 static_assert(arrayEquals(expected, fiboa<6>()));
 
