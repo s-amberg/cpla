@@ -85,12 +85,12 @@ Links from the Lecture:
 * Overhead of Dynamic Dispatching: http://eli.thegreenplace.net/2013/12/05/the-cost-of-dynamic-virtual-calls-vs-static-crtp-dispatch-in-c
 * Long Compile-Times with Template Meta Programming: http://cpptruths.blogspot.ch/2005/11/c-templates-are-turing-complete.html
 
-IDE and Compiler:
+IDE and Compilers:
 * Cevelop: https://www.cevelop.com
 * MinGW (from STL): https://nuwen.net/mingw.html
-* Boost Library: https://www.boost.org/
 
 Libraries:
+* Boost Library: https://www.boost.org/
 * Boost Units: https://www.boost.org/doc/libs/1_69_0/doc/html/boost_units/Units.html
 * ASIO: https://think-async.com/Asio/ 
 
