@@ -7,7 +7,7 @@ In these exercises you will...
 * ... compare compile-time and run-time execution times
 * ... apply tags and traits to implement conversions
 
-## Compile-Time Fibonacci
+## 1. Compile-Time Fibonacci
 
 1. Implement computing the `n`th fibonacci number in the following means as compile-time computation:
 
@@ -23,7 +23,7 @@ In these exercises you will...
 * c) ***Optional (for experts):*** A user defined literal operator `10_fiboa` (returns an `array<int, 10>`). You will need to create infrastructure to parse the value of the literal.
 
 
-## Conversion with Tags and Traits
+## 2. Conversion with Tags and Traits
 
 Implement a `temperature` literal type, similar to the `Speed` type you have seen in the lecture. The `Temperature` type shall be taggable with the units `Kelvin`, `Celcius` and `Fahrenheit`.
 
