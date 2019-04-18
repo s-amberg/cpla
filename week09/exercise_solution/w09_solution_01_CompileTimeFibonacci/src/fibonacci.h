@@ -13,8 +13,18 @@ inline constexpr unsigned long long fibo(unsigned n) {
 	return fibo(n - 1) + fibo(n - 2);
 }
 
+//template <unsigned long long n>
+//constexpr auto fibo_v = fibo(n);
+
 template <unsigned long long n>
-constexpr auto fibo_v = fibo(n);
+constexpr auto fibo_v = (fibo_v<n-2>) + (fibo_v<n-1>);
+
+template <>
+constexpr auto fibo_v<0> = 0;
+
+template <>
+constexpr auto fibo_v<1> = 1;
+
 
 inline constexpr unsigned long long operator"" _fibo(unsigned long long n) {
 	return fibo(n);
