@@ -1,8 +1,16 @@
-# `BoundedBuffer`
+# Exercises Week 4
+
+Goals:
+
+* In this week's exercises you will implement a container with an interface stimilar to a standard container
+* You will explicitly implement the rule of five special member functions
+* You solidify the understanding of type deduction in the trivia program
+
+# 1. `BoundedBuffer`
 
 In this exercise you will create the fundamental data structure for a `BoundedBuffer`. This will be an ongoing task during. You will add and change features step-by-step during the semester. After certain milestones you will hand your result in as testat exercises to be reviewed by the exercise supervisor.
 
-Please form groups of 2-4 students for testat hand-in:
+Please form groups of 1-3 students for testat hand-in:
 * Send an email to [Thomas Corbat](mailto:thomas.corbat@hsr.ch)
 * ***Subject***: `[CPlA-Testat-1] hsrname1 hsrname2 hsrname3 hsrname4`
 * Content: `BoundedBuffer.h`
@@ -99,7 +107,7 @@ So far the implicitly available constructors have been sufficient. Now explicitl
 
 
 
-# Type Deduction Trivia
+# 2. Type Deduction Trivia
 
 In the lecture you have been taught about type deduction for function templates (and `auto`), e.g. in source code as follows:
 
