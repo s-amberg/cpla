@@ -1,13 +1,20 @@
-# Advanced Templates
+# Exercise Week 7 - Advanced Templates
 
 In the following exercises you will practice the implementation of you own iterator types. You will create an iterator for input streams, for creating a sequence of numbers and eventually for your own `BoundedBuffer`.
 
 
-## TESTAT 2: BoundedBuffer with iterators (const and non-const) and allowing non-default-constructible elements (from last week)
+# 1 TESTAT 2: BoundedBuffer with iterators (const and non-const) and allowing non-default-constructible elements (from last week)
 
-Due date: Sunday 14. April 2019 23:59
+In this exercise you will add iterators for to your `BoundedBuffer`.
 
-### Iterator for Dynamic Bounded Buffer
+Please form groups of 1-3 students for testat hand-in:
+* Send an email to [Thomas Corbat](mailto:thomas.corbat@hsr.ch)
+* ***Subject***: `[CPlA-Testat-2] hsrname1 hsrname2 hsrname3`
+* Content: `BoundedBuffer.h`
+* You will get feedback as soon as possible
+* Hand-in deadline: Sunday 14. April 2019 23:59
+
+## Iterator for Dynamic Bounded Buffer
 Last week you have implemented a dynamic version of the bounded buffer. Finish that exercise first if you have not already completed it.
 
 In this exercise you have to implement `begin` and `end` for your dynamic bounded buffer. This requires your own iterator type, which can cope with the non-consecutive nature of the elements in your heap memory. The implementation of your iterator must be robust, i.e. accesses outside the range specified by `begin` (inclusive) and `end` (exclusive) have to throw exceptions. It is not allowed to increment/decrement your iterator beyond these points (`begin`/`end`).
@@ -27,7 +34,7 @@ There is a template project with all the unit tests so far combined. Import it i
 If you struggle to get it all up and running at once, try to satisfy one test case after another. Comment out all test contents first. Add the contents of the first test (start at the top of the tests), make it compile, make it green, repeat with the next tests.
 
 
-### Optional: Range Constructor
+## Optional: Range Constructor
 You can add a range-constructor to your `BoundedBuffer` and add a deduction guide for it.
 Signature of the range-constructor:
 ```cpp
@@ -46,7 +53,7 @@ You can use boost to simplify your solution.
 **Hint:** The iterator will have a reference to an `std::istream` as member variable. See the self-study slides (at the end of the lecture slides) if you struggle with the implementation.
 
 
-## Fibonacci Iterator (Not Testat)
+# 2. Fibonacci Iterator (Not Testat)
 In this first exercise you will implement a simple iterator similar to the iterator for integers from the lecture.
 
 Instead of just counting your iterator will iterate through the Fibonacci numbers (https://en.wikipedia.org/wiki/Fibonacci_number). The given test cases expect your Fibonacci sequence to start with the value `0` for the zeroth number, `1` for the first number, `1` for the second number, and so on.
