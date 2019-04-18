@@ -1,4 +1,4 @@
-# Tracing Calls
+# Exercises Week 3
 
 Goals of this weeks exercises:
 
@@ -7,6 +7,9 @@ Goals of this weeks exercises:
     -   Observing copying and moving operations
     -   Understand when elements living in a `std::vector` are copied
         and moved
+
+
+# 1. Tracing Calls
 
 From CPlusPlus you might already be familiar with the tracer class as
 used in the extra exercises.
