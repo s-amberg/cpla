@@ -119,6 +119,8 @@
                                     									
                                     <listOptionValue builtIn="false" srcPrefixMapping="" srcRootPath="" value="sfml-window-s-d"/>
                                     									
+                                    <listOptionValue builtIn="false" srcPrefixMapping="" srcRootPath="" value="sfml-network-s-d"/>
+                                    									
                                     <listOptionValue builtIn="false" srcPrefixMapping="" srcRootPath="" value="sfml-system-s-d"/>
                                     									
                                     <listOptionValue builtIn="false" srcPrefixMapping="" srcRootPath="" value="opengl32"/>
@@ -128,6 +130,8 @@
                                     <listOptionValue builtIn="false" srcPrefixMapping="" srcRootPath="" value="gdi32"/>
                                     									
                                     <listOptionValue builtIn="false" srcPrefixMapping="" srcRootPath="" value="freetype"/>
+                                    									
+                                    <listOptionValue builtIn="false" srcPrefixMapping="" srcRootPath="" value="ws2_32"/>
                                     								
                                 </option>
                                 								
@@ -300,5 +304,7 @@
     <storageModule moduleId="org.eclipse.cdt.core.LanguageSettingsProviders"/>
     	
     <storageModule moduleId="org.eclipse.cdt.make.core.buildtargets"/>
+    	
+    <storageModule moduleId="refreshScope"/>
     
 </cproject>

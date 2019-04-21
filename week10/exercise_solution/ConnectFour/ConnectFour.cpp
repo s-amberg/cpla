@@ -22,14 +22,10 @@ Row ConnectFour::rows() const {
 }
 
 void ConnectFour::drop(Column column) {
-	try {
 		auto color = turn == Red ? BoardType::Red : BoardType::Yellow;
 		auto row = board.insert(column, color);
 		lastInsert = {row, column};
 		changePlayer();
-	} catch (ColumnFullException const &) {
-		//ignore
-	}
 }
 
 std::vector<Column> ConnectFour::columnList() {
@@ -40,7 +36,7 @@ std::vector<Row> ConnectFour::rowList() {
 	return createIndexVector<Row>(Rows);
 }
 
-ConnectFour::BoardType& ConnectFour::getBoard() {
+ConnectFour::BoardType const & ConnectFour::getBoard() const {
 	return board;
 }
 

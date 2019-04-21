@@ -25,7 +25,7 @@ struct ConnectFour {
 	
 	Row rows() const;
 	Column columns() const;
-	BoardType & getBoard();
+	BoardType const & getBoard() const;
 	
 	static std::vector<Row> rowList();
 	static std::vector<Column> columnList();

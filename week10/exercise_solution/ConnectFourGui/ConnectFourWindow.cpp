@@ -21,8 +21,8 @@ void ConnectFourWindow::handleEvents() {
 			if (!sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
 				auto mousePosition = sf::Mouse::getPosition(window);
 				auto column = findColumn(mousePosition.x);
-				if (column < game.columns()) {
-					game.drop(column);
+				if (column < controller.columns()) {
+					controller.drop(column);
 				}
 			}
 		}
@@ -32,12 +32,12 @@ void ConnectFourWindow::handleEvents() {
 void ConnectFourWindow::drawChip(float side, Row row, Column column) {
 	auto radius = side / (2.f) * (1.f - 2 * circleMarginPercent);
 	sf::CircleShape shape { radius };
-	auto state = game.getBoard().at(row, column);
+	auto state = controller.at(row, column);
 	auto color = colors[state];
-	Row invertedRow = game.rows() - Row { 1 } - row;
+	Row invertedRow = controller.rows() - Row { 1 } - row;
 	shape.setFillColor(color);
 	shape.setPosition((column.value + circleMarginPercent) * side, (invertedRow.value + circleMarginPercent) * side);
-	auto latest = game.latest();
+	auto latest = controller.latest();
 	if (latest && *latest == Index{row, column}) {
 		shape.setOutlineColor(latestBorderColor);
 		shape.setOutlineThickness(latestBorderThickness);
@@ -66,5 +66,5 @@ Column ConnectFourWindow::findColumn(unsigned x) const {
 }
 
 float ConnectFourWindow::squareLength(unsigned x, unsigned y) const {
-	return std::min(x / game.columns().value, y / game.rows().value);
+	return std::min(x / controller.columns().value, y / controller.rows().value);
 }

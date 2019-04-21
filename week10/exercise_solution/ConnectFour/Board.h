@@ -36,16 +36,16 @@ struct Board {
 		return freeRow;
 	}
 
-	State at(Row row, Column column) {
+	State at(Row row, Column column) const {
 		return data[dataIndex(row, column)];
 	}
 
 private:
-	std::size_t dataIndex(Row row, Column column) {
+	std::size_t dataIndex(Row row, Column column) const {
 		return row.value * Columns + column.value;
 	}
 
-	Row firstFreeRow(Column column) {
+	Row firstFreeRow(Column column) const {
 		for (Row row{0}; row < Row{Rows}; row++) {
 			if (at(row, column) == Free) {
 				return row;
