@@ -4,12 +4,22 @@
 #include "ValueType.h"
 
 #include <array>
-
 #include <cstddef>
 
 struct ColumnFullException{};
+
 struct Row : ValueType<int, Row>, Numeric<Row>{};
+
 struct Column : ValueType<int, Column>, Numeric<Column>{};
+
+struct Index {
+	Row row{};
+	Column column{};
+
+	bool operator==(Index const & other) const {
+		return row == other.row && column == other.column;
+	}
+};
 
 template <std::size_t Rows, std::size_t Columns>
 struct Board {
@@ -20,9 +30,10 @@ struct Board {
 		Yellow = 2
 	};
 
-	void insert(Column column, State color) {
+	Row insert(Column column, State color) {
 		auto freeRow = firstFreeRow(column);
 		data[dataIndex(freeRow, column)] = color;
+		return freeRow;
 	}
 
 	State at(Row row, Column column) {

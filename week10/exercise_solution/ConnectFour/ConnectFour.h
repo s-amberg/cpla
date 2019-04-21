@@ -4,6 +4,7 @@
 #include "Board.h"
 
 #include <cstddef>
+#include <optional>
 #include <vector>
 
 struct ConnectFour {
@@ -18,16 +19,22 @@ struct ConnectFour {
 	using BoardType = Board<Rows, Columns>;
 
 	void drop(Column column);
+	std::optional<Index> latest() const {
+		return lastInsert;
+	}
+	
 	Row rows() const;
 	Column columns() const;
+	BoardType & getBoard();
+	
 	static std::vector<Row> rowList();
 	static std::vector<Column> columnList();
-	BoardType & getBoard();
 
 private:
 	void changePlayer();
 	Player turn = Player::Red;
 	BoardType board{};
+	std::optional<Index> lastInsert{};
 };
 
 #endif /* CONNECTFOUR_H_ */

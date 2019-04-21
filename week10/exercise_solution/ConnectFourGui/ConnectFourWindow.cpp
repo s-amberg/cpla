@@ -29,24 +29,31 @@ void ConnectFourWindow::handleEvents() {
 	}
 }
 
+void ConnectFourWindow::drawChip(float side, Row row, Column column) {
+	auto radius = side / (2.f) * (1.f - 2 * circleMarginPercent);
+	sf::CircleShape shape { radius };
+	auto state = game.getBoard().at(row, column);
+	auto color = colors[state];
+	Row invertedRow = game.rows() - Row { 1 } - row;
+	shape.setFillColor(color);
+	shape.setPosition((column.value + circleMarginPercent) * side, (invertedRow.value + circleMarginPercent) * side);
+	auto latest = game.latest();
+	if (latest && *latest == Index{row, column}) {
+		shape.setOutlineColor(latestBorderColor);
+		shape.setOutlineThickness(latestBorderThickness);
+	}
+	window.draw(shape);
+}
+
 void ConnectFourWindow::drawBoard() {
-	constexpr float circleMarginPercent { 0.05f };
 	window.clear(sf::Color::Blue);
 	auto size = window.getSize();
 	auto width = size.x;
 	auto height = size.y;
 	auto side = squareLength(width, height);
-	auto radius = side / (2.f) * (1.f - 2 * circleMarginPercent);
-	auto& board = game.getBoard();
 	for (Row row : ConnectFour::rowList()) {
-		Row invertedRow = game.rows() - Row { 1 } - row;
 		for (Column column : ConnectFour::columnList()) {
-			sf::CircleShape shape { radius };
-			auto state = board.at(row, column);
-			auto color = colors[state];
-			shape.setFillColor(color);
-			shape.setPosition((column.value + circleMarginPercent) * side, (invertedRow.value + circleMarginPercent) * side);
-			window.draw(shape);
+			drawChip(side, row, column);
 		}
 	}
 }

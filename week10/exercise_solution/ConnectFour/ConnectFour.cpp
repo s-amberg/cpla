@@ -4,7 +4,6 @@
 
 #include <iterator>
 #include <numeric>
-
 #include <vector>
 
 template <typename T>
@@ -24,11 +23,9 @@ Row ConnectFour::rows() const {
 
 void ConnectFour::drop(Column column) {
 	try {
-		if (turn == Red) {
-			board.insert(column, BoardType::Red);
-		} else {
-			board.insert(column, BoardType::Yellow);
-		}
+		auto color = turn == Red ? BoardType::Red : BoardType::Yellow;
+		auto row = board.insert(column, color);
+		lastInsert = {row, column};
 		changePlayer();
 	} catch (ColumnFullException const &) {
 		//ignore
