@@ -1,7 +1,8 @@
 
 #include "ConnectFourWindow.h"
+#include "SFML/Network/IpAddress.hpp"
+
 #include <cstdlib>
-#include <SFML/Network/IpAddress.hpp>
 
 static unsigned short parsePort(char const * port) {
 	return std::strtoul(port, nullptr, 10);

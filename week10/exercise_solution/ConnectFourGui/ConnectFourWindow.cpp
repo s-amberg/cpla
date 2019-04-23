@@ -35,8 +35,8 @@ void ConnectFourWindow::drawChip(float side, Row row, Column column) {
 	auto state = controller.at(row, column);
 	auto color = colors[state];
 	Row invertedRow = controller.rows() - Row { 1 } - row;
-	shape.setFillColor(color);
 	shape.setPosition((column.value + circleMarginPercent) * side, (invertedRow.value + circleMarginPercent) * side);
+	shape.setFillColor(color);
 	auto latest = controller.latest();
 	if (latest && *latest == Index{row, column}) {
 		shape.setOutlineColor(latestBorderColor);
@@ -46,7 +46,7 @@ void ConnectFourWindow::drawChip(float side, Row row, Column column) {
 }
 
 void ConnectFourWindow::drawBoard() {
-	window.clear(sf::Color::Blue);
+	window.clear(c4::Color::Blue);
 	auto size = window.getSize();
 	auto width = size.x;
 	auto height = size.y;
