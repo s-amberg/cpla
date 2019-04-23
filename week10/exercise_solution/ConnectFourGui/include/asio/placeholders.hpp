@@ -19,6 +19,8 @@
 
 #if defined(ASIO_HAS_BOOST_BIND)
 # include <boost/bind/arg.hpp>
+#else
+# include <functional>
 #endif // defined(ASIO_HAS_BOOST_BIND)
 
 #include "asio/detail/push_options.hpp"
@@ -141,6 +143,15 @@ namespace
 
 #  endif
 # endif
+#else
+
+constexpr inline auto error = std::placeholders::_1;
+constexpr inline auto bytes_transferred = std::placeholders::_2;
+constexpr inline auto iterator = std::placeholders::_2;
+constexpr inline auto results = std::placeholders::_2;
+constexpr inline auto endpoint = std::placeholders::_2;
+constexpr inline auto signal_number = std::placeholders::_2;
+
 #endif
 
 } // namespace placeholders
