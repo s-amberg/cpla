@@ -93,6 +93,7 @@ Libraries:
 * Boost Library: https://www.boost.org/
 * Boost Units: https://www.boost.org/doc/libs/1_69_0/doc/html/boost_units/Units.html
 * ASIO: https://think-async.com/Asio/ 
+* SFML: https://www.sfml-dev.org/
 
 Collection of C++ Resources:
 * https://github.com/MattPD/cpplinks
