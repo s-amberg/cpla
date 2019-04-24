@@ -1,7 +1,7 @@
 #ifndef CONNECTFOURCONTROLLER_H_
 #define CONNECTFOURCONTROLLER_H_
 
-#include "ConnectFour.h"
+#include "game/ConnectFour.h"
 #include "peer/Peer.h"
 
 #include <memory>

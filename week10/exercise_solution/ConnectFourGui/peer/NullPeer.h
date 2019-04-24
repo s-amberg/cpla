@@ -16,7 +16,7 @@ struct NullPeer : Peer {
 		return true;
 	}
 	virtual std::string name() const override {
-		return "Null";
+		return "Local Game";
 	}
 };
 
