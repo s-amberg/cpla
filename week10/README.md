@@ -37,3 +37,9 @@ If you wan't the details about the source code, you can browse the API reference
 
 
 # 3. Connect Four Game with SFML
+
+
+## SFML Libraries
+The prepared project contains prebuild SFML libraries for Windows. Those SFML libraries have been build with MinGW from [STL](https://nuwen.net/mingw.html), i.e. GCC version 8.2. This distribution contains all the required dependencies. On other platforms get the SFML libraries via your package manager.
+
+Alternatively, you can build the libraries on your own: See the included script file (Linux). It is also possible to get the sources for [SFML](https://www.sfml-dev.org/) and build the libraries yourself. It requires `cmake` and `make`. This should work on all plattforms. However, we suggest you build the static debug versions of the libraries.
