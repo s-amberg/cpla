@@ -29,5 +29,11 @@ Preparation:
 
 ***Note:*** If you are on Windows you need library dependencies that depend on the Windows platform! The follwing libraries are required for this exercise: `ws2_32` and `wsock32`.
 
+Get the project compiled. Besides the library dependencies you need to be aware, that there are two `main` functions in the project. We have created two build configurations: `Debug (Server)` and `Debug (Client)` which each have the other source file excluded.
+
+It is easier to follow the message flow if you don't run all executables from the IDE. You can run them in separate terminal windows. The server will not feature any output at all. The client's messages will be distributed among all connected clients.
+
+If you wan't the details about the source code, you can browse the API reference of [ASIO Documentation](https://think-async.com/asio/asio-1.12.2/doc/).
+
 
 # 3. Connect Four Game with SFML
