@@ -85,11 +85,6 @@ struct ServerPeer: Peer {
 		acceptor.close(ignored);
 	}
 
-	virtual void restart() override {
-		disconnect();
-		connect();
-	}
-
 	virtual bool canSend() const override {
 		return session && session->canSend();
 	}

@@ -1,8 +1,6 @@
 #ifndef PEER_PEER_H_
 #define PEER_PEER_H_
 
-#include "Board.h"
-
 #include <string>
 
 struct Peer {
@@ -10,7 +8,6 @@ struct Peer {
 	virtual void send(Column column) = 0;
 	virtual void connect() = 0;
 	virtual void disconnect() = 0;
-	virtual void restart() = 0;
 	virtual bool canSend() const = 0;
 	virtual std::string name() const = 0;
 };

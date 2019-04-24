@@ -12,29 +12,29 @@ struct ConnectFour {
 	static constexpr std::size_t Columns = 7;
 
 	enum Player {
-		Red = 1,
-		Yellow = 2
+		Red = 1, Yellow = 2
 	};
 
 	using BoardType = Board<Rows, Columns>;
 
-	void drop(Column column);
+	std::optional<Player> drop(Column column);
 	std::optional<Index> latest() const {
 		return lastInsert;
 	}
-	
+
 	Row rows() const;
 	Column columns() const;
 	BoardType const & getBoard() const;
-	
+	Player player() const;
+
 	static std::vector<Row> rowList();
 	static std::vector<Column> columnList();
 
 private:
 	void changePlayer();
 	Player turn = Player::Red;
-	BoardType board{};
-	std::optional<Index> lastInsert{};
+	BoardType board { };
+	std::optional<Index> lastInsert { };
 };
 
 #endif /* CONNECTFOUR_H_ */

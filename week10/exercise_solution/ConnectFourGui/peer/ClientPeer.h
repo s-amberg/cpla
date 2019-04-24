@@ -5,17 +5,15 @@
 #include "GameCommand.hpp"
 
 #include "asio/connect.hpp"
-#include "asio/write.hpp"
-#include "asio/read.hpp"
-#include "asio/io_context.hpp"
 #include "asio/ip/tcp.hpp"
+#include "asio/io_context.hpp"
 #include "asio/post.hpp"
+#include "asio/read.hpp"
+#include "asio/write.hpp"
 
-#include <charconv>
 #include <functional>
 #include <memory>
 #include <string>
-#include <string_view>
 #include <system_error>
 
 struct ClientPeer: Peer {
@@ -41,11 +39,6 @@ struct ClientPeer: Peer {
 			socket.shutdown(asio::ip::tcp::socket::shutdown_both, ignored);
 			socket.close(ignored);
 		}
-	}
-
-	virtual void restart() override {
-		disconnect();
-		connect();
 	}
 
 	virtual bool canSend() const override {

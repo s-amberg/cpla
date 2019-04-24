@@ -1,19 +1,16 @@
 #ifndef GAMECOMMAND_HPP_
 #define GAMECOMMAND_HPP_
 
-#include "Board.h"
-
 #include "asio/buffer.hpp"
 
 #include <array>
-#include <cstdint>
 #include <charconv>
 #include <cmath>
 #include <limits>
 #include <iterator>
 
 struct GameCommand {
-	constexpr static int dataSize { static_cast<int>(std::log10(std::numeric_limits<Column::value_type>::max())) };
+	constexpr static int dataSize { static_cast<int>(std::log10(std::numeric_limits<Column::value_type>::max())) + 2 };
 
 	using dataType = std::array<char, dataSize>;
 

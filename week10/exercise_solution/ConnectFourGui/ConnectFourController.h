@@ -23,7 +23,7 @@ struct ConnectFourController {
 
 	void drop(Column column) {
 		try {
-			if (peer->canSend()) {
+			if (peer->canSend() && !winner()) {
 				dropLocal(column);
 				peer->send(column);
 			}
@@ -33,12 +33,10 @@ struct ConnectFourController {
 	}
 
 	void dropLocal(Column column) {
-		std::lock_guard guard { m };
-		game.drop(column);
+		winningPlayer = game.drop(column);
 	}
 
 	std::optional<Index> latest() const {
-		std::lock_guard guard { m };
 		return game.latest();
 	}
 
@@ -55,16 +53,19 @@ struct ConnectFourController {
 	}
 
 	ConnectFour::BoardType board() const {
-		std::lock_guard guard { m };
 		return game.getBoard();
+	}
+
+	std::optional<ConnectFour::Player> winner() const {
+		return winningPlayer;
 	}
 
 	std::string peerName() const {
 		return peer->name();
 	}
 private:
-	mutable std::mutex m { };
 	ConnectFour game { };
+	std::optional<ConnectFour::Player> winningPlayer { std::nullopt };
 	std::unique_ptr<Peer> peer;
 };
 
