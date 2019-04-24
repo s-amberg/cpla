@@ -171,23 +171,7 @@
                 			
             </storageModule>
             			
-            <storageModule moduleId="org.eclipse.cdt.core.externalSettings">
-                				
-                <externalSettings containerId="ConnectFour;cdt.managedbuild.config.gnu.mingw.lib.debug.1094244525" factoryId="org.eclipse.cdt.core.cfg.export.settings.sipplier">
-                    					
-                    <externalSetting>
-                        						
-                        <entry flags="VALUE_WORKSPACE_PATH" kind="includePath" name="/ConnectFour"/>
-                        						
-                        <entry flags="VALUE_WORKSPACE_PATH" kind="libraryPath" name="/ConnectFour/Debug"/>
-                        						
-                        <entry flags="RESOLVED" kind="libraryFile" name="ConnectFour" srcPrefixMapping="" srcRootPath=""/>
-                        					
-                    </externalSetting>
-                    				
-                </externalSettings>
-                			
-            </storageModule>
+            <storageModule moduleId="org.eclipse.cdt.core.externalSettings"/>
             		
         </cconfiguration>
         		
@@ -455,23 +439,7 @@
                 			
             </storageModule>
             			
-            <storageModule moduleId="org.eclipse.cdt.core.externalSettings">
-                				
-                <externalSettings containerId="ConnectFour;cdt.managedbuild.config.gnu.mingw.lib.debug.1094244525.1142610226" factoryId="org.eclipse.cdt.core.cfg.export.settings.sipplier">
-                    					
-                    <externalSetting>
-                        						
-                        <entry flags="VALUE_WORKSPACE_PATH" kind="includePath" name="/ConnectFour"/>
-                        						
-                        <entry flags="VALUE_WORKSPACE_PATH" kind="libraryPath" name="/ConnectFour/Debug (Linux)"/>
-                        						
-                        <entry flags="RESOLVED" kind="libraryFile" name="ConnectFour" srcPrefixMapping="" srcRootPath=""/>
-                        					
-                    </externalSetting>
-                    				
-                </externalSettings>
-                			
-            </storageModule>
+            <storageModule moduleId="org.eclipse.cdt.core.externalSettings"/>
             		
         </cconfiguration>
         	
