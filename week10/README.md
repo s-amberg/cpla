@@ -27,7 +27,7 @@ Preparation:
  * You need to download the ASIO library from [here](https://think-async.com/Asio/). You won't need to compile and install the library, but you need to add the include path of the extracted location to your project: `<asio-directory>/include`
  
 
-***Note:*** If you are on Windows you need library dependencies that depend on the Windows platform!
+***Note:*** If you are on Windows you need library dependencies that depend on the Windows platform! The follwing libraries are required for this exercise: `ws2_32` and `wsock32`.
 
 
 # 3. Connect Four Game with SFML
