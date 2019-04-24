@@ -1,9 +1,9 @@
 #ifndef PEER_NULLPEER_H_
 #define PEER_NULLPEER_H_
 
+#include "Board.h"
 #include "Peer.h"
-
-#include <string>
+#include "PeerState.hpp"
 
 struct NullPeer : Peer {
 	virtual void send(Column column) override {
@@ -12,12 +12,16 @@ struct NullPeer : Peer {
 	}
 	virtual void disconnect() override {
 	}
-	virtual bool canSend() const override {
-		return true;
+	virtual PeerState const & peerState() override {
+		return state;
 	}
-	virtual std::string name() const override {
-		return "Local Game";
-	}
+
+private:
+	PeerState state { //
+		"Local Game", //
+		[] { return true; }, //
+		[] { return false; } //
+	};
 };
 
 

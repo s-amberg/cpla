@@ -1,14 +1,21 @@
 #include "ConnectFourWindow.h"
 
+#include "Board.h"
+#include "ConnectFour.h"
+
+#include "SFML/Graphics.hpp"
+
 #include <algorithm>
 #include <optional>
 #include <string>
 
 void ConnectFourWindow::run() {
 	while (window.isOpen()) {
+		checkConnection();
 		handleEvents();
 		checkMailbox();
 		drawBoard();
+		drawStatus();
 		drawWinner();
 		window.display();
 	}
@@ -52,7 +59,7 @@ void ConnectFourWindow::drawChip(float side, Row row, Column column, ConnectFour
 }
 
 void ConnectFourWindow::drawWinner() {
-	auto winner = controller.winner();
+	auto winner = controller.gameState().winner;
 	if (!winner) {
 		return;
 	}
@@ -76,7 +83,7 @@ void ConnectFourWindow::drawWinner() {
 		sf::Text text { };
 		text.setFont(*font);
 		text.setPosition(border + (ratio / 1.5) * border, side / 2 - 1.2 * border);
-		text.setString(std::string { redWins ? "   Red" : "Yellow" } + std::string { " wins!" });
+		text.setString(std::string { "    You" } + std::string { controller.gameState().peerState.player == *winner ? " win!" : " lose!" });
 		text.setCharacterSize(border);
 		text.setFillColor(c4::Color::White);
 		text.setOutlineColor(c4::Color::Black);
@@ -86,8 +93,28 @@ void ConnectFourWindow::drawWinner() {
 	}
 }
 
+void ConnectFourWindow::drawStatus() {
+	auto gameState { controller.gameState() };
+	auto size { window.getSize() };
+	auto side { std::min(size.x, size.y) };
+	auto border { side / 8 };
+	if (font) {
+		sf::Text text { };
+		auto fontSize { border / 4 };
+		text.setFont(*font);
+		text.setPosition(0, size.y - 1.2 * fontSize);
+		text.setString(gameState.toString());
+		text.setCharacterSize(fontSize);
+		text.setFillColor(c4::Color::White);
+		text.setOutlineColor(c4::Color::Black);
+		text.setOutlineThickness(1.f);
+		window.draw(text);
+	}
+
+}
+
 void ConnectFourWindow::drawBoard() {
-	window.clear(c4::Color::Blue);
+	window.clear(c4::Color::ConnectFourBlue);
 	auto size = window.getSize();
 	auto width = size.x;
 	auto height = size.y;
@@ -104,6 +131,12 @@ void ConnectFourWindow::drawBoard() {
 void ConnectFourWindow::checkMailbox() {
 	if (auto mail = mailbox.tryGet()) {
 		controller.dropLocal(*mail);
+	}
+}
+
+void ConnectFourWindow::checkConnection() {
+	if (!controller.gameState().peerState.connected()) {
+		controller.resetGame();
 	}
 }
 

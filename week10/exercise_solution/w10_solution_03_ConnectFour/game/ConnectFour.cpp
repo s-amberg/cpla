@@ -24,14 +24,15 @@ Row ConnectFour::rows() const {
 }
 
 std::optional<ConnectFour::Player> ConnectFour::drop(Column column) {
-		auto color = turn == Red ? BoardType::Red : BoardType::Yellow;
-		auto row = board.insert(column, color);
-		lastInsert = {row, column};
-		if (auto winner = board.winner(row, column)) {
-			return turn;
-		}
-		changePlayer();
-		return std::nullopt;
+	modified = true;
+	auto color = turn == Red ? BoardType::Red : BoardType::Yellow;
+	auto row = board.insert(column, color);
+	lastInsert = {row, column};
+	if (auto winner = board.winner(row, column)) {
+		return turn;
+	}
+	changePlayer();
+	return std::nullopt;
 }
 
 std::vector<Column> ConnectFour::columnList() {

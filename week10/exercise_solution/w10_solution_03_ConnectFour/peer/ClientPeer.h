@@ -1,6 +1,7 @@
 #ifndef PEER_CLIENTPEER_H_
 #define PEER_CLIENTPEER_H_
 
+#include "Board.h"
 #include "Peer.h"
 #include "GameCommand.hpp"
 
@@ -34,6 +35,7 @@ struct ClientPeer: Peer {
 
 	virtual void disconnect() override {
 		allowedToSend = false;
+		isConnected = false;
 		if (socket.is_open()) {
 			std::error_code ignored { };
 			socket.shutdown(asio::ip::tcp::socket::shutdown_both, ignored);
@@ -41,12 +43,8 @@ struct ClientPeer: Peer {
 		}
 	}
 
-	virtual bool canSend() const override {
-		return allowedToSend;
-	}
-
-	virtual std::string name() const override {
-		return peerName;
+	virtual PeerState const & peerState() override {
+		return state;
 	}
 private:
 	asio::ip::tcp::socket socket;
@@ -54,35 +52,51 @@ private:
 	std::function<void(Column)> callback;
 	GameCommand receivedCommand { };
 	bool allowedToSend { };
-	std::string const peerName { "Client" };
+	bool isConnected { };
+	PeerState state { //
+		"Client", //
+		[this] { return allowedToSend; }, //
+		[this] { return isConnected; }, //
+		ConnectFour::Player::Red //
+	};
+
+	void reConnect(std::error_code error) {
+		if (error != asio::error::basic_errors::operation_aborted) {
+			doConnect();
+		}
+	}
 
 	void doConnect() {
-		asio::async_connect(socket, endpoints, [this](std::error_code ec, auto)
+		asio::async_connect(socket, endpoints, [this](std::error_code error, auto)
 		{
-			if (!ec)
+			if (!error)
 			{
 				allowedToSend = true;
+				isConnected = true;
 				doRead();
+			} else {
+				reConnect(error);
 			}
 		});
 	}
 
 	void doRead() {
-		asio::async_read(socket, receivedCommand.asBuffer(), [this](std::error_code ec, auto) {
-			if (!ec) {
+		asio::async_read(socket, receivedCommand.asBuffer(), [this](std::error_code error, auto) {
+			if (!error) {
 				callback(receivedCommand.decode());
 				allowedToSend = true;
 				doRead();
 			} else {
 				disconnect();
+				reConnect(error);
 			}
 		});
 	}
 
 	void doSend(std::shared_ptr<GameCommand> gc) {
-		asio::async_write(socket, gc->asBuffer(), [this, gc](std::error_code ec, auto) {
+		asio::async_write(socket, gc->asBuffer(), [this, gc](std::error_code error, auto) {
 			allowedToSend = false;
-			if (ec) {
+			if (error) {
 				disconnect();
 			}
 		});

@@ -7,7 +7,6 @@
 #include <cstddef>
 #include <functional>
 #include <optional>
-#include <tuple>
 
 struct ColumnFullException {
 };
@@ -80,7 +79,7 @@ private:
 		return check(diagonalEnd(row, column), [](int & r, int & c) {++r; --c;});
 	}
 
-	std::optional<State> check(std::tuple<Row, Column> start, std::function<void(int&, int&)> counter) const {
+	std::optional<State> check(Index start, std::function<void(int&, int&)> counter) const {
 		WinState winner { };
 		auto [row, column] {start};
 		for (int r { row.value }, c { column.value }; r < static_cast<Row::value_type>(Rows) && c < static_cast<Column::value_type>(Columns);
@@ -99,17 +98,17 @@ private:
 		return std::nullopt;
 	}
 
-	std::tuple<Row, Column> diagonalStart(Row row, Column column) const {
+	Index diagonalStart(Row row, Column column) const {
 		auto start = column.value - row.value;
-		return (start < 0) ? std::tuple { Row { -start }, Column { 0 } } : std::tuple { Row { 0 }, Column { start } };
+		return (start < 0) ? Index { Row { -start }, Column { 0 } } : Index { Row { 0 }, Column { start } };
 	}
 
-	std::tuple<Row, Column> diagonalEnd(Row row, Column column) const {
+	Index diagonalEnd(Row row, Column column) const {
 		auto end = column.value + row.value;
 		auto lastColumnIndex { static_cast<Column::value_type>(Columns) - 1 };
 		return (end >= static_cast<Column::value_type>(Columns)) ?
-				std::tuple { Row { end - lastColumnIndex }, Column { lastColumnIndex } } :
-				std::tuple { Row { 0 }, Column { end } };
+				Index { Row { end - lastColumnIndex }, Column { lastColumnIndex } } :
+				Index { Row { 0 }, Column { end } };
 	}
 
 	Row firstFreeRow(Column column) const {

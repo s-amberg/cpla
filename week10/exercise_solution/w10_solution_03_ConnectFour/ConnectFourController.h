@@ -1,7 +1,9 @@
 #ifndef CONNECTFOURCONTROLLER_H_
 #define CONNECTFOURCONTROLLER_H_
 
+#include "game/Board.h"
 #include "game/ConnectFour.h"
+#include "GameState.hpp"
 #include "peer/Peer.h"
 
 #include <memory>
@@ -23,7 +25,7 @@ struct ConnectFourController {
 
 	void drop(Column column) {
 		try {
-			if (peer->canSend() && !winner()) {
+			if (peer->peerState().canSend() && !state.winner) {
 				dropLocal(column);
 				peer->send(column);
 			}
@@ -32,8 +34,15 @@ struct ConnectFourController {
 		}
 	}
 
+	void resetGame() {
+		if (game.hasStarted()) {
+			game = ConnectFour { };
+			state.winner = std::nullopt;
+		}
+	}
+
 	void dropLocal(Column column) {
-		winningPlayer = game.drop(column);
+		state.winner = game.drop(column);
 	}
 
 	std::optional<Index> latest() const {
@@ -56,17 +65,14 @@ struct ConnectFourController {
 		return game.getBoard();
 	}
 
-	std::optional<ConnectFour::Player> winner() const {
-		return winningPlayer;
+	GameState const & gameState() const {
+		return state;
 	}
 
-	std::string peerName() const {
-		return peer->name();
-	}
 private:
 	ConnectFour game { };
-	std::optional<ConnectFour::Player> winningPlayer { std::nullopt };
 	std::unique_ptr<Peer> peer;
+	GameState state { peer->peerState() };
 };
 
 #endif /* CONNECTFOURCONTROLLER_H_ */
