@@ -21,7 +21,13 @@ Since it is discouraged to use `std::cout` directly in your functor, function an
 
 # 2. Standalone Asynchronous IO (Chat Client)
 
-We have prepared projects using ASIO to implement a chat client-server application.
+We have prepared projects using ASIO to implement a chat client-server application. It is the example ASIO chat client-server application from [here](https://think-async.com/Asio/asio-1.12.2/doc/asio/examples/cpp11_examples.html)
+
+Preparation:
+ * You need to download the ASIO library from [here](https://think-async.com/Asio/). You won't need to compile and install the library, but you need to add the include path of the extracted location to your project: `<asio-directory>/include`
+ 
+
+***Note:*** If you are on Windows you need library dependencies that depend on the Windows platform!
 
 
 # 3. Connect Four Game with SFML
