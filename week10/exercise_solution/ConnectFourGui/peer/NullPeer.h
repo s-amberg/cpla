@@ -3,6 +3,7 @@
 
 #include "Peer.h"
 
+#include <string>
 
 struct NullPeer : Peer {
 	virtual void send(Column column) override {
@@ -12,6 +13,12 @@ struct NullPeer : Peer {
 	virtual void disconnect() override {
 	}
 	virtual void restart() override {
+	}
+	virtual bool canSend() const override {
+		return true;
+	}
+	virtual std::string name() const override {
+		return "Null";
 	}
 };
 

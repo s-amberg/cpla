@@ -6,6 +6,4 @@
 #include "ClientPeer.h"
 #include "ServerPeer.h"
 
-
-
 #endif /* PEER_PEERS_H_ */

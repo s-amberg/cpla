@@ -356,6 +356,8 @@
                                     <listOptionValue builtIn="false" value="SFML_STATIC"/>
                                     									
                                     <listOptionValue builtIn="false" value="ASIO_STANDALONE"/>
+                                    									
+                                    <listOptionValue builtIn="false" value="ASIO_NO_DEPRECATED"/>
                                     								
                                 </option>
                                 								

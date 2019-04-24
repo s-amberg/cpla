@@ -5,7 +5,8 @@
 
 template <typename T, typename CRTP>
 struct ValueType {
-	T value;
+	using value_type = T;
+	value_type value;
 };
 
 
