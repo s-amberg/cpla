@@ -103,7 +103,7 @@ void ConnectFourWindow::drawStatus() {
 		auto fontSize { border / 4 };
 		text.setFont(*font);
 		text.setPosition(0, size.y - 1.2 * fontSize);
-		text.setString(gameState.toString());
+		text.setString(gameState.peerState.toString());
 		text.setCharacterSize(fontSize);
 		text.setFillColor(c4::Color::White);
 		text.setOutlineColor(c4::Color::Black);

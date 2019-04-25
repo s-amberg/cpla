@@ -11,10 +11,6 @@
 struct GameState {
 	PeerState const & peerState;
 	std::optional<ConnectFour::Player> winner { std::nullopt };
-
-	std::string toString() const {
-		return peerState.toString();
-	}
 };
 
 
