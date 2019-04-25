@@ -52,7 +52,7 @@ constexpr int numberOfThreads = 1;
 void measure() {
 	auto const startTime = std::chrono::high_resolution_clock::now();
 
-	auto const result = countPrimes(start, end);
+	auto const result = countPrimesParallel(start, end, numberOfThreads);
 
 	auto const endTime = std::chrono::high_resolution_clock::now();
 	auto const duration = std::chrono::duration_cast<std::chrono::milliseconds>(endTime - startTime);
