@@ -61,8 +61,14 @@ private:
 		}
 		return font;
 	}() };
-	sf::RenderWindow window { sf::VideoMode { 800, 710 }, "Connect Four (" + controller.gameState().peerState.name + ")", sf::Style::Default,
-			sf::ContextSettings { 0, 0, antiAliasing } };
+
+	sf::RenderWindow window {
+		sf::VideoMode { 800, 710 },
+		"Connect Four (" + controller.gameState().peerState.name + ")",
+		sf::Style::Default,
+		sf::ContextSettings { 0, 0, antiAliasing }
+	};
+
 	inline static std::array<sf::Color, 3> const colors { c4::Color::White, c4::Color::Red, c4::Color::Yellow };
 	inline static sf::Color const latestBorderColor { c4::Color::DarkerBlue };
 	constexpr static unsigned antiAliasing = 8;
