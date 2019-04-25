@@ -15,9 +15,9 @@
 #include "asio/read.hpp"
 #include "asio/write.hpp"
 
+#include <atomic>
 #include <functional>
 #include <memory>
-#include <string>
 #include <system_error>
 
 struct ClientPeer: Peer {
@@ -46,7 +46,7 @@ struct ClientPeer: Peer {
 		}
 	}
 
-	virtual PeerState const & peerState() override {
+	virtual PeerState peerState() override {
 		return state;
 	}
 private:
@@ -54,8 +54,8 @@ private:
 	asio::ip::tcp::resolver::results_type const endpoints;
 	std::function<void(Column)> callback;
 	GameCommand receivedCommand { };
-	bool allowedToSend { };
-	bool isConnected { };
+	std::atomic_bool allowedToSend { };
+	std::atomic_bool isConnected { };
 	PeerState state { //
 		"Client", //
 		[this] { return allowedToSend; }, //

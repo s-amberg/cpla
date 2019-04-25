@@ -16,15 +16,15 @@
 #include "asio/read.hpp"
 #include "asio/write.hpp"
 
+#include <atomic>
 #include <functional>
 #include <memory>
 #include <system_error>
-#include <string>
 #include <utility>
 
-struct GameSesssionState {
-	bool canSend { false };
-	bool connected { false };
+struct GameSessionState {
+	std::atomic_bool canSend { false };
+	std::atomic_bool connected { false };
 };
 
 struct GameSession: std::enable_shared_from_this<GameSession> {
@@ -48,7 +48,7 @@ struct GameSession: std::enable_shared_from_this<GameSession> {
 		}
 	}
 
-	GameSesssionState const & sessionState() const {
+	GameSessionState const & sessionState() const {
 		return state;
 	}
 
@@ -56,7 +56,7 @@ private:
 	asio::ip::tcp::socket socket;
 	std::function<void(Column)> callback;
 	GameCommand receivedCommand { };
-	GameSesssionState state { };
+	GameSessionState state { };
 
 	void doRead() {
 		asio::async_read(socket, receivedCommand.asBuffer(), [this](std::error_code ec, auto) {
@@ -103,7 +103,7 @@ struct ServerPeer: Peer {
 		acceptor.close(ignored);
 	}
 
-	virtual PeerState const & peerState() override {
+	virtual PeerState peerState() override {
 		return state;
 	}
 

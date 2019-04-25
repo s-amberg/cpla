@@ -12,7 +12,6 @@
 #include <optional>
 #include <utility>
 #include <mutex>
-#include <string>
 
 struct ConnectFourController {
 

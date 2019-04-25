@@ -13,16 +13,13 @@ struct NullPeer : Peer {
 	}
 	virtual void disconnect() override {
 	}
-	virtual PeerState const & peerState() override {
-		return state;
+	virtual PeerState peerState() override {
+		return { //
+			"Local Game", //
+			[] { return true; }, //
+			[] { return true; } //
+		};
 	}
-
-private:
-	PeerState state { //
-		"Local Game", //
-		[] { return true; }, //
-		[] { return true; } //
-	};
 };
 
 
