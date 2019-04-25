@@ -1,9 +1,12 @@
 #ifndef PEER_CLIENTPEER_H_
 #define PEER_CLIENTPEER_H_
 
-#include "Board.h"
 #include "Peer.h"
-#include "GameCommand.hpp"
+
+#include "../game/GameCommand.hpp"
+#include "../game/Board.h"
+
+#include "../state/PeerState.hpp"
 
 #include "asio/connect.hpp"
 #include "asio/ip/tcp.hpp"

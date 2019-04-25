@@ -1,8 +1,8 @@
 #ifndef PEER_PEER_H_
 #define PEER_PEER_H_
 
-#include "Board.h"
-#include "PeerState.hpp"
+#include "../game/Board.h"
+#include "../state/PeerState.hpp"
 
 struct Peer {
 	virtual ~Peer() = default;

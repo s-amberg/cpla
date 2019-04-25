@@ -3,7 +3,9 @@
 
 #include "game/Board.h"
 #include "game/ConnectFour.h"
-#include "GameState.hpp"
+
+#include "state/GameState.hpp"
+
 #include "peer/Peer.h"
 
 #include <memory>

@@ -1,7 +1,7 @@
 #ifndef PEER_PEERSTATE_HPP_
 #define PEER_PEERSTATE_HPP_
 
-#include "ConnectFour.h"
+#include "../game/ConnectFour.h"
 
 #include "asio/ip/tcp.hpp"
 

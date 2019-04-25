@@ -1,7 +1,7 @@
 #include "ConnectFourWindow.h"
 
-#include "Board.h"
-#include "ConnectFour.h"
+#include "game/Board.h"
+#include "game/ConnectFour.h"
 
 #include "SFML/Graphics.hpp"
 

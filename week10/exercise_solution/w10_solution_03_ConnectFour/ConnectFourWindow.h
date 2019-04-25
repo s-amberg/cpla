@@ -1,7 +1,7 @@
 #ifndef CONNECTFOURWINDOW_H_
 #define CONNECTFOURWINDOW_H_
 
-#include "Board.h"
+#include "game/Board.h"
 #include "ConnectFourController.h"
 #include "peer/Peers.h"
 #include "Mailbox.h"
@@ -15,8 +15,7 @@
 #include <memory>
 #include <optional>
 
-namespace c4
-::Color {
+namespace c4::Color {
 	static const sf::Color Black {sf::Color(0, 0, 0)};
 	static const sf::Color White {sf::Color(255, 255, 255)};
 	static const sf::Color Red {sf::Color(255, 0, 0)};

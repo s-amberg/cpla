@@ -1,9 +1,10 @@
 #ifndef PEER_NULLPEER_H_
 #define PEER_NULLPEER_H_
 
-#include "Board.h"
 #include "Peer.h"
-#include "PeerState.hpp"
+
+#include "../game/Board.h"
+#include "../state/PeerState.hpp"
 
 struct NullPeer : Peer {
 	virtual void send(Column column) override {
