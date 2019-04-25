@@ -9,15 +9,15 @@
 #include <string>
 
 struct PeerState {
-	std::string name { "Unknown" };
-	ConnectFour::Player player { ConnectFour::Player::Red };
+	std::string const name;
+	ConnectFour::Player const player;
 	std::atomic_bool canSend { false };
 	std::atomic_bool connected { false };
 
 	std::string toString() const {
 		std::string connectedString { connected ? "Connected" : "No Connection" };
-		std::string turnString { canSend ? "Your Turn!" : "Opponents Turn!" };
 		std::string colorString { player == ConnectFour::Player::Red ? "Red" : "Yellow" };
+		std::string turnString { connected ? (canSend ? "Your Turn!" : "Opponents Turn!") : "Waiting for opponent..." };
 		return connectedString + " | You play as " + colorString + "  |  " + turnString;
 	}
 };

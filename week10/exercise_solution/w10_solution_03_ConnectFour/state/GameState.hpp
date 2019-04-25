@@ -5,7 +5,6 @@
 
 #include "../game/ConnectFour.h"
 
-#include <string>
 #include <optional>
 
 struct GameState {

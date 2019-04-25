@@ -7,8 +7,8 @@
 struct Peer {
 	virtual ~Peer() = default;
 	virtual void send(Column column) = 0;
-	virtual void connect() = 0;
-	virtual void disconnect() = 0;
+	virtual void start() = 0;
+	virtual void stop() = 0;
 	virtual PeerState const & peerState() const = 0;
 };
 

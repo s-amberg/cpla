@@ -14,18 +14,25 @@
 #include "asio/io_context.hpp"
 #include "asio/ip/tcp.hpp"
 #include "asio/read.hpp"
+#include "asio/steady_timer.hpp"
 #include "asio/write.hpp"
 
+#include <chrono>
 #include <functional>
 #include <memory>
 #include <optional>
 #include <system_error>
 #include <utility>
 
-
 struct ServerPeer: Peer {
-	ServerPeer(asio::io_context & context, unsigned short port, std::function<void(Column)> callback) :
-			acceptor { context, asio::ip::tcp::endpoint { asio::ip::tcp::v4(), port } }, callback { callback } {
+	ServerPeer(asio::io_context & context, unsigned short port, std::function<void(Column)> callback)
+		: endpoint { asio::ip::tcp::v4(), port }
+		, acceptor { context, endpoint }
+		, restartTimer { context }
+		, callback { callback }
+		, state { "Server", ConnectFour::Player::Yellow }
+	{
+
 	}
 
 	virtual void send(Column column) override {
@@ -34,18 +41,18 @@ struct ServerPeer: Peer {
 		}
 	}
 
-	virtual void connect() override {
+	virtual void start() override {
 		if (!acceptor.is_open()) {
-			acceptor.open(asio::ip::tcp::v4());
+			acceptor.open(endpoint.protocol());
+			acceptor.bind(endpoint);
+			acceptor.listen();
 		}
 		doAccept();
 	}
 
-	virtual void disconnect() override {
-		closeSession();
-		std::error_code ignored { };
-		acceptor.cancel(ignored);
-		acceptor.close(ignored);
+	virtual void stop() override {
+		stopAccepting();
+		closeConnection();
 	}
 
 	virtual PeerState const & peerState() const override {
@@ -53,51 +60,80 @@ struct ServerPeer: Peer {
 	}
 
 private:
+	asio::ip::tcp::endpoint endpoint;
 	asio::ip::tcp::acceptor acceptor;
-	std::function<void(Column)> callback;
-	std::optional<asio::ip::tcp::socket> socket { std::nullopt };
-	GameCommand receivedCommand { };
-	PeerState state { //
-		"Server", //
-		ConnectFour::Player::Yellow
-	};
+	asio::steady_timer restartTimer;
 
-	void closeSession() {
-		socket = std::nullopt;
+	std::function<void(Column)> const callback;
+	PeerState state;
+
+	std::optional<asio::ip::tcp::socket> socket { };
+	GameCommand receivedCommand { };
+
+	constexpr static std::chrono::seconds restartInterval { 1 };
+
+	void stopAccepting() {
+		std::error_code ignored { };
+		acceptor.cancel(ignored);
+		acceptor.close(ignored);
+	}
+
+	void closeConnection() {
+		if(socket) {
+			asio::error_code ignored{};
+			socket->shutdown(asio::ip::tcp::socket::shutdown_both, ignored);
+			socket->close(ignored);
+			socket.reset();
+		}
+		state.connected = false;
+		state.canSend = false;
 	}
 
 	void doAccept() {
-		acceptor.async_accept([this](std::error_code const error, asio::ip::tcp::socket && socket) {
+		acceptor.async_accept([this](auto const error, auto socket) {
 			if (!error && !this->socket) {
 				this->socket = std::move(socket);
 				state.connected = true;
+				stopAccepting();
 				doRead();
-			}
-			if (!state.connected) {
-				closeSession();
-			}
-			if (error != asio::error::basic_errors::operation_aborted) {
-				doAccept();
 			}
 		});
 	}
 
 	void doRead() {
-		asio::async_read(*socket, receivedCommand.asBuffer(), [this](std::error_code ec, auto) {
-			if (!ec) {
+		asio::async_read(socket.value(), receivedCommand.asBuffer(), [this](auto error, auto) {
+			if (!error) {
 				callback(receivedCommand.decode());
 				state.canSend = true;
 				doRead();
-			} else if (ec == asio::error::eof) {
-				state.connected = false;
-				state.canSend = false;
+			} else if (error == asio::error::eof) {
+				closeConnection();
+				restart();
+			} else {
+				stop();
+			}
+		});
+	}
+
+	void restart() {
+		restartTimer.expires_after(restartInterval);
+		restartTimer.async_wait([this](auto error) {
+			if (!error) {
+				start();
 			}
 		});
 	}
 
 	void doSend(std::shared_ptr<GameCommand> gc) {
-		asio::async_write(*socket, gc->asBuffer(), [this, gc](std::error_code ec, auto) {
-			state.canSend = false;
+		asio::async_write(socket.value(), gc->asBuffer(), [this, gc](auto const error, auto) {
+			if (!error) {
+				state.canSend = false;
+			} else if (error == asio::error::eof ){
+				closeConnection();
+				restart();
+			} else {
+				stop();
+			}
 		});
 	}
 };

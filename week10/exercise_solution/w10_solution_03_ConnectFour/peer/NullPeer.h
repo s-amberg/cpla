@@ -10,9 +10,9 @@
 struct NullPeer : Peer {
 	virtual void send(Column column) override {
 	}
-	virtual void connect() override {
+	virtual void start() override {
 	}
-	virtual void disconnect() override {
+	virtual void stop() override {
 	}
 	virtual PeerState const & peerState() const override {
 		return state;

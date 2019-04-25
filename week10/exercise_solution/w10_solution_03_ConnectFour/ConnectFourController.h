@@ -17,11 +17,11 @@ struct ConnectFourController {
 
 	explicit ConnectFourController(std::unique_ptr<Peer> peer) :
 			peer { std::move(peer) } {
-		this->peer->connect();
+		this->peer->start();
 	}
 
 	void disconnect() {
-		this->peer->disconnect();
+		this->peer->stop();
 	}
 
 	void drop(Column column) {
