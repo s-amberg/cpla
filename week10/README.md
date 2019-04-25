@@ -9,7 +9,8 @@ In this exercise...
 
 # 1. Basic Threading
 
-## a) Create a simple application that starts three threads:
+## a) Thread IDs
+Create a simple application that starts three threads:
 
 * One thread shall be created with a functor
 * One thread shall be created with a free function
@@ -19,7 +20,7 @@ Each thread prints its ID (`std::this_thread::get_id()`) on `std::cout`.
 
 Since it is discouraged to use `std::cout` directly in your functor, function and lambda, each should have a `std::ostream & out` parameter. If you want to pass `std::cout` through the `std::thread` constructor, you have to wrap the argument in an `std::ref` on the call-site.
 
-## b) Measure speedup
+## b) Measure Speedup
 In the template you have an implementation of a program that counts the prime numbers in a given range (`countPrimes` function). Parallelize the computation using multiple threads in `countPrimesParallel`.
 
 ***Note:*** Be aware, that each thread must only access his entry of the `results` array and that the `main`thread must only access those results after the threads have been joined.
