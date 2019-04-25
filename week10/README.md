@@ -45,9 +45,44 @@ If you wan't the details about the source code, you can browse the API reference
 
 
 # 3. Connect Four Game with SFML
+Your task is to finish the implementation task for the  Connect Four Game's `ServerPeer`, see `peer/ServerPeer.h` for detailed instructions.
 
+The idea is that both a client and a server each run their game instance and communicate asynchronously using the ASIO Library. The UI is created using the SFML library (see [SFML](https://www.sfml-dev.org/)) and runs in the main thread, while the socket communication is done in a separate thread.
+
+When running the game one side will wait for the other to make a move and update their state accordingly and then do their turn while the other waits.
+
+The server waits and accepts incoming clients on the provided port and the hosts address.
+
+The client to connect to the provided endpoint (server-address and port) and starts the game on success.
+
+## Building the project
+Cevelop: Use the appropiate build configuration for you platform `Debug (Linux)` and `Debug (Windows)` that will link the correct libraries needed for the game to work.
+
+***Note:*** Make sure that you have also opened (and on Linux built) the `SFML` project (found under `week10/exercise_libs/SFML/`) to allow the linking to succeed.
+
+The following libraries are needed and must be present for the linking to succeed.
+
+* Windows: `opengl32`, `winmm`, `gdi32`, `freetype`, `ws2_32`, `wsock32` and `z`
+* Linux: `freetype`, `X11`, `GL`, `udev` and `Xrandr`.
+
+Further the different SFML libraries are needed for both platforms, see the SFML Libraries section. ASIO (no boost required) is used as a header only library and already included, see the ASIO Library section.
+
+## ASIO Library
+The asio library is already part of the template inside the `include` folder.
 
 ## SFML Libraries
 The prepared project contains prebuild SFML libraries for Windows. Those SFML libraries have been build with MinGW from [STL](https://nuwen.net/mingw.html), i.e. GCC version 8.2. This distribution contains all the required dependencies. On other platforms get the SFML libraries via your package manager.
 
 Alternatively, you can build the libraries on your own: See the included script file (Linux). It is also possible to get the sources for [SFML](https://www.sfml-dev.org/) and build the libraries yourself. It requires `cmake` and `make`. This should work on all plattforms. However, we suggest you build the static debug versions of the libraries.
+
+## How to play
+
+To play the game the executable can be run in different modes depending ont the passed arguments.
+
+* Zero arguments: A local game is started. You can play both sides in the same window locally.
+* One arguments (port): This starts the game in the server mode listening on the specified port.
+* Two arguments (server-address port): This starts the game in the client mode, which will attempt to connect to the given ip and port.
+
+In either client or server mode the game waits for the other side to join it. You can also run both locally by specifing the same port and using `localhost` or `127.0.0.1` as the server address.
+
+***Note:*** You can use different `Run Configurations` to launch the different modes directly (see `Run Configurations...` -> `Arguments`).
