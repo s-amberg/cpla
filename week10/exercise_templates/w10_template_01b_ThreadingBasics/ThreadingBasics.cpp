@@ -22,8 +22,8 @@ static unsigned long long countPrimes(unsigned long long start, unsigned long lo
 	return count;
 }
 
-static unsigned long long countPrimesParallel(unsigned long long start, unsigned long long end, int numberOfThreads) {
-	long range = (end - start) / numberOfThreads;
+static unsigned long long countPrimesParallel(unsigned long long start, unsigned long long end, unsigned numberOfThreads) {
+	unsigned long long range = (end - start) / numberOfThreads;
 	std::vector<std::thread> threads { };
 	std::vector<unsigned long long> results(numberOfThreads, 0);
 
@@ -35,7 +35,7 @@ static unsigned long long countPrimesParallel(unsigned long long start, unsigned
 
 constexpr unsigned long long start = 1000000;
 constexpr unsigned long long end = 10000000;
-constexpr int numberOfThreads = 1;
+constexpr unsigned numberOfThreads = 1;
 
 void measure() {
 	auto const startTime = std::chrono::high_resolution_clock::now();
