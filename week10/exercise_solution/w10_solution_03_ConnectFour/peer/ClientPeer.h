@@ -15,7 +15,6 @@
 #include "asio/read.hpp"
 #include "asio/write.hpp"
 
-#include <atomic>
 #include <functional>
 #include <memory>
 #include <system_error>
@@ -37,8 +36,8 @@ struct ClientPeer: Peer {
 	}
 
 	virtual void disconnect() override {
-		allowedToSend = false;
-		isConnected = false;
+		state.canSend = false;
+		state.connected = false;
 		if (socket.is_open()) {
 			std::error_code ignored { };
 			socket.shutdown(asio::ip::tcp::socket::shutdown_both, ignored);
@@ -46,7 +45,7 @@ struct ClientPeer: Peer {
 		}
 	}
 
-	virtual PeerState peerState() override {
+	virtual PeerState const & peerState() const override {
 		return state;
 	}
 private:
@@ -54,12 +53,8 @@ private:
 	asio::ip::tcp::resolver::results_type const endpoints;
 	std::function<void(Column)> callback;
 	GameCommand receivedCommand { };
-	std::atomic_bool allowedToSend { };
-	std::atomic_bool isConnected { };
 	PeerState state { //
 		"Client", //
-		[this] () -> bool { return allowedToSend; }, //
-		[this] () -> bool { return isConnected; }, //
 		ConnectFour::Player::Red //
 	};
 
@@ -74,8 +69,8 @@ private:
 		{
 			if (!error)
 			{
-				allowedToSend = true;
-				isConnected = true;
+				state.canSend = true;
+				state.connected = true;
 				doRead();
 			} else {
 				reConnect(error);
@@ -87,7 +82,7 @@ private:
 		asio::async_read(socket, receivedCommand.asBuffer(), [this](std::error_code error, auto) {
 			if (!error) {
 				callback(receivedCommand.decode());
-				allowedToSend = true;
+				state.canSend = true;
 				doRead();
 			} else {
 				disconnect();
@@ -98,7 +93,7 @@ private:
 
 	void doSend(std::shared_ptr<GameCommand> gc) {
 		asio::async_write(socket, gc->asBuffer(), [this, gc](std::error_code error, auto) {
-			allowedToSend = false;
+			state.canSend = false;
 			if (error) {
 				disconnect();
 			}

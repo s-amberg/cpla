@@ -9,7 +9,7 @@ struct Peer {
 	virtual void send(Column column) = 0;
 	virtual void connect() = 0;
 	virtual void disconnect() = 0;
-	virtual PeerState peerState() = 0;
+	virtual PeerState const & peerState() const = 0;
 };
 
 

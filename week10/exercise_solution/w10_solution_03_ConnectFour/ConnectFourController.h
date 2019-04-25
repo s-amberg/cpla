@@ -26,7 +26,7 @@ struct ConnectFourController {
 
 	void drop(Column column) {
 		try {
-			if (peer->peerState().canSend() && !state.winner) {
+			if (peer->peerState().canSend && !state.winner) {
 				dropLocal(column);
 				peer->send(column);
 			}
@@ -71,8 +71,8 @@ struct ConnectFourController {
 	}
 
 private:
-	ConnectFour game { };
 	std::unique_ptr<Peer> peer;
+	ConnectFour game { };
 	GameState state { peer->peerState() };
 };
 

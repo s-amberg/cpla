@@ -4,6 +4,7 @@
 #include "Peer.h"
 
 #include "../game/Board.h"
+#include "../game/ConnectFour.h"
 #include "../state/PeerState.hpp"
 
 struct NullPeer : Peer {
@@ -13,13 +14,17 @@ struct NullPeer : Peer {
 	}
 	virtual void disconnect() override {
 	}
-	virtual PeerState peerState() override {
-		return { //
-			"Local Game", //
-			[] { return true; }, //
-			[] { return true; } //
-		};
+	virtual PeerState const & peerState() const override {
+		return state;
 	}
+
+private:
+	PeerState const state { //
+		"Local Game", //
+		ConnectFour::Player::Red, //
+		true, //
+		true //
+	};
 };
 
 

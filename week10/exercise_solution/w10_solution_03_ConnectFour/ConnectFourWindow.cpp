@@ -82,8 +82,8 @@ void ConnectFourWindow::drawWinner() {
 	if (font) {
 		sf::Text text { };
 		text.setFont(*font);
-		text.setPosition(border + (ratio / 1.5) * border, side / 2 - 1.2 * border);
-		text.setString(std::string { "    You" } + std::string { controller.gameState().peerState.player == *winner ? " win!" : " lose!" });
+		text.setPosition(border + 1.8f * ratio * border, side / 2 - 1.2 * border);
+		text.setString(std::string { "You" } + std::string { controller.gameState().peerState.player == *winner ? " win!" : " lose!" });
 		text.setCharacterSize(border);
 		text.setFillColor(c4::Color::White);
 		text.setOutlineColor(c4::Color::Black);
@@ -135,7 +135,7 @@ void ConnectFourWindow::checkMailbox() {
 }
 
 void ConnectFourWindow::checkConnection() {
-	if (!controller.gameState().peerState.connected()) {
+	if (!controller.gameState().peerState.connected) {
 		controller.resetGame();
 	}
 }
