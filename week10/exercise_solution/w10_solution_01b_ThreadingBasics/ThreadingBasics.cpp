@@ -33,7 +33,7 @@ static unsigned long long countPrimesParallel(unsigned long long start, unsigned
 	for (int i = 0; i < numberOfThreads; i++) {
 		long start = start + i * range;
 		long end = start + range;
-		std::cout << "Starting thread " << std::this_thread::get_id() << " for range [" << start << ", " << end << ']' << std::endl;
+		std::cout << "Starting thread for range [" << start << ", " << end << ']' << std::endl;
 		std::thread thread { [=, &results] {
 			results[i] = countPrimes(start, end);
 		} };
