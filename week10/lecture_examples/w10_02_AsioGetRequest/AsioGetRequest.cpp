@@ -52,7 +52,4 @@ int main(int argc, char const * argv[]) {
 	} catch (asio::system_error const & e) {
 		std::cout << "An error occurred: " << e.what();
 	}
-//	auto addresses = resolve(host);
-//	std::cout << "Addresses for: " << host << '\n';
-//	std::copy(std::begin(addresses), std::end(addresses), std::ostream_iterator<std::string>{std::cout, "\n"});
 }
