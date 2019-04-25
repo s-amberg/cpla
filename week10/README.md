@@ -9,7 +9,7 @@ In this exercise...
 
 # 1. Basic Threading
 
-***Note:*** On Linux you might need to add the `pthread` library to link the projects correctly: `Project Properties -> Paths & Symbols -> Libraries -> Add -> "pthread"`
+***Note:*** On Linux you might need to add the `pthread` library to link the projects correctly: `Project Properties -> C++ General -> Paths & Symbols -> Libraries -> Add -> "pthread"`
 
 ## a) Thread IDs
 Create a simple application that starts three threads:
