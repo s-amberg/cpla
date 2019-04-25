@@ -321,9 +321,7 @@
                                     									
                                     <listOptionValue builtIn="false" value="&quot;${workspace_loc:/SFML/include}&quot;"/>
                                     									
-                                    <listOptionValue builtIn="false" value="&quot;${workspace_loc:/ConnectFourGui/include}&quot;"/>
-                                    									
-                                    <listOptionValue builtIn="false" value="&quot;C:\Program Files\MinGW\include&quot;"/>
+                                    <listOptionValue builtIn="false" value="&quot;${workspace_loc:/w10_solution_03_ConnectFour/include}&quot;"/>
                                     								
                                 </option>
                                 								
@@ -357,9 +355,7 @@
                                     									
                                     <listOptionValue builtIn="false" value="&quot;${workspace_loc:/SFML/include}&quot;"/>
                                     									
-                                    <listOptionValue builtIn="false" value="&quot;${workspace_loc:/ConnectFourGui/include}&quot;"/>
-                                    									
-                                    <listOptionValue builtIn="false" value="&quot;C:\Program Files\MinGW\include&quot;"/>
+                                    <listOptionValue builtIn="false" value="&quot;${workspace_loc:/w10_solution_03_ConnectFour/include}&quot;"/>
                                     								
                                 </option>
                                 								
@@ -421,9 +417,7 @@
                                     									
                                     <listOptionValue builtIn="false" value="&quot;${workspace_loc:/SFML/include}&quot;"/>
                                     									
-                                    <listOptionValue builtIn="false" value="&quot;${workspace_loc:/ConnectFourGui/include}&quot;"/>
-                                    									
-                                    <listOptionValue builtIn="false" value="&quot;C:\Program Files\MinGW\include&quot;"/>
+                                    <listOptionValue builtIn="false" value="&quot;${workspace_loc:/w10_solution_03_ConnectFour/include}&quot;"/>
                                     								
                                 </option>
                                 								
