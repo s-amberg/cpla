@@ -21,7 +21,7 @@ private:
 	PeerState state { //
 		"Local Game", //
 		[] { return true; }, //
-		[] { return false; } //
+		[] { return true; } //
 	};
 };
 
