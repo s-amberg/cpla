@@ -27,11 +27,21 @@ static unsigned long long countPrimesParallel(unsigned long long start, unsigned
 	std::vector<std::thread> threads { };
 	std::vector<unsigned long long> results(numberOfThreads, 0);
 
-	//TODO: Implement parallel solution
+	for (int i = 0; i < numberOfThreads; i++) {
+		long start = start + i * range;
+		long end = start + range;
+		std::cout << "Starting thread " << std::this_thread::get_id() << " for range [" << start << ", " << end << ']' << std::endl;
+		std::thread thread { [=, &results] {
+			results[i] = countPrimes(start, end);
+		} };
+		threads.push_back(std::move(thread));
+	}
 
-	return 0;
+	std::for_each(std::begin(threads), std::end(threads), [](auto & thread) {
+		thread.join();
+	});
+	return std::accumulate(std::begin(results), std::end(results), 0ull);
 }
-
 constexpr unsigned long long start = 1000000;
 constexpr unsigned long long end = 10000000;
 constexpr int numberOfThreads = 1;
