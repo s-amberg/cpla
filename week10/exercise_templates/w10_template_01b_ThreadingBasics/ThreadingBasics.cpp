@@ -1,10 +1,6 @@
-#include <algorithm>
 #include <chrono>
 #include <iostream>
-#include <iterator>
-#include <numeric>
 #include <thread>
-#include <utility>
 #include <vector>
 
 static bool isPrime(unsigned long long number) {

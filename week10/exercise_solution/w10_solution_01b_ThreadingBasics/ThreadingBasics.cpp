@@ -1,5 +1,8 @@
+#include <algorithm>
 #include <chrono>
 #include <iostream>
+#include <iterator>
+#include <numeric>
 #include <thread>
 #include <vector>
 
