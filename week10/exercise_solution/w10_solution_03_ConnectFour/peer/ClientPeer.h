@@ -58,8 +58,8 @@ private:
 	std::atomic_bool isConnected { };
 	PeerState state { //
 		"Client", //
-		[this] { return allowedToSend; }, //
-		[this] { return isConnected; }, //
+		[this] () -> bool { return allowedToSend; }, //
+		[this] () -> bool { return isConnected; }, //
 		ConnectFour::Player::Red //
 	};
 

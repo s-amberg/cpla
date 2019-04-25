@@ -7,12 +7,13 @@
 
 #include <array>
 #include <charconv>
-#include <cmath>
 #include <limits>
 #include <iterator>
 
 struct GameCommand {
-	constexpr static int dataSize { static_cast<int>(std::log10(std::numeric_limits<Column::value_type>::max())) + 2 };
+	using value_type = uint64_t;
+	static_assert(std::numeric_limits<value_type>::max() >= std::numeric_limits<Column::value_type>::max());
+	constexpr static auto dataSize { std::numeric_limits<value_type>::digits10 };
 
 	using dataType = std::array<char, dataSize>;
 
@@ -24,9 +25,9 @@ struct GameCommand {
 	}
 
 	Column decode() const {
-		int value { };
+		value_type value{};
 		std::from_chars(std::begin(data), std::end(data), value);
-		return Column { value };
+		return {static_cast<Column::value_type>(value)};
 	}
 
 	auto asBuffer() {
