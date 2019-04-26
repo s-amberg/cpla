@@ -10,6 +10,7 @@
 #include <string>
 
 void ConnectFourWindow::run() {
+	window.setFramerateLimit(60);
 	while (window.isOpen()) {
 		checkConnection();
 		handleEvents();
