@@ -44,7 +44,7 @@ In order to avoid duplicating the whole implementation of `BoundedBuffer` you sh
 
 
 # 2. Peterson Mutex (Not Testat)
-From the module Parallel Programming you should be familiar with the Peterson Mutex. If you need to recap it you can find it on the Skripte server (here)[https://skripte.hsr.ch/Informatik/Fachbereich/Parallele_Programmierung/ParProg/Uebungen/09_Memory_Models_TESTAT2/].
+From the module Parallel Programming you should be familiar with the Peterson Mutex. If you need to recap it you can find it on the Skripte server [here](https://skripte.hsr.ch/Informatik/Fachbereich/Parallele_Programmierung/ParProg/Uebungen/09_Memory_Models_TESTAT2/).
 
 Below you have the implementation ported to C++ using volatile. While this works in Java, it is incorrect in C++. 
 
