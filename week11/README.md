@@ -115,7 +115,7 @@ W
 <crash>
 ```
 
-I'm not sure what to do next - can you help?
+I'm not sure what to do next - can you help? It is sufficient to recognize the issues, you don't need to solve them.
 
 ```cpp
 #include <algorithm>
