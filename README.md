@@ -55,8 +55,8 @@ courses. While it is possible to use other IDEs, only Cevelop is:
 | 07   | [L7](week07)           | [E7](week07/README.md) ([PDF](/../-/jobs/artifacts/master/file/week07.pdf?job=week07))  | Advanced Templates / Iterators                         | **Testat 2**   |
 | 08   | [L8](week08)           | [E8](week08/README.md) ([PDF](/../-/jobs/artifacts/master/file/week08.pdf?job=week08))  | Compile-Time Computation / Literal Types / SFINAE      |                |
 | 09   | [L9](week09)           | [E9](week09/README.md) ([PDF](/../-/jobs/artifacts/master/file/week09.pdf?job=week09))  | Traits for Conversion / User Defined Literals          |                |
-| 10   | [L10](week10)          | [E10](week10/README.md) ([PDF](/../-/jobs/artifacts/master/file/week10.pdf?job=week10)) | Networking (ASIO) / Multi-Threading                     |                |
-| 11   | L11                    |                                                                                         | Memory Model                                           | **Testat 3**   |
+| 10   | [L10](week10)          | [E10](week10/README.md) ([PDF](/../-/jobs/artifacts/master/file/week10.pdf?job=week10)) | Networking (ASIO) / Multi-Threading                    |                |
+| 11   | [L11](week11)          | [E11](week11/README.md) ([PDF](/../-/jobs/artifacts/master/file/week11.pdf?job=week11)) | Mutexes and Memory Model                               | **Testat 3**   |
 | 12   | L12                    |                                                                                         | Exception Safety / Advanced Library Design             |                |
 | 13   | L13                    |                                                                                         | C++ Standardization (Insights by a Committee Member)   |                |
 | 14   | L14                    |                                                                                         | Build Systems                                          |                |
