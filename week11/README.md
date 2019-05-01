@@ -3,6 +3,8 @@
 In this exercise...
 
 * ... you will implement a thread-safe container
+* ... apply atomics to the Peterson mutex in C++
+* ... analyze code with data races and race conditions
 
 
 # 1. TESTAT 3: `BoundedQueue` with Timed Operations
