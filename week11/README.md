@@ -13,7 +13,7 @@ In this exercise you will wrap your `BoundedBuffer` in a thread-safe `BoundedQue
 
 Please form groups of 1-3 students for testat hand-in:
 * Send an email to [Thomas Corbat](mailto:thomas.corbat@hsr.ch)
-* ***Subject***: `[CPlA-Testat-2] hsrname1 hsrname2 hsrname3`
+* ***Subject***: `[CPlA-Testat-3] hsrname1 hsrname2 hsrname3`
 * Content: `BoundedQueue.h`
 * You will get feedback as soon as possible
 * Hand-in deadline: Sunday 12. May 2019 23:59
