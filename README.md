@@ -98,6 +98,9 @@ Libraries:
 Collection of C++ Resources:
 * https://github.com/MattPD/cpplinks
 
+Exercises with Solutions
+* The Modern C++ Challenge (Available only at HSR internally): https://ebookcentral.proquest.com/lib/fh-ostschweiz/detail.action?docID=5400397&query=bancila
+
 ---
 keywords:
 - c++
