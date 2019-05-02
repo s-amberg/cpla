@@ -36,5 +36,5 @@ int main () {
 	t2.join();
 	auto const endTime = std::chrono::high_resolution_clock::now();
 	auto const duration = std::chrono::duration_cast<std::chrono::milliseconds>(endTime - startTime);
-	std::cout << "Counter " << counter.current() << " primes in " << duration.count() << "ms" << std::endl;
+	std::cout << "Counter " << counter.current() << " result in " << duration.count() << "ms" << std::endl;
 }
