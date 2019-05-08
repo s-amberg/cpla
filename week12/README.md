@@ -37,7 +37,7 @@ The copy operations, i.e. copy constructor and copy assignment operations, depen
 * Copy assignment is exception neutral and forwards exceptions thrown while copying the elements.
 * Elements already copied have to be cleaned up properly.
 * If an exception occurs during copy assignment, the `this` object must not be modified! (Strong Guarantee)
-** You can apply the copy-swap idiom to achieve this
+  * You can apply the copy-swap idiom to achieve this
 
 
 
