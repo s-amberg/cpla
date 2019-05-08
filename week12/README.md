@@ -43,10 +43,28 @@ The copy operations, i.e. copy constructor and copy assignment operations, depen
 
 # 2. Pimpl Idiom
 
+In this exercise we use an adapted version of Felix Morgner's [Building Reusable Libraries](https://github.com/fmorgner/building-reusable-libraries/) examples. In the [template](./exercise_templates/w12_template_02_PimplUnicorn) CUTE project you find the `Unicorn` class, which is tested by the test cases in the `tests` directory. To demonstrate the benefit of the Pimpl Idiom we have created separate header and source files for every test case.
 
 ## Pimpl with `std::unique_ptr`
+Adapt the `Unicorn` class to use the Pimpl Idiom. Hide all non-public members in the `UnicornImpl` class, which is local to the `Unicorn.cpp` file. Use a `std::unique_ptr` for the `pimpl` pointer.
+
+* Which test cases cannot be compiled without adding explicit functionality to the `Unicorn` class after applying the Pimpl Idiom?
+* Which special member functions' default implementation can be used to reenable their corresponding functionality?
+* What are the advantages and disadvantages if you used an `std::shared_ptr` instead?
 
 
+## Advanced: Pimpl Pointer (Optional)
+Due to the requirement of the `std::unique_ptr` class template to be able to resolve the elements constructor at the point of declaration, unless an custom deleter is supplied, we need to dclare the destructor of `Unicorn`. However, it would also be possible to declare the `std::unique_ptr<class Unicorn, void(*)(class Unicorn *)` with the explicit deleter function type as second template argument. This lifts the requirement of the destructor `~Unicorn` being known upfront.
 
-## Advanced Optional: Pimpl Pointer
+* Create an alias template `PimplPointer<T>` that aliases `std::unique_ptr` for the given type and the deleter function, as mentioned above.
+* Add a factory function `makeUniquePimpl()` that creates a `PimplPointer`. It takes any number of arguments and forwards them to the heap construction of the `T` element, which has to be stored in the `PimplPointer`. Additionally, as the second argument for the construction of the `PimplPointer`, a function has to be supplied for destroying the `T` object.
+* Adapt `Unicorn` to use the `PimplPointer`.
+* Which special member functions can now have their declaration removed?
+* Did the size of a `Unicorn` change?
+
+
+***Hints:***
+
+* Heap allocation of `T` requires explicit call of `new`.
+* For cleanup the `std::destroy_at` function can be used.
 
