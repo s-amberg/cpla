@@ -51,6 +51,7 @@ Adapt the `Unicorn` class to use the Pimpl Idiom. Hide all non-public members in
 * Which test cases cannot be compiled without adding explicit functionality to the `Unicorn` class after applying the Pimpl Idiom?
 * Which special member functions' default implementation can be used to reenable their corresponding functionality?
 * What are the advantages and disadvantages if you used an `std::shared_ptr` instead?
+* You might have recognized that the `calculateAltitude()` member function has `int` as return type. Change the return type to `std::size_t` in the implementation with and without the Pimpl Unicorn. Can you spot a difference in the number of files that need to be compiled?
 
 
 ## Advanced: Pimpl Pointer (Optional)
