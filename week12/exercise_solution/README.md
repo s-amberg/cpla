@@ -38,3 +38,7 @@ After applying the Pimpl Idiom you lose copyability and movability of the `Unico
 If you would use an `std::shared_ptr` instead declaring the destructor, move and copy operations would not be required. The `Unicorn` objects would still be copyable. However, the copies would be shallow copies! Therefore, the semantics of `Unicorn` are changed. Furthermore, the counters used in an `std::shared_ptr` require memory, are atomic and have a small run-time overhead.
 
 Recompilation: Only the `Unicorn.o` file should be recompiled after you have changed the return type of `calculateAltitude()` for the Pimpl version. While in the initial version all test objects need to be recompiled!
+
+## Pimpl with Pimpl Pointer
+
+With the `PimplPtr` the destructor and move operations need to be user declared. But the size of a `Unicorn` object increases from one pointer to two. Usually this is an increase from `8` to `16` byte.
