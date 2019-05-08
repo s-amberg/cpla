@@ -1,4 +1,4 @@
-# Exercise 12 - Exception Safety and PIMPL
+# Exercise 12 - Exception Safety and Pimpl Idiom
 
 In this exercise...
 
