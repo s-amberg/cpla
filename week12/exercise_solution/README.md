@@ -24,8 +24,8 @@ You should be able to implement the following member functions providing the str
 * Copy Assignment Operator - even if the elements are `noexcept` constructible you still have memory allocation that might throw. The Copy-Swap Idiom helps ensuring the guarantee.
 * `push()` - if the elements provide the corresponding operation (move/copy) as `noexcept` this function can be `noexcept` too.
 * `pop()` - if the elements are `noexcept` destructible, which they should be.
-* `front()`
-* `back()`
+* `front()` - if the buffer is empty an exception is thrown
+* `back()` - if the buffer is empty an exception is thrown
 
 
 
