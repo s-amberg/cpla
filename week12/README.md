@@ -55,7 +55,7 @@ Adapt the `Unicorn` class to use the Pimpl Idiom. Hide all non-public members in
 
 
 ## Advanced: Pimpl Pointer (Optional)
-Due to the requirement of the `std::unique_ptr` class template to be able to resolve the elements constructor at the point of declaration, unless an custom deleter is supplied, we need to dclare the destructor of `Unicorn`. However, it would also be possible to declare the `std::unique_ptr<class Unicorn, void(*)(class Unicorn *)` with the explicit deleter function type as second template argument. This lifts the requirement of the destructor `~Unicorn` being known upfront.
+Due to the requirement of the `std::unique_ptr` class template to be able to resolve the elements constructor at the point of declaration, unless an custom deleter is supplied, we need to dclare the destructor of `Unicorn`. However, it would also be possible to declare the `std::unique_ptr<class UnicornImpl, void(*)(class UnicornImpl *)>` with the explicit deleter function type as second template argument. This lifts the requirement of the destructor `~Unicorn` being known upfront.
 
 * Create an alias template `PimplPointer<T>` that aliases `std::unique_ptr` for the given type and the deleter function, as mentioned above.
 * Add a factory function `makeUniquePimpl()` that creates a `PimplPointer`. It takes any number of arguments and forwards them to the heap construction of the `T` element, which has to be stored in the `PimplPointer`. Additionally, as the second argument for the construction of the `PimplPointer`, a function has to be supplied for destroying the `T` object.
