@@ -21,6 +21,7 @@ before_script:
   - git config --global --remove-section filter.lfs || true
   - export JOB_DIR=${JOB_DIR:-${CI_JOB_NAME/-Solutions/}}
   - git config core.hooksPath /gitinfo-hooks/
+  - git reset --hard
   # checkout again to execute custom git-hooks
   - git checkout $CI_COMMIT_SHA
   - git clean -dxf
