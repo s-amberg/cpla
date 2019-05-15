@@ -21,5 +21,5 @@ namespace cppug {
 ### Your Task
 
 * Implement the hourglass interface in the Fancy (Shared Library). 
-** Add a `fancy.h` header that offers the function `cppug_be_fancy_on_stdout(char const * const entitiy)`.
-** Implement the function in the `fancy.cpp` source file.
+  * Add a `fancy.h` header that offers the function `cppug_be_fancy_on_stdout(char const * const entitiy)`.
+  * Implement the function in the `fancy.cpp` source file.
