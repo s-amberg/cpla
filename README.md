@@ -58,7 +58,7 @@ courses. While it is possible to use other IDEs, only Cevelop is:
 | 10   | [L10](week10)          | [E10](week10/README.md) ([PDF](/../-/jobs/artifacts/master/file/week10.pdf?job=week10)) | Networking (ASIO) / Multi-Threading                    |                |
 | 11   | [L11](week11)          | [E11](week11/README.md) ([PDF](/../-/jobs/artifacts/master/file/week11.pdf?job=week11)) | Mutexes and Memory Model                               | **Testat 3**   |
 | 12   | [L12](week12)          | [E12](week12/README.md) ([PDF](/../-/jobs/artifacts/master/file/week12.pdf?job=week12)) | Exception Safety / Advanced Library Design             |                |
-| 13   | L13                    |                                                                                         | C++ Standardization (Insights by a Committee Member)   |                |
+| 13   | [L13](week13)          | [E13](week13/README.md) ([PDF](/../-/jobs/artifacts/master/file/week13.pdf?job=week13)) | C++ Standardization (Insights by a Committee Member)   |                |
 | 14   | L14                    |                                                                                         | Build Systems                                          |                |
 | 15   | Ascension Day          |                                                                                         |                                                        | **No Lecture** |
 
