@@ -23,3 +23,10 @@ namespace cppug {
 * Implement the hourglass interface in the Fancy (Shared Library). 
   * Add a `fancy.h` header that offers the function `cppug_be_fancy_on_stdout(char const * const entitiy)`.
   * Implement the function in the `fancy.cpp` source file.
+  * Try to use the library in the different environments (C++, C and Python)
+  
+***Note:***
+* The shared library has to be compiled with the flags `-fPIC` and `fvisibility=hidden`.
+* If you start the executables from Cevelop they need to be able to find the shared library. You can either copy the compiled library into the `Debug` directory of the executables or adapt the the run configuration.
+  * In the `Environment` tab click `Select...` and tick the `PATH` variable. Append the location of the shared library. e.g. `;${workspace_loc:/w13_solution_01_FancyLibHourglass/Debug};`
+* You might need to adapt the library name in the Python script.
