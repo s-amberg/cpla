@@ -15,7 +15,7 @@ namespace cppug {
 }
 ```
 * Doge (C++ Executable Application) - An executable project that accesses the `be_fancy` function through an overload version of `be_fancy`.
-* Walrus (C Executable Application) - A C executable project that accesses the `be_fance` function through the C API `cppug_be_fancy_on_stdout(char const * const entity)`, which you will need to implement.
+* Walrus (C Executable Application) - A C executable project that accesses the `be_fancy` function through the C API `cppug_be_fancy_on_stdout(char const * const entity)`, which you will need to implement.
 * Python (A Python Script) - `fancy_python.py` loads a shared library and calls the `cppug_be_fancy_on_stdout` function in the shared library, wrapped in its own `be_fancy` function.
 
 ### Your Task
