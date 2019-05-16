@@ -1,4 +1,4 @@
-#include "../Wizard.h"
+#include "Wizard.h"
 #include "WizardHidden.h"
 #include "WizardIngredients.h"
 #include <cassert>
