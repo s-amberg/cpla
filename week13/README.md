@@ -28,5 +28,6 @@ namespace cppug {
 ***Note:***
 * The shared library has to be compiled with the flags `-fPIC` and `-fvisibility=hidden` (The visibility won't affect libraries on Windows).
 * If you start the executables from Cevelop they need to be able to find the shared library. You can either copy the compiled library into the `Debug` directory of the executables or adapt the the run configuration.
-  * In the `Environment` tab click `Select...` and tick the `PATH` variable. Append the location of the shared library. e.g. `;${workspace_loc:/w13_solution_01_FancyLibHourglass/Debug};`
+  * In the `Environment` tab click `Select...` and tick the `PATH` variable. Append the location of the shared library. e.g. `;${workspace_loc:/w13_template_01_FancyLibHourglass/Debug};`
+  * On Linux you need to set the `LD_LIBRARY_PATH` instead of the `PATH` variable.
 * You might need to adapt the library name in the Python script.
