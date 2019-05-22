@@ -1,0 +1,10 @@
+SOURCES = $(wildcard *.cpp)
+OBJECTS = $(patsubst %.cpp,%.o,$(SOURCES))
+
+all: BoundedQueueTests
+
+BoundedQueueTests: $(OBJECTS)
+	g++ -o BoundedQueueTests $^ -lpthread
+
+%.o: %.cpp
+	g++ -Icute -std=c++17 -c $<
