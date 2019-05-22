@@ -100,23 +100,26 @@ week06:
 
 week07:
   extends: .job_template_exercise
-  
+
 week08:
   extends: .job_template_exercise
-  
+
 week09:
   extends: .job_template_exercise
-  
+
 week10:
   extends: .job_template_exercise
-  
+
 week11:
   extends: .job_template_exercise
-  
+
 week12:
   extends: .job_template_exercise
-  
+
 week13:
+  extends: .job_template_exercise
+
+week14:
   extends: .job_template_exercise
 
 Create-Solutions-And-Cleanup-Markdown:
