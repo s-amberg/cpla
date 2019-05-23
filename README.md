@@ -88,6 +88,7 @@ Links from the Lecture:
 IDE and Compilers:
 * Cevelop: https://www.cevelop.com
 * MinGW (from STL): https://nuwen.net/mingw.html
+* CMake: https://cmake.org/
 
 Libraries:
 * Boost Library: https://www.boost.org/
