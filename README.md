@@ -47,19 +47,19 @@ courses. While it is possible to use other IDEs, only Cevelop is:
 | Week | Lecture                | Exercise                                                                                | Topics                                                 | Remarks        |
 |------|------------------------|-----------------------------------------------------------------------------------------|--------------------------------------------------------|----------------|
 | 01   | [L1](week01)           | [E1](week01/README.md) ([PDF](/../-/jobs/artifacts/master/file/week01.pdf?job=week01))  | Introduction / C++ Recap                               |                |
-| 02   | [L2](week02)           | [E2](week02/README.md) ([PDF](/../-/jobs/artifacts/master/file/week02.pdf?job=week02))  | New Features in C++17                                  |                |
-| 03   | [L3](week03)           | [E3](week03/README.md) ([PDF](/../-/jobs/artifacts/master/file/week03.pdf?job=week03))  | Rvalue References / Move Semantics / Copy Elision      |                |
-| 04   | [L4](week04)           | [E4](week04/README.md) ([PDF](/../-/jobs/artifacts/master/file/week04.pdf?job=week04))  | Type Deduction                                         | **Testat 1**   |
-| 05   | [L5](week05)           | [E5](week05/README.md) ([PDF](/../-/jobs/artifacts/master/file/week05.pdf?job=week05))  | Perfect Forwarding                                     |                |
-| 06   | [L6](week06)           | [E6](week06/README.md) ([PDF](/../-/jobs/artifacts/master/file/week06.pdf?job=week06))  | Explicit Heap Memory Management                        |                |
-| 07   | [L7](week07)           | [E7](week07/README.md) ([PDF](/../-/jobs/artifacts/master/file/week07.pdf?job=week07))  | Advanced Templates / Iterators                         | **Testat 2**   |
-| 08   | [L8](week08)           | [E8](week08/README.md) ([PDF](/../-/jobs/artifacts/master/file/week08.pdf?job=week08))  | Compile-Time Computation / Literal Types / SFINAE      |                |
+| 02   | [L2](week02)           | [E2](week02/README.md) ([PDF](/../-/jobs/artifacts/master/file/week02.pdf?job=week02))  | Rvalue References / Move Semantics / Copy Elision      |                |
+| 03   | [L3](week03)           | [E3](week03/README.md) ([PDF](/../-/jobs/artifacts/master/file/week03.pdf?job=week03))  | Type Deduction / Perfect Forwarding                    |                |
+| 04   | [L4](week04)           | [E4](week04/README.md) ([PDF](/../-/jobs/artifacts/master/file/week04.pdf?job=week04))  | Explicit Heap Memory Management                        | **Testat 1**   |
+| 05   | [L5](week05)           | [E5](week05/README.md) ([PDF](/../-/jobs/artifacts/master/file/week05.pdf?job=week05))  | Iterators                                              |                |
+| 06   | [L6](week06)           | [E6](week06/README.md) ([PDF](/../-/jobs/artifacts/master/file/week06.pdf?job=week06))  | Advanced Templates / SFINAE / Tags for Conversion      |                |
+| 07   | [L7](week07)           | [E7](week07/README.md) ([PDF](/../-/jobs/artifacts/master/file/week07.pdf?job=week07))  | Compile-Time Computation / Literal Types / UDL         | **Testat 2**   |
+| 08   | [L8](week08)           | [E8](week08/README.md) ([PDF](/../-/jobs/artifacts/master/file/week08.pdf?job=week08))  | Multi-Threading / Mutexes                              |                |
 |      | Easter Break           |                                                                                         |                                                        | **No Lecture** |
-| 09   | [L9](week09)           | [E9](week09/README.md) ([PDF](/../-/jobs/artifacts/master/file/week09.pdf?job=week09))  | Traits for Conversion / User Defined Literals          |                |
-| 10   | [L10](week10)          | [E10](week10/README.md) ([PDF](/../-/jobs/artifacts/master/file/week10.pdf?job=week10)) | Networking (ASIO) / Multi-Threading                    |                |
-| 11   | [L11](week11)          | [E11](week11/README.md) ([PDF](/../-/jobs/artifacts/master/file/week11.pdf?job=week11)) | Mutexes and Memory Model                               | **Testat 3**   |
-| 12   | [L12](week12)          | [E12](week12/README.md) ([PDF](/../-/jobs/artifacts/master/file/week12.pdf?job=week12)) | Exception Safety / Advanced Library Design             |                |
-| 13   | [L13](week13)          | [E13](week13/README.md) ([PDF](/../-/jobs/artifacts/master/file/week13.pdf?job=week13)) | C++ Standardization (Insights by a Committee Member)   |                |
+| 09   | [L9](week09)           | [E9](week09/README.md) ([PDF](/../-/jobs/artifacts/master/file/week09.pdf?job=week09))  | Memory Model / Atomics                                 |                |
+| 10   | [L10](week10)          | [E10](week10/README.md) ([PDF](/../-/jobs/artifacts/master/file/week10.pdf?job=week10)) | Lockfree Multi-Threading / Proactor (ASIO)             |                |
+| 11   | [L11](week11)          | [E11](week11/README.md) ([PDF](/../-/jobs/artifacts/master/file/week11.pdf?job=week11)) | Networking (ASIO)                                      | **Testat 3**   |
+| 12   | [L12](week12)          | [E12](week12/README.md) ([PDF](/../-/jobs/artifacts/master/file/week12.pdf?job=week12)) | Error Handling / Exception Safety                      |                |
+| 13   | [L13](week13)          | [E13](week13/README.md) ([PDF](/../-/jobs/artifacts/master/file/week13.pdf?job=week13)) |  Advanced Library Design / Hourglass / PIMPL           |                |
 | 14   | [L14](week14)          | [E14](week14/README.md) ([PDF](/../-/jobs/artifacts/master/file/week14.pdf?job=week14)) | Build Systems                                          |                |
 
 
