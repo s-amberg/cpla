@@ -1,7 +1,7 @@
 # Module: C++ Advanced
 
 This repository hosts the contents for the C++ Advanced (CPlA) module at
-HSR. Current run **Spring Semester 2019**.
+HSR. Current run **Spring Semester 2020**.
 
 ## Goal
 
