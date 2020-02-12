@@ -18,8 +18,8 @@ from CPl on how to do it.
 
 ## Update Your Compiler
 
--   Install a recent version of GCC (version 8.2) or Clang (version
-    7.0.0).
+-   Install a recent version of GCC (version 9.2) or Clang (version
+    9.0.0).
 -   For Windows MinGW with a current GCC can be downloaded
     [here](https://nuwen.net/mingw.html).
 
@@ -27,14 +27,6 @@ from CPl on how to do it.
 
 -   Get the latest Cevelop version [here](https://www.cevelop.com)
 
-## Install Stylechecker and Constificator
-
-Cevelop offers helpful plug-ins, you should install:
-
--   Install the Ctylechecker and Constificator plug-ins from the
-    predefined update site (Help -\> Install new software...)
--   The required update site is preconfigured
-    (https://www.cevelop.com/update/latest)
 
 # 1. Easy C++ Repetition Tasks
 
@@ -159,7 +151,7 @@ std::cout << quarter << ' ' << static_cast<double>(half) << '\n'; //prints 1/4 0
 At the end of the C++ module you had an assignment in the exercises to
 create a `vector`-like container that features the capabilities to
 access its elements with negative indices
-(https://wiki.ifs.hsr.ch/CPlusPlus/ExW12). In the C++ Advanced module we
+(https://wiki.ifs.hsr.ch/CPlusPlus/ExW11). In the C++ Advanced module we
 will have an in-depth look at the implementation of bounded buffer
 container. We will expect that you are familiar and can easily implement
 containers like the `dynArray` example. Revisit the implementation of
