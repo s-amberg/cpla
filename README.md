@@ -65,6 +65,11 @@ courses. While it is possible to use other IDEs, only Cevelop is:
 
 ### Useful Links
 
+Discord for C++ Modules:
+
+[Invite Link](https://discord.gg/vrFXkEJ)
+
+
 Language References:
 * CPP Reference: https://www.cppreference.com/
 * CPlusPlus.com: http://www.cplusplus.com
