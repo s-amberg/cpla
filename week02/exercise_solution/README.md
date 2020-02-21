@@ -1,4 +1,4 @@
-# Exercises Week 3 - Expected Observations for the Tracer Assignment
+# Exercises Week 2 - Expected Observations for the Tracer Assignment
 
 ## Output of Tracer
 * An extended `main()` might look like this for better segmentation of the output:
@@ -168,7 +168,7 @@ sink = std::move(source);
 ```
 
 * The behavior changes only slightly for the original `main` of the Tracer. Instead of the copy-constructor the move-constructor is used when initializing the `foo` parameter with `inner`. We can observe that the Tracers that have been moved from are still destroyed. We see that in the output at the destructor calls `Tracer destroyed: sink moved to`. We also see that the move operation modifies the contents of the moved object. For example `inner.show()` results in the output `Tracer: inner moved away`, showing that the name of `inner` has been overwritten.
-* When disabling copy-elision we can observe an additional move operation (origined at `auto trace = bar(inner)`) when calling `trace.show()`. The output `Tracer: bar` has changed to `Tracer: bar moved`, which indicates one additional move constructions. Before C++17 there was an additional move construction at the initialization of `tracer` to be elided, which is now mandatory.
+* When disabling copy-elision we can observe an additional move operation (has origin at `auto trace = bar(inner)`) when calling `trace.show()`. The output `Tracer: bar` has changed to `Tracer: bar moved`, which indicates one additional move constructions. Before C++17 there was an additional move construction at the initialization of `tracer` to be elided, which is now mandatory.
 * For the move-assignment we implemented the operator to swap the names (while in the move-constructor we just add the `" moved away` suffix). We can observe the destruction of the `source` variable at the output `Tracer destroyed: sink moved away`
 * The call `std::move(m)` does not have observable behavior. Internally, the `std::move` function is just a cast, which does not have any run-time effect by itself. Therefore, we don't have observable behavior here.
 
@@ -178,7 +178,7 @@ sink = std::move(source);
 
 When adding Tracers to the vector the copy operations are just replaced by the corresponding move operations. But, there is a change when moving the vector to another vector! This operation does not have any effect on the contained Tracer objects at all! Because they are left in the same memory location no additional move operation happens.
 
-* ***Advanced:*** There might be one peculiar behavior in case our Tracer provides copy AND move operations. If the compiler cannot guarantee that the move operation does not throw an exception it prefers the copy operations when allocating a new array (on resize). In this case copy and move operations on the Tracer are mixed although we work with a moveable type. You can overcome this by declaring the move constructor `noexcept`. The reason for this behavior is exception safety. If a copy operation on an element fails, the resize operation shall not destroy the original vector. If the exception occurs in the middle of a copy operation the newly allocated memory, along with all copied objects, can just be destoryed. If the same happens during a move operation some of the valid objects reside in the old array. Since another exception might happen while moving the objects from the new array back to the old array for restoring the previous state, the vector could end up in a broken state.
+* ***Advanced:*** There might be one peculiar behavior in case our Tracer provides copy AND move operations. If the compiler cannot guarantee that the move operation does not throw an exception it prefers the copy operations when allocating a new array (on resize). In this case copy and move operations on the Tracer are mixed although we work with a movable type. You can overcome this by declaring the move constructor `noexcept`. The reason for this behavior is exception safety. If a copy operation on an element fails, the resize operation shall not destroy the original vector. If the exception occurs in the middle of a copy operation the newly allocated memory, along with all copied objects, can just be destroyed. If the same happens during a move operation some of the valid objects reside in the old array. Since another exception might happen while moving the objects from the new array back to the old array for restoring the previous state, the vector could end up in a broken state.
 
 ## Moving vs. Copying Large Objects
 It takes some elements to observe a timing difference between copy and move operations. But even on fast computers when copying or moving 1GB of data the difference should be measurable.
