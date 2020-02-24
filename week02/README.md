@@ -14,7 +14,7 @@ Goals of this weeks exercises:
 
 We have prepared an exercise project for you. It contains the `Tracer`
 class and code it is used in. You find the exercise
-[here](exercise_templates/w02_template_01_Tracer).
+[here](./exercise_templates/w02_template_01_Tracer).
 
 ## Output of Tracer
 
