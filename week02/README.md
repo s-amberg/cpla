@@ -190,7 +190,7 @@ Please form groups of 2-3 students for testat hand-in:
 * Hand-in deadline: Sunday 8. March 23:59 (MEZ)
 
 
-A project template with predefined tests is available [here](exercise_templates/w02_template_01_BoundedBuffer).
+A project template with predefined tests is available [here](./exercise_templates/w02_template_02_BoundedBuffer).
 
 ## Introduction
 
