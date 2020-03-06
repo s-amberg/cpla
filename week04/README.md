@@ -1,128 +1,131 @@
-# Exercises Week 4
+# Exercises Week 4 - Heap Memory Management
+In these exercises you will modify your `BoundedBuffer` to always use heap memory for storing its elements and see the possible impact of overloading the `new` and `delete` operators when using the affected type in your code and in conjunction with the standard library.
 
-Goals:
+# 1. Experimenting with Class-specific Overloads of `operator new/operator delete`
+Take the class `not_on_heap` and write CUTE unit tests that demonstrate the inability to allocate objects of this class on the heap. Attempt the following:
 
-* In this week's exercises you will implement a container with an interface stimilar to a standard container
-* You will explicitly implement the rule of five special member functions
-* You solidify the understanding of type deduction in the trivia program
-
-# 1. `BoundedBuffer`
-
-In this exercise you will create the fundamental data structure for a `BoundedBuffer`. This will be an ongoing task during. You will add and change features step-by-step during the semester. After certain milestones you will hand your result in as testat exercises to be reviewed by the exercise supervisor.
-
-Please form groups of 1-3 students for testat hand-in:
-* Send an email to [Thomas Corbat](mailto:thomas.corbat@hsr.ch)
-* ***Subject***: `[CPlA-Testat-1] hsrname1 hsrname2 hsrname3 hsrname4`
-* Content: `BoundedBuffer.h`
-* You will get feedback as soon as possible
-* Hand-in deadline: Sunday 24. March 23:59 (MEZ)
-
-
-A project template with predefined tests is available [here](exercise_templates/w04_template_01_BoundedBuffer).
-
-## Introduction
-`BoundedBuffers` are used in environments that have one or many producers and an consumers. The `BoundedBuffer` is used as a shared data structure for passing elements from the producer to the consumer. A `BoundedBuffer` has a fixed capacity and therefore, features an upper limit of maximum number of elements it can contain. Usually, it is implemented as a *FIFO* queue. Consumers must not be able to retrieve data from an empty buffer and likewise a producer on the other hand, must not be able to write data into a full buffer.
-
-Your implementation will use an [`std::array`](http://en.cppreference.com/w/cpp/container/array) as base data structure and will behave like a circular buffer.
-
-Your `BoundedBuffer` features the following API:
-* `empty` – queries whether the buffer is empty
-* `full` – queries whether the buffer is full
-* `size` – queries the number of elements currently in the buffer
-* `front` – returns the first element in the buffer; it allows modification of the first element
-* `back` – returns the last element in the buffer; it allows modification of the last element
-* `push` – inserts a new element into the buffer
-* `pop` – removes the first element from the buffer
-* `swap` – swaps the contents with another `BoundedBuffer` (parameter)
-
-
-Furthermore, your `BoundedBuffer` must feature the following *member types*:
-* `value_type`
-* `container_type`
-* `reference`
-* `const_reference`
-* `size_type`
-
-You get test suites for each task. Our recommendation is adding one test at a time. You can start by out-commenting every test. Adding one test will usually result in a red bar. Write just as much code to get the required functionality done (compiles and results in a green bar). Then start over with the next test case.
-
-## Member Function Definitions (Signatures)
-
-First implement the declarations of `BoundedBuffer`s members, without any logic, to get it compiled.
-* ***Test-Suite***: `bounded_buffer_signatures_suite`
-
-***Hint:*** If you are unsure about the signatures of the individual member functions you can get inspiration from the standard library. The [`std::queue`](http://en.cppreference.com/w/cpp/container/queue) offers a similar interface to your `BoundedBuffer`.
-
-***Note:*** Some of the tests we provide are not really sensible for a real test scenario. But they will help you to get the signatures of your member functions right. There is a dependency to ***Boost*** (`type_index.h`). Accordingly, you need to have the [Boost library](http://www.boost.org) installed on your system and reference it from your project.
-
-***Attention:*** The `boost` headers offered by the *CUTE* project wizard won't be sufficient, as they have an obsolete version.
-
-
-## Behavior of a default-constructed `BoundedBuffer`
-
-* Now implement the behavior of the member functions for a default-constructed `BoundedBuffer`. As always avoid *Undefined Behavior*.
-* `empty` - returns `true`
-* `full` – returns `false`, unless the buffer has been created with capacity `0`
-* `size` – returns `0`
-* `front` – throws an exception (`std::logic_error`)
-* `back` – throws an exception (`std::logic_error`)
-* `push` – inserts an element. However, you cannot observe this currently and you can ignore actually putting the element into a data strcture for storage. If the `BoundedBuffer` has size `0` and exception (`std::logic_error`) will be thrown, because the buffer is `full()`.
-* `pop` – throws an exception (`std::logic_error`)throws an exception (`std::logic_error`)
-* `swap` – Nothing happens for empty buffer
-
-* ***Test-Suite:*** `bounded_buffer_default_behavior_suite`
-
-
-## Contents of a `BoundedBuffer`
-
-Since you now have the buffer's interface implemented, you can start implementing the required logic. You have two possible approaches to implement an array-based circular buffer. You should already be familiar with that from the *Algorithmen & Datanstrukturen* lecture. Nevertheless, we will summarize the possibilities here:
-* Either you work with some kind of pointers, in this case the array indices, to mark the start and end positions. The start position points to the first element and the end position points beyond the last element. In case start and end positions point to the same location the buffer is empty. This effectively reduces the number of possible elements in the buffer by one, because a full buffer would have the same state regarding start and end pointer. This would leave the two states indistinguishable only by the indicies. Therefore, additional information would be required like a flag indication whether the buffer is empty or the fundamental array would need to have larger capacity, (`+1`) than the buffers capacity. 
-* Alternatively, you only store the index of the first element, similar to the start position above. But instead of also storing the end position, you just store the number of elements currently in the buffer. This allows using an array of the actual buffer capacity.
-
-The latter approach is simpler to implement and easier to read. If you decide to implement the first approach you need to adapt the test checking the `BoundedBuffer::container` type.
-
-Beside the general approach the behvior of the `BoundedBuffer` should be self-explanatory:
-* As long as the buffer is not full you can push new elements into the buffer, otherwise an exception will be thrown
-* As long as the buffer is not empty you can remove elements from the buffer, otherwise an exception will be thrown
-* The basic principle of the `BoundedBuffer` is a *FIFO* queue. The element that is inserted first (`push()`) is removed first (`pop()`). The element first inserted can be accessed with `front()`. `back()` access the last inserted element.
-* It is possible to exchange the content of two `BoundedBuffer`s using `swap(BoundedBuffer)`
-* Prefer using the `array::at()` member function to recognize accidental out of bounds element access.
-
-* Test suite: `bounded_buffer_content_suite`
-
-Furthermore, there is an additional test suite that ensures the correct use of move and copy operations on the elements. This suite works with an mocked element type that tracks its memory operations and asserts the correct use counts afterwards. Be cautious to apply the correct move and copy operations!
-
-* TestSuite: `bounded_buffer_semantic_suite`
-
-
-## Constructors
-
-So far the implicitly available constructors have been sufficient. Now explicitly implement them yourself. You need to make sure they use the suitable move or copy operations on the elements. The behavior and the tests of your `BoundedBuffer` will not change if you do it correctly. Implement the following special member functions:
-* Default constructor
-* Copy constructor
-* Move constructor
-* Copy assignment operator
-* Move assignment operator
-
-***Note:*** Currently, this task seems rather pointless. Later we will modify the `BoundedBuffer` to facilitate heap memory, this will require the implementation of our own constructors and assignment operators. It will be easier if you already have the correct structure as a starting point then.
-
-
-
-# 2. Type Deduction Trivia
-
-In the lecture you have been taught about type deduction for function templates (and `auto`), e.g. in source code as follows:
+* Create an instance of `not_on_heap` as a local variable
+  * How can you check that this actually works? You can extend the class!
+* Write a test that demonstrates one can not use `new` to allocate an object of such a class on the heap.
+* Write a test that demonstrates one can not use array-`new` to allocate an array of that class on the heap.
+* Write a test that checks whether using an `std::vector<not_on_heap>` still works.
+* What happens if you attempt to use `std::make_unique` with that class?
+* What happens if you attempt to use `(new not_on_heap)` as constructor argument to `std::unique_ptr`?
+* What happens if you use `std::make_shared` to allocate such an object on the heap? ***Hint:*** This requires you to apply the global placement new operator, as `not_on_heap` does not offer one: `::new (ptr) not_on_heap{}`.
+* Can you allocate heap memory separately in a test and then cheat by putting such an object there? ***Note:*** you might need to add a member variable to the class to avoid problems with memory allocation.
 
 ```cpp
-template<typename T>
-void f(T && t) {...}
+struct not_on_heap {
+    static void* operator new(std::size_t sz) {
+    	throw std::bad_alloc{};
+    }
+    static void* operator new[](std::size_t sz){
+    	throw std::bad_alloc{};
+    }
+    static void operator delete(void *ptr) noexcept  {
+    	// do nothing, never called, but should come in pairs
+    }
+    static void operator delete[](void *ptr) noexcept {
+    	// do nothing, never called, but should come in pairs
+    }
+};
 ```
 
-When the template above is instantiated, the type `T` is deduced, which also implies the specific type of the parameter `t`. This deduction follows specific rules, depending on the declared template parameter type (above `T&&`). If you don't recall them exactly, have a look at the corresponding slides. If you have trouble understanding the rules, discuss them with your colleagues or ask your supervisor.
+You can find the solution for this exercise in the [lecture examples](lecture_examples/w04_05_NewDeleteOverload).
 
-Once you are confident, you can play a game we have prepared for you. It's a console-based trivia game which asks you about ten specific cases with a given function template declaration and a corresponding call. You will be asked about the deduced type of `T` and `t`.
-Have fun!
-***Note:*** Maybe you need to add the *Boost* library to the trivia project.
+# 2. BoundedBuffer with dynamic allocation
+
+## Overview
+Take your `BoundedBuffer.h` file and change the implementation and interface.
+
+* Remove the integral type template parameter
+* Add a `size_type` constructor parameter and a corresponding member
+* Replace the `std::array` container member by a pointer to an array that is allocated dynamically on the heap
+* Adjust move and copy operations to deal with the dynamically allocated buffer space.
+  * Make sure, that you do not produce memory leaks and that you do not unnecessarily copy buffer elements when moving from another buffer
+  * You should not copy elements from the *empty* part of the source buffer, since that memory might be uninitialized and thus could result in Undefined Behavior if accessed.
+* Otherwise, your BoundedBuffer should behave similarly to the original one.
 
 
-***Remarks:*** 
-* You can have a look at the source code of the game. But, beware of the `QuestionGenerator.cpp` There is some preprocessor magic in it, which might be tough to understand if you are unfamiliar with it. It was necessary for overcoming the lack of reflection in C++. Don't worry, we won't ask you to know about such stuff in the exam though.
-* The cases are hard-coded, but the actual answers are retrieved from the cases (under the assumption your compiler and boost do a decent job in figuring them out). If you feel you might have missed some of the cases due to the random selection for the trivia, you can use the `printAll` function to see all questions with the correct answers.
+## Detailed Description
+
+A major disadvantage of the `BoundedBuffer`, developed for the first Testat, is requirement to specify the size at compile-time. In this exercise you will change that. You have learned about dynamic heap memory management in the lecture using `new` and `delete`. Apply what you have learned about dynamic heap memory management to improve your `BoundedBuffer` this lifts the necessity to specify the capacity as a template argument. The adapter version allows specifying the capacity through a constructor argument. This does not mean that the buffer now should be resizable, the size is still fix, but it can be specified at run-time.
+
+***Before:***
+```cpp
+BoundedBuffer<S, 23> buffer{};
+```
+
+***After:***
+```cpp
+BoundedBuffer<S> buffer{23};
+```
+
+
+### Data Structure
+You will not be able to use an `std::array` for storing the elements anymore (since it requires knowing the number of elements at compile-time). Instead, allocate an array of `T` objects on the heap using `new T[]`. And store the pointer to that array in your `BoundedBuffer`.
+
+* What is the type of the member variable for storing the elements?
+
+
+### Element Access
+Element access using `at` does not work using the plain array on the heap anymore. Therefore, you need to access the elements with the array index operator `[]`.
+
+```cpp
+T copy = values[0];  //reading the first element
+values[23] = copy;   //writing the 24th element
+```
+
+
+### Special Member Functions
+
+The most interesting part is the implementation of the constructor's and assignment operators. Think about how every special member function should behave:
+
+* Default-Constructor: It probably does not make sense to provide a default constructor. Or what size would it have? zero?
+* `BoundedBuffer(size_type capacity)`: Obviously we need a constructor that allows to specify the capacity of our dynamic `BoundedBuffer`. It needs to establish the invariant of the `BoundedBuffer`. Theoretically, it could be allowed to create a buffer of capacity `0`. Our test cases don't allow that though.
+  * Prevent creation of a `BoundedBuffer` with capacity `0`
+  * Allocate the required memory on the heap
+  * Initialize all members correctly
+* Copy-Constructor: It creates a new `BoundedBuffer` that represents a copy of the argument. After the constructor both `BoundedBuffer` objects must have their own memory for storing the elements.
+  * Allocate the required memory on the heap
+  * Copy the elements from the other `BoundedBuffer`
+  * Initialize the members correctly
+* Move-Constructor: This constructor steals the internal values of the argument. It is imporant that the `BoundedBuffer` passed as argument does not share the heap memory with the `this` object *after* the construction, even though the moved-from object should not be used afterwards (it's in coma state). ***Important Question:*** Why is that?
+* Assignment-Operators: The assignment operators are similar to the corresponding constructor. ***Beware*** similar does not mean exactly the same! While construction always creates new object only the already existing object is involved. This is different during a (copy/move)-assignment, which involves always two existing objects, each with their own resources.
+  * Move-Assignment Operator: The simplest implementation of the move-assignment operator is swapping the `BoundedBuffer` objects. As the argument of move-assignment operator is about to be expiring, the destructor will take care of resource deallocation and we don't need to do that explicitly.
+  * Copy-Assignment Operator: Here the case is different. We need to create a copy of the argument and its resources. That is not very difficult, as we already did that in the copy-constructor. But there's a catch! The resources of the overwritten object need to be released explicitly. Think carefully about what you have to release.
+* Destructor: While implementing the Copy-Assignment Operator you have already thought about what resources/memory to explicitly release. Here you have to do the same.
+
+***Remark:*** You will recognize, if you have implemented the move operations properly, that you now need less move operations. Because only the pointers to the heap allocated array need to be moved the elements are left untouched.
+
+***Question:*** What would be the impact (for you as an implementer and a user of the `BoundedBuffer`) if you provided an `std::initializer_list<T>` constructor that derives the capacity from the number of elements in the list? I.e. the `BoundedBuffer` is created and filled completely with the elements in the list.
+
+You find an updated set of test cases in the exercise template. Our suggestion is again that you import them as a new project and copy your existing `BoundedBuffer.h` file into the tests.
+
+
+## Advanced: Make your BoundedBuffer work with non-default-constructible classes
+For example, the following class would not be default-constructible.
+```cpp
+struct X {
+  X(int i) : x{i}{}
+  int x;
+};
+```
+Allocating arrays (`std::array<X, 5>` or plain C-arrays `X[5]`) of a type that cannot be default constructed, requires specifying the elements of that array upon allocation. Therefore, it is not possible to use an array of `X` as a buffer, as we would need to supply all elements upfront.
+
+The solution will require you to allocate "raw" storage by using `operator new[]` for a reasonably sized array and placement `new` into that array. The most suitable type is `std::byte`. Please make sure, that alignment and sizing of the array follow the rules for the template argument type.
+
+You have to consider the following properties when implementing this feature:
+
+* All constructors have to allocate that `std::byte` array with enough size to hold all elements of the buffer. `sizeof(Type[capacity])` allows you to figure out how many bytes you need to store `capacity` number of `Type` elements.
+* The copy constructor must copy all valid elements from the buffer argument.
+* The move constructor can simply swap its state with the buffer argument's state.
+* Copy assignment can use the copy constructor to clone the other buffer and then just swap the content of the `this` object with the content of the copy.
+* Move assigment can just swap the contents
+* However, both assignments should to nothing when the argument is the same object as the `this` object.
+* The destructor must delete all elements in the buffer before releasing the memory. It must not release non-allocated elements. This is cruicial as the memory (`std::byte[]`) is not aware of its content. Even when managed through a `std::unique_ptr` this will not change. Make sure that elements in the buffer get destructed exactly once (no undestroyed elements and no double deletes)!
+* Accessing the elements (`at()`, etc.) requires correct determination of the memory location and a forceful cast of that location to the element type: `* reinterpret_cast<Type*>(memoryLocation)`.
+
+***Note:*** An updated project with test cases for this exercise is available. We suggest you import this project and copy the `BoundedBuffer.h` from your previous exercise as a starting point. Since you do not allocate arrays of the element type anymore the test cases for `new` and `delete` change, i.e. those operators of the element type are not used anymore. The `bounded_buffer_heap_memory_suite` has been adapted accordingly and is available in the corresponding template project.
+
+
