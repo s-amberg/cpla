@@ -56,3 +56,10 @@ Implement the following features:
   * Is it possible to check that the compilation fails when initializing a `Vector` with different types through a succeeding test?
 
 
+## Optional: Range Constructor
+You can add a range-constructor to your `BoundedBuffer` and add a deduction guide for it.
+Signature of the range-constructor:
+```cpp
+template <typename Iter>
+BoundedBuffer(Iter begin, Iter end);
+```
