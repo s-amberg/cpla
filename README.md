@@ -44,6 +44,8 @@ courses. While it is possible to use other IDEs, only Cevelop is:
 
 ## Lecture Plan and Resources
 
+There is a [SwitchTube channel](https://tube.switch.ch/channels/2a2692d0) that contains lecture videos for remote learning.
+
 | Week | Lecture                | Exercise                                                                                | Topics                                                 | Remarks        |
 |------|------------------------|-----------------------------------------------------------------------------------------|--------------------------------------------------------|----------------|
 | 01   | [L1](week01)           | [E1](week01/README.md) ([PDF](/../-/jobs/artifacts/master/file/week01.pdf?job=week01))  | Introduction / C++ Recap                               |                |
