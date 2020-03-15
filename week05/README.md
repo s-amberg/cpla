@@ -12,7 +12,7 @@ Please form groups of 2-3 students for testat hand-in:
 * ***Subject***: `[CPlA-Testat-2] hsrname1 hsrname2 hsrname3`
 * Content: `BoundedBuffer.h`
 * You will get feedback as soon as possible
-* Hand-in deadline: Sunday 29. March 2020 23:59
+* Hand-in deadline: Sunday 05. April 2020 23:59
 
 ## Iterator for Dynamic Bounded Buffer
 Last week you have implemented a dynamic version of the bounded buffer. Finish that exercise first if you have not already completed it.
