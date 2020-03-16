@@ -28,7 +28,7 @@ int main() {
 	auto b = v.begin();
 	::advance(b, 1);
 
-	std::istringstream input { "asdf" };
+	std::istringstream input { "Input for Stream Iterator" };
 	std::istream_iterator<char> iter { input };
 	::advance(iter, 1);
 }
