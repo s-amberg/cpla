@@ -1,79 +1,57 @@
-# Exercise Week 7 - Advanced Templates
+# Compile-Time Computation
 
-In the following exercises you will practice the implementation of you own iterator types. You will create an iterator for input streams, for creating a sequence of numbers and eventually for your own `BoundedBuffer`.
+If you have not completed it yet, finish the testat exercise first!
 
+Goals:
+In these exercises you will...
 
-# 1. TESTAT 2: BoundedBuffer with iterators (const and non-const) and allowing non-default-constructible elements (Exercise 6.2, from last week)
+* ... observe the effect of compile-time evaluation on the resulting executable binary.
+* ... implement your own literal type
+* ... implement compile-time member functions
 
-In this exercise you will add iterators for to your `BoundedBuffer`.
+## Compile-Time Hashing
 
-Please form groups of 1-3 students for testat hand-in:
-* Send an email to [Thomas Corbat](mailto:thomas.corbat@hsr.ch)
-* ***Subject***: `[CPlA-Testat-2] hsrname1 hsrname2 hsrname3`
-* Content: `BoundedBuffer.h`
-* You will get feedback as soon as possible
-* Hand-in deadline: Sunday 14. April 2019 23:59
+**Context:** You have to write an application that requires a password for accessing higher privilege level for special configurations. This password shall be hard-coded into the binary.
 
-## Iterator for Dynamic Bounded Buffer
-Last week you have implemented a dynamic version of the bounded buffer. Finish that exercise first if you have not already completed it.
+It is probably not a smart idea to store passwords in a program in plain text. As it can be easily extracted from the binary's read only data section. An alternative might be to hash the password first and compare it against the hashed password provided by the user. Nevertheless, it is inconvenient to place password hashes directly into your source code. However, that is not necessary if you have a hashing function that can be called at compile-time.
 
-In this exercise you have to implement `begin` and `end` for your dynamic bounded buffer. This requires your own iterator type, which can cope with the non-consecutive nature of the elements in your heap memory. The implementation of your iterator must be robust, i.e. accesses outside the range specified by `begin` (inclusive) and `end` (exclusive) have to throw exceptions. It is not allowed to increment/decrement your iterator beyond these points (`begin`/`end`).
+We have prepared an example project that uses a constexpr function for hashing an input string: [here](week07/exercise_templates/w07_template_01_CompileTimeHashing)
 
-Create constant and non-constant iterators. Const iterators provide read-only access to the elements, while the non-const iterators allow changing the elements through the iterator. First make both versions work! Then you can try to find a smart way to reuse the parts of your implementation and eliminate code duplication.
+Your task:
 
-**Hints:**
+* Import the project in Cevelop or build it on console (`make`). It is a Makefile project that will compile two versions of a program. One will compute the hash of a password at runtime (`runtime.cpp`) the other will compute the hash of the password at compile-time (`compile_time.cpp`). The make file will also dump (with `objdump`) and scan the contents of the resulting binaries for the expected hash and the password.
+* Check the output to see which implementation contains the password in plain text and which only contains the hash value.
+  * When checking the content you can use the `objdump` command, which is also included in the `Makefile`. Depending on your system and the binary format you will have to check different sections. Umcomment either of the `ODMPSECTION` variables in the `Makefile` to enable showing the corresponding section. Only one section can be displayed:
+    ```make
+    #ODMPSECTION = -j .rodata
+    #ODMPSECTION = -j .rdata
+    ODMPSECTION = -j .data
+    ```
 
-* Define the iterator type as member of the bounded buffer.
-* You are allowed to have two iterator classes (one for `const_iterator` and one for non-const `iterator`).
-* Create corresponding type alias members in `BoundedBuffer`(`iterator` and `const_iterator`).
-* If you struggle to figure out why certain tests are not green you may implement the `<<` operator for your iterator type in the test cases to visualize its state.
-* Use `boost/operators.hpp` to shorten your implementation.
+**Credits:** We have not implemented the compile-time hash functions ourselves, but use an existing implementation of [Chocobo1](https://github.com/Chocobo1/Hash), that is published under GPL3.0.
 
-There is a template project with all the unit tests so far combined. Import it into Cevelop and copy your `BoundedBuffer.h` file into the `src` directory.
+## Literal Vector Type
 
-If you struggle to get it all up and running at once, try to satisfy one test case after another. Comment out all test contents first. Add the contents of the first test (start at the top of the tests), make it compile, make it green, repeat with the next tests.
+Implement an N-dimensional `Vector` literal type. Don't worry, we don't want you to implement a STL-like container here. We rather want you to implement a simple type in the mathematical sense of vector, that can be used at compile-time. We have prepared a project template containing test cases [here](week08/exercise_templates/w08_template_02_VectorLiteralType).
 
+The CUTE tests also contain `static_assert`s to show the compile-time capabilities of your `Vector`, at least for the cases where this is feasible. The CUTE `ASSERT`s in the test are for convenience reasons. Because a `static_assert` will not tell you what the actual and the expected values effectively were on failure, it is amenable to still have the CUTE framework for checking the values at run-time to see the comparison. You just need to comment the `static_assert` out.
 
-## Optional: Range Constructor
-You can add a range-constructor to your `BoundedBuffer` and add a deduction guide for it.
-Signature of the range-constructor:
-```cpp
-template <typename Iter>
-BoundedBuffer(Iter begin, Iter end);
-```
+**Note:** Since several test cases rely on class template argument deduction, Cevelop will mark the code as incorrect in many places, even though it might be correct! For this exercise rely on the compiler output instead.
 
+Implement the following features:
 
-## Line Iterator (Not Testat)
-In many of the exercises in the CPlusPlus module you had to process input line by line. It would have been convenient to have a line iterator in order to use standard algorithms instead of the `while` loops:
-* Implement a line input iterator that that wraps an input stream.
-* Use your line input iterator to improve your existing solution of one of the line-oriented CPlusPlus exercises.
-
-You can use boost to simplify your solution.
-
-**Hint:** The iterator will have a reference to an `std::istream` as member variable. See the self-study slides (at the end of the lecture slides) if you struggle with the implementation.
-
-
-# 2. Fibonacci Iterator (Not Testat)
-In this first exercise you will implement a simple iterator similar to the iterator for integers from the lecture.
-
-Instead of just counting your iterator will iterate through the Fibonacci numbers (https://en.wikipedia.org/wiki/Fibonacci_number). The given test cases expect your Fibonacci sequence to start with the value `0` for the zeroth number, `1` for the first number, `1` for the second number, and so on.
-
-You need to implement the following members of the Fibonacci iterator:
-* Constructor initializing the iterator with the `n`th element (default is `0`).
-* `operator*` for accessing the current element (Fibonacci number) of the iterator.
-* `operator==` to see whether two iterators have the same current element.
-* `operator!=` the inverse of the `operator==`.
-* `operator++` prefix and postfix increment.
-
-We suggest you store the index (`i`th number) and not the Fibonacci value itself.
-
-You find the prepared project containing the given unit tests [here](exercise_templates/w07_template_02_FibonacciIterator).
-
-You can implement two versions of this iterator:
-* Implement all operators yourself.
-* Use the facilities of boost iterators (i.e. based on a counting iterator).
-
-**Note:** Don't worry about efficiency in this exercise.
-
-
+* Allow creation of a vector with explicit class template arguments: `constexpr Vector<double, 1> v{1.0}`. 
+  * Use an `std::array` for storing the `Vector`'s values.
+  * You need to implement a constructor that is a variadic template to accommodate the arbitrary number of constructor arguments.
+* Implement the subscript operator to access the individual components: `v[0]`
+* Check that accessing an invalid index with the subscript operator throws an exception. Can you do this at compile-time?
+* Overload the subscript operator that it distinguishes between `const` and non-`const` access. Can both be used in `constexpr` contexts?
+* Implement the `==` and `!=` operators for comparing `Vector`s.
+* Implement an output operator (`<<`) for printing `Vector`'s on an `std::ostream`. Can you implement that as `constexpr` function?
+* Implement a `length()` member function that returns the length of a `Vector`.
+* Implement a `scalarProduct()` function for calculating the scalar product of a `Vector`.
+* **Difficult:** Implement class template argument deduction for `Vector`:
+  * Implement a deduction guide for that constructor.
+  * Can you restrict that it is not possible to supply different argument types for the construction? You ca use the predefined `are_all_same` predicate. It takes multiple type arguments and has the value `true` if all types are the same. You can apply it in an `std::enable_if_t` default template argument for the constructor.
+  * Is it possible to check that the compilation fails when initializing a `Vector` with different types through a succeeding test?
 
