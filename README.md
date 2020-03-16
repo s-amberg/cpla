@@ -52,7 +52,8 @@ courses. While it is possible to use other IDEs, only Cevelop is:
 | 02   | [L2](week02)           | [E2](week02/README.md) ([PDF](/../-/jobs/artifacts/master/file/week02.pdf?job=week02))  | Rvalue References / Move Semantics / Copy Elision      | **Testat 1**   |
 | 03   | [L3](week03)           | [E3](week03/README.md) ([PDF](/../-/jobs/artifacts/master/file/week03.pdf?job=week03))  | Type Deduction / Perfect Forwarding                    |                |
 | 04   | [L4](week04)           | [E4](week04/README.md) ([PDF](/../-/jobs/artifacts/master/file/week04.pdf?job=week04))  | Explicit Heap Memory Management                        |                |
-| 05   | [L5](week05)           | [E5](week05/README.md) ([PDF](/../-/jobs/artifacts/master/file/week05.pdf?job=week05))  | Iterators / Tags for Conversion                        | **Testat 2**   |
+| **No lessons in the week of 16. March!** |
+| 05   | [L5](week05) [Video](https://tube.switch.ch/videos/637072ca)           | [E5](week05/README.md) ([PDF](/../-/jobs/artifacts/master/file/week05.pdf?job=week05))  | Iterators / Tags for Conversion                        | **Testat 2**   |
 | 06   | [L6](week06)           | [E6](week06/README.md) ([PDF](/../-/jobs/artifacts/master/file/week06.pdf?job=week06))  | Advanced Templates / SFINAE                            |                |
 | 07   | [L7](week07)           | [E7](week07/README.md) ([PDF](/../-/jobs/artifacts/master/file/week07.pdf?job=week07))  | Compile-Time Computation / Literal Types / UDL         |                |
 | 08   | [L8](week08)           | [E8](week08/README.md) ([PDF](/../-/jobs/artifacts/master/file/week08.pdf?job=week08))  | Multi-Threading / Mutexes                              | **Testat 3**   |
