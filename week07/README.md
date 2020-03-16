@@ -8,8 +8,10 @@ In these exercises you will...
 * ... observe the effect of compile-time evaluation on the resulting executable binary.
 * ... implement your own literal type
 * ... implement compile-time member functions
+* ... implement your own user defined literal operators
 
-## Compile-Time Hashing
+
+## q. Compile-Time Hashing
 
 **Context:** You have to write an application that requires a password for accessing higher privilege level for special configurations. This password shall be hard-coded into the binary.
 
@@ -30,7 +32,24 @@ Your task:
 
 **Credits:** We have not implemented the compile-time hash functions ourselves, but use an existing implementation of [Chocobo1](https://github.com/Chocobo1/Hash), that is published under GPL3.0.
 
-## Literal Vector Type
+
+## 2. Compile-Time Fibonacci
+
+1. Implement computing the `n`th fibonacci number in the following means as compile-time computation:
+
+* a) With a constexpr function `fibo(unsigned)`
+* b) With a variable template `fibo_v<unsigned>`. ***Hint:*** If you are using Cevelop, there might be an issue with parsing an expression containing varible templates. Therefore, you might want to put a reference to a varaible template in parentheses, to avoid ambiguities in the parse: `(fibo_v<n-2>)`.
+* c) With a user defined literal operator `5_fibo` that is evaluated at compile-time
+* d)  Measure and compare the compilation and run-time for computing the 46th fibonacci number. Does it make a difference regarding compilation time if the signature is changed to `fibo(unsigned const & n)`?
+
+2. Implement similar constructs to the above that return an `std::array<int, n>` filled with the `n` first fibonacci numbers instead. Unfortunately, even though `std::array` is a literal type in C++17, its comparison operations are not `constexpr`. First implement a function for comparing the content of `std::array` at compile time: `arrayEquals`.  
+
+* a) With a constexpr template function `fiboa` that takes the size of the array as template parameter. E.g. fiboa<5>()
+* b) With a variable template `fiboa_v<int>`
+* c) ***Optional (for experts):*** A user defined literal operator `10_fiboa` (returns an `array<int, 10>`). You will need to create infrastructure to parse the value of the literal.
+
+
+## 3. Literal Vector Type
 
 Implement an N-dimensional `Vector` literal type. Don't worry, we don't want you to implement a STL-like container here. We rather want you to implement a simple type in the mathematical sense of vector, that can be used at compile-time. We have prepared a project template containing test cases [here](week08/exercise_templates/w08_template_02_VectorLiteralType).
 
