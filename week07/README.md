@@ -1,6 +1,5 @@
 # Compile-Time Computation
 
-If you have not completed it yet, finish the testat exercise first!
 
 Goals:
 In these exercises you will...
