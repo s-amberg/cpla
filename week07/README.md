@@ -10,7 +10,7 @@ In these exercises you will...
 * ... implement your own user defined literal operators
 
 
-## q. Compile-Time Hashing
+## 1. Compile-Time Hashing
 
 **Context:** You have to write an application that requires a password for accessing higher privilege level for special configurations. This password shall be hard-coded into the binary.
 
