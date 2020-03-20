@@ -73,3 +73,17 @@ Implement the following features:
   * Can you restrict that it is not possible to supply different argument types for the construction? You ca use the predefined `are_all_same` predicate. It takes multiple type arguments and has the value `true` if all types are the same. You can apply it in an `std::enable_if_t` default template argument for the constructor.
   * Is it possible to check that the compilation fails when initializing a `Vector` with different types through a succeeding test?
 
+## 4. (Optional): Conversion with Tags and Traits
+
+Implement a `temperature` literal type, similar to the `Speed` type you have seen in the lecture. The `Temperature` type shall be taggable with the units `Kelvin`, `Celcius` and `Fahrenheit`.
+
+* Add the required tag types to the namespace `units::tags`.
+* Specify the `Temperature` class template that stores the temperature in a `double` value.
+* Implement comparison operations for the `Temperature` template for comparison with other objects of the same template instance (`==`, `!=`, `<`, `>`, `<=` and `>=`).
+* Implement arithmetic operations for the `Temperature` template (`+`, `-`) - unary and binary.
+* Implement the `ConversionTraits` class template with a `convert` member function and add a specialization for every possible conversion. You can lookup the conversion formula on the web. ***Note:*** We have not covered this in the current lecture. But you can look it up in the lecture example code for `Speed` literals and apply it for `Temperature`.
+* Implement a `temperatureCast` function template that delegates conversion to the `ConversionTraits` template.
+* Add comparison operation templates to allow comparison of objects of arbitrary `Temperature` instances.
+* Add user defined literal operators (`_K`, `_C`, `_F`) to the `unit::literals` namespace.
+
+***Note:*** The project template for this exercies does not contain test cases for all operations above.
