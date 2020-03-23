@@ -56,8 +56,8 @@ courses. While it is possible to use other IDEs, only Cevelop is:
 | 05   | [L5](week05) [Video](https://tube.switch.ch/videos/637072ca)           | [E5](week05/README.md) ([PDF](/../-/jobs/artifacts/master/file/week05.pdf?job=week05))  | Iterators / Tags for Conversion                        | **Testat 2**   |
 | 06   | [L6](week06)           | [E6](week06/README.md) ([PDF](/../-/jobs/artifacts/master/file/week06.pdf?job=week06))  | Advanced Templates / SFINAE                            |                |
 | 07   | [L7](week07)           | [E7](week07/README.md) ([PDF](/../-/jobs/artifacts/master/file/week07.pdf?job=week07))  | Compile-Time Computation / Literal Types / UDL         |                |
-| 08   | [L8](week08)           | [E8](week08/README.md) ([PDF](/../-/jobs/artifacts/master/file/week08.pdf?job=week08))  | Multi-Threading / Mutexes                              | **Testat 3**   |
 |      | Easter Break           |                                                                                         |                                                        | **No Lecture** |
+| 08   | [L8](week08)           | [E8](week08/README.md) ([PDF](/../-/jobs/artifacts/master/file/week08.pdf?job=week08))  | Multi-Threading / Mutexes                              | **Testat 3**   |
 | 09   | [L9](week09)           | [E9](week09/README.md) ([PDF](/../-/jobs/artifacts/master/file/week09.pdf?job=week09))  | Memory Model / Atomics                                 |                |
 | 10   | [L10](week10)          | [E10](week10/README.md) ([PDF](/../-/jobs/artifacts/master/file/week10.pdf?job=week10)) | Lockfree Multi-Threading / Proactor (ASIO)             |                |
 | 11   | [L11](week11)          | [E11](week11/README.md) ([PDF](/../-/jobs/artifacts/master/file/week11.pdf?job=week11)) | Networking (ASIO)                                      |                |
