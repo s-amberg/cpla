@@ -1,65 +1,27 @@
-# Compile-Time Computation
+# Multi-Threading and Mutexes
 
-If you have not completed it yet, finish the testat exercise first!
+In this exercise...
 
-Goals:
-In these exercises you will...
+* ... you get familiar with the thread API of C++
 
-* ... observe the effect of compile-time evaluation on the resulting executable binary.
-* ... implement your own literal type
-* ... implement compile-time member functions
+# 1. Basic Threading
 
-## Compile-Time Hashing
+***Note:*** On Linux you might need to add the `pthread` library to link the projects correctly: `Project Properties -> C++ General -> Paths & Symbols -> Libraries -> Add -> "pthread"`
 
-**Context:** You have to write an application that requires a password for accessing higher privilege level for special configurations. This password shall be hard-coded into the binary.
+## a) Thread IDs
+Create a simple application that starts three threads:
 
-It is probably not a smart idea to store passwords in a program in plain text. As it can be easily extracted from the binary's read only data section. An alternative might be to hash the password first and compare it against the hashed password provided by the user. Nevertheless, it is inconvenient to place password hashes directly into your source code. However, that is not necessary if you have a hashing function that can be called at compile-time.
+* One thread shall be created with a functor
+* One thread shall be created with a free function
+* One thread shall be created with a lambda
 
-We have prepared an example project that uses a constexpr function for hashing an input string: [here](week08/exercise_templates/w08_template_01_CompileTimeHashing)
+Each thread prints its ID (`std::this_thread::get_id()`) on `std::cout`.
 
-Your task:
+Since it is discouraged to use `std::cout` directly in your functor, function and lambda, each should have a `std::ostream & out` parameter. If you want to pass `std::cout` through the `std::thread` constructor, you have to wrap the argument in an `std::ref` on the call-site.
 
-* Import the project in Cevelop or build it on console (`make`). It is a Makefile project that will compile two versions of a program. One will compute the hash of a password at runtime (`runtime.cpp`) the other will compute the hash of the password at compile-time (`compile_time.cpp`). The make file will also dump (with `objdump`) and scan the contents of the resulting binaries for the expected hash and the password.
-* Check the output to see which implementation contains the password in plain text and which only contains the hash value.
-  * When checking the content you can use the `objdump` command, which is also included in the `Makefile`. Depending on your system and the binary format you will have to check different sections. Umcomment either of the `ODMPSECTION` variables in the `Makefile` to enable showing the corresponding section. Only one section can be displayed:
-    ```make
-    #ODMPSECTION = -j .rodata
-    #ODMPSECTION = -j .rdata
-    ODMPSECTION = -j .data
-    ```
+## b) Measure Speedup
+In the template you have an implementation of a program that counts the prime numbers in a given range (`countPrimes` function). Parallelize the computation using multiple threads in `countPrimesParallel`.
 
-**Credits:** We have not implemented the compile-time hash functions ourselves, but use an existing implementation of [Chocobo1](https://github.com/Chocobo1/Hash), that is published under GPL3.0.
+***Note:*** Be aware, that each thread must only access his entry of the `results` array and that the `main`thread must only access those results after the threads have been joined.
 
-## Literal Vector Type
-
-Implement an N-dimensional `Vector` literal type. Don't worry, we don't want you to implement a STL-like container here. We rather want you to implement a simple type in the mathematical sense of vector, that can be used at compile-time. We have prepared a project template containing test cases [here](week08/exercise_templates/w08_template_02_VectorLiteralType).
-
-The CUTE tests also contain `static_assert`s to show the compile-time capabilities of your `Vector`, at least for the cases where this is feasible. The CUTE `ASSERT`s in the test are for convenience reasons. Because a `static_assert` will not tell you what the actual and the expected values effectively were on failure, it is amenable to still have the CUTE framework for checking the values at run-time to see the comparison. You just need to comment the `static_assert` out.
-
-**Note:** Since several test cases rely on class template argument deduction, Cevelop will mark the code as incorrect in many places, even though it might be correct! For this exercise rely on the compiler output instead.
-
-Implement the following features:
-
-* Allow creation of a vector with explicit class template arguments: `constexpr Vector<double, 1> v{1.0}`. 
-  * Use an `std::array` for storing the `Vector`'s values.
-  * You need to implement a constructor that is a variadic template to accommodate the arbitrary number of constructor arguments.
-* Implement the subscript operator to access the individual components: `v[0]`
-* Check that accessing an invalid index with the subscript operator throws an exception. Can you do this at compile-time?
-* Overload the subscript operator that it distinguishes between `const` and non-`const` access. Can both be used in `constexpr` contexts?
-* Implement the `==` and `!=` operators for comparing `Vector`s.
-* Implement an output operator (`<<`) for printing `Vector`'s on an `std::ostream`. Can you implement that as `constexpr` function?
-* Implement a `length()` member function that returns the length of a `Vector`.
-* Implement a `scalarProduct()` function for calculating the scalar product of a `Vector`.
-* **Difficult:** Implement class template argument deduction for `Vector`:
-  * Implement a deduction guide for that constructor.
-  * Can you restrict that it is not possible to supply different argument types for the construction? You ca use the predefined `are_all_same` predicate. It takes multiple type arguments and has the value `true` if all types are the same. You can apply it in an `std::enable_if_t` default template argument for the constructor.
-  * Is it possible to check that the compilation fails when initializing a `Vector` with different types through a succeeding test?
-
-
-## Optional: Range Constructor
-You can add a range-constructor to your `BoundedBuffer` and add a deduction guide for it.
-Signature of the range-constructor:
-```cpp
-template <typename Iter>
-BoundedBuffer(Iter begin, Iter end);
-```
+What speedup can you achieve?
