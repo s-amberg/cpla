@@ -37,6 +37,10 @@ namespace http {
     read_headers(input);
   }
 
+  auto response::status() const noexcept -> status_code {
+    return m_code;
+  }
+
   auto operator<<(std::ostream &out, response const &request) -> std::ostream &
   {
     //@formatter:off

@@ -21,7 +21,7 @@ namespace http {
 
     template<typename ValueType>
     auto parameter(std::string name, ValueType value) -> request & {
-      if constexpr(std::is_same_v<std::string, ValueType>) {
+      if constexpr(std::is_same_v<std::string, ValueType> || std::is_same_v<char const *, ValueType>) {
         m_parameters[name] = value;
       } else {
         m_parameters[name] = std::to_string(value);
