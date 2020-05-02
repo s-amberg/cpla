@@ -10,6 +10,7 @@ namespace http {
 
   struct response : message<response> {
     explicit response(status_code code) noexcept;
+    explicit response(std::istream & stream);
 
     auto friend operator<<(std::ostream & out, response const & request) -> std::ostream &;
 

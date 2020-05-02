@@ -21,8 +21,6 @@
 namespace http {
 
   struct message_headers {
-    message_headers();
-
     template<header HeaderField, typename ... ValueTypes>
     auto set(ValueTypes ... value) -> message_headers & = delete;
 
@@ -83,24 +81,31 @@ namespace http {
     auto body(std::string &&body) noexcept(std::is_nothrow_move_assignable_v<std::string>) -> DerivedType &
     {
       m_body = std::move(body);
-      (void)set<http::header::content_length>(body.size());
+      (void) set<http::header::content_length>(body.size());
       return static_cast<DerivedType&>(*this);
     }
 
     auto body(std::string const &body) -> DerivedType &
     {
       m_body = body;
-      (void)set<http::header::content_length>(body.size());
+      (void) set<http::header::content_length>(body.size());
       return static_cast<DerivedType&>(*this);
     }
 
     auto body(std::vector<std::byte> const &body) -> DerivedType &
     {
       m_body.resize(body.size());
-      (void)set<http::header::content_length>(body.size());
+      (void) set<http::header::content_length>(body.size());
       transform(cbegin(body), cend(body), begin(m_body), [](auto part) {
         return static_cast<char>(part);
       });
+      return static_cast<DerivedType&>(*this);
+    }
+
+    auto body(std::istream &input) -> DerivedType &
+    {
+      m_body.clear();
+      copy(std::istreambuf_iterator<char>{input}, std::istreambuf_iterator<char>{}, back_inserter(m_body));
       return static_cast<DerivedType&>(*this);
     }
 
@@ -109,6 +114,14 @@ namespace http {
       return m_body;
     }
 
+    auto complete() const -> bool {
+      return !has(header::content_length) || get<header::content_length>() == m_body.size();
+    }
+
+    template<typename Derived>
+    friend auto operator<<(std::ostream &out, message<Derived> const &message) -> std::ostream &;
+
+  protected:
     auto read_headers(std::istream &input) -> void {
       auto line = std::string{};
       while (getline(input, line)) {
@@ -142,9 +155,6 @@ namespace http {
         }
       }
     }
-
-    template<typename Derived>
-    friend auto operator<<(std::ostream &out, message<Derived> const &message) -> std::ostream &;
 
   private:
     std::string m_body{};

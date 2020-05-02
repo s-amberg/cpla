@@ -45,7 +45,7 @@ void remote::start() {
 
 void remote::close() {
 	asio::post(m_strand, [this, that = shared_from_this()] {
-		auto ignored = asio::error_code{};
+		auto ignored = asio::error_code {};
 		m_peer.shutdown(asio::ip::tcp::socket::shutdown_both, ignored);
 		m_peer.close(ignored);
 	});
@@ -118,16 +118,15 @@ void remote::do_receive_header() {
 					return;
 				}
 
-				auto stream = std::istream(&m_receive_buffer);
-				auto request = http::request { };
 				try {
-					request.read_headers(stream);
+					auto stream = std::istream(&m_receive_buffer);
+					auto request = http::request { stream };
 
-					if (request.has(http::header::content_length)) {
-						do_receive_body(std::move(request));
-					} else {
+					if(request.complete()) {
 						notify_request(std::move(request));
 						do_receive_header();
+					} else {
+						do_receive_body(std::move(request));
 					}
 				} catch (...) {
 					close();
@@ -137,7 +136,8 @@ void remote::do_receive_header() {
 
 void remote::do_receive_body(http::request request) {
 	auto body_size = request.get<http::header::content_length>();
-	asio::async_read(m_peer, m_receive_buffer, asio::transfer_exactly(body_size),
+	auto remainder = body_size - m_receive_buffer.size();
+	asio::async_read(m_peer, m_receive_buffer, asio::transfer_exactly(remainder),
 			asio::bind_executor(m_strand, [this, that = shared_from_this(), request = std::move(request)](auto const &error, auto) mutable {
 				if (error == asio::error::eof || error == asio::error::connection_reset) {
 					notify_disconnect();
@@ -149,7 +149,7 @@ void remote::do_receive_body(http::request request) {
 				auto buffers = m_receive_buffer.data();
 				auto begin = asio::buffers_begin(buffers);
 				auto end = begin + m_receive_buffer.size();
-				request.body( std::string{ begin, end });
+				request.body(std::string { begin, end });
 				m_receive_buffer.consume(m_receive_buffer.size());
 				notify_request(std::move(request));
 				do_receive_header();

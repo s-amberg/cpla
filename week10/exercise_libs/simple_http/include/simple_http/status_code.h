@@ -89,4 +89,6 @@ auto to_string(http::status_code const &object) -> std::string;
 template<>
 auto from_string(std::string const &stringified) -> http::status_code;
 
+auto to_status_code(int code) -> http::status_code;
+
 #endif /* SIMPLE_HTTP_STATUS_CODE_H_ */

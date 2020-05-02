@@ -4,6 +4,8 @@
 #include <stdexcept>
 #include <string>
 #include <utility>
+#include <algorithm>
+#include <iterator>
 
 using namespace http;
 
@@ -80,7 +82,7 @@ auto to_string(status_code const &object) -> std::string {
     return std::to_string(static_cast<int>(object)) + " " + *found;
   }
 
-  throw std::invalid_argument{"invalid mime type: " + std::to_string(static_cast<int>(object))};
+  throw std::invalid_argument{"invalid status code: " + std::to_string(static_cast<int>(object))};
 }
 
 template<>
@@ -90,5 +92,16 @@ auto from_string(std::string const &stringified) -> status_code {
     return *found;
   }
 
-  throw std::invalid_argument{"invalid mime type: " + stringified};
+  throw std::invalid_argument{"invalid status code: " + stringified};
+}
+
+auto to_status_code(int code) -> http::status_code {
+  auto found = std::find_if(cbegin(string_map), cend(string_map), [&](auto entry){
+    return static_cast<int>(entry.first) == code;
+  });
+  if(found != cend(string_map)) {
+    return found->first;
+  }
+
+  throw std::invalid_argument("unknown status code: " + std::to_string(code));
 }

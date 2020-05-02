@@ -14,6 +14,7 @@ namespace http {
 
   struct request : message<request> {
     explicit request(method method = http::method::get) noexcept;
+    explicit request(std::istream & input);
 
     auto path(std::string path) -> request &;
     auto path() const -> std::string;
@@ -36,8 +37,6 @@ namespace http {
     auto http_method() const noexcept -> method;
 
     auto friend operator<<(std::ostream & out, request const & request) -> std::ostream &;
-
-    auto read_headers(std::istream & input) -> void;
 
   private:
     http::method m_method{};

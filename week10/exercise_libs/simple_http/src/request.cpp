@@ -50,6 +50,31 @@ namespace http {
       : m_method{method} {
   }
 
+  request::request(std::istream & input) {
+    auto line = std::string{};
+
+    while (std::isspace(input.peek())) {
+      input.ignore();
+    }
+
+    if (!getline(input, line)) {
+      throw std::invalid_argument{"missing method"};
+    }
+
+    std::string method{}, path{}, version{};
+    auto method_stream = std::istringstream{line};
+
+    if (!(method_stream >> method >> path >> version) || version != "HTTP/1.1") {
+      throw std::invalid_argument{"failed to parse method line"};
+    }
+
+    m_method = from_string<http::method>(method);
+    m_path = extract_path(path);
+    m_parameters = extract_parameters(path);
+
+    read_headers(input);
+  }
+
   auto request::path(std::string path) -> request &
   {
     m_path = std::move(path);
@@ -86,31 +111,6 @@ namespace http {
   auto request::http_method() const noexcept -> method
   {
     return m_method;
-  }
-
-  auto request::read_headers(std::istream &input) -> void {
-    auto line = std::string{};
-
-    while (std::isspace(input.peek())) {
-      input.ignore();
-    }
-
-    if (!getline(input, line)) {
-      throw std::invalid_argument{"missing method"};
-    }
-
-    std::string method{}, path{}, version{};
-    auto method_stream = std::istringstream{line};
-
-    if (!(method_stream >> method >> path >> version) || version != "HTTP/1.1") {
-      throw std::invalid_argument{"failed to parse method line"};
-    }
-
-    m_method = from_string<http::method>(method);
-    m_path = extract_path(path);
-    m_parameters = extract_parameters(path);
-
-    message<request>::read_headers(input);
   }
 
   auto operator<<(std::ostream &out, request const &request) -> std::ostream &

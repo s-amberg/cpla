@@ -7,10 +7,6 @@
 namespace http
 {
 
-  message_headers::message_headers() {
-      set<header::content_length>(static_cast<std::size_t>(0));
-  }
-
   auto message_headers::has(header field) const noexcept -> bool {
     return m_headers.count(field);
   }
