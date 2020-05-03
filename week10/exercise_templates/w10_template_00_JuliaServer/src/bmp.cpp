@@ -24,8 +24,8 @@ auto constexpr bmp_image_header_size { static_cast<std::uint32_t>(40) };
 
 auto constexpr bmp_file_header_magic { "BM" };
 auto constexpr bmp_file_header_magic_offset { 0 };
-auto constexpr bmp_file_size_offset { 2 };
-auto constexpr bmp_data_offset_offset { 10 };
+auto constexpr bmp_file_size_offset { bmp_file_header_magic_offset + 2 };
+auto constexpr bmp_data_offset_offset { bmp_file_size_offset + 8 };
 
 auto constexpr bmp_image_header_size_offset { bmp_file_header_size };
 auto constexpr bmp_image_width_offset { bmp_image_header_size_offset + sizeof(std::uint32_t) };
