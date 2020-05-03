@@ -9,8 +9,7 @@
 #include <iterator>
 #include <sstream>
 
-int main()
-try {
+int main() {
 	auto context = asio::io_context { };
 
 	auto server_address = asio::ip::make_address("127.0.0.1");
@@ -48,7 +47,4 @@ try {
 	file.close();
 
 	std::cout << "Successfully received Julia fractal from the server. Result is in julia.bmp\n";
-}
-catch (asio::error_code const &error) {
-	std::cerr << "Failed to download the Julia fractal: " << error.message() << '\n';
 }

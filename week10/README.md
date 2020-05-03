@@ -110,4 +110,39 @@ Of course you are encouraged to browse through the implementation of `simple_htt
 
 # 1. Synchronous HTTP client
 
+To get up to speed slowly, implement a synchronous client for the Julia webservice.
+Use the `asio` types and functions you have seen in the lecture:
+
+  * `asio::io_context`
+  * `asio::ip::make_address(...)`
+  * `asio::ip::tcp::endpoint`
+  * `asio::ip::tcp::socket`
+  * `asio::write(...)`
+  * `asio::streambuf`
+  * `asio::read_until(...)`
+  * `asio::read(...)`
+  * `asio::transfer_exactly(...)`
+
+For a start, don't bother too much about error handling.
+Request the default Julia set image from the webservice and save it with the filename `julia.bmp`
+
+## Extension 1 (optional):
+
+Implement some basic error handling.
+You may choose from either passing an object of type `asio::error_code` to functions that might fail or using try/catch appropriately.
+
+## Extension 2 (optional):
+
+Read the parameters used to create the image from the standard input.
+Use the appropriate function to modify you HTTP request.
+
 # 2. Asynchronous HTTP client
+
+With your synchronous client up and working, implement an asynchronous variant.
+Use the respective `_async` variants of the blocking functions from from exercise 1.
+Implement your solution in the `JuliaClient` class provided in the template (see the `TODO` notes in `JuliaClient.cpp`)
+
+## Extension 1 (optional)
+
+Make it possible for the user of your `JuliaClient` class to specify the output filename as well as the Julia set parameters.
+Afterwards, use multiple `JuliaClient` objects to download multiple images at the same time, using different parameters and filenames.
