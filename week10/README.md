@@ -23,7 +23,7 @@ If you are having troubles with port 8080 already being in use on your machine, 
 
 When you have got the server up an running, you can test if it works by pointing your web browser at <http://127.0.0.1:8080> (adjust the port here if you had to change it in the server application).
 If the server works correctly, you should be presented with the following Julia set:
-![Default Julia set](julia.bmp)
+![Default Julia set](julia.png)
 
 The webservice provides you with a number of paramter to configure the Julia set, which you can specify as part of the query string.
 Here is a list with all parameter names including their description, type and default values
