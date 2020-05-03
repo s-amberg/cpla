@@ -5,9 +5,7 @@
 #include <cstdlib>
 #include <fstream>
 #include <iostream>
-#include <istream>
 #include <iterator>
-#include <sstream>
 
 int main() {
 	auto context = asio::io_context { };
@@ -17,22 +15,22 @@ int main() {
 	auto socket = asio::ip::tcp::socket { context };
 	socket.connect(server_endpoint);
 
-	auto request = std::ostringstream { };
+	auto transfer_buffer = asio::streambuf { };
+
+	auto request = std::ostream { &transfer_buffer };
 	request << http::request { http::method::get };
-	auto request_data = request.str();
 
-	asio::write(socket, asio::buffer(request_data));
+	asio::write(socket, transfer_buffer);
 
-	auto response_buffer = asio::streambuf { };
-	auto response_stream = std::istream { &response_buffer };
-	asio::read_until(socket, response_buffer, "\r\n\r\n");
+	asio::read_until(socket, transfer_buffer, "\r\n\r\n");
+	auto response_stream = std::istream { &transfer_buffer };
 
 	auto response = http::response { response_stream };
 
 	if (!response.complete()) {
 		auto content_length = response.get<http::header::content_length>();
-		auto buffered = response_buffer.size();
-		asio::read(socket, response_buffer, asio::transfer_exactly(content_length - buffered));
+		auto buffered = transfer_buffer.size();
+		asio::read(socket, transfer_buffer, asio::transfer_exactly(content_length - buffered));
 		response.body(response_stream);
 	}
 
