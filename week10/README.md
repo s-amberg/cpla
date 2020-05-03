@@ -14,6 +14,28 @@ While we generally don't force you to use any particular IDE, we strongly sugges
 The projects you will be working with depend on the "simple_http" library that can be found in the folder "exercise_libs".
 We have implemented this Library in Cevelop and the exercise templates have all been configured to correctly reference this library.
 
+### Note for Windows Users
+
+If you are working in Microsoft Windows, you will need to add the `ws2_32` and `wsock32` libraries to the server and your client applications.
+Otherwise, you will likely get "undefined reference" errors for the windows socket API.
+Follow these steps to add the required libraries (if you are working within Cevelop):
+
+* Right click on the project (for example `w10_template_00_JuliaServer`)
+* Select `Properties`
+* In the newly opened dialog box navigate to `C/C++ General -> Paths and Symbols`
+* Select the `Libraries` tab
+* Click on `Add...`
+* Type `ws2_32` in the text box
+* Check the `Add to all configurations` checkbox
+* Confirm the operation using the `OK` button
+* Click on `Add...`
+* Type `wsock32` in the text box
+* Check the `Add to all configurations` checkbox
+* Confirm the operation using the `OK` button
+* Close the properties dialog box using the `Apply and Close` button
+
+Repeat these steps for the `w10_template_01_SyncJuliaClient` and `w10_template_02_AsyncJuliaClient` projects (and of course the solutions if you choose to use them).
+
 ## B. General Setup
 
 Since you will be needing a webservice to call from your solutions to this weeks exercises, we provide you with a basic http server that can render [Julia sets](https://en.wikipedia.org/wiki/Julia_set) as pretty images.
