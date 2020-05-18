@@ -62,8 +62,7 @@ courses. While it is possible to use other IDEs, only Cevelop is:
 | 10   | [L10](week10)          | [E10](week10/README.md) ([PDF](/../-/jobs/artifacts/master/file/week10.pdf?job=week10)) | Networking (ASIO))                                     |                |
 | 11   | [L11](week11)          | [E11](week11/README.md) ([PDF](/../-/jobs/artifacts/master/file/week11.pdf?job=week11)) | Advanced Library Design: Exception Safety / PIMPL      |                |
 | 12   | [L12](week12)          | [E12](week12/README.md) ([PDF](/../-/jobs/artifacts/master/file/week12.pdf?job=week12)) | Hourglass Interfaces                                   |                |
-| 13   | [L13](week13)          | [E13](week13/README.md) ([PDF](/../-/jobs/artifacts/master/file/week13.pdf?job=week13)) |                                                        |                |
-| 14   | [L14](week14)          | [E14](week14/README.md) ([PDF](/../-/jobs/artifacts/master/file/week14.pdf?job=week14)) |                                                        |                |
+| 13   | [L13](week13)          | [E13](week13/README.md) ([PDF](/../-/jobs/artifacts/master/file/week13.pdf?job=week13)) | Build Systems                                          |                |
 
 
 ### Useful Links
