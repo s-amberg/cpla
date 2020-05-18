@@ -44,7 +44,7 @@ public interface Julia extends Library {
 			IntByReference size = new IntByReference();
 			Pointer dumped = INSTANCE.dump(this, size);
 			byte[] data = dumped.getByteArray(0, size.getValue());
-			Native.free(Pointer.nativeValue(dumped));
+			INSTANCE.disposeBitmapData(dumped);
 			return data;
 		}
 	}
@@ -56,6 +56,8 @@ public interface Julia extends Library {
 	int getSize(Image image);
 
 	Pointer dump(Image image, IntByReference size);
+	
+	void disposeBitmapData(Pointer data);
 
 	void render(Image image, Window window, double exponent, double kReal, double kImaginary, int iterations);
 }

@@ -37,6 +37,10 @@ char* dump(image image, uint32_t *size) {
 	return byteData;
 }
 
+void disposeBitmapData(char * data) {
+	delete[] data;
+}
+
 void render(image image, window window, double exponent, double k_real, double k_imaginary, uint32_t iterations) {
 	auto realWindow = julia::Window { { window.x, window.y }, window.size };
 	auto realK = std::complex<double> { k_real, k_imaginary };

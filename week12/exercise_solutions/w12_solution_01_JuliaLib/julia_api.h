@@ -11,6 +11,7 @@ image createImage(uint32_t size);
 void disposeImage(image image);
 uint32_t getSize(image image);
 char * dump(image image, uint32_t * size);
+void disposeBitmapData(char * data);
 
 struct window {
 	double x;
