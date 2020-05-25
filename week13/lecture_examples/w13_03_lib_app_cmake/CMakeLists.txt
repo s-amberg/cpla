@@ -1,0 +1,24 @@
+cmake_minimum_required(VERSION "3.12.0")
+
+project("my_lib" LANGUAGES CXX)
+
+add_library("my_lib"
+  "lib.cpp"
+)
+
+target_compile_features("my_lib" PUBLIC
+  "cxx_std_17"
+)
+
+set_target_properties("my_lib" PROPERTIES
+  CXX_STANDARD_REQUIRED YES
+  CXX_EXTENSIONS NO
+)
+
+add_executable("my_app"
+  "app.cpp"
+)
+
+target_link_libraries("my_app" PRIVATE
+  "my_lib"
+)
