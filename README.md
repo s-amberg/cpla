@@ -61,8 +61,9 @@ courses. While it is possible to use other IDEs, only Cevelop is:
 | 10   | [L10](week10) [Video](https://tube.switch.ch/videos/d791511e)| [E10](week10/README.md) ([PDF](/../-/jobs/artifacts/master/file/week10.pdf?job=week10)) | Networking (ASIO))                                     |                |
 | 11   | [L11](week11) [Video](https://tube.switch.ch/videos/d1821528)| [E11](week11/README.md) ([PDF](/../-/jobs/artifacts/master/file/week11.pdf?job=week11)) | Advanced Library Design: Exception Safety / PIMPL      |                |
 | 12   | [L12](week12) [Video](https://tube.switch.ch/videos/9a8d9234)| [E12](week12/README.md) ([PDF](/../-/jobs/artifacts/master/file/week12.pdf?job=week12)) | Hourglass Interfaces                                   |                |
+|      | Pentecost Break           |                                                                                         |                                                        | **No Lecture** |
 | 13   | [L13](week13) [Video](https://tube.switch.ch/videos/b4bfd820)| [E13](week13/README.md) ([PDF](/../-/jobs/artifacts/master/file/week13.pdf?job=week13)) | Build Systems                                          |                |
-| 14   | [L14](week14) [Video](https://tube.switch.ch/channels/2a2692d0)| [E13](week14/README.md) ([PDF](/../-/jobs/artifacts/master/file/week13.pdf?job=week14)) | TDB                                                    |                |
+
 
 
 ### Useful Links
