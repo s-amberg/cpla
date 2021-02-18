@@ -18,9 +18,9 @@ from CPl on how to do it.
 
 ## Update Your Compiler
 
--   Install a recent version of GCC (version 9.2) or Clang (version
-    9.0.0).
--   For Windows MinGW with a current GCC can be downloaded
+-   Install a recent version of GCC (version 10) or Clang (version
+    11).
+-   For Windows MinGW with a current GCC can be downloaded through the msys2 ecosystem or 
     [here](https://nuwen.net/mingw.html).
 
 ## Update Cevelop
