@@ -146,7 +146,7 @@ quarter++;
 std::cout << quarter << ' ' << static_cast<double>(half) << '\n'; //prints 1/4 0.5
 ```
 
-## 3. `dynarray` Repetition (Optional)
+# 3. `dynarray` Repetition (Optional)
 
 At the end of the C++ module you might have had an assignment in the exercises to create a `vector`-like container that features the capabilities to access its elements with negative indices.
 In the C++ Advanced module we will have an in-depth look at the implementation of bounded buffer container. We will expect that you are familiar and can easily implement containers like the `dynarray` example. Revisit the implementation of this task, implement it again or study the code carefully, in order to be properly prepared for the upcomming testat assignments.
