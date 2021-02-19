@@ -1,7 +1,7 @@
 # Module: C++ Advanced
 
 This repository hosts the contents for the C++ Advanced (CPlA) module at
-HSR. Current run **Spring Semester 2020**.
+OST. Current run **Spring Semester 2021**.
 
 ## Goal
 
@@ -21,20 +21,14 @@ can be found
 This working draft lacks only minor editorial fixes compared to the
 official standard.
 
-## Skripteserver
-
-Contents and resources not intended for public access are stored on an
-[internal "skripte"
-server](https://skripte.hsr.ch/Informatik/Fachbereich/C++_Advanced/CplA/)
-at HSR.
 
 ## Cevelop
 
 We recommend to use the [Cevelop](https://www.cevelop.com) for our C++
-courses. While it is possible to use other IDEs, only Cevelop is:
+courses. While it is possible to use other IDEs, only Cevelop is all of the following:
 
 -   platform independent
--   free to use
+-   free to use and open-source
 -   provides suitable support for unit testing with
     [CUTE](https://www.cute-test.com)
 -   has quality-of-life features like assisted inclusion of standard
@@ -68,9 +62,8 @@ courses. While it is possible to use other IDEs, only Cevelop is:
 
 ### Useful Links
 
-Discord for C++ Modules:
-
-* [Invite Link](https://discord.gg/vrFXkEJ)
+MS Teams for the CPlA module:
+* [MS Teams Link](https://teams.microsoft.com/l/team/19%3a22650b620abd4c8d95900a93ef5a001a%40thread.tacv2/conversations?groupId=dc3e1fe9-1e28-4038-80ff-b096430ef973&tenantId=a6e70fa3-1c7a-4aa2-a25e-836eea52ca22)
 
 
 Language References:
@@ -96,6 +89,7 @@ Links from the Lecture:
 
 IDE and Compilers:
 * Cevelop: https://www.cevelop.com
+* MinGW (MSYS2): https://www.msys2.org/
 * MinGW (from STL): https://nuwen.net/mingw.html
 * CMake: https://cmake.org/
 
@@ -109,7 +103,7 @@ Collection of C++ Resources:
 * https://github.com/MattPD/cpplinks
 
 Exercises with Solutions
-* The Modern C++ Challenge (Available only at HSR internally): https://ebookcentral.proquest.com/lib/fh-ostschweiz/detail.action?docID=5400397&query=bancila
+* The Modern C++ Challenge (Available only at OST internally): https://ebookcentral.proquest.com/lib/fh-ostschweiz/detail.action?docID=5400397&query=bancila
 
 ---
 keywords:
