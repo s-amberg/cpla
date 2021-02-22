@@ -183,11 +183,11 @@ In this exercise you will create the fundamental data structure for a `BoundedBu
 
 Please form groups of 2-3 students for testat hand-in:
 
-* Send an email to [Thomas Corbat](mailto:thomas.corbat@hsr.ch)
-* ***Subject***: `[CPlA-Testat-1] hsrname1 hsrname2 hsrname3 hsrname4`
+* Send an email to [Thomas Corbat](mailto:thomas.corbat@ost.ch)
+* ***Subject***: `[CPlA-Testat-1] name1 name2 name3`
 * Content: `BoundedBuffer.h`
 * You will get feedback as soon as possible
-* Hand-in deadline: Sunday 8. March 23:59 (MEZ)
+* Hand-in deadline: Sunday 14. March 23:59 (MEZ)
 
 
 A project template with predefined tests is available [here](./exercise_templates/w02_template_02_BoundedBuffer).
