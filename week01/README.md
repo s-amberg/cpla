@@ -13,7 +13,7 @@ Goals of this weeks exercises:
 
 If you don't already have a development environment with
 [Cevelop](https://www.cevelop.com) and a recent compiler take care of
-this first. [Here](https://gitlab.ost.ch/ifs/cpl/-/wikis/Setup-Development-Environment) is a guide
+this first. [Here](https://gitlab.ost.ch/cxx/cpl/-/wikis/Setup-Development-Environment) is a guide
 from CPl on how to do it.
 
 ## Update Your Compiler
