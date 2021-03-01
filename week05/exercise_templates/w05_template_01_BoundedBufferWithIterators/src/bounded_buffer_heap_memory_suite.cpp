@@ -27,7 +27,7 @@ struct AllocationTracker {
 	}
 
     static void *operator new(std::size_t sz, AllocationTracker* ptr) {
-	   ::operator new(sz, ptr);
+	   (void)::operator new(sz, ptr);
 	   allocatedSingleObjects.push_back(ptr);
 	   return ptr;
     }
@@ -137,10 +137,10 @@ void test_move_self_assignment_no_addtional_allocation() {
 
 struct CopyCounter {
 	CopyCounter() = default;
-	CopyCounter(CopyCounter const & other) {
+	CopyCounter(CopyCounter const &) {
 		copy_counter++;
 	}
-	CopyCounter& operator=(CopyCounter const & other) {
+	CopyCounter& operator=(CopyCounter const &) {
 		copy_counter++;
 		return *this;
 	}
