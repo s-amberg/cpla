@@ -91,7 +91,9 @@ void test_bounded_buffer_constructed_with_const_lvalue_argument_object_copied() 
 As stated in part *a)* of the exercise, we actually want to pass an arbitrary number of arguments to that factory function. This mixes the topics of perfect forwarding and variadic templates. We have not explicitly covered this in the lecture, but you are encouraged to figure out on your own how to achieve this.
 This functionality is expected to be included in the next testat. If you struggle to implement this, you can get a hint [here](https://gitlab.ost.ch/cxx/cpla/-/wikis/Exercise-Hint:-Factory-with-Multiple-Arguments).
 
-***Hint:*** Create a private helper member function `push_many` to push multiple elements to the `BoundedBuffer`. You need this function since it is easier to call a function recursively than a constructor.
+***Hints:*** 
+* Create a private helper member function `push_many` to push multiple elements to the `BoundedBuffer`. You need this function since it is easier to call a function recursively than a constructor.
+* If too many arguments are supplied (more than the capacity of the buffer), throw an `std::invalid_argument` exception.
 
 ***Note:*** The test cases for this part of the exercise are already in the provided project, but have been disabled by comments.
 
