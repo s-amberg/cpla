@@ -30,7 +30,7 @@ struct AllocationTracker {
 	}
 
     static void *operator new(std::size_t sz, AllocationTracker* ptr) {
-	   ::operator new(sz, ptr);
+	   (void)::operator new(sz, ptr);
 	   allocatedSingleObjects.push_back(ptr);
 	   return ptr;
     }
