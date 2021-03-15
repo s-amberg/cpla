@@ -3,6 +3,7 @@
 #include "BoundedBuffer.h"
 #include "n_times.h"
 #include <stdexcept>
+#include <vector>
 
 
 using namespace cpp_advanced::times_literal;

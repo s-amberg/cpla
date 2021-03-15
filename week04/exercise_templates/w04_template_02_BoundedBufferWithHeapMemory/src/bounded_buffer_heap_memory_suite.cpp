@@ -3,7 +3,10 @@
 #include "BoundedBuffer.h"
 #include "n_times.h"
 
+#include <cstddef>
+#include <ios>
 #include <utility>
+#include <vector>
 
 
 struct AllocationTracker {
