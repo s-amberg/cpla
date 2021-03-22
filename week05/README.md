@@ -7,12 +7,12 @@ In these exercises you will practice the implementation of you own iterator type
 
 In this exercise you will add iterators for to your `BoundedBuffer`.
 
-Please form groups of 2-3 students for testat hand-in:
-* Send an email to [Thomas Corbat](mailto:thomas.corbat@hsr.ch)
-* ***Subject***: `[CPlA-Testat-2] hsrname1 hsrname2 hsrname3`
+Please form groups of 1-3 students for testat hand-in:
+* Submission in MS Teams
+* If you work in a group add a `group.txt` file with the team member's names
 * Content: `BoundedBuffer.h`
 * You will get feedback as soon as possible
-* Hand-in deadline: Sunday 05. April 2020 23:59
+* Hand-in deadline: Wednesday 01. April 2021 23:59
 
 ## Iterator for Dynamic Bounded Buffer
 Last week you have implemented a dynamic version of the bounded buffer. Finish that exercise first if you have not already completed it.
