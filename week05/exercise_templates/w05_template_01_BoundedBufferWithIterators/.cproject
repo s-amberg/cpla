@@ -77,7 +77,7 @@
                                     								
                                 </option>
                                 								
-                                <option id="gnu.cpp.compiler.option.warnings.pedantic.error.761099205" superClass="gnu.cpp.compiler.option.warnings.pedantic.error" useByScannerDiscovery="false" value="true" valueType="boolean"/>
+                                <option id="gnu.cpp.compiler.option.warnings.pedantic.error.761099205" name="Pedantic warnings as errors (-pedantic-errors)" superClass="gnu.cpp.compiler.option.warnings.pedantic.error" useByScannerDiscovery="false" value="true" valueType="boolean"/>
                                 								
                                 <inputType id="cdt.managedbuild.tool.gnu.cpp.compiler.input.27619239" superClass="cdt.managedbuild.tool.gnu.cpp.compiler.input"/>
                                 							
