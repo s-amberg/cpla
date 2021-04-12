@@ -34,6 +34,8 @@ Your task:
 
 ## 2. Compile-Time Fibonacci
 
+**Important:** You have to increase the constexpr cache depth if you use a recent version of GCC/MinGW for this exercise. Use the following flag: `-fconstexpr-cache-depth=50`
+
 1. Implement computing the `n`th fibonacci number in the following means as compile-time computation:
 
 * a) With a constexpr function `fibo(unsigned)`
