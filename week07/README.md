@@ -41,7 +41,7 @@ Your task:
 * a) With a constexpr function `fibo(unsigned)`
 * b) With a variable template `fibo_v<unsigned>`. ***Hint:*** If you are using Cevelop, there might be an issue with parsing an expression containing varible templates. Therefore, you might want to put a reference to a varaible template in parentheses, to avoid ambiguities in the parse: `(fibo_v<n-2>)`.
 * c) With a user defined literal operator `5_fibo` that is evaluated at compile-time
-* d)  Measure and compare the compilation and run-time for computing the 46th fibonacci number. Does it make a difference regarding compilation time if the signature is changed to `fibo(unsigned const & n)`?
+* d)  Measure and compare the compilation and run-time for computing the 46th fibonacci number. Does it make a difference regarding compilation time if the signature is changed to `fibo(unsigned const & n)`? For the change of the parameter type to `unsigned const & n` you might need to add an additional compile flag: `-fconstexpr-ops-limit=100000000`
 
 2. Implement similar constructs to the above that return an `std::array<int, n>` filled with the `n` first fibonacci numbers instead. Unfortunately, even though `std::array` is a literal type in C++17, its comparison operations are not `constexpr`. First implement a function for comparing the content of `std::array` at compile time: `arrayEquals`.  
 
