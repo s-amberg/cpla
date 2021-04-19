@@ -36,7 +36,7 @@ Please form groups of 3 students for testat hand-in:
 * ***Subject***: `[CPlA-Testat-3] hsrname1 hsrname2 hsrname3`
 * Content: `BoundedQueue.h`
 * You will get feedback as soon as possible
-* Hand-in deadline: Sunday 6. May 2021 23:59
+* Hand-in deadline: Thursday 6. May 2021 23:59
 
 ## a. Interface of `BoundedQueue`
 
