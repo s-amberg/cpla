@@ -6,13 +6,7 @@ In this exercise...
 * ... analyze code with data races and race conditions
 
 
-# 0. IMPORTANT NOTE FOR TESTAT 3 `BoundedQueue` with Timed Operations
-
-I (Felix) have forgotten to include the test suite for the third Testat in last weeks exercises.
-The test suite is now in published in last weeks `exercise_templates` folder.
-Please use the tests from this suites, in conjunction with you own tests, to test your Testat solution.
-
-# 1. Peterson Mutex (Not Testat)
+# 0. Peterson Mutex (Not Testat)
 From the module Parallel Programming you should be familiar with the Peterson Mutex. If you need to recap it you can find it on the Skripte server [here](https://skripte.hsr.ch/Informatik/Fachbereich/Parallele_Programmierung/ParProg/Uebungen/09_Memory_Models_TESTAT2/).
 
 Below you have the implementation ported to C++ using volatile. While this works in Java, it is incorrect in C++. 
@@ -53,7 +47,7 @@ private:
 
 
 
-# 2. Optional - CVU Student Critique (Not Testat)
+# 1. Optional - CVU Student Critique (Not Testat)
 In one of the past cvu magazines the following problem was posted:
 
 Can you help the student and analyze her/his code and correct the bugs?
