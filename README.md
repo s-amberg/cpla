@@ -51,7 +51,7 @@ Visual Studio Code works also well, but does not support CUTE yet (bachelor thes
 | 05   | [L5](week05) | [E5](week05/README.md) ([PDF](/../-/jobs/artifacts/master/file/week05.pdf?job=week05))   | Iterators / Tags for Conversion                       | **Testat 2**   |
 | 06   | [L6](week06) | [E6](week06/README.md) ([PDF](/../-/jobs/artifacts/master/file/week06.pdf?job=week06))   | Advanced Templates / SFINAE                           |                |
 | 07   | [L7](week07) | [E7](week07/README.md) ([PDF](/../-/jobs/artifacts/master/file/week07.pdf?job=week07))   | Compile-Time Computation / Literal Types / UDL        |                |
-|      | Easter Break               |                                                                            |                                                       | **No Lecture** |
+|      | Arbitrary Break After Easter               |                                                                            |                                                       | **No Lecture** |
 |      | Arbitrary Additional Break |                                                                            |                                                       | **No Lecture** |
 | 08   | [L8](week08) | [E8](week08/README.md) ([PDF](/../-/jobs/artifacts/master/file/week08.pdf?job=week08))   | Multi-Threading / Mutexes                             | **Testat 3** <br/> [CppCon-Talk about Concurrency](https://www.youtube.com/watch?v=F6Ipn7gCOsY)   |
 | 09   | [L9](week09) | [E9](week09/README.md) ([PDF](/../-/jobs/artifacts/master/file/week09.pdf?job=week09))   | Memory Model / Atomics                                |                |
