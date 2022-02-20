@@ -1,5 +1,5 @@
 variables:
-  PANDOC_IMAGE: registry.gitlab.ost.ch:45023/ifs/gitlabmarkdowntopdf/pandoc:v22-02-1
+  PANDOC_IMAGE: registry.gitlab.ost.ch:45023/ifs/gitlabmarkdowntopdf/pandoc
 
 stages:
 - build
