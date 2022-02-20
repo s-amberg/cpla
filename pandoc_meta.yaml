@@ -1,12 +1,12 @@
 ---
 #title: "Document Title" # taken from specific documents metadata
-subtitle: 'C++ Advanced, FS 2019'
-mycopyright: '`\copyright 2019 Thomas~Corbat. All rights reserved.`{=latex}'
-author: ["Prof. Peter Sommerlad", "Thomas Corbat"]
-institute: ["HSR Hochschule für Technik Rapperswil", "IFS", "Oberseestrasse 10", "CH-8640 Rapperswil"]
-contact: ["T +41 55 222 46 30", "F +41 55 222 46 29", "ifs@hsr.ch", "\\url{https://ifs.hsr.ch}"]
+subtitle: 'C++ Advanced, FS 2021'
+mycopyright: '`\copyright 2021 Thomas~Corbat. All rights reserved.`{=latex}'
+author: ["Thomas Corbat", "Felix Morgner"]
+institute: [OST Ostschweizerfachhochschule", "Studiengang I", "Oberseestrasse 10", "CH-8640 Rapperswil"]
+contact: ["thomas.corbat@ost.ch", "felix.morgner@ost.ch", "\\url{https://www.ost.ch}"]
 keywords: []
-date: 2019-02-01
+date: 2021-02-20
 titlepage: True
 # scrreprt scrartcl
 documentclass: scrartcl
