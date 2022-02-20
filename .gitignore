@@ -1,3 +1,5 @@
 **/Debug/
 **/.settings/
 *.exe.xml
+build
+.cache
