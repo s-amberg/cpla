@@ -44,21 +44,21 @@ Visual Studio Code works also well, but does not support CUTE yet (bachelor thes
 
 | Week | Lecture                | Exercise                                                                                | Topics                                                 | Remarks        |
 |------|------------------------|-----------------------------------------------------------------------------------------|--------------------------------------------------------|----------------|
-| 01   | [L1](week01) | [E1](week01/README.md) ([PDF](/../-/jobs/artifacts/master/file/week01.pdf?job=week01))   | Introduction / C++ Recap                              |                |
-| 02   | [L2](week02) | [E2](week02/README.md) ([PDF](/../-/jobs/artifacts/master/file/week02.pdf?job=week02))   | Rvalue References / Move Semantics / Copy Elision     | **Testat 1**   |
-| 03   | [L3](week03) | [E3](week03/README.md) ([PDF](/../-/jobs/artifacts/master/file/week03.pdf?job=week03))   | Type Deduction / Perfect Forwarding                   |                |
-| 04   | [L4](week04) | [E4](week04/README.md) ([PDF](/../-/jobs/artifacts/master/file/week04.pdf?job=week04))   | Explicit Heap Memory Management                       | [CppCon-Talk about Pointer](https://www.youtube.com/watch?v=rqVWj0aVSxg)               |
-| 05   | [L5](week05) | [E5](week05/README.md) ([PDF](/../-/jobs/artifacts/master/file/week05.pdf?job=week05))   | Iterators / Tags for Conversion                       | **Testat 2**   |
-| 06   | [L6](week06) | [E6](week06/README.md) ([PDF](/../-/jobs/artifacts/master/file/week06.pdf?job=week06))   | Advanced Templates / SFINAE                           |                |
-| 07   | [L7](week07) | [E7](week07/README.md) ([PDF](/../-/jobs/artifacts/master/file/week07.pdf?job=week07))   | Compile-Time Computation / Literal Types / UDL        |                |
+| 01   | [L1](week01) | [E1](week01/README.md) ([PDF](http://cxx.pages.gitlab.ost.ch/cpla/week01.pdf))   | Introduction / C++ Recap                              |                |
+| 02   | [L2](week02) | [E2](week02/README.md) ([PDF](http://cxx.pages.gitlab.ost.ch/cpla/week02.pdf))   | Rvalue References / Move Semantics / Copy Elision     | **Testat 1**   |
+| 03   | [L3](week03) | [E3](week03/README.md) ([PDF](http://cxx.pages.gitlab.ost.ch/cpla/week03.pdf))   | Type Deduction / Perfect Forwarding                   |                |
+| 04   | [L4](week04) | [E4](week04/README.md) ([PDF](http://cxx.pages.gitlab.ost.ch/cpla/week04.pdf))   | Explicit Heap Memory Management                       | [CppCon-Talk about Pointer](https://www.youtube.com/watch?v=rqVWj0aVSxg)               |
+| 05   | [L5](week05) | [E5](week05/README.md) ([PDF](http://cxx.pages.gitlab.ost.ch/cpla/week05.pdf))   | Iterators / Tags for Conversion                       | **Testat 2**   |
+| 06   | [L6](week06) | [E6](week06/README.md) ([PDF](http://cxx.pages.gitlab.ost.ch/cpla/week06.pdf))   | Advanced Templates / SFINAE                           |                |
+| 07   | [L7](week07) | [E7](week07/README.md) ([PDF](http://cxx.pages.gitlab.ost.ch/cpla/week07.pdf))   | Compile-Time Computation / Literal Types / UDL        |                |
 |      | Arbitrary Break               |                                                                            |                                                       | **No Lecture** |
 |      | Additional Arbitrary Break |                                                                            |                                                       | **No Lecture** |
-| 08   | [L8](week08) | [E8](week08/README.md) ([PDF](/../-/jobs/artifacts/master/file/week08.pdf?job=week08))   | Multi-Threading / Mutexes                             | **Testat 3** <br/> [CppCon-Talk about Concurrency](https://www.youtube.com/watch?v=F6Ipn7gCOsY)   |
-| 09   | [L9](week09) | [E9](week09/README.md) ([PDF](/../-/jobs/artifacts/master/file/week09.pdf?job=week09))   | Memory Model / Atomics                                |                |
-| 10   | [L10](week10) | [E10](week10/README.md) ([PDF](/../-/jobs/artifacts/master/file/week10.pdf?job=week10)) | Networking (ASIO)                                     |                |
-| 11   | [L11](week11) | [E11](week11/README.md) ([PDF](/../-/jobs/artifacts/master/file/week11.pdf?job=week11)) | Advanced Library Design: Exception Safety / PIMPL     |                |
-| 12   | [L12](week12) | [E12](week12/README.md) ([PDF](/../-/jobs/artifacts/master/file/week12.pdf?job=week12)) | Hourglass Interfaces                                  |                |
-| 13   | [L13](week13) | [E13](week13/README.md) ([PDF](/../-/jobs/artifacts/master/file/week13.pdf?job=week13)) | Build Systems                                         |                |
+| 08   | [L8](week08) | [E8](week08/README.md) ([PDF](http://cxx.pages.gitlab.ost.ch/cpla/week08.pdf))   | Multi-Threading / Mutexes                             | **Testat 3** <br/> [CppCon-Talk about Concurrency](https://www.youtube.com/watch?v=F6Ipn7gCOsY)   |
+| 09   | [L9](week09) | [E9](week09/README.md) ([PDF](http://cxx.pages.gitlab.ost.ch/cpla/week09.pdf))   | Memory Model / Atomics                                |                |
+| 10   | [L10](week10) | [E10](week10/README.md) ([PDF](http://cxx.pages.gitlab.ost.ch/cpla/week10.pdf)) | Networking (ASIO)                                     |                |
+| 11   | [L11](week11) | [E11](week11/README.md) ([PDF](http://cxx.pages.gitlab.ost.ch/cpla/week11.pdf)) | Advanced Library Design: Exception Safety / PIMPL     |                |
+| 12   | [L12](week12) | [E12](week12/README.md) ([PDF](http://cxx.pages.gitlab.ost.ch/cpla/week12.pdf)) | Hourglass Interfaces                                  |                |
+| 13   | [L13](week13) | [E13](week13/README.md) ([PDF](http://cxx.pages.gitlab.ost.ch/cpla/week13.pdf)) | Build Systems                                         |                |
 | 14   |  |  | TBD, maybe outlook to C++20                                          |                |
 
 
