@@ -35,7 +35,7 @@ before_script:
     pandoc -f markdown+emoji
     -t latex
     --pdf-engine=xelatex
-    --template=hsrtemplate
+    --template=osttemplate
     --filter=gfm_cleanup.py
     --filter=gitlab_links.py
     --filter=plantuml.py
@@ -53,7 +53,7 @@ before_script:
     pandoc -f markdown+emoji
     -t latex
     --pdf-engine=xelatex
-    --template=hsrtemplate
+    --template=osttemplate
     --filter=inline_solutions.py
     --filter=gfm_cleanup.py
     --filter=gitlab_links.py
