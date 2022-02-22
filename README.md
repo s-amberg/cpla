@@ -73,7 +73,7 @@ We might make announcements here and there is a channel where you can ask for he
 Language References:
 * CPP Reference: https://www.cppreference.com/
 * CPlusPlus.com: http://www.cplusplus.com
-* MSDN Langauge Reference: https://docs.microsoft.com/en-us/cpp/cpp/cpp-language-reference
+* MSDN Language Reference: https://docs.microsoft.com/en-us/cpp/cpp/cpp-language-reference
 * MSDN Standard Library Reference: https://docs.microsoft.com/en-us/cpp/standard-library/cpp-standard-library-reference
  
 Online Compilers:
