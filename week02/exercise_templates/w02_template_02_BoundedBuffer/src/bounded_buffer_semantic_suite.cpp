@@ -5,12 +5,6 @@
 
 #include <utility>
 
-std::ostream & operator <<(std::ostream & os, MemoryOperationCounter const & counter) {
-	counter.print(os);
-	return os;
-}
-
-
 void test_buffer_push_copies_element() {
 //	BoundedBuffer<MemoryOperationCounter, 1> buffer { };
 //	MemoryOperationCounter counter { }, expected { 0, 1, true };
