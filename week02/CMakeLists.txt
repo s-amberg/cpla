@@ -7,14 +7,14 @@ week_executable(NAME "copy_demo"
     SOURCES
     lecture_examples/w02_lecture_00_CopyDemo/CopyDemo.cpp
 )
-set_target_properties(w02_copy_demo PROPERTIES CXX_STANDARD 14)
+set_target_properties(w02_copy_demo PROPERTIES CXX_STANDARD 17)
 target_compile_options(w02_copy_demo PRIVATE "-fno-elide-constructors")
 
 week_executable(NAME "move_demo"
     SOURCES
     lecture_examples/w02_lecture_01_MoveDemo/MoveDemo.cpp
 )
-set_target_properties(w02_move_demo PROPERTIES CXX_STANDARD 14)
+set_target_properties(w02_move_demo PROPERTIES CXX_STANDARD 17)
 target_compile_options(w02_move_demo PRIVATE "-fno-elide-constructors")
 
 week_executable(NAME "planets_example"
