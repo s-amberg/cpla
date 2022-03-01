@@ -85,7 +85,7 @@ struct dynarray {
 	}
 
 	const_iterator cbegin() const {
-		return container.begin();
+		return container.cbegin();
 	}
 
 	iterator end() {
