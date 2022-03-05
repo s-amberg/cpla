@@ -187,7 +187,7 @@ Please form groups of 2-3 students for testat hand-in:
 * ***Subject***: `[CPlA-Testat-1] name1 name2 name3`
 * Content: `BoundedBuffer.h`
 * You will get feedback as soon as possible
-* Hand-in deadline: Sunday 14. March 23:59 (MEZ)
+* Hand-in deadline: Monday 14. March 23:59 (MEZ)
 
 
 A project template with predefined tests is available [here](./exercise_templates/w02_template_02_BoundedBuffer).
