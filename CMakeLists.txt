@@ -20,4 +20,4 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${PROJECT_BINARY_DIR}/bin)
 
 add_subdirectory(week01)
 add_subdirectory(week02)
-#add_subdirectory(week03)
+add_subdirectory(week03)

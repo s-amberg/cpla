@@ -7,5 +7,5 @@ void f(T param) {
 
 
 int main(int argc, char **argv) {
-	f({23, 24}); // compile error!
+//	f({23, 24}); // compile error!
 }

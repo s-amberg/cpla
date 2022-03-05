@@ -16,15 +16,15 @@ auto const lambda = [](auto p) { //generic lambda
 	return p;
 };
 
-void f(auto p) {
-	std::cout << "f: type of p: " << boost::typeindex::type_id_with_cvr<decltype(p)>() << "\n";
-}
+//void f(auto p) {
+//	std::cout << "f: type of p: " << boost::typeindex::type_id_with_cvr<decltype(p)>() << "\n";
+//}
 
 int main(int argc, char **argv) {
 	createInt();
 	lambda(23);
 	lambda(23.0);
-	f(23);
-	f(23.0);
+//	f(23);
+//	f(23.0);
 }
 
