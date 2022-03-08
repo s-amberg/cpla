@@ -282,7 +282,9 @@ So far the implicitly available constructors have been sufficient. Now explicitl
 * Copy assignment operator
 * Move assignment operator
 
-***Note:*** Currently, this task seems rather pointless. Later we will modify the `BoundedBuffer` to facilitate heap memory, this will require the implementation of our own constructors and assignment operators. It will be easier if you already have the correct structure as a starting point then.
+***Note:*** 
+* Implement the constructors and assignment operators with the implicit default behavior (not the idiomatic copy-swap), otherwise, the tests won't pass.
+* Currently, this task seems rather pointless. Later we will modify the `BoundedBuffer` to facilitate heap memory, this will require the implementation of our own constructors and assignment operators. It will be easier if you already have the correct structure as a starting point then.
 
 
 
