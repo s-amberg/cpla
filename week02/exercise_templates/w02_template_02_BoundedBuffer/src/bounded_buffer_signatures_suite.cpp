@@ -70,18 +70,11 @@ void test_bounded_buffer_back_type_is_reference_type() {
 //	ASSERT_EQUAL(expected_type.pretty_name(), back_type.pretty_name());
 }
 
-void test_const_bounded_buffer_back_type_is_reference_type() {
+void test_const_bounded_buffer_back_type_is_const_reference_type() {
 //	BoundedBuffer<int, 15> const buffer{};
 //	auto back_type = boost::typeindex::type_id_with_cvr<decltype(buffer.back())>();
 //	auto expected_type = boost::typeindex::type_id_with_cvr<BoundedBuffer<int, 15>::const_reference>();
 //	ASSERT_EQUAL(expected_type.pretty_name(), back_type.pretty_name());
-}
-
-void test_bounded_buffer_pop_type_is_reference_type() {
-//	BoundedBuffer<int, 15> buffer{};
-//	auto pop_type = boost::typeindex::type_id_with_cvr<decltype(buffer.pop())>();
-//	auto expected_type = boost::typeindex::type_id_with_cvr<void>();
-//	ASSERT_EQUAL(expected_type.pretty_name(), pop_type.pretty_name());
 }
 
 void test_const_bounded_buffer_type_of_size_is_size_t() {
@@ -133,8 +126,7 @@ cute::suite make_suite_bounded_buffer_signatures_suite(){
 	s.push_back(CUTE(test_const_bounded_buffer_type_of_full_is_bool));
 	s.push_back(CUTE(test_bounded_buffer_front_type_is_reference_type));
 	s.push_back(CUTE(test_bounded_buffer_back_type_is_reference_type));
-	s.push_back(CUTE(test_const_bounded_buffer_back_type_is_reference_type));
-	s.push_back(CUTE(test_bounded_buffer_pop_type_is_reference_type));
+	s.push_back(CUTE(test_const_bounded_buffer_back_type_is_const_reference_type));
 	s.push_back(CUTE(test_const_bounded_buffer_front_type_is_const_reference_type));
 	s.push_back(CUTE(test_const_bounded_buffer_type_of_size_is_size_t));
 	s.push_back(CUTE(test_bounded_buffer_type_of_push_of_const_lvalue_is_void));
