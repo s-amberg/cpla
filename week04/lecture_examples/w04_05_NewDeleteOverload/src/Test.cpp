@@ -76,7 +76,8 @@ void test_with_placement_new() {
 	std::byte * const spaceForNotOnHeap = new std::byte[sizeof(not_on_heap)] { };
 	not_on_heap const * const ptr = ::new (spaceForNotOnHeap) not_on_heap { };
 	ASSERT(ptr->valid());
-	delete ptr;
+	ptr->~not_on_heap();
+	delete[] spaceForNotOnHeap;
 }
 
 void runAllTests(int argc, char const *argv[]) {
