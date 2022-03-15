@@ -85,6 +85,7 @@ void test_bounded_buffer_constructed_with_const_lvalue_argument_object_copied() 
   * The factory function initializes the `BoundedBuffer` using the default constructor.
   * Additionally, pass the parameter of the factory function to a call of the `push` function.
 
+***Warning for clang Users:*** We recognized that if you are using `clang` copy elision is pessimized by the return type `auto` for the `make_buffer` function. It is unclear to us why this happens, but it will lead to additional move operations in the `MemoryOperationCounter` objects.
 
 
 # 4. Factory function with Multiple Arguments
