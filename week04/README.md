@@ -128,4 +128,5 @@ You have to consider the following properties when implementing this feature:
 
 ***Note:*** An updated project with test cases for this exercise is available. We suggest you import this project and copy the `BoundedBuffer.h` from your previous exercise as a starting point. Since you do not allocate arrays of the element type anymore the test cases for `new` and `delete` change, i.e. those operators of the element type are not used anymore. The `bounded_buffer_heap_memory_suite` has been adapted accordingly and is available in the corresponding template project.
 
+***Sidenote:*** The allocation of an `std::byte` array might be suboptimal for accessing elements constructed into it that have a different alignment than the allocated memory (an `std::byte` has an alignment of 1). To circumvent that you might allocate an array of `std::aligned_storage_t` with corresponding size.
 
