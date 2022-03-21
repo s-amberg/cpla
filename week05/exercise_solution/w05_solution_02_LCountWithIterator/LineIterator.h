@@ -2,6 +2,7 @@
 #define LINEITERATOR_H_
 
 #include <cstddef>
+#include <istream>
 #include <iterator>
 #include <string>
 
