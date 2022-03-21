@@ -8,11 +8,11 @@ In these exercises you will practice the implementation of you own iterator type
 In this exercise you will add iterators for to your `BoundedBuffer`.
 
 Please form groups of 1-3 students for testat hand-in:
-* Submission in MS Teams
-* If you work in a group add a `group.txt` file with the team member's names
+* Submission in ALF if it is up and running, otherwise, by email.
+* Specify if you have worked in a group.
 * Content: `BoundedBuffer.h`
 * You will get feedback as soon as possible
-* Hand-in deadline: Thursday 01. April 2021 23:59
+* Hand-in deadline: Monday 04. April 2022 23:59
 
 ## Iterator for Dynamic Bounded Buffer
 Last week you have implemented a dynamic version of the bounded buffer. Finish that exercise first if you have not already completed it.
