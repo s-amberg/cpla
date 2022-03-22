@@ -79,7 +79,9 @@ void test_bounded_buffer_constructed_with_const_lvalue_argument_object_copied() 
 ```
 
 ## ***Time for action:*** Your turn!
-* Integrate the test cases above into your existing (or a copy of) *BoundedBuffer* project. You might need to make the type `MemoryOperationCounter` available to the context of the test cases. This type already exists in the tests of your BoundedBuffer, in `bounded_buffer_semantic_suite.cpp`. ***Recommendation:*** Since the `MemoryOperationCounter` type is now used by multiple test suites it should reside in its own header file.
+* Integrate the test cases above into your existing (or a copy of) *BoundedBuffer* project. You might need to make the type `MemoryOperationCounter` available to the context of the test cases. This type already exists in the tests of your BoundedBuffer, in `bounded_buffer_semantic_suite.cpp`.   
+***Recommendation:*** Since the `MemoryOperationCounter` type is now used by multiple test suites it should reside in its own header file.
+
 * Create a static template member function, which satisfies the tests above.
   * It must take a forward reference. This implies that template type deduction must happen. Subsequently, it must be a function template.
   * The factory function initializes the `BoundedBuffer` using the default constructor.
