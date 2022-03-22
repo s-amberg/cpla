@@ -58,10 +58,10 @@ week_executable(NAME "int_inputter_with_pointers"
 #     exercise_templates/w05_template_01_BoundedBufferWithIterators/src/bounded_buffer_default_behavior_suite.cpp
 #     exercise_templates/w05_template_01_BoundedBufferWithIterators/src/bounded_buffer_heap_memory_suite.cpp
 #     exercise_templates/w05_template_01_BoundedBufferWithIterators/src/bounded_buffer_iterator_suite.cpp
+#     exercise_templates/w05_template_01_BoundedBufferWithIterators/src/bounded_buffer_non_default_constructible_element_type_suite.cpp
 #     exercise_templates/w05_template_01_BoundedBufferWithIterators/src/bounded_buffer_semantic_suite.cpp
 #     exercise_templates/w05_template_01_BoundedBufferWithIterators/src/bounded_buffer_signatures_suite.cpp
 #     exercise_templates/w05_template_01_BoundedBufferWithIterators/src/bounded_buffer_student_suite.cpp
-#     exercise_templates/w05_template_01_BoundedBufferWithIterators/src/MemoryOperationCounter.cpp
 # 	INCLUDE_DIRECTORIES
 #     exercise_templates/w05_template_01_BoundedBufferWithIterators/cute
 # )
