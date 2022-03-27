@@ -3,7 +3,7 @@
 #include <cstddef>
 #include <iostream>
 
-template<template<typename, unsigned> class Container, typename Target, std::size_t N>
+template<template<typename, std::size_t> class Container, typename Target, std::size_t N>
 Target extractMiddleElement(Container<Target, N> & container) {
 	Target nthElement { };
 	std::swap(container.at(N / 2), nthElement);

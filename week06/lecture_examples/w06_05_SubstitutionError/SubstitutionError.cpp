@@ -8,5 +8,5 @@ auto increment(T value) -> decltype(value.increment()) {
 }
 
 int main() {
-  return increment(42);
+  //return increment(42);
 }

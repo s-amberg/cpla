@@ -8,5 +8,5 @@ T increment(T value) {
 }
 
 int main() {
-  return increment(42);
+  //return increment(42);
 }
