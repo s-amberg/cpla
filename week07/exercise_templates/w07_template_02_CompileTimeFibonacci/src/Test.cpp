@@ -7,13 +7,13 @@
 #include "measure.h"
 
 //--------- a) ---------
-static_assert(0 == fibo(0), "fibo(0)");
-static_assert(1 == fibo(1), "fibo(1)");
-static_assert(1 == fibo(2), "fibo(2)");
-static_assert(2 == fibo(3), "fibo(3)");
-static_assert(3 == fibo(4), "fibo(4)");
-static_assert(5 == fibo(5), "fibo(5)");
-static_assert(1'836'311'903 == fibo(46), "fibo(46)");
+// static_assert(0 == fibo(0), "fibo(0)");
+// static_assert(1 == fibo(1), "fibo(1)");
+// static_assert(1 == fibo(2), "fibo(2)");
+// static_assert(2 == fibo(3), "fibo(3)");
+// static_assert(3 == fibo(4), "fibo(4)");
+// static_assert(5 == fibo(5), "fibo(5)");
+// static_assert(1'836'311'903 == fibo(46), "fibo(46)");
 
 //--------- b) ---------
 //static_assert(0 == fibo_v<0>, "fibo_v<0>");

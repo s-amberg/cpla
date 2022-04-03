@@ -5,56 +5,56 @@
 
 #include "Temperature.h"
 
-using units::Temperature;
-using namespace units::tags;
-using namespace units::literals;
+// using units::Temperature;
+// using namespace units::tags;
+// using namespace units::literals;
 
 
-template <typename scale>
-constexpr bool willWaterFreeze(Temperature<scale> const & temperature) {
-	return units::temperatureCast<Celcius>(temperature) <= Temperature<Celcius>{0.0};
-}
+// template <typename scale>
+// constexpr bool willWaterFreeze(Temperature<scale> const & temperature) {
+// 	return units::temperatureCast<Celcius>(temperature) <= Temperature<Celcius>{0.0};
+// }
 
 void waterFreezesAt273Kelvin() {
-	ASSERT(willWaterFreeze(Temperature<Kelvin>{273}));
+	// ASSERT(willWaterFreeze(Temperature<Kelvin>{273}));
 }
 
 void waterFreezesAt0Celcius(){
-	ASSERT(willWaterFreeze(Temperature<Celcius>{0}));
+	// ASSERT(willWaterFreeze(Temperature<Celcius>{0}));
 }
 
 void waterFreezesAt32Fahrenheit(){
-	ASSERT(willWaterFreeze(Temperature<Fahrenheit>{32}));
+	// ASSERT(willWaterFreeze(Temperature<Fahrenheit>{32}));
 }
 
 void testCelciusToKelvin() {
-	static_assert(20_C == 293.15_K);
-	ASSERT_EQUAL(20_C, 293.15_K);
+	// static_assert(20_C == 293.15_K);
+	// ASSERT_EQUAL(20_C, 293.15_K);
 }
 
 void testKelvinToCelcius() {
-	static_assert(20_K == -253.15_C);
-	ASSERT_EQUAL(20_K, -253.15_C);
+	// static_assert(20_K == -253.15_C);
+	// ASSERT_EQUAL(20_K, -253.15_C);
 }
 
 void testFahrenheitToCelcius() {
-	static_assert(20_F == -6.6667_C);
-	ASSERT_EQUAL(20_F, -6.6667_C);
+	// static_assert(20_F == -6.6667_C);
+	// ASSERT_EQUAL(20_F, -6.6667_C);
 }
 
 void testCelciusToFahrenheit() {
-	static_assert(20_C == 68.0_F);
-	ASSERT_EQUAL(20_C, 68.0_F);
+	// static_assert(20_C == 68.0_F);
+	// ASSERT_EQUAL(20_C, 68.0_F);
 }
 
 void testKelvinToFahrenheit() {
-	static_assert(20_K == -423.67_F);
-	ASSERT_EQUAL(20_K, -423.67_F);
+	// static_assert(20_K == -423.67_F);
+	// ASSERT_EQUAL(20_K, -423.67_F);
 }
 
 void testFahrenheitToKelvin() {
-	static_assert(20_F == 266.4833_K);
-	ASSERT_EQUAL(20_F, 266.4833_K);
+	// static_assert(20_F == 266.4833_K);
+	// ASSERT_EQUAL(20_F, 266.4833_K);
 }
 
 

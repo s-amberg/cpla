@@ -1,6 +1,30 @@
 #include <array>
 #include <cmath>
 
+//From https://stackoverflow.com/questions/8622256/in-c11-is-sqrt-defined-as-constexpr
+template <typename T>
+constexpr T sqrt_helper(T x, T lo, T hi, unsigned depth = 0)
+{
+  if (depth > 100)
+	return lo;
+  if (lo == hi)
+    return lo;
+
+  const T mid = (lo + hi + 1) / 2;
+
+  if (x / mid < mid)
+    return sqrt_helper<T>(x, lo, mid - 1, depth + 1);
+  else
+    return sqrt_helper(x, mid, hi, depth + 1);
+}
+
+//From https://stackoverflow.com/questions/8622256/in-c11-is-sqrt-defined-as-constexpr
+template <typename T>
+constexpr T ct_sqrt(T x)
+{
+  return sqrt_helper<T>(x, 0, x / 2 + 1);
+}
+
 template <typename T>
 class Vector {
 	constexpr static size_t dimensions = 3;
@@ -11,7 +35,7 @@ public:
 		: values{x, y, z}{}
 	constexpr T length() const {
 		auto squares = x() * x() + y() * y() + z() * z();
-		return std::sqrt(squares);
+		return ct_sqrt(squares);
 	}
 	constexpr T & x() {
 		return values[0];

@@ -44,9 +44,14 @@ template <std::size_t n>
 constexpr auto fiboa_v = fiboa<n>();
 
 
+constexpr bool isdigit(char c)
+{
+	return c >= '0' && c <= '9';
+}
+
 namespace {
 	constexpr inline unsigned parseDigit(char c) {
-		if (!std::isdigit(c)) {
+		if (!isdigit(c)) {
 			throw std::invalid_argument{"c is not a digit"};
 		}
 		return c - '0';

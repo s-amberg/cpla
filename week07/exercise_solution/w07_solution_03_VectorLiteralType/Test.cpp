@@ -2,7 +2,7 @@
 #include "ide_listener.h"
 #include "xml_listener.h"
 #include "cute_runner.h"
-#include "vector.h"
+#include "Vector.h"
 
 #include <sstream>
 
@@ -64,12 +64,12 @@ void testCalculateLengthOfZeroVector() {
 void testCalculateLength() {
 	constexpr Vector v{1.0, 2.0, 3.0};
 	constexpr auto length = v.length();
-	static_assert(length == std::sqrt(14.0));
-	ASSERT_EQUAL(std::sqrt(14.0), length);
+	static_assert(length == ct_sqrt(14.0));
+	ASSERT_EQUAL(ct_sqrt(14.0), length);
 }
 
 void testCalculateLengthOfUnitVector() {
-	constexpr Vector v{1.0 / std::sqrt(14.0), 2.0 / std::sqrt(14.0), 3.0 / std::sqrt(14.0)};
+	constexpr Vector v{1.0 / ct_sqrt(14.0), 2.0 / ct_sqrt(14.0), 3.0 / ct_sqrt(14.0)};
 	constexpr auto length = v.length();
 	static_assert(length == 1.0);
 	ASSERT_EQUAL(1.0, length);
@@ -104,7 +104,7 @@ void testScalarProduct() {
 }
 
 void testDifferentTypes() {
-	constexpr Vector fail{1., 1.f};
+//	constexpr Vector fail{1., 1.f};
 }
 
 

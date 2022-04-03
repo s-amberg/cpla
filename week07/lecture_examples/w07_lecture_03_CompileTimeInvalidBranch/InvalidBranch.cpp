@@ -12,7 +12,7 @@ constexpr int divide(int n, int d) {
 }
 
 constexpr auto five = divide(120, 24);
-constexpr auto failure = divide(120, 0);
+//constexpr auto failure = divide(120, 0);
 
 int main() {
 
