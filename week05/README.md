@@ -8,7 +8,7 @@ In these exercises you will practice the implementation of you own iterator type
 In this exercise you will add iterators for to your `BoundedBuffer`.
 
 Please form groups of 1-3 students for testat hand-in:
-* Submission in ALF if it is up and running, otherwise, by email.
+* Submission in ALF if it is up and running (https://alf.sifs0005.infs.ch), otherwise, by email.
 * Specify if you have worked in a group.
 * Content: `BoundedBuffer.h`
 * You will get feedback as soon as possible
