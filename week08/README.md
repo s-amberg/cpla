@@ -32,11 +32,11 @@ What speedup can you achieve?
 In this exercise you will wrap your `BoundedBuffer` in a thread-safe `BoundedQueue`.
 
 Please form groups of 3 students for testat hand-in:
-* Send an email to [Felix Morgner](mailto:felix.morgner@hsr.ch)
-* ***Subject***: `[CPlA-Testat-3] hsrname1 hsrname2 hsrname3`
+* Submission in ALF if it is up and running (https://alf.sifs0005.infs.ch), otherwise, by email.
+* Specify if you have worked in a group.
 * Content: `BoundedQueue.h`
 * You will get feedback as soon as possible
-* Hand-in deadline: Thursday 6. May 2021 23:59
+* Hand-in deadline: Thursday 9. May 2021 23:59
 
 ## a. Interface of `BoundedQueue`
 
