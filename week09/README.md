@@ -7,7 +7,7 @@ In this exercise...
 
 
 # 0. Peterson Mutex (Not Testat)
-From the module Parallel Programming you should be familiar with the Peterson Mutex. If you need to recap it you can find it on the Skripte server [here](https://skripte.hsr.ch/Informatik/Fachbereich/Parallele_Programmierung/ParProg/Uebungen/09_Memory_Models_TESTAT2/).
+From the module Parallel Programming you should be familiar with the Peterson Mutex. If you need to recap it you can find it [on Wikipedia](https://en.wikipedia.org/wiki/Peterson%27s_algorithm).
 
 Below you have the implementation ported to C++ using volatile. While this works in Java, it is incorrect in C++. 
 
