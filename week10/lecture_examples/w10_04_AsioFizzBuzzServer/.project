@@ -3,6 +3,7 @@
 	<name>w10_04_AsioFizzBuzzServer</name>
 	<comment></comment>
 	<projects>
+		<project>asio</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

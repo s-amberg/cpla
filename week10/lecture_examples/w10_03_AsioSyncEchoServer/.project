@@ -3,6 +3,7 @@
 	<name>w10_03_AsioSyncEchoServer</name>
 	<comment></comment>
 	<projects>
+		<project>asio</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

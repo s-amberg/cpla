@@ -4,6 +4,7 @@
 	<comment></comment>
 	<projects>
 		<project>simple_http</project>
+		<project>asio</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

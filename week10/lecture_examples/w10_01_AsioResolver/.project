@@ -3,6 +3,7 @@
 	<name>w10_01_AsioResolver</name>
 	<comment></comment>
 	<projects>
+		<project>asio</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

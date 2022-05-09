@@ -3,6 +3,7 @@
 	<name>w10_02_AsioGetRequest</name>
 	<comment></comment>
 	<projects>
+		<project>asio</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>
