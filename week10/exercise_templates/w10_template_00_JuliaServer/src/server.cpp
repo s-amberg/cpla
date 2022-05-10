@@ -37,7 +37,7 @@ server::~server() {
 }
 
 void server::start_accepting() {
-	m_acceptor.async_accept(m_context, [this](auto const &error, auto peer) {
+	m_acceptor.async_accept(m_context, [this](auto const &error, asio::ip::tcp::socket peer) {
 		if (!error) {
 			auto inserted = m_remotes.insert(make_remote(std::move(peer)));
 			if (inserted.second) {
