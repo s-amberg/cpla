@@ -4,7 +4,7 @@
 
 #include <sstream>
 #include <string>
-#include "../Unicorn.h"
+#include "Unicorn.h"
 
 void testUnicornFly() {
 	using namespace std::string_literals;

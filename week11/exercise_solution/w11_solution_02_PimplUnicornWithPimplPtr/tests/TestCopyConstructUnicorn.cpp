@@ -1,11 +1,12 @@
 #include "TestCopyConstructUnicorn.h"
 #include "CreateFreddy.h"
-#include "Unicorn.hpp"
+#include "Unicorn.h"
 
 #include "cute.h"
 
 void testCopyConstructUnicorn() {
-	auto const freddy = createFreddy();
-	auto const copy { freddy };
-	ASSERT_EQUAL(freddy, copy);
+	// We can't have that anymore, unless we implement it explicitly
+	// auto const freddy = createFreddy();
+	// auto const copy { freddy };
+	// ASSERT_EQUAL(freddy, copy);
 }

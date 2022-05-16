@@ -1,4 +1,4 @@
-# Exercise 12 - Solution
+# Exercise 11 - Solution
 
 # 1. Exception Safety
 

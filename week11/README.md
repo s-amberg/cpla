@@ -1,4 +1,4 @@
-# Exercise 12 - Exception Safety and Pimpl Idiom
+# Exercise 11 - Exception Safety and Pimpl Idiom
 
 In this exercise...
 
@@ -39,11 +39,9 @@ The copy operations, i.e. copy constructor and copy assignment operations, depen
 * If an exception occurs during copy assignment, the `this` object must not be modified! (Strong Guarantee)
   * You can apply the copy-swap idiom to achieve this
 
-
-
 # 2. Pimpl Idiom
 
-In this exercise we use an adapted version of Felix Morgner's [Building Reusable Libraries](https://github.com/fmorgner/building-reusable-libraries/) examples. In the [template](./exercise_templates/w12_template_02_PimplUnicorn) CUTE project you find the `Unicorn` class, which is tested by the test cases in the `tests` directory. To demonstrate the benefit of the Pimpl Idiom we have created separate header and source files for every test case.
+In this exercise we use an adapted version of Felix Morgner's [Building Reusable Libraries](https://github.com/fmorgner/building-reusable-libraries/) examples. In the [template](./exercise_templates/w11_template_02_PimplUnicorn) CUTE project you find the `Unicorn` class, which is tested by the test cases in the `tests` directory. To demonstrate the benefit of the Pimpl Idiom we have created separate header and source files for every test case.
 
 ## Pimpl with `std::unique_ptr`
 Adapt the `Unicorn` class to use the Pimpl Idiom. Hide all non-public members in the `UnicornImpl` class, which is local to the `Unicorn.cpp` file. Use a `std::unique_ptr` for the `pimpl` pointer.
