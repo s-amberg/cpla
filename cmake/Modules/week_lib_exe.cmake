@@ -20,6 +20,22 @@ function(week_library)
     target_include_directories("${PROJECT_NAME}_${WEEK_LIB_NAME}" PUBLIC ${WEEK_LIB_INCLUDE_DIRECTORIES} ${Boost_INCLUDE_DIR})
 endfunction()
 
+function(week_shared_library)
+    set(options)
+    set(oneValueArgs NAME OUTPUT_NAME)
+    set(multiValueArgs SOURCES INCLUDE_DIRECTORIES LIBRARIES)
+    cmake_parse_arguments(WEEK_LIB "${options}" "${oneValueArgs}" "${multiValueArgs}" ${ARGN})
+
+    add_library("${PROJECT_NAME}_${WEEK_LIB_NAME}" SHARED ${WEEK_LIB_SOURCES})
+    target_link_libraries("${PROJECT_NAME}_${WEEK_LIB_NAME}" PUBLIC ${WEEK_LIB_LIBRARIES} ${Boost_LIBRARIES})
+    target_include_directories("${PROJECT_NAME}_${WEEK_LIB_NAME}" PUBLIC ${WEEK_LIB_INCLUDE_DIRECTORIES} ${Boost_INCLUDE_DIR})
+    if(WEEK_LIB_OUTPUT_NAME)
+      set_target_properties("${PROJECT_NAME}_${WEEK_LIB_NAME}" PROPERTIES
+        OUTPUT_NAME ${WEEK_LIB_OUTPUT_NAME}
+      )
+    endif()
+endfunction()
+
 function(week_test)
     set(options)
     set(oneValueArgs NAME)
