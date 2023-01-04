@@ -11,6 +11,14 @@ target_include_directories("asio" SYSTEM INTERFACE
     "${PROJECT_SOURCE_DIR}/exercise_libs/asio/include"
 )
 
+if(WIN32)
+    target_link_libraries("asio" INTERFACE
+        "ws2_32"
+        "wsock32"
+    )
+endif()
+
+
 week_library(NAME "simple_http"
     SOURCES
     exercise_libs/simple_http/src/request.cpp
