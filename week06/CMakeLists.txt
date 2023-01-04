@@ -33,6 +33,13 @@ week_executable(NAME "sfinae_with_enable_if"
     lecture_examples/w06_06_SFINAEwithEnableIf/SFINAEwthihEnableIf.cpp
 )
 
+week_executable(NAME "box_with_sfinae"
+    SOURCES
+    lecture_examples/w06_07_BoxWithSFINAE/src/Test.cpp
+    INCLUDE_DIRECTORIES
+    lecture_examples/w06_07_BoxWithSFINAE/cute
+)
+
 week_executable(NAME "arbitrary_printer"
     SOURCES
     lecture_examples/w06_08_ArbitraryPrinter/ArbitraryPrinter.cpp
