@@ -1,54 +1,65 @@
-cmake_minimum_required(VERSION 3.19)
+set(CPL_TARGET_WEEK_PREFIX "w01_")
 
-project(w01 LANGUAGES CXX)
+add_subdirectory("lecture_examples/01_integral_promotion")
+add_subdirectory("lecture_examples/02_algorithms")
 
-# Lecture Examples
-week_executable(NAME "stylechecker_demo"
-    SOURCES
-    lecture_examples/w01_lecture_00_StylecheckerDemo/src/Test.cpp
-    lecture_examples/w01_lecture_00_StylecheckerDemo/src/header.cpp
-	INCLUDE_DIRECTORIES
-    lecture_examples/w01_lecture_00_StylecheckerDemo/cute
-)
-week_executable(NAME "cevelop_issues"
-    SOURCES
-    lecture_examples/w01_lecture_01_IssuesInCevelop/cpp17problems.cpp
-)
+add_subdirectory("exercise_solutions/01_simple_tasks")
+add_subdirectory("exercise_solutions/02_fraction_type")
+add_subdirectory("exercise_solutions/03_dynarray")
 
+# add_subdirectory("exercise_templates/SayHello")
 
-week_executable(NAME "integral_promotion"
-    SOURCES
-    lecture_examples/w01_lecture_02_IntegralPromotion/integral_promotion.cpp
-)
+# cmake_minimum_required(VERSION 3.19)
 
-week_executable(NAME "algorithms"
-    SOURCES
-    lecture_examples/w01_lecture_03_Algorithms/algorithms.cpp
-)
+# project(w01 LANGUAGES CXX)
 
-#Exercise Templates
+# # Lecture Examples
+# week_executable(NAME "stylechecker_demo"
+#     SOURCES
+#     lecture_examples/w01_lecture_00_StylecheckerDemo/src/Test.cpp
+#     lecture_examples/w01_lecture_00_StylecheckerDemo/src/header.cpp
+# 	INCLUDE_DIRECTORIES
+#     lecture_examples/w01_lecture_00_StylecheckerDemo/cute
+# )
+# week_executable(NAME "cevelop_issues"
+#     SOURCES
+#     lecture_examples/w01_lecture_01_IssuesInCevelop/cpp17problems.cpp
+# )
 
 
-#Exercise Solutions
+# week_executable(NAME "integral_promotion"
+#     SOURCES
+#     lecture_examples/w01_lecture_02_IntegralPromotion/integral_promotion.cpp
+# )
+
+# week_executable(NAME "algorithms"
+#     SOURCES
+#     lecture_examples/w01_lecture_03_Algorithms/algorithms.cpp
+# )
+
+# #Exercise Templates
 
 
-week_executable(NAME "simple_tasks"
-    SOURCES
-    exercise_solutions/w01_solution_01_simple_tasks/src/Test.cpp
-	INCLUDE_DIRECTORIES
-    exercise_solutions/w01_solution_01_simple_tasks/cute
-)
+# #Exercise Solutions
 
-week_executable(NAME "fraction_type"
-    SOURCES
-    exercise_solutions/w01_solution_02_fraction_type/src/Test.cpp
-	INCLUDE_DIRECTORIES
-    exercise_solutions/w01_solution_02_fraction_type/cute
-)
 
-week_executable(NAME "dynarray"
-    SOURCES
-    exercise_solutions/w01_solution_03_dynarray/src/Test.cpp
-	INCLUDE_DIRECTORIES
-    exercise_solutions/w01_solution_03_dynarray/cute
-)
+# week_executable(NAME "simple_tasks"
+#     SOURCES
+#     exercise_solutions/w01_solution_01_simple_tasks/src/Test.cpp
+# 	INCLUDE_DIRECTORIES
+#     exercise_solutions/w01_solution_01_simple_tasks/cute
+# )
+
+# week_executable(NAME "fraction_type"
+#     SOURCES
+#     exercise_solutions/w01_solution_02_fraction_type/src/Test.cpp
+# 	INCLUDE_DIRECTORIES
+#     exercise_solutions/w01_solution_02_fraction_type/cute
+# )
+
+# week_executable(NAME "dynarray"
+#     SOURCES
+#     exercise_solutions/w01_solution_03_dynarray/src/Test.cpp
+# 	INCLUDE_DIRECTORIES
+#     exercise_solutions/w01_solution_03_dynarray/cute
+# )
