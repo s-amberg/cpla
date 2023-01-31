@@ -4,7 +4,7 @@
 * An extended `main()` might look like this for better segmentation of the output:
 
 ```cpp
-int main() {
+auto main() -> int {
   std::cout << "--- Tracer m { \"main\" }; ---\n";
   Tracer m{"main"};
   {
