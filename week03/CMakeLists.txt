@@ -1,80 +1,102 @@
-cmake_minimum_required(VERSION 3.19)
+set(CPL_TARGET_WEEK_PREFIX "w03_")
 
-project(w03 LANGUAGES CXX)
+add_subdirectory("lecture_examples/01_big_object_container")
+add_subdirectory("lecture_examples/02_initializer_list_as_template_argument")
+add_subdirectory("lecture_examples/03_auto_return_type")
+add_subdirectory("lecture_examples/04_do_something_by_value")
+add_subdirectory("lecture_examples/05_do_something_by_ref")
+add_subdirectory("lecture_examples/06_do_something_by_const_ref")
+add_subdirectory("lecture_examples/07_do_something_by_fwd_ref")
+add_subdirectory("lecture_examples/08_do_something_by_perfect_forwarding")
+add_subdirectory("lecture_examples/09_fun_with_lambdas")
 
-# Lecture Examples
-week_executable(NAME "big_object_container"
-    SOURCES
-    lecture_examples/w03_lecture_01_BigObjectContainer/BigObjectContainer.cpp
-)
-
-week_executable(NAME "initialize_list_as_template_argument"
-    SOURCES
-    lecture_examples/w03_lecture_02_InitializerListAsTemplateArgument/InitializerListAsTemplateArgument.cpp
-)
-
-week_executable(NAME "auto_return_type"
-    SOURCES
-    lecture_examples/w03_lecture_03_AutoReturnType/AutoReturnType.cpp
-)
-
-week_executable(NAME "do_something_by_value"
-    SOURCES
-    lecture_examples/w03_lecture_04_DoSomethingByValue/DoSomethingByValue.cpp
-)
-
-week_executable(NAME "do_something_by_ref"
-    SOURCES
-    lecture_examples/w03_lecture_05_DoSomethingByRef/DoSomethingByRef.cpp
-)
-
-week_executable(NAME "do_something_by_const_ref"
-    SOURCES
-    lecture_examples/w03_lecture_06_DoSomethingByConstRef/DoSomethingByConstRef.cpp
-)
-
-week_executable(NAME "do_something_by_fwd_ref"
-    SOURCES
-    lecture_examples/w03_lecture_07_DoSomethingByFwdRef/DoSomethingByFwdRef.cpp
-)
-
-week_executable(NAME "do_something_by_perfect_forwarding"
-    SOURCES
-    lecture_examples/w03_lecture_08_DoSomethingByPerfectForwarding/DoSomethingByPerfectForwarding.cpp
-)
-
-week_executable(NAME "fun_with_lambdas"
-    SOURCES
-    lecture_examples/w03_lecture_09_FunWithLambdas/FunWithLambdas.cpp
-)
+add_subdirectory("exercise_templates/02_type_trivia")
+add_subdirectory("exercise_templates/03_bounded_buffer_with_factory_function")
 
 
-#Exercise Templates
+# add_subdirectory("exercise_templates/01_tracer")
+# add_subdirectory("exercise_templates/02_bounded_buffer")
 
-week_executable(NAME "type_trivia"
-    SOURCES
-    exercise_templates/w03_template_02_TypeTrivia/Application.cpp
-    exercise_templates/w03_template_02_TypeTrivia/Question.cpp
-    exercise_templates/w03_template_02_TypeTrivia/QuestionGenerator.cpp
-    exercise_templates/w03_template_02_TypeTrivia/Trivia.cpp
-)
+# add_subdirectory("exercise_solutions/02_bounded_buffer")
 
-# week_executable(NAME "bounded_buffer_with_factory_function_tests"
+
+# cmake_minimum_required(VERSION 3.19)
+
+# project(w03 LANGUAGES CXX)
+
+# # Lecture Examples
+# week_executable(NAME "big_object_container"
 #     SOURCES
-#     exercise_templates/w03_template_03_BoundedBufferWithFactoryFunction/src/Test.cpp
-#     exercise_templates/w03_template_03_BoundedBufferWithFactoryFunction/src/bounded_buffer_content_suite.cpp
-#     exercise_templates/w03_template_03_BoundedBufferWithFactoryFunction/src/bounded_buffer_default_behavior_suite.cpp
-#     exercise_templates/w03_template_03_BoundedBufferWithFactoryFunction/src/bounded_buffer_make_buffer_suite.cpp
-#     exercise_templates/w03_template_03_BoundedBufferWithFactoryFunction/src/bounded_buffer_semantic_suite.cpp
-#     exercise_templates/w03_template_03_BoundedBufferWithFactoryFunction/src/bounded_buffer_signatures_suite.cpp
-#     exercise_templates/w03_template_03_BoundedBufferWithFactoryFunction/src/bounded_buffer_student_suite.cpp
-#     exercise_templates/w03_template_03_BoundedBufferWithFactoryFunction/src/MemoryOperationCounter.cpp
-# 	INCLUDE_DIRECTORIES
-#     exercise_templates/w03_template_03_BoundedBufferWithFactoryFunction/cute
+#     lecture_examples/w03_lecture_01_BigObjectContainer/BigObjectContainer.cpp
+# )
+
+# week_executable(NAME "initialize_list_as_template_argument"
+#     SOURCES
+#     lecture_examples/w03_lecture_02_InitializerListAsTemplateArgument/InitializerListAsTemplateArgument.cpp
+# )
+
+# week_executable(NAME "auto_return_type"
+#     SOURCES
+#     lecture_examples/w03_lecture_03_AutoReturnType/AutoReturnType.cpp
+# )
+
+# week_executable(NAME "do_something_by_value"
+#     SOURCES
+#     lecture_examples/w03_lecture_04_DoSomethingByValue/DoSomethingByValue.cpp
+# )
+
+# week_executable(NAME "do_something_by_ref"
+#     SOURCES
+#     lecture_examples/w03_lecture_05_DoSomethingByRef/DoSomethingByRef.cpp
+# )
+
+# week_executable(NAME "do_something_by_const_ref"
+#     SOURCES
+#     lecture_examples/w03_lecture_06_DoSomethingByConstRef/DoSomethingByConstRef.cpp
+# )
+
+# week_executable(NAME "do_something_by_fwd_ref"
+#     SOURCES
+#     lecture_examples/w03_lecture_07_DoSomethingByFwdRef/DoSomethingByFwdRef.cpp
+# )
+
+# week_executable(NAME "do_something_by_perfect_forwarding"
+#     SOURCES
+#     lecture_examples/w03_lecture_08_DoSomethingByPerfectForwarding/DoSomethingByPerfectForwarding.cpp
+# )
+
+# week_executable(NAME "fun_with_lambdas"
+#     SOURCES
+#     lecture_examples/w03_lecture_09_FunWithLambdas/FunWithLambdas.cpp
 # )
 
 
-#Exercise Solutions
+# #Exercise Templates
+
+# week_executable(NAME "type_trivia"
+#     SOURCES
+#     exercise_templates/w03_template_02_TypeTrivia/Application.cpp
+#     exercise_templates/w03_template_02_TypeTrivia/Question.cpp
+#     exercise_templates/w03_template_02_TypeTrivia/QuestionGenerator.cpp
+#     exercise_templates/w03_template_02_TypeTrivia/Trivia.cpp
+# )
+
+# # week_executable(NAME "bounded_buffer_with_factory_function_tests"
+# #     SOURCES
+# #     exercise_templates/w03_template_03_BoundedBufferWithFactoryFunction/src/Test.cpp
+# #     exercise_templates/w03_template_03_BoundedBufferWithFactoryFunction/src/bounded_buffer_content_suite.cpp
+# #     exercise_templates/w03_template_03_BoundedBufferWithFactoryFunction/src/bounded_buffer_default_behavior_suite.cpp
+# #     exercise_templates/w03_template_03_BoundedBufferWithFactoryFunction/src/bounded_buffer_make_buffer_suite.cpp
+# #     exercise_templates/w03_template_03_BoundedBufferWithFactoryFunction/src/bounded_buffer_semantic_suite.cpp
+# #     exercise_templates/w03_template_03_BoundedBufferWithFactoryFunction/src/bounded_buffer_signatures_suite.cpp
+# #     exercise_templates/w03_template_03_BoundedBufferWithFactoryFunction/src/bounded_buffer_student_suite.cpp
+# #     exercise_templates/w03_template_03_BoundedBufferWithFactoryFunction/src/MemoryOperationCounter.cpp
+# # 	INCLUDE_DIRECTORIES
+# #     exercise_templates/w03_template_03_BoundedBufferWithFactoryFunction/cute
+# # )
+
+
+# #Exercise Solutions
 
 
 
