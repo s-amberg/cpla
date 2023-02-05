@@ -1,70 +1,15 @@
-cmake_minimum_required(VERSION 3.19)
+set(CPL_TARGET_WEEK_PREFIX "w06_")
 
-project(w06 LANGUAGES CXX)
+add_subdirectory("lecture_examples/01_shape_and_square")
+add_subdirectory("lecture_examples/02_extract_middle")
+add_subdirectory("lecture_examples/03_extract_middle")
+add_subdirectory("lecture_examples/04_overload_selection")
+add_subdirectory("lecture_examples/05_substitution_error")
+add_subdirectory("lecture_examples/06_SFINAE_with_enable_if")
+add_subdirectory("lecture_examples/07_box_with_SFINAE")
+add_subdirectory("lecture_examples/08_arbitrary_printer")
 
-# Lecture Examples
-week_executable(NAME "shape_and_square"
-    SOURCES
-    lecture_examples/w06_01_ShapeAndSquare/ShapeAndSquare.cpp
-)
+add_subdirectory("exercise_templates/02_SFINAE")
 
-week_executable(NAME "extract_middle_1"
-    SOURCES
-    lecture_examples/w06_02_ExtractMiddle/ExtractMiddle.cpp
-)
-
-week_executable(NAME "extract_middle_2"
-    SOURCES
-    lecture_examples/w06_03_ExtractMiddle/ExtractMiddle.cpp
-)
-
-week_executable(NAME "overload_selection"
-    SOURCES
-    lecture_examples/w06_04_OverloadSelection/OverloadSelection.cpp
-)
-
-week_executable(NAME "substitution_error"
-    SOURCES
-    lecture_examples/w06_05_SubstitutionError/SubstitutionError.cpp
-)
-
-week_executable(NAME "sfinae_with_enable_if"
-    SOURCES
-    lecture_examples/w06_06_SFINAEwithEnableIf/SFINAEwthihEnableIf.cpp
-)
-
-week_executable(NAME "box_with_sfinae"
-    SOURCES
-    lecture_examples/w06_07_BoxWithSFINAE/src/Test.cpp
-    INCLUDE_DIRECTORIES
-    lecture_examples/w06_07_BoxWithSFINAE/cute
-)
-
-week_executable(NAME "arbitrary_printer"
-    SOURCES
-    lecture_examples/w06_08_ArbitraryPrinter/ArbitraryPrinter.cpp
-)
-
-
-
-#Exercise Templates
-
-week_executable(NAME "sfinae_exercise"
-    SOURCES
-    exercise_templates/w06_template_02_SFINAE/src/Test.cpp
-    INCLUDE_DIRECTORIES
-    exercise_templates/w06_template_02_SFINAE/cute
-)
-
-
-
-#Exercise Solutions
-
-
-week_executable(NAME "sfinae_solution"
-    SOURCES
-    exercise_solution/w06_solution_02_SFINAE/src/Test.cpp
-    INCLUDE_DIRECTORIES
-    exercise_solution/w06_solution_02_SFINAE/cute
-)
+add_subdirectory("exercise_solutions/02_SFINAE")
 
