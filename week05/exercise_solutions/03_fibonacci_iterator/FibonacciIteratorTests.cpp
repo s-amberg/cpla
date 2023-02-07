@@ -5,91 +5,91 @@
 #include <cute/ide_listener.h>
 #include <cute/summary_listener.h>
 
-void test_default_constructed_iterator_returns_zero() {
+TEST(test_default_constructed_iterator_returns_zero) {
   FibonacciIterator const fibItr{};
 
   ASSERT_EQUAL(0, *fibItr);
 }
 
-void test_fibonacci_iterator_for_first_element_is_one() {
+TEST(test_fibonacci_iterator_for_first_element_is_one) {
   FibonacciIterator const fibItr{1};
 
   ASSERT_EQUAL(1, *fibItr);
 }
 
-void test_fibonacci_iterator_for_second_element_is_one() {
+TEST(test_fibonacci_iterator_for_second_element_is_one) {
   FibonacciIterator const fibItr{2};
 
   ASSERT_EQUAL(1, *fibItr);
 }
 
-void test_fibonacci_iterator_for_third_element_is_two() {
+TEST(test_fibonacci_iterator_for_third_element_is_two) {
   FibonacciIterator const fibItr{3};
 
   ASSERT_EQUAL(2, *fibItr);
 }
 
-void test_fibonacci_iterator_for_fourth_element_is_three() {
+TEST(test_fibonacci_iterator_for_fourth_element_is_three) {
   FibonacciIterator const fibItr{4};
 
   ASSERT_EQUAL(3, *fibItr);
 }
 
-void test_fibonacci_iterator_for_fifth_element_is_five() {
+TEST(test_fibonacci_iterator_for_fifth_element_is_five) {
   FibonacciIterator const fibItr{5};
 
   ASSERT_EQUAL(5, *fibItr);
 }
 
-void test_fibonacci_iterator_for_sixth_element_is_eight() {
+TEST(test_fibonacci_iterator_for_sixth_element_is_eight) {
   FibonacciIterator const fibItr{6};
 
   ASSERT_EQUAL(8, *fibItr);
 }
 
-void test_fibonacci_iterator_for_seventh_element_is_thirteen() {
+TEST(test_fibonacci_iterator_for_seventh_element_is_thirteen) {
   FibonacciIterator const fibItr{7};
 
   ASSERT_EQUAL(13, *fibItr);
 }
 
-void test_fibonacci_iterator_for_eighth_element_is_twentyone() {
+TEST(test_fibonacci_iterator_for_eighth_element_is_twentyone) {
   FibonacciIterator const fibItr{8};
 
   ASSERT_EQUAL(21, *fibItr);
 }
 
-void test_fibonacci_iterator_for_ninth_element_is_thirtyfour() {
+TEST(test_fibonacci_iterator_for_ninth_element_is_thirtyfour) {
   FibonacciIterator const fibItr{9};
 
   ASSERT_EQUAL(34, *fibItr);
 }
 
-void test_fibonacci_iterator_for_tenth_element_is_fiftyfive() {
+TEST(test_fibonacci_iterator_for_tenth_element_is_fiftyfive) {
   FibonacciIterator const fibItr{10};
 
   ASSERT_EQUAL(55, *fibItr);
 }
 
-void test_fibonacci_iterator_equal_to_itself() {
+TEST(test_fibonacci_iterator_equal_to_itself) {
   FibonacciIterator const fibItr{};
 
   ASSERT_EQUAL(fibItr, fibItr);
 }
 
-void test_fibonacci_iterator_equal_to_other_fibonacci_iterator_with_same_state() {
+TEST(test_fibonacci_iterator_equal_to_other_fibonacci_iterator_with_same_state) {
   FibonacciIterator const fibItr{10}, otherFibItr{10};
 
   ASSERT_EQUAL(fibItr, otherFibItr);
 }
 
-void test_fibonacci_iterator_not_equal_to_other_fibonacci_iterator_with_another_state() {
+TEST(test_fibonacci_iterator_not_equal_to_other_fibonacci_iterator_with_another_state) {
   FibonacciIterator const fibItr{5}, otherFibItr{10};
 
   ASSERT_NOT_EQUAL_TO(fibItr, otherFibItr);
 }
 
-void test_prefix_incrementing_default_fibonacci_iterator_increments_this_fibonacci_iterator() {
+TEST(test_prefix_incrementing_default_fibonacci_iterator_increments_this_fibonacci_iterator) {
   FibonacciIterator const expectedItr{1};
   FibonacciIterator otherFibItr{};
 
@@ -98,7 +98,7 @@ void test_prefix_incrementing_default_fibonacci_iterator_increments_this_fibonac
   ASSERT_EQUAL(expectedItr, otherFibItr);
 }
 
-void test_prefix_incrementing_default_fibonacci_iterator_returns_changed_fibonacci_iterator() {
+TEST(test_prefix_incrementing_default_fibonacci_iterator_returns_changed_fibonacci_iterator) {
   FibonacciIterator fibItr{};
 
   FibonacciIterator& changed{++fibItr};
@@ -106,7 +106,7 @@ void test_prefix_incrementing_default_fibonacci_iterator_returns_changed_fibonac
   ASSERT_EQUAL(&changed, &fibItr);
 }
 
-void test_postfix_incrementing_default_fibonacci_iterator_increments_this_fibonacci_iterator() {
+TEST(test_postfix_incrementing_default_fibonacci_iterator_increments_this_fibonacci_iterator) {
   FibonacciIterator const expectedItr{1};
   FibonacciIterator otherFibItr{};
 
@@ -115,7 +115,7 @@ void test_postfix_incrementing_default_fibonacci_iterator_increments_this_fibona
   ASSERT_EQUAL(expectedItr, otherFibItr);
 }
 
-void test_postfix_incrementing_default_fibonacci_iterator_returns_previous_value_fibonacci_iterator() {
+TEST(test_postfix_incrementing_default_fibonacci_iterator_returns_previous_value_fibonacci_iterator) {
   FibonacciIterator const expectedItr{};
   FibonacciIterator otherFibItr{};
 
@@ -124,7 +124,7 @@ void test_postfix_incrementing_default_fibonacci_iterator_returns_previous_value
   ASSERT_EQUAL(expectedItr, unincremented);
 }
 
-void test_postfix_incrementing_default_fibonacci_iterator_returns_new_fibonacci_iterator() {
+TEST(test_postfix_incrementing_default_fibonacci_iterator_returns_new_fibonacci_iterator) {
   FibonacciIterator fibItr{};
 
   FibonacciIterator const& changed{fibItr++};
