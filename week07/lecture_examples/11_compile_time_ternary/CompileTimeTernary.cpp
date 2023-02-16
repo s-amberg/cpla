@@ -2,7 +2,6 @@
 #include <cstring>
 #include <iostream>
 
-
 namespace ternary {
 namespace _impl {
 
@@ -15,9 +14,10 @@ constexpr auto is_ternary_digit(char c) -> bool {
 }
 
 template <char D>
-constexpr auto value_of() -> unsigned {
-  static_assert(is_ternary_digit(D), "Digits of ternary must be 0, 1 or 2");
-  return D - '0';
+concept TernaryDigit = is_ternary_digit(D);
+
+constexpr auto value_of(char digit) -> unsigned {
+  return digit - '0';
 }
 
 template <char... Digits>
@@ -25,7 +25,7 @@ extern unsigned long long ternary_value;
 
 template <char D, char... Digits>
 constexpr unsigned long long ternary_value<D, Digits...>{
-    value_of<D>() * three_to(sizeof...(Digits)) + ternary_value<Digits...>};
+    value_of(D) * three_to(sizeof...(Digits)) + ternary_value<Digits...>};
 
 template <>
 constexpr unsigned long long ternary_value<>{0};
@@ -33,8 +33,9 @@ constexpr unsigned long long ternary_value<>{0};
 }  // namespace _impl
 
 template <char... Digits>
+  requires(_impl::is_ternary_digit(Digits) && ...)
 constexpr auto operator"" _ternary() -> unsigned long long {
-  return _impl::ternary_value<Digits...>;  // C++14
+  return _impl::ternary_value<Digits...>;
 }
 }  // namespace ternary
 
@@ -43,5 +44,5 @@ auto main(int argc, char** argv) -> int {
   std::cout << "11_ternary is " << 11_ternary << '\n';
   std::cout << "02_ternary is " << 02_ternary << '\n';
   std::cout << "120_ternary is " << 120_ternary << '\n';
-  //	std::cout << "14_ternary is " << 14_ternary << '\n'; // compile-error
+  // std::cout << "14_ternary is " << 14_ternary << '\n'; // compile-error
 }
