@@ -4,7 +4,7 @@ Goals of this weeks exercises:
 
 -   You will setup or update your development environment, in order to
     be able to solve the exercises of this course properly. This
-    includes installing a recent IDE and a compiler capable of C++17.
+    includes installing a recent IDE and a compiler capable of C++20.
 -   Solve small tasks to refresh your C++ knowledge accross the board.
 -   Prepare for the upcomming testat by refurbishing your template
     writing skills.
@@ -12,20 +12,17 @@ Goals of this weeks exercises:
 # Set Up Your Development Environment
 
 If you don't already have a development environment with
-[Cevelop](https://www.cevelop.com) and a recent compiler take care of
-this first. [Here](https://gitlab.ost.ch/cxx/cpl/-/wikis/Setup-Development-Environment) is a guide
+VS Code and a recent compiler take care of
+this first. [Here](https://gitlab.ost.ch/cxx/cpl/-/wikis/Setup-Development-Environment-(VSCode)) is a guide
 from CPl on how to do it.
 
 ## Update Your Compiler
 
--   Install a recent version of GCC (version 11) or Clang (version
-    13).
+-   Install a recent version of GCC (version 12) or Clang (version
+    15).
 -   For Windows MinGW with a current GCC can be downloaded through the [MSYS2](https://www.msys2.org) ecosystem or 
     [here](https://nuwen.net/mingw.html).
 
-## Update Cevelop
-
--   Get the latest Cevelop version [here](https://www.cevelop.com)
 
 
 # 1. Easy C++ Repetition Tasks
