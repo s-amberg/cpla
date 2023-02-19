@@ -47,11 +47,11 @@ Visual Studio Code works also well, but does not support CUTE yet (bachelor thes
 | 01   | [L1](week01) | [E1](week01/README.md) ([PDF](http://cxx.pages.gitlab.ost.ch/cpla/week01.pdf))   | Introduction / C++ Recap                              |                |
 | 02   | [L2](week02) | [E2](week02/README.md) ([PDF](http://cxx.pages.gitlab.ost.ch/cpla/week02.pdf))   | Rvalue References / Move Semantics / Copy Elision     | **Testat 1**   |
 | 03   | [L3](week03) | [E3](week03/README.md) ([PDF](http://cxx.pages.gitlab.ost.ch/cpla/week03.pdf))   | Type Deduction / Perfect Forwarding                   |                |
+|      | Arbitrary Break               |                                                                            |                                                       | **No Lecture** |
 | 04   | [L4](week04) | [E4](week04/README.md) ([PDF](http://cxx.pages.gitlab.ost.ch/cpla/week04.pdf))   | Explicit Heap Memory Management                       | [CppCon-Talk about Pointer](https://www.youtube.com/watch?v=rqVWj0aVSxg)               |
 | 05   | [L5](week05) | [E5](week05/README.md) ([PDF](http://cxx.pages.gitlab.ost.ch/cpla/week05.pdf))   | Iterators / Tags for Conversion                       | **Testat 2**   |
 | 06   | [L6](week06) | [E6](week06/README.md) ([PDF](http://cxx.pages.gitlab.ost.ch/cpla/week06.pdf))   | Advanced Templates / SFINAE                           |                |
 | 07   | [L7](week07) | [E7](week07/README.md) ([PDF](http://cxx.pages.gitlab.ost.ch/cpla/week07.pdf))   | Compile-Time Computation / Literal Types / UDL        |                |
-|      | Arbitrary Break               |                                                                            |                                                       | **No Lecture** |
 |      | Additional Arbitrary Break |                                                                            |                                                       | **No Lecture** |
 | 08   | [L8](week08) | [E8](week08/README.md) ([PDF](http://cxx.pages.gitlab.ost.ch/cpla/week08.pdf))   | Multi-Threading / Mutexes                             | **Testat 3** <br/> [CppCon-Talk about Concurrency](https://www.youtube.com/watch?v=F6Ipn7gCOsY)   |
 | 09   | [L9](week09) | [E9](week09/README.md) ([PDF](http://cxx.pages.gitlab.ost.ch/cpla/week09.pdf))   | Memory Model / Atomics                                |                |
@@ -59,7 +59,7 @@ Visual Studio Code works also well, but does not support CUTE yet (bachelor thes
 | 11   | [L11](week11) | [E11](week11/README.md) ([PDF](http://cxx.pages.gitlab.ost.ch/cpla/week11.pdf)) | Advanced Library Design: Exception Safety / PIMPL     |                |
 | 12   | [L12](week12) | [E12](week12/README.md) ([PDF](http://cxx.pages.gitlab.ost.ch/cpla/week12.pdf)) | Hourglass Interfaces                                  |                |
 | 13   | [L13](week13) | [E13](week13/README.md) ([PDF](http://cxx.pages.gitlab.ost.ch/cpla/week13.pdf)) | Build Systems                                         |                |
-| 14   |  |  | TBD, maybe outlook to C++20                                          |                |
+| 14   |  |  | TBD                                          |                |
 
 
 
