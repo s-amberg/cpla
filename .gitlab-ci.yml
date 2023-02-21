@@ -6,7 +6,7 @@ variables:
 stages:
 - build_code
 - build_exercise_pdfs
-- deploy_exercise_pdfs
+- deploy
 
 before_script:
 
@@ -175,7 +175,7 @@ Create-Solutions-And-Cleanup-Markdown:
     - '**/*.md'
 
 pages:
-  stage: deploy_exercise_pdfs
+  stage: deploy
   image: alpine
   only:
     - master
