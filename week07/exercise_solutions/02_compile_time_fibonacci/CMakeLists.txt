@@ -14,6 +14,8 @@ add_executable("${CPL_TARGET_WEEK_PREFIX}sol02_compile_time_fibonacci_tests"
     "tests/FibonacciTests.cpp"
 )
 
+target_compile_options("${CPL_TARGET_WEEK_PREFIX}sol02_compile_time_fibonacci_tests" PRIVATE "-O3")
+
 # #for gcc
 # target_compile_options("${CPL_TARGET_WEEK_PREFIX}sol02_compile_time_fibonacci_tests" PRIVATE "-fconstexpr-ops-limit=100000000000000")
 # target_compile_options("${CPL_TARGET_WEEK_PREFIX}sol02_compile_time_fibonacci_tests" PRIVATE "-fconstexpr-cache-depth=50")
