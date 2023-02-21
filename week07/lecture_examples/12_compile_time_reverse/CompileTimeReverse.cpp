@@ -1,6 +1,8 @@
 #include <cstddef>
+#include <string_view>
 #include <tuple>
 #include <utility>
+
 
 
 // constexpr auto reverse(std::tuple<> const& nullary) {
@@ -34,6 +36,8 @@ constexpr auto reverse(std::tuple<Types...> const& nAry) {
   return reverseImpl(nAry, std::make_index_sequence<sizeof...(Types)>());
 }
 
+using namespace std::literals;
+
 constexpr auto nullary = std::make_tuple();
 constexpr auto reversedNullary = reverse(nullary);
 static_assert(nullary == reversedNullary);
@@ -42,16 +46,16 @@ constexpr auto unary = std::make_tuple(1);
 constexpr auto reversedUnary = reverse(unary);
 static_assert(unary == reversedUnary);
 
-constexpr auto binary = std::make_tuple("Hello", 5);
+constexpr auto binary = std::make_tuple("Hello"sv, 5);
 constexpr auto binaryReversed = reverse(binary);
-static_assert(binaryReversed == std::make_tuple(5, "Hello"));
+static_assert(binaryReversed == std::make_tuple(5, "Hello"sv));
 
-constexpr auto ternary = std::make_tuple("Hello", 5, 3.14);
+constexpr auto ternary = std::make_tuple("Hello"sv, 5, 3.14);
 constexpr auto ternaryReversed = reverse(ternary);
-static_assert(ternaryReversed == std::make_tuple(3.14, 5, "Hello"));
+static_assert(ternaryReversed == std::make_tuple(3.14, 5, "Hello"sv));
 
-constexpr auto quaternary = std::make_tuple("Hello", 5, 3.14, '*');
+constexpr auto quaternary = std::make_tuple("Hello"sv, 5, 3.14, '*');
 constexpr auto quaternaryReversed = reverse(quaternary);
-static_assert(quaternaryReversed == std::make_tuple('*', 3.14, 5, "Hello"));
+static_assert(quaternaryReversed == std::make_tuple('*', 3.14, 5, "Hello"sv));
 
 auto main() -> int {}
