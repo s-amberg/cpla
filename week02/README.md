@@ -62,7 +62,7 @@ copy operation on `std::cout`, similar to the implemented constructors.
 <!-- -->
 
 ``` cpp
-int main() {
+auto main() -> int {
   //...
   std::cout << "\n--- creating sink and source ---\n";
   Tracer sink {"sink"}, source {"source"};
@@ -123,9 +123,7 @@ operator, use `std::swap` to exchange the names of the objects first:
     -   Explain why std::move is required. What would happen otherwise
         (without std::move)? Why does it not compile?
 -   Does the behavior change when you disable copy-elision? GCC
-    provides such an option (`-fno-elide-constructors`). Add it as a
-    `Miscellaneous` flag for the project
-    (`Properties -> C/C++ Build -> Settings -> Tool Settings -> GCC C++ Compiler -> Miscellaneous -> Other flags`)
+    provides such an option (`-fno-elide-constructors`). Add it to the `target_compile_options` of the exercises `CMakeLists.txt` (it is already in the template as a comment)
 
 What about the state of source after the move assignment?
 
@@ -136,7 +134,7 @@ What about the state of source after the move assignment?
 -   What is the output of the call below? Why?
 
     ``` cpp
-    int main() {
+    auto main() -> int {
       ...
       std::cout << "\n--- std::move(m) ---\n";
       std::move(m);
@@ -181,13 +179,15 @@ std::cout << "creating the container took: " << delta.count() << "s time\n";
 
 In this exercise you will create the fundamental data structure for a `BoundedBuffer`. This will be an ongoing task during. You will add and change features step-by-step during the semester. After certain milestones you will hand your result in as testat exercises to be reviewed by the exercise supervisor.
 
-Please form groups of 2-3 students for testat hand-in:
+Please form groups of 1-3 students for testat hand-in:
 
-* Send an email to [Thomas Corbat](mailto:thomas.corbat@ost.ch)
-* ***Subject***: `[CPlA-Testat-1] name1 name2 name3`
-* Content: `BoundedBuffer.h`
+* Upload via [ALF](https://alf.sifs0005.infs.ch/) (Module C++, Project CPlA Testat 1 BoundedBuffer)
+* or if that does not work by mail
+    * Send an email to [Thomas Corbat](mailto:thomas.corbat@ost.ch)
+    * ***Subject***: `[CPlA-Testat-1] name1 name2 name3`
+* Content: `BoundedBuffer.hpp`
 * You will get feedback as soon as possible
-* Hand-in deadline: Monday 14. March 23:59 (MEZ)
+* Hand-in deadline: Monday 21. March 23:59 (MEZ)
 
 
 A project template with predefined tests is available [here](./exercise_templates/w02_template_02_BoundedBuffer).
