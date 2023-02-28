@@ -43,9 +43,8 @@ TEST(test_element_in_buffer_is_moved_along_move_constructor) {
   //	BoundedBuffer<MemoryOperationCounter, 1> buffer{};
   //	MemoryOperationCounter counter{}, expected{2, 0, true};
   //	buffer.push(std::move(counter));
-  //	BoundedBuffer<MemoryOperationCounter, 1>
-  // bufferCopied{std::move(buffer)}; 	ASSERT_EQUAL(expected,
-  // bufferCopied.front());
+  //	BoundedBuffer<MemoryOperationCounter, 1> bufferCopied{std::move(buffer)}; 	
+  //  ASSERT_EQUAL(expected, bufferCopied.front());
 }
 
 TEST(test_element_in_buffer_is_moved_along_assignment_operator) {
@@ -58,11 +57,11 @@ TEST(test_element_in_buffer_is_moved_along_assignment_operator) {
 
 TEST(
     test_element_in_buffer_is_copied_along_assignment_operator_multiple_copies) {
-  //	BoundedBuffer<MemoryOperationCounter, 1> buffer{}, intermediate1{},
-  // intermediate2{}, bufferCopied{}; 	MemoryOperationCounter counter{},
-  // expected{0, 4, true}; 	buffer.push(counter); 	bufferCopied =
-  // intermediate2 = intermediate1 = buffer; 	ASSERT_EQUAL(expected,
-  // bufferCopied.front());
+  //	BoundedBuffer<MemoryOperationCounter, 1> buffer{}, intermediate1{}, intermediate2{}, bufferCopied{}; 	
+  //  MemoryOperationCounter counter{}, expected{0, 4, true}; 	
+  //  buffer.push(counter);
+  //  bufferCopied = intermediate2 = intermediate1 = buffer;
+  //  ASSERT_EQUAL(expected, bufferCopied.front());
 }
 
 TEST(test_element_in_buffer_is_moved_along_assignment_operator_multiple_moves) {
