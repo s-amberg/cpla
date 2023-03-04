@@ -11,8 +11,8 @@ Goals of this weeks exercises:
 Given the code for `BoundedBuffer` that you have implemented as Testat, we have two overloads of the `push` member function.
 
 ```
-void push(T const &);
-void push(T &&);
+auto push(T const &) -> void;
+auto push(T &&) -> void;
 ```
 
 ***Question:*** We have an overload of the `push` member function with a parameter of type `T&&`. Why is `T&&` here always an rvalue reference (and not a forwarding reference)?
@@ -27,7 +27,7 @@ In the lecture you have been taught about type deduction for function templates 
 
 ```cpp
 template<typename T>
-void f(T && t) {...}
+auto f(T && t) -> void {...}
 ```
 
 When the template above is instantiated, the type `T` is deduced, which also implies the specific type of the parameter `t`. This deduction follows specific rules, depending on the declared template parameter type (above `T&&`). If you don't recall them exactly, have a look at the corresponding slides. If you have trouble understanding the rules, discuss them with your colleagues or ask your supervisor.
@@ -52,25 +52,25 @@ We recommend to create this `make_buffer` function as static member function, as
 
 Here is an overview of the added test cases for part *a)*:
 ```cpp
-void test_make_bounded_buffer_from_rvalue_argument_contains_one_element() {
+TEST(test_make_bounded_buffer_from_rvalue_argument_contains_one_element) {
   BoundedBuffer<MemoryOperationCounter, 15> buffer = BoundedBuffer<MemoryOperationCounter, 15>::make_buffer(MemoryOperationCounter{});
   ASSERT_EQUAL(1, buffer.size());
 }
 
-void test_make_bounded_buffer_from_rvalue_argument_object_moved() {
+TEST(test_make_bounded_buffer_from_rvalue_argument_object_moved) {
   MemoryOperationCounter expected{1, 0, true};
   BoundedBuffer<MemoryOperationCounter, 15> buffer = BoundedBuffer<MemoryOperationCounter, 15>::make_buffer(MemoryOperationCounter{});
   ASSERT_EQUAL(expected, buffer.front());
 }
 
-void test_bounded_buffer_constructed_with_lvalue_argument_object_copied() {
+TEST(test_bounded_buffer_constructed_with_lvalue_argument_object_copied) {
   MemoryOperationCounter expected{0, 1, true};
   MemoryOperationCounter insertee{};
   BoundedBuffer<MemoryOperationCounter, 15> buffer = BoundedBuffer<MemoryOperationCounter, 15>::make_buffer(insertee);
   ASSERT_EQUAL(expected, buffer.front());
 }
 
-void test_bounded_buffer_constructed_with_const_lvalue_argument_object_copied() {
+TEST(test_bounded_buffer_constructed_with_const_lvalue_argument_object_copied) {
   MemoryOperationCounter expected{0, 1, true};
   MemoryOperationCounter const insertee{};
   BoundedBuffer<MemoryOperationCounter, 15> buffer = BoundedBuffer<MemoryOperationCounter, 15>::make_buffer(insertee);
@@ -102,56 +102,56 @@ This functionality is expected to be included in the next testat. If you struggl
 
 Here is an overview of the added test cases for part *b)*:
 ```cpp
-void test_make_bounded_buffer_from_two_rvalue_arguments_contains_two_elements() {
+TEST(test_make_bounded_buffer_from_two_rvalue_arguments_contains_two_elements) {
   BoundedBuffer<MemoryOperationCounter, 15> buffer = BoundedBuffer<MemoryOperationCounter, 15>::make_buffer(MemoryOperationCounter{}, MemoryOperationCounter{});
   ASSERT_EQUAL(2, buffer.size());
 }
 
-void test_make_bounded_buffer_from_two_lvalue_arguments_contains_two_elements() {
+TEST(test_make_bounded_buffer_from_two_lvalue_arguments_contains_two_elements) {
   MemoryOperationCounter element1{}, element2{};
   BoundedBuffer<MemoryOperationCounter, 15> buffer = BoundedBuffer<MemoryOperationCounter, 15>::make_buffer(element1, element2);
   ASSERT_EQUAL(2, buffer.size());
 }
 
-void test_make_bounded_buffer_from_too_many_elements_throws() {
+TEST(test_make_bounded_buffer_from_too_many_elements_throws) {
   ASSERT_THROWS((BoundedBuffer<int, 1>::make_buffer(1, 2)), std::invalid_argument);
 }
 
-void test_make_bounded_buffer_from_two_rvalue_arguments_first_element_moved() {
+TEST(test_make_bounded_buffer_from_two_rvalue_arguments_first_element_moved) {
   MemoryOperationCounter expected{1, 0, true};
   BoundedBuffer<MemoryOperationCounter, 15> buffer = BoundedBuffer<MemoryOperationCounter, 15>::make_buffer(MemoryOperationCounter{}, MemoryOperationCounter{});
 
   ASSERT_EQUAL(expected, buffer.front());
 }
 
-void test_make_bounded_buffer_from_two_rvalue_arguments_second_element_moved() {
+TEST(test_make_bounded_buffer_from_two_rvalue_arguments_second_element_moved) {
   MemoryOperationCounter expected{1, 0, true};
   BoundedBuffer<MemoryOperationCounter, 15> buffer = BoundedBuffer<MemoryOperationCounter, 15>::make_buffer(MemoryOperationCounter{}, MemoryOperationCounter{});
   ASSERT_EQUAL(expected, buffer.back());
 }
 
-void test_make_bounded_buffer_from_two_rvalue_arguments_first_element_copied() {
+TEST(test_make_bounded_buffer_from_two_rvalue_arguments_first_element_copied) {
   MemoryOperationCounter expected{0, 1, true};
   MemoryOperationCounter lvalue{};
   BoundedBuffer<MemoryOperationCounter, 15> buffer = BoundedBuffer<MemoryOperationCounter, 15>::make_buffer(lvalue, MemoryOperationCounter{});
   ASSERT_EQUAL(expected, buffer.front());
 }
 
-void test_make_bounded_buffer_from_two_mixed_arguments_second_element_moved() {
+TEST(test_make_bounded_buffer_from_two_mixed_arguments_second_element_moved) {
   MemoryOperationCounter expected{1, 0, true};
   MemoryOperationCounter lvalue{};
   BoundedBuffer<MemoryOperationCounter, 15> buffer = BoundedBuffer<MemoryOperationCounter, 15>::make_buffer(lvalue, MemoryOperationCounter{});
   ASSERT_EQUAL(expected, buffer.back());
 }
 
-void test_make_bounded_buffer_from_two_rvalue_arguments_second_element_copied() {
+TEST(test_make_bounded_buffer_from_two_rvalue_arguments_second_element_copied) {
   MemoryOperationCounter expected{0, 1, true};
   MemoryOperationCounter lvalue{};
   BoundedBuffer<MemoryOperationCounter, 15> buffer = BoundedBuffer<MemoryOperationCounter, 15>::make_buffer(MemoryOperationCounter{}, lvalue);
   ASSERT_EQUAL(expected, buffer.back());
 }
 
-void test_make_bounded_buffer_from_two_mixed_arguments_first_element_moved() {
+TEST(test_make_bounded_buffer_from_two_mixed_arguments_first_element_moved) {
   MemoryOperationCounter expected{1, 0, true};
   MemoryOperationCounter lvalue{};
   BoundedBuffer<MemoryOperationCounter, 15> buffer = BoundedBuffer<MemoryOperationCounter, 15>::make_buffer(MemoryOperationCounter{}, lvalue);
