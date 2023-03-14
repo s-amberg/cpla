@@ -16,16 +16,16 @@ Take the class `not_on_heap` and write CUTE unit tests that demonstrate the inab
 
 ```cpp
 struct not_on_heap {
-    static void* operator new(std::size_t sz) {
+    static auto operator new(std::size_t sz) -> void* {
     	throw std::bad_alloc{};
     }
-    static void* operator new[](std::size_t sz){
+    static auto operator new[](std::size_t sz) -> void* {
     	throw std::bad_alloc{};
     }
-    static void operator delete(void *ptr) noexcept  {
+    static auto operator delete(void *ptr) noexcept -> void {
     	// do nothing, never called, but should come in pairs
     }
-    static void operator delete[](void *ptr) noexcept {
+    static auto operator delete[](void *ptr) noexcept -> void {
     	// do nothing, never called, but should come in pairs
     }
 };
@@ -36,7 +36,7 @@ You can find the solution for this exercise in the [lecture examples](lecture_ex
 # 2. BoundedBuffer with dynamic allocation
 
 ## Overview
-Take your `BoundedBuffer.h` file and change the implementation and interface.
+Take your `BoundedBuffer.hpp` file and change the implementation and interface.
 
 * Remove the integral type template parameter
 * Add a `size_type` constructor parameter and a corresponding member
