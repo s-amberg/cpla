@@ -96,7 +96,7 @@ This functionality is expected to be included in the next testat. If you struggl
 
 ***Hints:*** 
 * Create a private helper member function `push_many` to push multiple elements to the `BoundedBuffer`. You need this function since it is easier to call a function recursively than a constructor.
-* If too many arguments are supplied (more than the capacity of the buffer), throw an `std::invalid_argument` exception.
+* If too many arguments are supplied (more than the capacity of the buffer), fail the compilation with a `static_assert`.
 
 ***Note:*** The test cases for this part of the exercise are already in the provided project, but have been disabled by comments.
 
