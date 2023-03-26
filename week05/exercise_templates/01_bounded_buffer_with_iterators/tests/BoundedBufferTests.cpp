@@ -2,6 +2,7 @@
 #include "BoundedBufferContentSuite.hpp"
 #include "BoundedBufferDefaultBehaviorSuite.hpp"
 #include "BoundedBufferHeapMemorySuite.hpp"
+#include "BoundedBufferIteratorSuite.hpp"
 #include "BoundedBufferNDCElementTypeSuite.hpp"
 #include "BoundedBufferSemanticSuite.hpp"
 #include "BoundedBufferSignaturesSuite.hpp"
@@ -23,5 +24,6 @@ auto main(int argc, char const* argv[]) -> int {
   success &= runner(make_suite_bounded_buffer_semantic_suite());
   success &= runner(make_suite_bounded_buffer_student_suite());
   success &= runner(make_suite_bounded_buffer_non_default_constructible_element_type_suite());
+  success &= runner(make_suite_bounded_buffer_iterator_suite());
   return success ? EXIT_SUCCESS : EXIT_FAILURE;
 }
