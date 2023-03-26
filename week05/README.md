@@ -10,9 +10,9 @@ In this exercise you will add iterators for to your `BoundedBuffer`.
 Please form groups of 1-3 students for testat hand-in:
 * Submission in ALF if it is up and running (https://alf.sifs0005.infs.ch), otherwise, by email.
 * Specify if you have worked in a group.
-* Content: `BoundedBuffer.h`
+* Content: `BoundedBuffer.hpp`
 * You will get feedback as soon as possible
-* Hand-in deadline: Monday 04. April 2022 23:59
+* Hand-in deadline: Tuesday 18. April 2023 23:59
 
 ## Iterator for Dynamic Bounded Buffer
 Last week you have implemented a dynamic version of the bounded buffer. Finish that exercise first if you have not already completed it.
@@ -29,7 +29,7 @@ Create constant and non-constant iterators. Const iterators provide read-only ac
 * If you struggle to figure out why certain tests are not green you may implement the `<<` operator for your iterator type in the test cases to visualize its state.
 * Use `boost/operators.hpp` to shorten your implementation.
 
-There is a template project with all the unit tests so far combined. Import it into Cevelop and copy your `BoundedBuffer.h` file into the `src` directory.
+There is a template project with all the unit tests so far combined.
 
 If you struggle to get it all up and running at once, try to satisfy one test case after another. Comment out all test contents first. Add the contents of the first test (start at the top of the tests), make it compile, make it green, repeat with the next tests.
 
