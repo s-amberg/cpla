@@ -8,6 +8,9 @@ add_subdirectory("lecture_examples/05_substitution_error")
 add_subdirectory("lecture_examples/06_SFINAE_with_enable_if")
 add_subdirectory("lecture_examples/07_box_with_SFINAE")
 add_subdirectory("lecture_examples/08_arbitrary_printer")
+add_subdirectory("lecture_examples/09_incrementable_concept")
+add_subdirectory("lecture_examples/10_printable")
+add_subdirectory("lecture_examples/11_printable_overloaded")
 
 add_subdirectory("exercise_templates/02_SFINAE")
 
