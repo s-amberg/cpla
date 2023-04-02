@@ -13,6 +13,8 @@ add_subdirectory("lecture_examples/10_printable")
 add_subdirectory("lecture_examples/11_printable_overloaded")
 
 add_subdirectory("exercise_templates/02_SFINAE")
+add_subdirectory("exercise_templates/03_ambiguity_resolution")
 
 add_subdirectory("exercise_solutions/02_SFINAE")
+add_subdirectory("exercise_solutions/03_ambiguity_resolution")
 
