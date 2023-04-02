@@ -85,3 +85,18 @@ After you have the overloads it is still mandatory that only a single one is via
 **Note:** You also need to disable the inital `consume` implementation in case the argument has integral or floating type.
 
 Try to apply SFINAE in the three different spots you have seen in the lecture.
+
+
+### 2c) Use Named Type Constraints
+
+After you have done it the tedious way with `std::enable_if`-SFINAE, enjoy the concenience of C++20. Try to solve the exercise by using named type constraints in the template parameter list.
+
+
+### 2d) Terse Syntax / Abbreviated Function Templates
+
+Solve the task now with the constrained terse syntax.
+
+
+## 3 Reduce Ambiguity
+
+In the lecture we have talked about overloading based on type constraints. You have already done this in the previous task. However, you did not encounter ambiguities. In the exercise template of this task the output operator for `Date` would introduce such an ambiguity. Can you resolve this by constraining the `print(Printable auto const&)` overload more? It should not be selected when the type features an output operator (<<).
