@@ -97,6 +97,6 @@ After you have done it the tedious way with `std::enable_if`-SFINAE, enjoy the c
 Solve the task now with the constrained terse syntax.
 
 
-## 3 Reduce Ambiguity
+## 3 Avoid Ambiguity
 
 In the lecture we have talked about overloading based on type constraints. You have already done this in the previous task. However, you did not encounter ambiguities. In the exercise template of this task the output operator for `Date` would introduce such an ambiguity. Can you resolve this by constraining the `print(Printable auto const&)` overload more? It should not be selected when the type features an output operator (<<).
