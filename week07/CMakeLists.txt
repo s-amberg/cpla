@@ -13,6 +13,8 @@ add_subdirectory("lecture_examples/10_raw_UDL_runtime")
 add_subdirectory("lecture_examples/11_compile_time_ternary")
 add_subdirectory("lecture_examples/12_compile_time_reverse")
 add_subdirectory("lecture_examples/13_arbitrary_printer_reiterated")
+add_subdirectory("lecture_examples/14_compile_time_random")
+add_subdirectory("lecture_examples/15_compile_time_maze")
 
 add_subdirectory("exercise_templates/01_compile_time_hashing")
 add_subdirectory("exercise_templates/02_compile_time_fibonacci")
