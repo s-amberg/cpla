@@ -1,0 +1,13 @@
+﻿---
+AllowShortBlocksOnASingleLine: 'false'
+AllowShortCaseLabelsOnASingleLine: 'false'
+AllowShortFunctionsOnASingleLine: Empty
+AllowShortLoopsOnASingleLine: 'false'
+AlwaysBreakTemplateDeclarations: 'Yes'
+ColumnLimit: '180'
+IndentWidth: '2'
+Language: Cpp
+TabWidth: '2'
+UseTab: Never
+
+...
