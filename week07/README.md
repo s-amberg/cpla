@@ -89,3 +89,58 @@ Implement a `temperature` literal type, similar to the `Speed` type you have see
 * Add user defined literal operators (`_K`, `_C`, `_F`) to the `unit::literals` namespace.
 
 ***Note:*** The project template for this exercies does not contain test cases for all operations above.
+
+
+## 5. (Optional): Compile-Time Maze
+
+In the lecture examples we have implemented the generation of mazes at compile-time. Example
+
+
+```
++---+---+---+---+---+
+|                   |
++   +   +   +---+   +
+|   |   |       |   |
++---+   +   +   +   +
+|       |   |   |   |
++---+---+   +   +   +
+|           |   |   |
++   +---+   +---+---+
+|   |               |
++---+---+---+---+---+
+
+```
+
+The two projects solve the following problems completely at compile-time:
+- Generate pseudo random numbers. Implemented with a slightly reduced version of the linear congruential generator implemented by `java.util.Random`. It should actually produce the same random numbers.
+- Seeding the RNG by the time value provided by `__TIME__` back to seconds (unfortunately, `std::hash` is not available at compile-time). The seed is generated at compile-time and requires re-compilation to change.
+- Generating the maze using the Sidewinder algorithm explained in Jamis Buck's book "Mazes for Programmers". Actually, the whole idea is of generating and solving mazes is from this book. In short the algorithm processes every row of the maze by (1) creating runs - randomly connecting horizontal adjacent cells and (2) connecting each run to the row above (if any). This creates so called _perfect mazes_, which have exactly one path connecting two cells (i.e. no loops).
+- Generating the textual representation (see above)
+
+The only task left for the programm is to print the resulting maze.
+
+### Study the code
+
+Have a look at the implementation and see how the individual parts are solved at compile-time.
+
+### Shortest Path
+
+The book also covers implementing the shortest path algorithm by Dijkstra. I.e. calculating the distance from every field to a specific designated field, for example at `0/0`. We have not provided a solution so far, but if you like you can try to implement that and even try to do it at compile-time.
+
+Example solution:
+
+
+```
++---+---+---+---+---+
+| 0   1   2   3   4 |
++   +   +   +---+   +
+| 1 | 2 | 3   4 | 5 |
++---+   +   +   +   +
+| 4   3 | 4 | 5 | 6 |
++---+---+   +   +   +
+| 7   6   5 | 6 | 7 |
++   +---+   +---+---+
+| 8 | 7   6   7   8 |
++---+---+---+---+---+
+
+```
