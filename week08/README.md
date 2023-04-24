@@ -7,8 +7,6 @@ In this exercise...
 
 # 1. Basic Threading
 
-***Note:*** On Linux you might need to add the `pthread` library to link the projects correctly: `Project Properties -> C++ General -> Paths & Symbols -> Libraries -> Add -> "pthread"`
-
 ## a) Thread IDs
 Create a simple application that starts three threads:
 
@@ -34,9 +32,9 @@ In this exercise you will wrap your `BoundedBuffer` in a thread-safe `BoundedQue
 Please form groups of 3 students for testat hand-in:
 * Submission in ALF if it is up and running (https://alf.sifs0005.infs.ch), otherwise, by email.
 * Specify if you have worked in a group.
-* Content: `BoundedQueue.h`
+* Content: `BoundedQueue.hpp`
 * You will get feedback as soon as possible
-* Hand-in deadline: Thursday 9. May 2021 23:59
+* Hand-in deadline: Friday 12. May 2023 23:59
 
 ## a. Interface of `BoundedQueue`
 
