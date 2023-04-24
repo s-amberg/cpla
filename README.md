@@ -51,8 +51,8 @@ Visual Studio Code works also well, but does not support CUTE yet (bachelor thes
 | 04   | [L4](week04) | [E4](week04/README.md) ([PDF](http://cxx.pages.gitlab.ost.ch/cpla/week04.pdf))   | Explicit Heap Memory Management                       | [CppCon-Talk about Pointer](https://www.youtube.com/watch?v=rqVWj0aVSxg)               |
 | 05   | [L5](week05) | [E5](week05/README.md) ([PDF](http://cxx.pages.gitlab.ost.ch/cpla/week05.pdf))   | Iterators / Tags for Conversion                       | **Testat 2**   |
 | 06   | [L6](week06) | [E6](week06/README.md) ([PDF](http://cxx.pages.gitlab.ost.ch/cpla/week06.pdf))   | Advanced Templates / SFINAE                           |                |
-| 07   | [L7](week07) | [E7](week07/README.md) ([PDF](http://cxx.pages.gitlab.ost.ch/cpla/week07.pdf))   | Compile-Time Computation / Literal Types / UDL        |                |
 |      | Additional Arbitrary Break |                                                                            |                                                       | **No Lecture** |
+| 07   | [L7](week07) | [E7](week07/README.md) ([PDF](http://cxx.pages.gitlab.ost.ch/cpla/week07.pdf))   | Compile-Time Computation / Literal Types / UDL        |                |
 | 08   | [L8](week08) | [E8](week08/README.md) ([PDF](http://cxx.pages.gitlab.ost.ch/cpla/week08.pdf))   | Multi-Threading / Mutexes                             | **Testat 3** <br/> [CppCon-Talk about Concurrency](https://www.youtube.com/watch?v=F6Ipn7gCOsY)   |
 | 09   | [L9](week09) | [E9](week09/README.md) ([PDF](http://cxx.pages.gitlab.ost.ch/cpla/week09.pdf))   | Memory Model / Atomics                                |                |
 | 10   | [L10](week10) | [E10](week10/README.md) ([PDF](http://cxx.pages.gitlab.ost.ch/cpla/week10.pdf)) | Networking (ASIO)                                     |                |
