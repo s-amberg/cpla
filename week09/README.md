@@ -43,7 +43,7 @@ private:
 ```
 
 * It is necessary to use atomics to make the implementation work in C++. Create a type PetersonMutexAtomics that works correctly.
-* You might need to set the build option in Cevelop to Release in order to enable optimizations. Otherwise, potentially incorrect implementations might not fail. 
+* You might need to set the build type to Release in order to enable optimizations (should be the default in the exercise templates). Otherwise, potentially incorrect implementations might not fail. 
 
 
 
