@@ -22,3 +22,7 @@ add_library("asio" INTERFACE)
 target_include_directories("asio" SYSTEM INTERFACE "${CMAKE_CURRENT_SOURCE_DIR}/asio")
 
 add_library("cpl::asio" ALIAS "asio")
+
+add_subdirectory("simple_http")
+
+add_library("cpl::simple-http" ALIAS "simple-http")
