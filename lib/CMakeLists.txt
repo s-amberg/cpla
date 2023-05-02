@@ -21,6 +21,11 @@ add_library("asio" INTERFACE)
 
 target_include_directories("asio" SYSTEM INTERFACE "${CMAKE_CURRENT_SOURCE_DIR}/asio")
 
+target_link_libraries("asio" INTERFACE
+    "$<$<PLATFORM_ID:WIN32>:ws2_32>"
+    "$<$<PLATFORM_ID:WIN32>:wsock32>"
+)
+
 add_library("cpl::asio" ALIAS "asio")
 
 add_subdirectory("simple_http")
