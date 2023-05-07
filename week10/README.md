@@ -13,7 +13,7 @@ In this exercise you will ...
 Since you will be needing a webservice to call from your solutions to this weeks exercises, we provide you with a basic http server that can render [Julia sets](https://en.wikipedia.org/wiki/Julia_set) as pretty images.
 You will find the source code for the server application in the exercise templates under the name "00_julia_server".
 Please make sure you can successfully build and run the application.
-If you are having troubles with port 8080 already being in use on your machine, you can change the port the server is running on in the file "JuliaServer.cpp".
+If you are having troubles with port 8080 already being in use on your machine, you can change the port the server is running on in the file "app/main.cpp".
 
 When you have got the server up an running, you can test if it works by pointing your web browser at <http://127.0.0.1:8080> (adjust the port here if you had to change it in the server application).
 If the server works correctly, you should be presented with the following Julia set:
