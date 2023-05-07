@@ -14,6 +14,9 @@ worker_pool::worker_pool(std::size_t worker_count) {
 }
 
 worker_pool::~worker_pool() {
+  for_each(begin(m_workers), end(m_workers), [](auto & worker) {
+    worker.request_stop();
+  });
   m_work_available.notify_all();
 }
 
@@ -31,16 +34,14 @@ void worker_pool::run_work(std::stop_token &stop_token) {
       auto lock = std::unique_lock{m_work_lock};
       m_work_available.wait(lock, [&] { return stop_token.stop_requested() || m_work.size(); });
 
-      if (m_work.size()) {
-        work = std::move(m_work.front());
-        m_work.pop();
+      if (stop_token.stop_requested()) {
+        return;
       }
+
+      work = std::move(m_work.front());
+      m_work.pop();
     }
 
-    if(work) {
-      std::invoke(work);
-    } else {
-      return;
-    }
+    std::invoke(work);
   }
 }
