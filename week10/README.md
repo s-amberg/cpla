@@ -8,38 +8,10 @@ In this exercise you will ...
 
 # 0. Preparation
 
-## A. Working With the Project Templates
-
-While we generally don't force you to use any particular IDE, we strongly suggest you use Cevelop for this one.
-The projects you will be working with depend on the "simple_http" library that can be found in the folder "exercise_libs".
-We have implemented this Library in Cevelop and the exercise templates have all been configured to correctly reference this library.
-
-### Note for Windows Users
-
-If you are working in Microsoft Windows, you will need to add the `ws2_32` and `wsock32` libraries to the server and your client applications.
-Otherwise, you will likely get "undefined reference" errors for the windows socket API.
-Follow these steps to add the required libraries (if you are working within Cevelop):
-
-* Right click on the project (for example `w10_template_00_JuliaServer`)
-* Select `Properties`
-* In the newly opened dialog box navigate to `C/C++ General -> Paths and Symbols`
-* Select the `Libraries` tab
-* Click on `Add...`
-* Type `ws2_32` in the text box
-* Check the `Add to all configurations` checkbox
-* Confirm the operation using the `OK` button
-* Click on `Add...`
-* Type `wsock32` in the text box
-* Check the `Add to all configurations` checkbox
-* Confirm the operation using the `OK` button
-* Close the properties dialog box using the `Apply and Close` button
-
-Repeat these steps for the `w10_template_01_SyncJuliaClient` and `w10_template_02_AsyncJuliaClient` projects (and of course the solutions if you choose to use them).
-
 ## B. General Setup
 
 Since you will be needing a webservice to call from your solutions to this weeks exercises, we provide you with a basic http server that can render [Julia sets](https://en.wikipedia.org/wiki/Julia_set) as pretty images.
-You will find the source code for the server application in the exercise templates under the name "w10_template_00_JuliaServer".
+You will find the source code for the server application in the exercise templates under the name "00_julia_server".
 Please make sure you can successfully build and run the application.
 If you are having troubles with port 8080 already being in use on your machine, you can change the port the server is running on in the file "JuliaServer.cpp".
 
@@ -66,7 +38,7 @@ Depending on the parameters you choose, the rendering process will take a varyin
 In order to simplify you life a little, we have implemented a small HTTP parser/generator library called `simple_http`.
 Please note that this library is **not** production ready and only implements the subset of functionality required for these exercises.
 
-In general, you will want to include the `simple_http.h` library header which will provide you with the required types and functions.
+In general, you will want to include the `simple_http.hpp` library header which will provide you with the required types and functions.
 For you exercises, you will be working with the following types (member function lists are not necessarily complete but include what you will likely need):
 
 ```c++
@@ -97,10 +69,10 @@ namespace http {
     
     // Set a parameter with the given name to a given value
     template<typename ValueType>
-    request & parameter(std::string name, ValueType value);
+    auto parameter(std::string name, ValueType value) -> request &;
     
     // Write out the request to stream in a format suitable for transmission to an HTTP server
-    friend std::ostream & operator<<(std::ostream & out, request const & req);
+    friend auto operator<<(std::ostream & out, request const & req) -> std::ostream &;
   };
 
   struct response {
@@ -112,23 +84,23 @@ namespace http {
     auto get() const;
    
     // Retrieve the response body
-    std::string body() const;
+    auto body() const -> std::string;
     
     // Set the body from data on a stream
-    std::string body(std::istream & in);
+    auto body(std::istream & in) -> response &;
     
     // Check whether the message is complete as if by `body().size == get<header::content_length>()`
-    bool complete() const noexcept;
+    auto complete() const noexcept -> bool;
     
     // Retrieve the HTTP status code of the response
-    status_code status() const noexcept;
+    auto status() const noexcept -> status_code;
   };
 
 }
 
 ```
 
-Of course you are encouraged to browse through the implementation of `simple_http`, but it is not required that you do so.
+Of course you are encouraged to browse through the implementation of `simple_http`, but you are not required to do so.
 
 # 1. Synchronous HTTP client
 
