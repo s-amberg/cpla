@@ -12,3 +12,6 @@ add_subdirectory("lecture_examples/06_multi_run")
 add_subdirectory("exercise_templates/00_julia_server")
 add_subdirectory("exercise_templates/01_sync_julia_client")
 add_subdirectory("exercise_templates/02_async_julia_client")
+
+add_subdirectory("exercise_solutions/01_sync_julia_client")
+add_subdirectory("exercise_solutions/02_async_julia_client")
