@@ -1,0 +1,11 @@
+<testsuites>
+	<testsuite name="AllTests" tests="7">
+		<testcase classname="AllTests" name="testUnicornFly"/>
+		<testcase classname="AllTests" name="testUnicornGlitter"/>
+		<testcase classname="AllTests" name="testCreateUnicorn"/>
+		<testcase classname="AllTests" name="testCopyConstructUnicorn"/>
+		<testcase classname="AllTests" name="testMoveConstructUnicorn"/>
+		<testcase classname="AllTests" name="testCopyAssignUnicorn"/>
+		<testcase classname="AllTests" name="testMoveAssignUnicorn"/>
+	</testsuite>
+</testsuites>
