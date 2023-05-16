@@ -23,7 +23,7 @@ Analyze your `BoundedBuffer` implementation with regard to the exception safety 
 
 ## Guarantee Improvements
 
-Try to implement every function in a way that it has at least the strong guarantee?
+Try to implement every function in a way that it has at least the strong guarantee. Is it possible?
 
 ### Move Operations and `swap`
 
@@ -41,7 +41,7 @@ The copy operations, i.e. copy constructor and copy assignment operations, depen
 
 # 2. Pimpl Idiom
 
-In this exercise we use an adapted version of Felix Morgner's [Building Reusable Libraries](https://github.com/fmorgner/building-reusable-libraries/) examples. In the [template](./exercise_templates/w11_template_02_PimplUnicorn) CUTE project you find the `Unicorn` class, which is tested by the test cases in the `tests` directory. To demonstrate the benefit of the Pimpl Idiom we have created separate header and source files for every test case.
+In this exercise we use an adapted version of Felix Morgner's [Building Reusable Libraries](https://github.com/fmorgner/building-reusable-libraries/) examples. In the template project you find the `Unicorn` class, which is tested by the test cases in the `tests` directory. To demonstrate the benefit of the Pimpl Idiom we have created separate header and source files for every test case.
 
 ## Pimpl with `std::unique_ptr`
 Adapt the `Unicorn` class to use the Pimpl Idiom. Hide all non-public members in the `UnicornImpl` class, which is local to the `Unicorn.cpp` file. Use a `std::unique_ptr` for the `pimpl` pointer.
