@@ -8,21 +8,19 @@ In this exercise...
 
 # 0. Important Notes and Preparation
 
-There is a minor mistake in the lecture.
-On macOS, the JNA loader looks for a library with then name `lib<name>.dylib`, not `<name>.dylib`
-
 You might encounter some problems when trying to use you dynamic libary, so make sure:
 
-* That your artifact name is correct. The screenshot below shows how to change the artifact name in Cevelop.
+* That your artifact name is correct.
 * That your shared library artifact is at the right location for the JNA loader to find it
 * That your function and struct member types match between the C API and Java-land.
 * If you are starting fresh (not using our templates), that you build a **shared** library, not a **static** one.
 
-## Changing the Artifact Name
+After compiling, you should be able to run the lecture example.
+To do so, go to the `java` folder in the `build` folder, and run the following command:
 
-![C++ Artifact Settings](artifact_name.png)
-
-Make sure you `Artifact name`, `Artifact extension`, and `Output prefix` match the expectation of the JNA loader on your platform.
+```bash
+java -Djna.library.path=. -cp w12_02_jna_app.jar:jna-5.5.0.jar ch.ost.cpla.CplaJNA
+```
 
 # 1. Java Julia Viewer
 
