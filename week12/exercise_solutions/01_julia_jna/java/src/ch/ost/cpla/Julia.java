@@ -1,4 +1,4 @@
-package ch.hsr.cpla;
+package ch.ost.cpla;
 
 import java.util.Arrays;
 import java.util.List;
@@ -10,7 +10,7 @@ import com.sun.jna.Structure;
 import com.sun.jna.ptr.IntByReference;
 
 public interface Julia extends Library {
-	Julia INSTANCE = (Julia) Native.load("julia", Julia.class);
+	Julia INSTANCE = (Julia) Native.load("w12_sol01_julia_jna", Julia.class);
 
 	public static class Window extends Structure implements Structure.ByValue {
 		public double x, y, size;

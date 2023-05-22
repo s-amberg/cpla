@@ -41,6 +41,15 @@ Don't forget to make sure the function and struct names don't get mangled by the
 
 On the Java side, you have to implement an appropriate interface that loads the library and provides suitable types and functions to use library.
 
+After compiling, you should be able to run the application.
+To do so, go to the `java` folder in the `build` folder, and run the following command:
+
+```bash
+java -Djna.library.path=. -cp w12_sol01_julia_jna_app.jar:jna-5.5.0.jar  ch.ost.cpla.JuliaJNA
+```
+
+Substitute `sol01` with `ex01` to run the artifact compiled from the template.
+
 # 2. Error Handling (Optional)
 
 In the current version of the library and application, we have ignored any error handling.

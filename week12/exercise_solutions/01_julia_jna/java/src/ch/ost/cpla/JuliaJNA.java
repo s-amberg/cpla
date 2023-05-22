@@ -1,4 +1,4 @@
-package ch.hsr.cpla;
+package ch.ost.cpla;
 
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
@@ -11,7 +11,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
-import ch.hsr.cpla.Julia.Image;
+import ch.ost.cpla.Julia.Image;
 
 public class JuliaJNA {
 
