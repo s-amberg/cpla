@@ -1,4 +1,4 @@
-package ch.hsr.cpla;
+package ch.ost.cpla;
 
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
@@ -11,7 +11,9 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
-import ch.hsr.cpla.Julia.Image;
+
+// TODO: Implement required types and methods
+// import ch.hsr.cpla.Julia.Image;
 
 public class JuliaJNA {
 
@@ -32,6 +34,8 @@ public class JuliaJNA {
 			this.setSize(size, size);
 			this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
+      // TODO: Implement required types and methods
+      /*
 			Image image = new Julia.Image(size);
 			Julia.INSTANCE.render(image, new Julia.Window(0.0, 0.0, 1.0), 2.0, 0.0, -1.0, 100);
 			byte[] rendered = image.getBitmapData();
@@ -52,6 +56,7 @@ public class JuliaJNA {
 			}
 
 			this.add(panel);
+      */
 		}
 	}
 }
