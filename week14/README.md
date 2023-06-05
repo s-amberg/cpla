@@ -1,3 +1,3 @@
-# No Week 14 in FS21!
+# No new exercises
 
-MS Teams for questions.
+Time for Questions!
