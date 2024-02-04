@@ -31,3 +31,13 @@ add_library("cpl::asio" ALIAS "asio")
 add_subdirectory("simple_http")
 
 add_library("cpl::simple-http" ALIAS "simple-http")
+
+Include(FetchContent)
+
+FetchContent_Declare(
+  Catch2
+  GIT_REPOSITORY https://github.com/catchorg/Catch2.git
+  GIT_TAG        v3.4.0
+)
+
+FetchContent_MakeAvailable(Catch2)
