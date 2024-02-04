@@ -1,0 +1,22 @@
+{
+	"name": "CPlA Devcontainer",
+
+	"build": {
+		"context": "..",
+		"dockerfile": "../.gitpod.Dockerfile"
+	},
+
+	"workspaceMount": "source=cpla-volume,target=/workspace,type=volume",
+
+	"workspaceFolder": "/workspace",
+
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"llvm-vs-code-extensions.vscode-clangd",
+				"ms-vscode.cmake-tools",
+				"ms-vscode.cpptools"
+			]
+		}
+	}
+}
