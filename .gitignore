@@ -56,3 +56,6 @@ wiki2md.pl
 
 # compile commands für clangd
 compile_commands.json
+
+# .clangd configuration
+.clangd
