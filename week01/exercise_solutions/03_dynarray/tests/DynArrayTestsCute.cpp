@@ -1,4 +1,4 @@
-#include "dynArray.hpp"
+#include "DynArray.hpp"
 
 #include <cute/cute.h>
 #include <cute/cute_runner.h>

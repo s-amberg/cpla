@@ -4,6 +4,7 @@
 #include <boost/operators.hpp>
 #include <cmath>
 #include <compare>
+#include <ios>
 #include <istream>
 #include <numeric>
 #include <ostream>
