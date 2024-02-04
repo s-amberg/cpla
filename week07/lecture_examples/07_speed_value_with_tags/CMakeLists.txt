@@ -17,6 +17,7 @@ add_executable("${CPL_TARGET_WEEK_PREFIX}07_speed_value_with_tags_tests"
 target_link_libraries("${CPL_TARGET_WEEK_PREFIX}07_speed_value_with_tags_tests" PRIVATE
     "${CPL_TARGET_WEEK_PREFIX}07_speed_value_with_tags_lib"
     "cpl::cute"
+    "cpl::boost"
 )
 
 add_test(NAME "${CPL_TARGET_WEEK_PREFIX}07_speed_value_with_tags_tests"

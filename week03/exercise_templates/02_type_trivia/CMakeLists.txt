@@ -10,6 +10,11 @@ target_include_directories("${CPL_TARGET_WEEK_PREFIX}ex02_type_trivia_lib" PUBLI
     "lib"
 )
 
+target_link_libraries("${CPL_TARGET_WEEK_PREFIX}ex02_type_trivia_lib"
+    PUBLIC
+    "cpl::boost"
+)
+
 
 #[===[ APPLICATION ]===]
 
