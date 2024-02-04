@@ -17,6 +17,7 @@ add_executable("${CPL_TARGET_WEEK_PREFIX}sol04_temperature_type_tests"
 target_link_libraries("${CPL_TARGET_WEEK_PREFIX}sol04_temperature_type_tests" PRIVATE
     "${CPL_TARGET_WEEK_PREFIX}sol04_temperature_type_lib"
     "cpl::cute"
+    "cpl::boost"
 )
 
 add_test(NAME "${CPL_TARGET_WEEK_PREFIX}sol04_temperature_type_tests"
