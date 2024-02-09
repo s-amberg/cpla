@@ -3,6 +3,4 @@
 
 
 
-
-
 #endif /* BOUNDEDBUFFER_HPP_ */
