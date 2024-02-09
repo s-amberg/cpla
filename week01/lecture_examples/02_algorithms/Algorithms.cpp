@@ -21,6 +21,11 @@ auto find_with_algorithm(std::vector<int> const &values, int const v) -> bool {
   return pos != std::end(values);
 }
 
+auto find_with_range_algorithm(std::vector<int> const &values, int const v) -> bool {
+  auto const pos = std::ranges::find(values, v);
+  return pos != std::end(values);
+}
+
 auto execute_measurement(std::vector<int> const &values, std::ostream &out) -> void {
   out << std::boolalpha;
 
@@ -35,6 +40,12 @@ auto execute_measurement(std::vector<int> const &values, std::ostream &out) -> v
   auto const algorithm_end = std::chrono::high_resolution_clock::now();
   auto const algorithm_duration = std::chrono::duration_cast<std::chrono::milliseconds>(algorithm_end - algorithm_start);
   out << "found with an algorithm: " << algorithm_result << " in " << algorithm_duration.count() << "ms" << std::endl;
+
+  auto const range_algorithm_start = std::chrono::high_resolution_clock::now();
+  auto const range_algorithm_result = find_with_range_algorithm(values, 2);
+  auto const range_algorithm_end = std::chrono::high_resolution_clock::now();
+  auto const range_algorithm_duration = std::chrono::duration_cast<std::chrono::milliseconds>(range_algorithm_end - range_algorithm_start);
+  out << "found with a range algorithm: " << range_algorithm_result << " in " << range_algorithm_duration.count() << "ms" << std::endl;
 }
 
 auto main(int argc, char **argv) -> int {
