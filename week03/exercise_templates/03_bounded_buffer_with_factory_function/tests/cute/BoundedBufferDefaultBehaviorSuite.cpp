@@ -13,7 +13,7 @@ TEST(test_int_buffer_of_capacity_thousand_is_empty) {
   //	ASSERTM("New buffer should be empty", buffer.empty());
 }
 
-TEST(test_buffer_constructor_for_capacity_zero_throws) {
+TEST(test_buffer_constructor_for_capacity_zero_is_empty) {
   //	BoundedBuffer<int, 0> const buffer{};
   //	ASSERTM("New buffer should be empty", buffer.empty());
 }
@@ -79,7 +79,7 @@ auto make_suite_bounded_buffer_default_behavior_suite() -> cute::suite {
       "BoundedBuffer Default Behavior Suite",
       {
           test_int_buffer_of_capacity_thousand_is_empty,
-          test_buffer_constructor_for_capacity_zero_throws,
+          test_buffer_constructor_for_capacity_zero_is_empty,
           test_const_int_buffer_of_capacity_thousand_is_not_full,
           test_default_constructed_const_int_buffer_of_size_zero_is_full,
           test_int_buffer_of_capacity_thousand_has_size_zero,

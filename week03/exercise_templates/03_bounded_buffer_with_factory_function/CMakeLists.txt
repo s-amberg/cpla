@@ -8,21 +8,41 @@ target_include_directories("${CPL_TARGET_WEEK_PREFIX}ex03_bounded_buffer_with_fa
 
 #[====[ Tests ]====]
 
+add_executable("${CPL_TARGET_WEEK_PREFIX}ex03_bounded_buffer_with_factory_function_tests_cute"
+"tests/cute/BoundedBufferTests.cpp"
+"tests/cute/MemoryOperationCounter.cpp"
+"tests/cute/BoundedBufferContentSuite.cpp"
+"tests/cute/BoundedBufferDefaultBehaviorSuite.cpp"
+"tests/cute/BoundedBufferMakeBufferSuite.cpp"
+"tests/cute/BoundedBufferSemanticSuite.cpp"
+"tests/cute/BoundedBufferSignaturesSuite.cpp"
+"tests/cute/BoundedBufferStudentSuite.cpp"
+)
+
+target_link_libraries("${CPL_TARGET_WEEK_PREFIX}ex03_bounded_buffer_with_factory_function_tests_cute" PRIVATE
+"${CPL_TARGET_WEEK_PREFIX}ex03_bounded_buffer_with_factory_function_lib"
+"cpl::boost"
+"cpl::cute"
+)
+
+add_test(NAME "${CPL_TARGET_WEEK_PREFIX}ex03_bounded_buffer_with_factory_function_tests_cute"
+COMMAND "${CPL_TARGET_WEEK_PREFIX}ex03_bounded_buffer_with_factory_function_tests_cute"
+)
+
 add_executable("${CPL_TARGET_WEEK_PREFIX}ex03_bounded_buffer_with_factory_function_tests"
-    "tests/BoundedBufferTests.cpp"
-    "tests/MemoryOperationCounter.cpp"
-    "tests/BoundedBufferContentSuite.cpp"
-    "tests/BoundedBufferDefaultBehaviorSuite.cpp"
-    "tests/BoundedBufferMakeBufferSuite.cpp"
-    "tests/BoundedBufferSemanticSuite.cpp"
-    "tests/BoundedBufferSignaturesSuite.cpp"
-    "tests/BoundedBufferStudentSuite.cpp"
+    "tests/catch2/MemoryOperationCounter.cpp"
+    "tests/catch2/BoundedBufferContentSuite.cpp"
+    "tests/catch2/BoundedBufferDefaultBehaviorSuite.cpp"
+    "tests/catch2/BoundedBufferMakeBufferSuite.cpp"
+    "tests/catch2/BoundedBufferSemanticSuite.cpp"
+    "tests/catch2/BoundedBufferSignaturesSuite.cpp"
+    "tests/catch2/BoundedBufferStudentSuite.cpp"
 )
 
 target_link_libraries("${CPL_TARGET_WEEK_PREFIX}ex03_bounded_buffer_with_factory_function_tests" PRIVATE
     "${CPL_TARGET_WEEK_PREFIX}ex03_bounded_buffer_with_factory_function_lib"
     "cpl::boost"
-    "cpl::cute"
+    "Catch2::Catch2WithMain"
 )
 
 add_test(NAME "${CPL_TARGET_WEEK_PREFIX}ex03_bounded_buffer_with_factory_function_tests"
