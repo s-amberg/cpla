@@ -87,13 +87,6 @@ TEST(test_const_bounded_buffer_back_type_is_const_reference_type) {
 //   ASSERT_EQUAL(expected_type.pretty_name(), back_type.pretty_name());
 }
 
-TEST(test_bounded_buffer_pop_type_is_reference_type) {
-//   BoundedBuffer<int> buffer{15};
-//   auto pop_type = boost::typeindex::type_id_with_cvr<decltype(buffer.pop())>();
-//   auto expected_type = boost::typeindex::type_id_with_cvr<void>();
-//   ASSERT_EQUAL(expected_type.pretty_name(), pop_type.pretty_name());
-}
-
 TEST(test_const_bounded_buffer_type_of_size_is_size_t) {
 //   BoundedBuffer<int> const buffer{15};
 //   auto size_type =
@@ -148,7 +141,6 @@ auto make_suite_bounded_buffer_signatures_suite() -> cute::suite {
 		  test_const_bounded_buffer_front_type_is_const_reference_type,
           test_bounded_buffer_back_type_is_reference_type,
 		  test_const_bounded_buffer_back_type_is_const_reference_type,
-		  test_bounded_buffer_pop_type_is_reference_type,
           test_const_bounded_buffer_type_of_size_is_size_t,
           test_bounded_buffer_type_of_push_of_const_lvalue_is_void,
           test_bounded_buffer_type_of_push_of_rvalue_is_void,

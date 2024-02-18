@@ -4,4 +4,4 @@
 
 // TODO: Add your own tests here
 
-TEST_CASE("Empty Test", "Student Suite") {}
+TEST_CASE("Empty Test", "[Student Suite]") {}
