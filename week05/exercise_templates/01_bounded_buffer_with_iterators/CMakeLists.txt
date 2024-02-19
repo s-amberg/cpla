@@ -1,32 +1,55 @@
 #[====[ Library ]====]
 
-add_library("${CPL_TARGET_WEEK_PREFIX}01_bounded_buffer_with_iterators_lib" INTERFACE)
+add_library("${CPL_TARGET_WEEK_PREFIX}ex01_bounded_buffer_with_iterators_lib" INTERFACE)
 
-target_include_directories("${CPL_TARGET_WEEK_PREFIX}01_bounded_buffer_with_iterators_lib" INTERFACE
+target_include_directories("${CPL_TARGET_WEEK_PREFIX}ex01_bounded_buffer_with_iterators_lib" INTERFACE
     "lib"
 )
 
 #[====[ Tests ]====]
 
-add_executable("${CPL_TARGET_WEEK_PREFIX}01_bounded_buffer_with_iterators_tests"
-    "tests/BoundedBufferTests.cpp"
-    "tests/MemoryOperationCounter.cpp"
-    "tests/BoundedBufferContentSuite.cpp"
-    "tests/BoundedBufferDefaultBehaviorSuite.cpp"
-    "tests/BoundedBufferHeapMemorySuite.cpp"
-    "tests/BoundedBufferIteratorSuite.cpp"
-    "tests/BoundedBufferNDCElementTypeSuite.cpp"
-    "tests/BoundedBufferSemanticSuite.cpp"
-    "tests/BoundedBufferSignaturesSuite.cpp"
-    "tests/BoundedBufferStudentSuite.cpp"
+add_executable("${CPL_TARGET_WEEK_PREFIX}ex01_bounded_buffer_with_iterators_tests"
+    "tests/catch2/MemoryOperationCounter.cpp"
+    "tests/catch2/BoundedBufferContentSuite.cpp"
+    "tests/catch2/BoundedBufferDefaultBehaviorSuite.cpp"
+    "tests/catch2/BoundedBufferHeapMemorySuite.cpp"
+    "tests/catch2/BoundedBufferIteratorSuite.cpp"
+    "tests/catch2/BoundedBufferNDCElementTypeSuite.cpp"
+    "tests/catch2/BoundedBufferSemanticSuite.cpp"
+    "tests/catch2/BoundedBufferSignaturesSuite.cpp"
+    "tests/catch2/BoundedBufferStudentSuite.cpp"
 )
 
-target_link_libraries("${CPL_TARGET_WEEK_PREFIX}01_bounded_buffer_with_iterators_tests" PRIVATE
-    "${CPL_TARGET_WEEK_PREFIX}01_bounded_buffer_with_iterators_lib"
+target_link_libraries("${CPL_TARGET_WEEK_PREFIX}ex01_bounded_buffer_with_iterators_tests" PRIVATE
+    "${CPL_TARGET_WEEK_PREFIX}ex01_bounded_buffer_with_iterators_lib"
+    "cpl::boost"
+    "Catch2::Catch2WithMain"
+)
+
+add_test(NAME "${CPL_TARGET_WEEK_PREFIX}ex01_bounded_buffer_with_iterators_tests"
+    COMMAND "${CPL_TARGET_WEEK_PREFIX}ex01_bounded_buffer_with_iterators_tests"
+)
+
+add_executable("${CPL_TARGET_WEEK_PREFIX}ex01_bounded_buffer_with_iterators_cute_tests"
+    "tests/cute/BoundedBufferTests.cpp"
+    "tests/cute/MemoryOperationCounter.cpp"
+    "tests/cute/BoundedBufferContentSuite.cpp"
+    "tests/cute/BoundedBufferDefaultBehaviorSuite.cpp"
+    "tests/cute/BoundedBufferHeapMemorySuite.cpp"
+    "tests/cute/BoundedBufferIteratorSuite.cpp"
+    "tests/cute/BoundedBufferNDCElementTypeSuite.cpp"
+    "tests/cute/BoundedBufferSemanticSuite.cpp"
+    "tests/cute/BoundedBufferSignaturesSuite.cpp"
+    "tests/cute/BoundedBufferStudentSuite.cpp"
+)
+
+target_link_libraries("${CPL_TARGET_WEEK_PREFIX}ex01_bounded_buffer_with_iterators_cute_tests" PRIVATE
+    "${CPL_TARGET_WEEK_PREFIX}ex01_bounded_buffer_with_iterators_lib"
     "cpl::boost"
     "cpl::cute"
 )
 
-add_test(NAME "${CPL_TARGET_WEEK_PREFIX}01_bounded_buffer_with_iterators_tests"
-    COMMAND "${CPL_TARGET_WEEK_PREFIX}01_bounded_buffer_with_iterators_tests"
+add_test(NAME "${CPL_TARGET_WEEK_PREFIX}ex01_bounded_buffer_with_iterators_cute_tests"
+    COMMAND "${CPL_TARGET_WEEK_PREFIX}ex01_bounded_buffer_with_iterators_cute_tests"
 )
+
