@@ -19,7 +19,7 @@ struct FibonacciIterator {
 
   auto operator++(int) -> FibonacciIterator {
     auto const old = *this;
-    // ++*this;
+    ++*this;
     return old;
   }
 
