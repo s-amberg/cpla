@@ -13,7 +13,7 @@ add_test(NAME "${CPL_TARGET_WEEK_PREFIX}sol02_sfinae_tests"
 )
 
 add_executable("${CPL_TARGET_WEEK_PREFIX}sol02_sfinae_tests_cute"
-    "ConsumeTests.cpp"
+    "ConsumeTestsCute.cpp"
 )
 
 target_link_libraries("${CPL_TARGET_WEEK_PREFIX}sol02_sfinae_tests_cute" PRIVATE
