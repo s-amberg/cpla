@@ -16,12 +16,13 @@ VS Code and a recent compiler take care of
 this first. [Here](https://gitlab.ost.ch/cxx/cpl/-/wikis/Setup-Development-Environment-(VSCode)) is a guide
 from CPl on how to do it.
 
+**Note:** When using the devcontainer (recommended) make sure to clone the repository into its own volume (not map it from the host system), otherwise, compilation is terribly slow!
+
 ## Update Your Compiler
 
--   Install a recent version of GCC (version 12) or Clang (version
-    15).
--   For Windows MinGW with a current GCC can be downloaded through the [MSYS2](https://www.msys2.org) ecosystem or 
-    [here](https://nuwen.net/mingw.html).
+-   Install a recent version of GCC (version 13) or Clang (version
+    17).
+-   For Windows MinGW with a current GCC can be downloaded through the [MSYS2](https://www.msys2.org) ecosystem.
 
 
 
