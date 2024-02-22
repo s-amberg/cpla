@@ -1,0 +1,14 @@
+{
+    "testMate.cpp.test.advancedExecutables": [
+        {
+            "pattern": "{build,Build,BUILD,out,Out,OUT}/**/*{test,Test,TEST}*",
+            "catch2": {
+                "testGrouping": {
+                    "groupByExecutable": {
+                        "groupByTags": {}
+                    }
+                }
+            }
+        }
+    ]
+}
