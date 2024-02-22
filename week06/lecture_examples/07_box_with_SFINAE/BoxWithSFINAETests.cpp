@@ -1,9 +1,6 @@
 #include "MemoryOperationCounter.hpp"
 
-#include <cute/cute.h>
-#include <cute/cute_runner.h>
-#include <cute/ide_listener.h>
-#include <cute/summary_listener.h>
+#include <catch2/catch_test_macros.hpp>
 
 #include <type_traits>
 #include <utility>
@@ -30,48 +27,37 @@ struct Box {
   std::vector<T> items{};
 };
 
-TEST(testCopyBox) {
+
+
+
+TEST_CASE("Copy Box", "[Box With SFINAE Suite]") {
   MemoryOperationCounter const expected{1, 1, true};
   Box<MemoryOperationCounter> b{};
   b.emplace(MemoryOperationCounter{});
   auto copy = b;
-  ASSERT_EQUAL(expected, copy.front());
+  REQUIRE(expected == copy.front());
 }
 
-TEST(testCopyConstBox) {
+TEST_CASE("Copy Const Box", "[Box With SFINAE Suite]") {
   MemoryOperationCounter const expected{1, 1, true};
   Box<MemoryOperationCounter> b{};
   b.emplace(MemoryOperationCounter{});
   Box<MemoryOperationCounter> const& bRef = b;
   auto copy = bRef;
-  ASSERT_EQUAL(expected, copy.front());
+  REQUIRE(expected == copy.front());
 }
 
-TEST(testMoveBox) {
+TEST_CASE("Move Box", "[Box With SFINAE Suite]") {
   MemoryOperationCounter const expected{1, 0, true};
   Box<MemoryOperationCounter> b{};
   b.emplace(MemoryOperationCounter{});
   auto copy = std::move(b);
-  ASSERT_EQUAL(expected, copy.front());
+  REQUIRE(expected == copy.front());
 }
 
-TEST(testSizeCtor) {
+TEST_CASE("Size Constructor", "[Box With SFINAE Suite]") {
   MemoryOperationCounter const expected{0, 0, true};
   Box<MemoryOperationCounter> b{1};
-  ASSERT_EQUAL(expected, b.front());
+  REQUIRE(expected == b.front());
 }
 
-auto main(int argc, char const* argv[]) -> int {
-  auto suite = cute::suite{"Box with SFINAE Tests",
-                           {
-                               testCopyBox,
-                               testMoveBox,
-                               testCopyConstBox,
-                               testSizeCtor,
-                           }};
-
-  auto listener = cute::ide_listener<cute::summary_listener<>>{};
-  auto runner = cute::makeRunner(listener, argc, argv);
-
-  return runner(suite) ? EXIT_SUCCESS : EXIT_FAILURE;
-}

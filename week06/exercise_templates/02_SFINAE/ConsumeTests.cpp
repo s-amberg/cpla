@@ -1,42 +1,26 @@
 #include "Consume.hpp"
 
-#include <cute/cute.h>
-#include <cute/cute_runner.h>
-#include <cute/ide_listener.h>
-#include <cute/summary_listener.h>
+#include <catch2/catch_test_macros.hpp>
 
-TEST(testConsumeWithIntArgumentsReturnInteger) {
-  // ASSERT_EQUAL(Result::Integer, consume(1));
-  // ASSERT_EQUAL(Result::Integer, consume(1l));
-  // ASSERT_EQUAL(Result::Integer, consume(1ll));
-  // ASSERT_EQUAL(Result::Integer, consume(1u));
-  // ASSERT_EQUAL(Result::Integer, consume(1ul));
-  // ASSERT_EQUAL(Result::Integer, consume(1ull));
+TEST_CASE("Consume With Integer Arguments Return Result::Integer", "[SFINAE Suite]") {
+  // REQUIRE(consume(1) == Result::Integer);
+  // REQUIRE(consume(1l) == Result::Integer);
+  // REQUIRE(consume(1ll) == Result::Integer);
+  // REQUIRE(consume(1u) == Result::Integer);
+  // REQUIRE(consume(1ul) == Result::Integer);
+  // REQUIRE(consume(1ull) == Result::Integer);
 }
 
-TEST(testConsumeWithFloatArgumentsReturnFloat) {
-  // ASSERT_EQUAL(Result::Float, consume(1.0f));
-  // ASSERT_EQUAL(Result::Float, consume(1.0));
-  // ASSERT_EQUAL(Result::Float, consume(1.0l));
+TEST_CASE("Consume With Float Arguments Return Result::Float", "[SFINAE Suite]") {
+  // REQUIRE(consume(1.0f) == Result::Float);
+  // REQUIRE(consume(1.0) == Result::Float);
+  // REQUIRE(consume(1.0l) == Result::Float);
 }
 
-TEST(testConsumeWithOtherArgumentsReturnOther) {
+TEST_CASE("Consume With Float Arguments Return Result::Other", "[SFINAE Suite]") {
   using namespace std::string_literals;
-  ASSERT_EQUAL(Result::Other, consume("other"s));
-  ASSERT_EQUAL(Result::Other, consume(std::vector<int>{1, 2, 3}));
-  ASSERT_EQUAL(Result::Other, consume(std::istringstream{"other"s}));
+  REQUIRE(consume("other"s) == Result::Other);
+  REQUIRE(consume(std::vector<int>{1, 2, 3}) == Result::Other);
+  REQUIRE(consume(std::istringstream{"other"s}) == Result::Other);
 }
 
-auto main(int argc, char const* argv[]) -> int {
-  auto suite = cute::suite{"Consume Tests",
-                           {
-                               testConsumeWithIntArgumentsReturnInteger,
-                               testConsumeWithOtherArgumentsReturnOther,
-                               testConsumeWithFloatArgumentsReturnFloat,
-                           }};
-
-  auto listener = cute::ide_listener<cute::summary_listener<>>{};
-  auto runner = cute::makeRunner(listener, argc, argv);
-
-  return runner(suite) ? EXIT_SUCCESS : EXIT_FAILURE;
-}
