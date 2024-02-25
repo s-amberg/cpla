@@ -230,8 +230,6 @@ First implement the declarations of `BoundedBuffer`s members, without any logic,
 
 ***Note:*** Some of the tests we provide are not really sensible for a real test scenario. But they will help you to get the signatures of your member functions right. There is a dependency to ***Boost*** (`type_index.h`). Accordingly, you need to have the [Boost library](http://www.boost.org) installed on your system and reference it from your project.
 
-***Attention:*** The `boost` headers offered by the *CUTE* project wizard won't be sufficient, as they have an obsolete version.
-
 
 ## Behavior of a default-constructed `BoundedBuffer`
 
