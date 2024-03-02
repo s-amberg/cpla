@@ -13,7 +13,7 @@ add_library("cpl::cute" ALIAS "CUTE")
 
 add_library("boost" INTERFACE)
 
-target_include_directories("boost" SYSTEM BEFORE INTERFACE "${CMAKE_CURRENT_SOURCE_DIR}/boost")
+target_include_directories("boost" SYSTEM BEFORE INTERFACE "/opt/boost_1_82_0")
 
 add_library("cpl::boost" ALIAS "boost")
 
