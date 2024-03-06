@@ -181,13 +181,13 @@ In this exercise you will create the fundamental data structure for a `BoundedBu
 
 Please form groups of 1-3 students for testat hand-in:
 
-* Upload via [ALF](https://alf.sifs0005.infs.ch/) (Module C++, Project CPlA Testat 1 BoundedBuffer)
+* Upload via [ALF](https://alf.sifs0005.infs.ch/) (Module C++, Project CPlA-24 Testat 1 BoundedBuffer)
 * or if that does not work by mail
     * Send an email to [Thomas Corbat](mailto:thomas.corbat@ost.ch)
     * ***Subject***: `[CPlA-Testat-1] name1 name2 name3`
 * Content: `BoundedBuffer.hpp`
 * You will get feedback as soon as possible
-* Hand-in deadline: Tuesday 21. March 23:59 (MEZ)
+* Hand-in deadline: Wednesday 20. March 2024 23:59 (MEZ)
 
 
 A project template with predefined tests is available [here](./exercise_templates/w02_template_02_BoundedBuffer).
