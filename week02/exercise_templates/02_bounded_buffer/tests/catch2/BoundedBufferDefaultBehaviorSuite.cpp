@@ -4,7 +4,7 @@
 #include <catch2/catch_test_macros.hpp>
 #include <stdexcept>
 
-using namespace buffy;
+// using namespace buffy;
 
 TEST_CASE("BoundedBuffer<int, 1000> const is empty()", "[Default Behavior Suite]") {
   BoundedBuffer<int, 1000> const buffer{};

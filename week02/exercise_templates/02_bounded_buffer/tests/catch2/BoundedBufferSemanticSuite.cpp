@@ -5,7 +5,7 @@
 
 #include <catch2/catch_test_macros.hpp>
 #include <utility>
-using namespace buffy;
+// using namespace buffy;
 
 TEST_CASE("push(lvalue) copies element", "[Semantic Suite]") {
   BoundedBuffer<MemoryOperationCounter, 1> buffer{};

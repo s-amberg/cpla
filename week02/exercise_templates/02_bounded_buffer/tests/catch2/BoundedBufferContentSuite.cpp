@@ -7,7 +7,7 @@
 #include <vector>
 
 using namespace cpp_advanced::times_literal;
-using namespace buffy;
+// using namespace buffy;
 
 TEST_CASE("BoundedBuffer is not empty after push(rvalue)", "[Content Suite]") {
   BoundedBuffer<int, 5> buffer{};

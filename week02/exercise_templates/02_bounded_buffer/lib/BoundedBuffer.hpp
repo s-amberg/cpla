@@ -6,7 +6,7 @@
 #include <stdexcept>
 #include <utility>
 
-namespace buffy {
+// namespace buffy {
 
     template<typename T, size_t N> 
     class BoundedBuffer : std::array<T, N>{
@@ -117,7 +117,7 @@ namespace buffy {
         return lhs.swap(rhs);
     }
 
-}
+// }
 
 
 #endif /* BOUNDEDBUFFER_HPP_ */

@@ -6,7 +6,7 @@
 #include <catch2/catch_test_macros.hpp>
 #include <cstddef>
 
-using namespace buffy;
+// using namespace buffy;
 
 TEST_CASE("value_type is value", "[Signatures Suite]") {
   auto value_type = boost::typeindex::type_id_with_cvr<BoundedBuffer<int, 15>::value_type>();
