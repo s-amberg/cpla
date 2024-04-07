@@ -13,7 +13,7 @@
 //--------- 1d) Benchmark ---------
 
 TEST_CASE("Fibonacci calculation", "[Fibonacci Benchmark Suite]") {
-  // auto [input, expected] = GENERATE(table<unsigned long long, unsigned long long>({
+  // auto entry = GENERATE(table<unsigned long long, unsigned long long>({
   //   {0, 0}, 
   //   {1, 1}, 
   //   {2, 1}, 
@@ -22,6 +22,8 @@ TEST_CASE("Fibonacci calculation", "[Fibonacci Benchmark Suite]") {
   //   {5, 5}, 
   //   // {46, 1836311903} // Runs long!
   //   }));
+  // auto input = std::get<0>(entry);
+  // auto expected = std::get<0>(entry);
   // std::ostringstream oss;
   // oss << "Benchmark fibo(" << input << ")";
   // auto benchmarkName = oss.str();
