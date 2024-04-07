@@ -7,8 +7,7 @@
 #include <catch2/generators/catch_generators.hpp>
 #include <catch2/generators/catch_generators_all.hpp>
 #include <catch2/generators/catch_generators_range.hpp>
-
-#include <format>
+#include <sstream>
 #include <utility>
 
 //--------- 1d) Benchmark ---------
@@ -23,7 +22,9 @@ TEST_CASE("Fibonacci calculation", "[Fibonacci Benchmark Suite]") {
     {5, 5}, 
     // {46, 1836311903} // Runs long!
     }));
-  auto benchmarkName = std::format("Benchmark fibo({})", input);
+  std::ostringstream oss;
+  oss << "Benchmark fibo(" << input << ")";
+  auto benchmarkName = oss.str();
   BENCHMARK(std::move(benchmarkName)) {
     return fibo(input);
   };
