@@ -10,8 +10,6 @@
 
 #include <array>
 #include <cstddef>
-#include <format>
-#include <utility>
 
 //--------- 1a) ---------
 static_assert(0 == fibo(0), "fibo(0)");
