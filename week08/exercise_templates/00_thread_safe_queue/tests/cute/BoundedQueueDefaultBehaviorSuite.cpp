@@ -1,4 +1,4 @@
-#include "bounded_queue_default_behavior_suite.hpp"
+#include "BoundedQueueDefaultBehaviorSuite.hpp"
 
 #include <cute/cute.h>
 

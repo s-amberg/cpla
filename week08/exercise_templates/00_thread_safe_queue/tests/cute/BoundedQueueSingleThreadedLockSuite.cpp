@@ -1,4 +1,4 @@
-#include "bounded_queue_single_threaded_lock_suite.hpp"
+#include "BoundedQueueSingleThreadedLockSuite.hpp"
 
 #include <cute/cute.h>
 

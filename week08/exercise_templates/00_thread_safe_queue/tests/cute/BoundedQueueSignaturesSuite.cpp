@@ -1,4 +1,4 @@
-#include "bounded_queue_signatures_suite.hpp"
+#include "BoundedQueueSignaturesSuite.hpp"
 
 #include <cute/cute.h>
 

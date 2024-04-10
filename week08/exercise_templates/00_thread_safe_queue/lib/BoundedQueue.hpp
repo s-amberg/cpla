@@ -18,57 +18,57 @@ struct BoundedQueue {
 	BoundedQueue(U) {}
 
 
-	bool empty() const {
+	auto empty() const -> bool {
 		//TODO: Implement
 		return true;
 	}
 
-	bool full() const {
+	auto full() const -> bool {
 		//TODO: Implement
 		return true;
 	}
 
-	size_type size() const {
+	auto size() const -> size_type {
 		//TODO: Implement
 		return 0;
 	}
 
-	void push(T const & element) {
+	auto push(T const & element) -> void {
 		//TODO: Implement
 	}
 
-	void push(T && element) {
+	auto push(T && element) -> void  {
 		//TODO: Implement
 	}
 
-	bool try_push(T const & element) {
+	auto try_push(T const & element) -> bool {
 		//TODO: Implement
 		return false;
 	}
 	
 	template <typename Rep, typename Period>
-	bool try_push_for(T const & element, std::chrono::duration<Rep, Period> duration) {
+	auto try_push_for(T const & element, std::chrono::duration<Rep, Period> duration) -> bool {
 		//TODO: Implement
 		return false;
 	}
 
-	value_type pop() {
+	auto pop() -> value_type {
 		//TODO: Implement
 		return T{};
 	}
 
-	bool try_pop(T & ret) {
+	auto try_pop(T & ret) -> bool {
 		//TODO: Implement
 		return false;
 	}
 
 	template <typename Rep, typename Period>
-	bool try_pop_for(T & ret, std::chrono::duration<Rep, Period> duration) {
+	auto try_pop_for(T & ret, std::chrono::duration<Rep, Period> duration) -> bool {
 		//TODO: Implement
 		return false;
 	}
 
-	void swap(BoundedQueue & other) {
+	auto swap(BoundedQueue & other)  -> void {
 		//TODO: Implement
 	}
 

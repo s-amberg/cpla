@@ -1,4 +1,4 @@
-#include "bounded_queue_multi_threaded_suite.hpp"
+#include "BoundedQueueMultiThreadedSuite.hpp"
 #include <cute/cute.h>
 
 // #include "BoundedQueue.hpp"

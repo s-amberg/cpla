@@ -9,24 +9,46 @@ target_include_directories("${CPL_TARGET_WEEK_PREFIX}00_thread_safe_queue_lib" I
 #[====[ Tests ]====]
 
 add_executable("${CPL_TARGET_WEEK_PREFIX}00_thread_safe_queue_tests"
-    "tests/Test.cpp"
-    "tests/bounded_queue_content_suite.cpp"
-    "tests/bounded_queue_default_behavior_suite.cpp"
-    "tests/bounded_queue_heap_memory_suite.cpp"
-    "tests/bounded_queue_multi_threaded_suite.cpp"
-    "tests/bounded_queue_non_default_constructible_element_type_suite.cpp"
-    "tests/bounded_queue_semantic_suite.cpp"
-    "tests/bounded_queue_signatures_suite.cpp"
-    "tests/bounded_queue_single_threaded_lock_suite.cpp"
-    "tests/bounded_queue_student_suite.cpp"
+  "tests/catch2/BoundedQueueContentSuite.cpp"
+  "tests/catch2/BoundedQueueDefaultBehaviorSuite.cpp"
+  "tests/catch2/BoundedQueueHeapMemorySuite.cpp"
+  "tests/catch2/BoundedQueueMultiThreadedSuite.cpp"
+  "tests/catch2/BoundedQueueNonDefaultConstructibleElementTypeSuite.cpp"
+  "tests/catch2/BoundedQueueSemanticSuite.cpp"
+  "tests/catch2/BoundedQueueSignaturesSuite.cpp"
+  "tests/catch2/BoundedQueueSingleThreadedLockSuite.cpp"
+  "tests/catch2/BoundedQueueStudentSuite.cpp"
 )
 
 target_link_libraries("${CPL_TARGET_WEEK_PREFIX}00_thread_safe_queue_tests" PRIVATE
+  "${CPL_TARGET_WEEK_PREFIX}00_thread_safe_queue_lib"
+  "cpl::boost"
+  "Catch2::Catch2WithMain"
+)
+
+add_test(NAME "${CPL_TARGET_WEEK_PREFIX}00_thread_safe_queue_tests"
+  COMMAND "${CPL_TARGET_WEEK_PREFIX}00_thread_safe_queue_tests"
+)
+
+add_executable("${CPL_TARGET_WEEK_PREFIX}00_thread_safe_queue_tests_cute"
+    "tests/cute/Test.cpp"
+    "tests/cute/BoundedQueueContentSuite.cpp"
+    "tests/cute/BoundedQueueDefaultBehaviorSuite.cpp"
+    "tests/cute/BoundedQueueHeapMemorySuite.cpp"
+    "tests/cute/BoundedQueueMultiThreadedSuite.cpp"
+    "tests/cute/BoundedQueueNonDefaultConstructibleElementTypeSuite.cpp"
+    "tests/cute/BoundedQueueSemanticSuite.cpp"
+    "tests/cute/BoundedQueueSignaturesSuite.cpp"
+    "tests/cute/BoundedQueueSingleThreadedLockSuite.cpp"
+    "tests/cute/BoundedQueueStudentSuite.cpp"
+)
+
+target_link_libraries("${CPL_TARGET_WEEK_PREFIX}00_thread_safe_queue_tests_cute" PRIVATE
     "${CPL_TARGET_WEEK_PREFIX}00_thread_safe_queue_lib"
     "cpl::boost"
     "cpl::cute"
 )
 
-add_test(NAME "${CPL_TARGET_WEEK_PREFIX}00_thread_safe_queue_tests"
-    COMMAND "${CPL_TARGET_WEEK_PREFIX}00_thread_safe_queue_tests"
+add_test(NAME "${CPL_TARGET_WEEK_PREFIX}00_thread_safe_queue_tests_cute"
+    COMMAND "${CPL_TARGET_WEEK_PREFIX}00_thread_safe_queue_tests_cute"
 )
