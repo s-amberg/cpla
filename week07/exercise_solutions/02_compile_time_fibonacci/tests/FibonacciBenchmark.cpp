@@ -23,7 +23,7 @@ TEST_CASE("Fibonacci calculation", "[Fibonacci Benchmark Suite]") {
     // {46, 1836311903} // Runs long!
     }));
   auto input = std::get<0>(entry);
-  auto expected = std::get<0>(entry);
+  auto expected = std::get<1>(entry);
   std::ostringstream oss;
   oss << "Benchmark fibo(" << input << ")";
   auto benchmarkName = oss.str();
