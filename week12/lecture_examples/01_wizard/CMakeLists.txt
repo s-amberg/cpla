@@ -8,7 +8,7 @@ target_include_directories("${CPL_TARGET_WEEK_PREFIX}01_wizard" PUBLIC
 )
 
 add_executable("${CPL_TARGET_WEEK_PREFIX}01_wizard_tests"
-    "tests/Test.cpp"
+    "tests/Tests.cpp"
 )
 
 target_include_directories("${CPL_TARGET_WEEK_PREFIX}01_wizard_tests" PRIVATE
@@ -17,5 +17,5 @@ target_include_directories("${CPL_TARGET_WEEK_PREFIX}01_wizard_tests" PRIVATE
 
 target_link_libraries("${CPL_TARGET_WEEK_PREFIX}01_wizard_tests" PRIVATE
     "${CPL_TARGET_WEEK_PREFIX}01_wizard"
-    "cpl::cute"
+    "Catch2::Catch2WithMain"
 )
