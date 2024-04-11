@@ -6,6 +6,10 @@
 #include <cute/ide_listener.h>
 #include <cute/summary_listener.h>
 
+#include <sstream>
+#include <string>
+#include <utility>
+
 TEST(testCopyAssignUnicorn) {
   // We can't have that anymore, unless we implement it explicitly
 
