@@ -4,6 +4,7 @@
 #include <cstddef>
 #include <stdexcept>
 #include <type_traits>
+#include <typeinfo>
 
 template <typename T>
 struct bad_get : std::logic_error {

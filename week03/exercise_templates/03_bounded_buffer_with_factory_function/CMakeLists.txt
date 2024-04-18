@@ -8,26 +8,26 @@ target_include_directories("${CPL_TARGET_WEEK_PREFIX}ex03_bounded_buffer_with_fa
 
 #[====[ Tests ]====]
 
-add_executable("${CPL_TARGET_WEEK_PREFIX}ex03_bounded_buffer_with_factory_function_tests_cute"
-"tests/cute/BoundedBufferTests.cpp"
-"tests/cute/MemoryOperationCounter.cpp"
-"tests/cute/BoundedBufferContentSuite.cpp"
-"tests/cute/BoundedBufferDefaultBehaviorSuite.cpp"
-"tests/cute/BoundedBufferMakeBufferSuite.cpp"
-"tests/cute/BoundedBufferSemanticSuite.cpp"
-"tests/cute/BoundedBufferSignaturesSuite.cpp"
-"tests/cute/BoundedBufferStudentSuite.cpp"
-)
+# add_executable("${CPL_TARGET_WEEK_PREFIX}ex03_bounded_buffer_with_factory_function_tests_cute"
+# "tests/cute/BoundedBufferTests.cpp"
+# "tests/cute/MemoryOperationCounter.cpp"
+# "tests/cute/BoundedBufferContentSuite.cpp"
+# "tests/cute/BoundedBufferDefaultBehaviorSuite.cpp"
+# "tests/cute/BoundedBufferMakeBufferSuite.cpp"
+# "tests/cute/BoundedBufferSemanticSuite.cpp"
+# "tests/cute/BoundedBufferSignaturesSuite.cpp"
+# "tests/cute/BoundedBufferStudentSuite.cpp"
+# )
 
-target_link_libraries("${CPL_TARGET_WEEK_PREFIX}ex03_bounded_buffer_with_factory_function_tests_cute" PRIVATE
-"${CPL_TARGET_WEEK_PREFIX}ex03_bounded_buffer_with_factory_function_lib"
-"cpl::boost"
-"cpl::cute"
-)
+# target_link_libraries("${CPL_TARGET_WEEK_PREFIX}ex03_bounded_buffer_with_factory_function_tests_cute" PRIVATE
+# "${CPL_TARGET_WEEK_PREFIX}ex03_bounded_buffer_with_factory_function_lib"
+# "cpl::boost"
+# "cpl::cute"
+# )
 
-add_test(NAME "${CPL_TARGET_WEEK_PREFIX}ex03_bounded_buffer_with_factory_function_tests_cute"
-COMMAND "${CPL_TARGET_WEEK_PREFIX}ex03_bounded_buffer_with_factory_function_tests_cute"
-)
+# add_test(NAME "${CPL_TARGET_WEEK_PREFIX}ex03_bounded_buffer_with_factory_function_tests_cute"
+# COMMAND "${CPL_TARGET_WEEK_PREFIX}ex03_bounded_buffer_with_factory_function_tests_cute"
+# )
 
 add_executable("${CPL_TARGET_WEEK_PREFIX}ex03_bounded_buffer_with_factory_function_tests"
     "tests/catch2/MemoryOperationCounter.cpp"

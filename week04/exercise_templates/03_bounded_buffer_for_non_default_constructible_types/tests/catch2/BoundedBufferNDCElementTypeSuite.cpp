@@ -75,89 +75,92 @@ void resetCounters() {
 }
 
 TEST_CASE("New buffer of non-default constructible invokes no destructors", "[Non-Default-Constructible Element Suite]") {
-  // resetCounters();
-  // BoundedBuffer<NonDefaultConstructible> buffer{5};
-  // REQUIRE(NonDefaultConstructible::nOfDtorCalls == 0);
+  resetCounters();
+  BoundedBuffer<NonDefaultConstructible> buffer{5};
+  REQUIRE(NonDefaultConstructible::nOfDtorCalls == 0);
 }
 
 TEST_CASE("Element in buffer is destroyed once", "[Non-Default-Constructible Element Suite]") {
-  // {
-  //   BoundedBuffer<NonDefaultConstructible> buffer{5};
-  //   buffer.push(NonDefaultConstructible{23});
-  //   resetCounters();
-  // }
-  // REQUIRE(NonDefaultConstructible::nOfDtorCalls == 1);
+  {
+    BoundedBuffer<NonDefaultConstructible> buffer{5};
+    buffer.push(NonDefaultConstructible{23});
+    resetCounters();
+  }
+  REQUIRE(NonDefaultConstructible::nOfDtorCalls == 1);
 }
 
 TEST_CASE("Element in moved buffer is destroyed once", "[Non-Default-Constructible Element Suite]") {
-  // {
-  //   BoundedBuffer<NonDefaultConstructible> buffer{5};
-  //   buffer.push(NonDefaultConstructible{23});
-  //   resetCounters();
+  {
+    BoundedBuffer<NonDefaultConstructible> buffer{5};
+    buffer.push(NonDefaultConstructible{23});
+    resetCounters();
 
-  //   BoundedBuffer<NonDefaultConstructible> moved{std::move(buffer)};
-  // }
+    BoundedBuffer<NonDefaultConstructible> moved{std::move(buffer)};
+  }
 
-  // REQUIRE(NonDefaultConstructible::nOfDtorCalls == 1);
+  REQUIRE(NonDefaultConstructible::nOfDtorCalls == 1);
 }
 
 TEST_CASE("Every element in copied buffer is destroyed once", "[Non-Default-Constructible Element Suite]") {
-  // {
-  //   BoundedBuffer<NonDefaultConstructible> buffer{5};
-  //   buffer.push(NonDefaultConstructible{23});
-  //   resetCounters();
+  {
+    BoundedBuffer<NonDefaultConstructible> buffer{5};
+    buffer.push(NonDefaultConstructible{23});
+    resetCounters();
+    REQUIRE_FALSE(buffer.empty());
 
-  //   BoundedBuffer<NonDefaultConstructible> copy{buffer};
-  // }
-  // REQUIRE(NonDefaultConstructible::nOfDtorCalls == 2);
+    BoundedBuffer<NonDefaultConstructible> copy{buffer};
+    REQUIRE_FALSE(buffer.empty());
+    REQUIRE_FALSE(copy.empty());
+  }
+  REQUIRE(NonDefaultConstructible::nOfDtorCalls == 2);
 }
 
 TEST_CASE("Pop destroys element", "[Non-Default-Constructible Element Suite]") {
-  // BoundedBuffer<NonDefaultConstructible> buffer{5};
-  // buffer.push(NonDefaultConstructible{23});
-  // resetCounters();
+  BoundedBuffer<NonDefaultConstructible> buffer{5};
+  buffer.push(NonDefaultConstructible{23});
+  resetCounters();
 
-  // buffer.pop();
+  buffer.pop();
 
-  // REQUIRE(NonDefaultConstructible::nOfDtorCalls == 1);
+  REQUIRE(NonDefaultConstructible::nOfDtorCalls == 1);
 }
 
 TEST_CASE("Lvalue push copies element", "[Non-Default-Constructible Element Suite]") {
-  // resetCounters();
-  // BoundedBuffer<NonDefaultConstructible> buffer{5};
-  // NonDefaultConstructible element{23};
+  resetCounters();
+  BoundedBuffer<NonDefaultConstructible> buffer{5};
+  NonDefaultConstructible element{23};
 
-  // buffer.push(element);
+  buffer.push(element);
 
-  // REQUIRE(NonDefaultConstructible::nOfCopyConstructions == 1);
+  REQUIRE(NonDefaultConstructible::nOfCopyConstructions == 1);
 }
 
 TEST_CASE("Rvalue push moves element", "[Non-Default-Constructible Element Suite]") {
-  // resetCounters();
-  // BoundedBuffer<NonDefaultConstructible> buffer{5};
-  // NonDefaultConstructible element{23};
+  resetCounters();
+  BoundedBuffer<NonDefaultConstructible> buffer{5};
+  NonDefaultConstructible element{23};
 
-  // buffer.push(std::move(element));
+  buffer.push(std::move(element));
 
-  // REQUIRE(NonDefaultConstructible::nOfMoveConstructions == 1);
+  REQUIRE(NonDefaultConstructible::nOfMoveConstructions == 1);
 }
 
 TEST_CASE("Lvalue push must not copy assign", "[Non-Default-Constructible Element Suite]") {
-  // BoundedBuffer<NonDefaultConstructible> buffer{5};
-  // NonDefaultConstructible element{23};
+  BoundedBuffer<NonDefaultConstructible> buffer{5};
+  NonDefaultConstructible element{23};
 
-  // resetCounters();
-  // buffer.push(element);
+  resetCounters();
+  buffer.push(element);
 
-  // REQUIRE(NonDefaultConstructible::nOfCopyAssignments == 0);
+  REQUIRE(NonDefaultConstructible::nOfCopyAssignments == 0);
 }
 
 TEST_CASE("Rvalue push must not move assign", "[Non-Default-Constructible Element Suite]") {
-  // BoundedBuffer<NonDefaultConstructible> buffer{5};
-  // NonDefaultConstructible element{23};
+  BoundedBuffer<NonDefaultConstructible> buffer{5};
+  NonDefaultConstructible element{23};
 
-  // resetCounters();
-  // buffer.push(std::move(element));
+  resetCounters();
+  buffer.push(std::move(element));
 
-  // REQUIRE(NonDefaultConstructible::nOfMoveAssignments == 0);
+  REQUIRE(NonDefaultConstructible::nOfMoveAssignments == 0);
 }

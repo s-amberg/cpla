@@ -9,16 +9,16 @@
 using namespace cpp_advanced::times_literal;
 
 TEST_CASE("BoundedBuffer is not empty after push(rvalue)", "[Content Suite]") {
-  // BoundedBuffer<int> buffer{5};
-  // buffer.push(5);
-  // REQUIRE_FALSE(buffer.empty());
+  BoundedBuffer<int> buffer{5};
+  buffer.push(5);
+  REQUIRE_FALSE(buffer.empty());
 }
 
 TEST_CASE("BoundedBuffer is not empty after push(lvalue)", "[Content Suite]") {
-  // BoundedBuffer<int> buffer{5};
-  // int const lvalue{5};
-  // buffer.push(lvalue);
-  // REQUIRE_FALSE(buffer.empty());
+  BoundedBuffer<int> buffer{5};
+  int const lvalue{5};
+  buffer.push(lvalue);
+  REQUIRE_FALSE(buffer.empty());
 }
 
 TEST_CASE("BoundedBuffer is empty after one push(rvalue) and pop()", "[Content Suite]") {
