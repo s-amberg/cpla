@@ -1,4 +1,4 @@
-#include "bounded_queue_semantic_suite.hpp"
+#include "BoundedQueueSemanticSuite.hpp"
 
 #include <cute/cute.h>
 

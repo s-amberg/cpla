@@ -49,7 +49,7 @@ Take your `BoundedBuffer.hpp` file and change the implementation and interface.
 
 ## Detailed Description
 
-A major disadvantage of the `BoundedBuffer`, developed for the first Testat, is requirement to specify the size at compile-time. In this exercise you will change that. You have learned about dynamic heap memory management in the lecture using `new` and `delete`. Apply what you have learned about dynamic heap memory management to improve your `BoundedBuffer` this lifts the necessity to specify the capacity as a template argument. The adapter version allows specifying the capacity through a constructor argument. This does not mean that the buffer now should be resizable, the size is still fix, but it can be specified at run-time.
+A major disadvantage of the `BoundedBuffer`, developed for the first Testat, is requirement to specify the size at compile-time. In this exercise you will change that. You have learned about dynamic heap memory management in the lecture using `new` and `delete` (or better `std::unique_ptr`). Apply what you have learned about dynamic heap memory management to improve your `BoundedBuffer` this lifts the necessity to specify the capacity as a template argument. The adapter version allows specifying the capacity through a constructor argument. This does not mean that the buffer now should be resizable, the size is still fix, but it can be specified at run-time.
 
 ***Before:***
 ```cpp
@@ -113,11 +113,11 @@ struct X {
 ```
 Allocating arrays (`std::array<X, 5>` or plain C-arrays `X[5]`) of a type that cannot be default constructed, requires specifying the elements of that array upon allocation. Therefore, it is not possible to use an array of `X` as a buffer, as we would need to supply all elements upfront.
 
-The solution will require you to allocate "raw" storage by using `operator new[]` for a reasonably sized array and placement `new` into that array. The most suitable type is `std::byte`. Please make sure, that alignment and sizing of the array follow the rules for the template argument type.
+The solution will require you to allocate "raw" storage by using `operator new[]` (or better `std::unique_ptr`) for a reasonably sized array and placement `new` (or better `std::construct_at` see https://en.cppreference.com/w/cpp/memory/construct_at) into that array. The most suitable type is `std::byte`. Please make sure, that alignment and sizing of the array follow the rules for the template argument type.
 
 You have to consider the following properties when implementing this feature:
 
-* All constructors have to allocate that `std::byte` array with enough size to hold all elements of the buffer. `sizeof(Type[capacity])` allows you to figure out how many bytes you need to store `capacity` number of `Type` elements.
+* All constructors have to allocate that `std::byte` array with enough size to hold all elements of the buffer. `sizeof(Type) * capacity` allows you to figure out how many bytes you need to store `capacity` number of `Type` elements.
 * The copy constructor must copy all valid elements from the buffer argument.
 * The move constructor can simply swap its state with the buffer argument's state.
 * Copy assignment can use the copy constructor to clone the other buffer and then just swap the content of the `this` object with the content of the copy.
@@ -126,7 +126,7 @@ You have to consider the following properties when implementing this feature:
 * The destructor must delete all elements in the buffer before releasing the memory. It must not release non-allocated elements. This is cruicial as the memory (`std::byte[]`) is not aware of its content. Even when managed through a `std::unique_ptr` this will not change. Make sure that elements in the buffer get destructed exactly once (no undestroyed elements and no double deletes)!
 * Accessing the elements (`at()`, etc.) requires correct determination of the memory location and a forceful cast of that location to the element type: `* reinterpret_cast<Type*>(memoryLocation)`.
 
-***Note:*** An updated project with test cases for this exercise is available. We suggest you import this project and copy the `BoundedBuffer.h` from your previous exercise as a starting point. Since you do not allocate arrays of the element type anymore the test cases for `new` and `delete` change, i.e. those operators of the element type are not used anymore. The `bounded_buffer_heap_memory_suite` has been adapted accordingly and is available in the corresponding template project.
+***Note:*** An updated project with test cases for this exercise is available. We suggest you import this project and copy the `BoundedBuffer.hpp` from your previous exercise as a starting point. Since you do not allocate arrays of the element type anymore the test cases for `new` and `delete` change, i.e. those operators of the element type are not used anymore. The `bounded_buffer_heap_memory_suite` has been adapted accordingly and is available in the corresponding template project.
 
 ***Sidenote:*** The allocation of an `std::byte` array might be suboptimal for accessing elements constructed into it that have a different alignment than the allocated memory (an `std::byte` has an alignment of 1). To circumvent that you might allocate an array of `std::aligned_storage_t` with corresponding size.
 

@@ -12,7 +12,7 @@ Please form groups of 1-3 students for testat hand-in:
 * Specify if you have worked in a group.
 * Content: `BoundedBuffer.hpp`
 * You will get feedback as soon as possible
-* Hand-in deadline: Tuesday 18. April 2023 23:59
+* Hand-in deadline: Wednesday 10. April 2024 23:59
 
 ## Iterator for Dynamic Bounded Buffer
 Last week you have implemented a dynamic version of the bounded buffer. Finish that exercise first if you have not already completed it.

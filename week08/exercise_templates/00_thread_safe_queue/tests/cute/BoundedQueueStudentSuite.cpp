@@ -1,4 +1,4 @@
-#include "bounded_queue_student_suite.hpp"
+#include "BoundedQueueStudentSuite.hpp"
 
 // #include "BoundedQueue.hpp"
 #include <cute/cute.h>

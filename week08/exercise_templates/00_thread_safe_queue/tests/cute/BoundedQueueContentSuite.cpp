@@ -1,9 +1,9 @@
-#include "bounded_queue_content_suite.hpp"
+#include "BoundedQueueContentSuite.hpp"
 
 #include <cute/cute.h>
 
 // #include "BoundedQueue.hpp"
-#include "times_literal.hpp"
+#include "TimesLiteral.hpp"
 #include <stdexcept>
 
 using namespace times::literal;
@@ -11,14 +11,14 @@ using namespace times::literal;
 TEST(test_queue_is_not_empty_after_push_rvalue) {
   // BoundedQueue<int> queue { 5 };
   // queue.push(5);
-  // ASSERTM("Queue should not be empty after pushpp", !queue.empty());
+  // ASSERTM("Queue should not be empty after push", !queue.empty());
 }
 
 TEST(test_queue_is_not_empty_after_push_lvalue) {
   //   BoundedQueue<int> queue{5};
   //   int const lvalue{5};
   //   queue.push(lvalue);
-  //   ASSERTM("Queue should not be empty after pushpp", !queue.empty());
+  //   ASSERTM("Queue should not be empty after push", !queue.empty());
 }
 
 TEST(test_queue_is_empty_after_one_push_and_pop) {

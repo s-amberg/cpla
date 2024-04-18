@@ -1,7 +1,8 @@
 .PHONY = all clean
 
-RUNTIME_EXECUTABLE     = runtime.exe
-COMPILETIME_EXECUTABLE = compile_time.exe
+
+RUNTIME_EXECUTABLE     = runtime
+COMPILETIME_EXECUTABLE = compile_time
 
 CXX      = g++
 CXXFLAGS = -Os -std=c++20 -pedantic-errors

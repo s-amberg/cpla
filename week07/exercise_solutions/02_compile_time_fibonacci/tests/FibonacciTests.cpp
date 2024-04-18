@@ -1,15 +1,15 @@
 
 #include "Fibonacci.hpp"
-#include "Measure.hpp"
+#include "catch2/catch_message.hpp"
 
-#include <cute/cute.h>
-#include <cute/cute_runner.h>
-#include <cute/ide_listener.h>
-#include <cute/summary_listener.h>
+#include <catch2/benchmark/catch_benchmark.hpp>
+#include <catch2/catch_test_macros.hpp>
+#include <catch2/generators/catch_generators.hpp>
+#include <catch2/generators/catch_generators_all.hpp>
+#include <catch2/generators/catch_generators_range.hpp>
 
 #include <array>
 #include <cstddef>
-#include <utility>
 
 //--------- 1a) ---------
 static_assert(0 == fibo(0), "fibo(0)");
@@ -39,35 +39,25 @@ static_assert(5 == 5_fibo, "5_fibo");
 // static_assert(1'836'311'903 == 46_fibo, "46_fibo");
 
 //--------- 1d) ---------
-struct FiboTestData {
-  unsigned long long n;
-  unsigned long long expected;
-  cute::test_failure failure;
-} const dataTable[] = {
-    {0, 0, DDT()},
-    {1, 1, DDT()},
-    {2, 1, DDT()},
-    {3, 2, DDT()},
-    {4, 3, DDT()},
-    {5, 5, DDT()},
-    {46, 1'836'311'903, DDT()},
-};
-
-void testFiboDDT() {
-  for (auto const& entry : dataTable) {
-    auto duration = measure([&] { fibo(entry.n); });
-    std::cout << "calculating n = " << entry.n << " took " << duration.count()
-              << " ms\n";
-    ASSERT_EQUAL_DDT(entry.expected, fibo(entry.n), entry.failure);
-  }
+TEST_CASE("Fibonacci calculation", "[Fibonacci Suite]") {
+  auto [input, expected] = GENERATE(table<unsigned long long, unsigned long long>({
+    {0, 0}, 
+    {1, 1}, 
+    {2, 1}, 
+    {3, 2}, 
+    {4, 3}, 
+    {5, 5}, 
+    {46, 1836311903}
+    }));
+  CAPTURE(input, expected);
+  REQUIRE(fibo(input) == expected);
 }
 
 //--------- 2a) ---------
 constexpr std::array<unsigned long long, 6> expected{0, 1, 1, 2, 3, 5};
 
 template <typename T, std::size_t N>
-constexpr auto arrayEquals(std::array<T, N> const& lhs,
-                           std::array<T, N> const& rhs) -> bool {
+constexpr auto arrayEquals(std::array<T, N> const &lhs, std::array<T, N> const &rhs) -> bool {
   for (auto index = 0u; index < N; index++) {
     if (lhs[index] != rhs[index]) {
       return false;
@@ -93,15 +83,3 @@ static_assert(arrayEquals(expected, fiboa_v<6>));
 
 //--------- 2c) ---------
 static_assert(arrayEquals(expected, 6_fiboa));
-
-auto main(int argc, char const* argv[]) -> int {
-  auto suite = cute::suite{"Fibonacci Tests",
-                           {
-                               testFiboDDT,
-                           }};
-
-  auto listener = cute::ide_listener<cute::summary_listener<>>{};
-  auto runner = cute::makeRunner(listener, argc, argv);
-
-  return runner(suite) ? EXIT_SUCCESS : EXIT_FAILURE;
-}

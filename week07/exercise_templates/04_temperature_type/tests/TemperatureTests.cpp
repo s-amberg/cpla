@@ -1,9 +1,6 @@
 #include "Temperature.hpp"
 
-#include <cute/cute.h>
-#include <cute/cute_runner.h>
-#include <cute/ide_listener.h>
-#include <cute/summary_listener.h>
+#include <catch2/catch_test_macros.hpp>
 
 // using units::Temperature;
 // using namespace units::tags;
@@ -15,64 +12,44 @@
 //          Temperature<Celcius>{0.0};
 // }
 
-TEST(waterFreezesAt273Kelvin) {
-  // ASSERT(willWaterFreeze(Temperature<Kelvin>{273}));
+TEST_CASE("waterFreezesAt273Kelvin", "[Temperature Suite]") {
+  // REQUIRE(willWaterFreeze(Temperature<Kelvin>{273}));
 }
 
-TEST(waterFreezesAt0Celcius) {
-  // ASSERT(willWaterFreeze(Temperature<Celcius>{0}));
+TEST_CASE("waterFreezesAt0Celcius", "[Temperature Suite]") {
+  // REQUIRE(willWaterFreeze(Temperature<Celcius>{0}));
 }
 
-TEST(waterFreezesAt32Fahrenheit) {
-  // ASSERT(willWaterFreeze(Temperature<Fahrenheit>{32}));
+TEST_CASE("waterFreezesAt32Fahrenheit", "[Temperature Suite]") {
+  // REQUIRE(willWaterFreeze(Temperature<Fahrenheit>{32}));
 }
 
-TEST(testCelciusToKelvin) {
+TEST_CASE("testCelciusToKelvin", "[Temperature Suite]") {
   // static_assert(20_C == 293.15_K);
-  // ASSERT_EQUAL(20_C, 293.15_K);
+  // REQUIRE(20_C == 293.15_K);
 }
 
-TEST(testKelvinToCelcius) {
+TEST_CASE("testKelvinToCelcius", "[Temperature Suite]") {
   // static_assert(20_K == -253.15_C);
-  // ASSERT_EQUAL(20_K, -253.15_C);
+  // REQUIRE(20_K == -253.15_C);
 }
 
-TEST(testFahrenheitToCelcius) {
+TEST_CASE("testFahrenheitToCelcius", "[Temperature Suite]") {
   // static_assert(20_F == -6.6667_C);
-  // ASSERT_EQUAL(20_F, -6.6667_C);
+  // REQUIRE(20_F == -6.6667_C);
 }
 
-TEST(testCelciusToFahrenheit) {
+TEST_CASE("testCelciusToFahrenheit", "[Temperature Suite]") {
   // static_assert(20_C == 68.0_F);
-  // ASSERT_EQUAL(20_C, 68.0_F);
+  // REQUIRE(20_C == 68.0_F);
 }
 
-TEST(testKelvinToFahrenheit) {
+TEST_CASE("testKelvinToFahrenheit", "[Temperature Suite]") {
   // static_assert(20_K == -423.67_F);
-  // ASSERT_EQUAL(20_K, -423.67_F);
+  // REQUIRE(20_K == -423.67_F);
 }
 
-TEST(testFahrenheitToKelvin) {
+TEST_CASE("testFahrenheitToKelvin", "[Temperature Suite]") {
   // static_assert(20_F == 266.4833_K);
-  // ASSERT_EQUAL(20_F, 266.4833_K);
-}
-
-auto main(int argc, char const* argv[]) -> int {
-  auto suite = cute::suite{"Temperature Tests",
-                           {
-                               waterFreezesAt273Kelvin,
-                               waterFreezesAt0Celcius,
-                               waterFreezesAt32Fahrenheit,
-                               testCelciusToKelvin,
-                               testKelvinToCelcius,
-                               testFahrenheitToCelcius,
-                               testCelciusToFahrenheit,
-                               testKelvinToFahrenheit,
-                               testFahrenheitToKelvin,
-                           }};
-
-  auto listener = cute::ide_listener<cute::summary_listener<>>{};
-  auto runner = cute::makeRunner(listener, argc, argv);
-
-  return runner(suite) ? EXIT_SUCCESS : EXIT_FAILURE;
+  // REQUIRE(20_F == 266.4833_K);
 }

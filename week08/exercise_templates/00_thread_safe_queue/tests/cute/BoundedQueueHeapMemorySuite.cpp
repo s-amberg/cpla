@@ -1,9 +1,9 @@
-#include "bounded_queue_heap_memory_suite.hpp"
+#include "BoundedQueueHeapMemorySuite.hpp"
 
 #include <cute/cute.h>
 
 // #include "BoundedQueue.hpp"
-#include "times_literal.hpp"
+#include "TimesLiteral.hpp"
 
 #include <cstddef>
 #include <ios>

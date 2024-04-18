@@ -32,8 +32,11 @@ constexpr unsigned long long ternary_value<>{0};
 
 }  // namespace _impl
 
+template <char Digit>
+concept TernaryDigit = _impl::is_ternary_digit(Digit);
+
 template <char... Digits>
-  requires(_impl::is_ternary_digit(Digits) && ...)
+  requires(TernaryDigit<Digits> && ...)
 constexpr auto operator"" _ternary() -> unsigned long long {
   return _impl::ternary_value<Digits...>;
 }

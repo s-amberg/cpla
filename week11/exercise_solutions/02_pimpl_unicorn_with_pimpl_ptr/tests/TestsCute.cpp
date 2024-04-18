@@ -6,18 +6,26 @@
 #include <cute/ide_listener.h>
 #include <cute/summary_listener.h>
 
+#include <sstream>
+#include <string>
+#include <utility>
+
 TEST(testCopyAssignUnicorn) {
-  using namespace std::string_literals;
-  auto const freddy = createFreddy();
-  Unicorn other{"henry"s, "blue"s};
-  other = freddy;
-  ASSERT_EQUAL(freddy, other);
+  // We can't have that anymore, unless we implement it explicitly
+
+  //   using namespace std::string_literals;
+  //   auto const freddy = createFreddy();
+  //   Unicorn other{"henry"s, "blue"s};
+  //   other = freddy;
+  //   ASSERT_EQUAL(freddy, other);
 }
 
 TEST(testCopyConstructUnicorn) {
-  auto const freddy = createFreddy();
-  auto const copy{freddy};
-  ASSERT_EQUAL(freddy, copy);
+  // We can't have that anymore, unless we implement it explicitly
+
+  //   auto const freddy = createFreddy();
+  //   auto const copy{freddy};
+  //   ASSERT_EQUAL(freddy, copy);
 }
 
 TEST(testCreateUnicorn) {

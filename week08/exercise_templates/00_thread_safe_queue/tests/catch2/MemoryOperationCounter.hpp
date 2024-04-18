@@ -1,6 +1,10 @@
 
-#ifndef MEMORYOPERATIONCOUNTER_H_
-#define MEMORYOPERATIONCOUNTER_H_
+#ifndef MEMORYOPERATIONCOUNTER_HPP_
+#define MEMORYOPERATIONCOUNTER_HPP_
+
+#include <ostream>
+#include <utility>
+
 
 struct MemoryOperationCounter {
 	MemoryOperationCounter() = default;
@@ -14,7 +18,7 @@ struct MemoryOperationCounter {
 		source.known_state = false;
 	}
 
-	MemoryOperationCounter & operator=(MemoryOperationCounter && source) & noexcept {
+	auto operator=(MemoryOperationCounter && source) & noexcept -> MemoryOperationCounter & {
 		copyFrom(source);
 		moves++;
 		source.known_state = false;
@@ -26,13 +30,13 @@ struct MemoryOperationCounter {
 		copies++;
 	}
 
-	MemoryOperationCounter & operator=(MemoryOperationCounter const & source) & noexcept {
+	auto operator=(MemoryOperationCounter const & source) & noexcept -> MemoryOperationCounter & {
 		copyFrom(source);
 		copies++;
 		return *this;
 	}
 
-	bool operator==(MemoryOperationCounter const & other) const {
+	auto operator==(MemoryOperationCounter const & other) const -> bool {
 		return (moves == other.moves) && (copies == other.copies) == (known_state == other.known_state);
 	}
 
@@ -52,7 +56,7 @@ private:
 	}
 };
 
-inline std::ostream & operator <<(std::ostream & os, MemoryOperationCounter const & counter) {
+inline auto operator <<(std::ostream & os, MemoryOperationCounter const & counter) -> std::ostream & {
 	counter.print(os);
 	return os;
 }

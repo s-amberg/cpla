@@ -14,7 +14,7 @@ struct GalaxyClassShip {
   auto travelThroughSpace(Galaxy destination) -> void {
 	  std::cout << "Traveling to " << destination.name << " it takes a long time\n";
   }
-  auto travelThroughHyperspace(Galaxy destination) -> void {
+  auto travelThroughSubspace(Galaxy destination) -> void {
 	  std::cout << "Traveling to " << destination.name << " it is quite fast\n";
   }
 };
@@ -37,10 +37,10 @@ struct HeartOfGold {
 struct SpaceDriveTag {};
 
 //Provides travelThroughSpace and travelThroughHyperspace
-struct HyperspaceDriveTag : SpaceDriveTag {};
+struct SubspaceDriveTag : SpaceDriveTag {};
 
 //Provides travelThroughSpace and travelImprobably
-struct InfniteProbabilityDriveTag : SpaceDriveTag {};
+struct InfniteImprobabilityDriveTag : SpaceDriveTag {};
 
 
 template<typename>
@@ -50,12 +50,12 @@ struct SpaceshipTraits {
 
 template<>
 struct SpaceshipTraits<GalaxyClassShip> {
-  using Drive = HyperspaceDriveTag;
+  using Drive = SubspaceDriveTag;
 };
 
 template<>
 struct SpaceshipTraits<HeartOfGold> {
-	using Drive = InfniteProbabilityDriveTag;
+	using Drive = InfniteImprobabilityDriveTag;
 };
 
 
@@ -65,12 +65,12 @@ auto travelToDispatched(Galaxy destination, Spaceship & ship, SpaceDriveTag) -> 
 }
 
 template<typename Spaceship>
-auto travelToDispatched(Galaxy destination, Spaceship & ship, HyperspaceDriveTag) -> void {
-	  ship.travelThroughHyperspace(destination);
+auto travelToDispatched(Galaxy destination, Spaceship & ship, SubspaceDriveTag) -> void {
+	  ship.travelThroughSubspace(destination);
 }
 
 template<typename Spaceship>
-auto travelToDispatched(Galaxy destination, Spaceship & ship, InfniteProbabilityDriveTag) -> void {
+auto travelToDispatched(Galaxy destination, Spaceship & ship, InfniteImprobabilityDriveTag) -> void {
 	ship.travelImprobably();
 }
 

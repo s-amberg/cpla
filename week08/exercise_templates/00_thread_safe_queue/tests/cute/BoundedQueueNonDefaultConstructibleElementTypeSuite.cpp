@@ -1,4 +1,4 @@
-#include "bounded_queue_non_default_constructible_element_type_suite.hpp"
+#include "BoundedQueueNonDefaultConstructibleElementTypeSuite.hpp"
 
 #include <cute/cute.h>
 

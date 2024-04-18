@@ -1,12 +1,12 @@
-#include "bounded_queue_content_suite.hpp"
-#include "bounded_queue_default_behavior_suite.hpp"
-#include "bounded_queue_heap_memory_suite.hpp"
-#include "bounded_queue_multi_threaded_suite.hpp"
-#include "bounded_queue_non_default_constructible_element_type_suite.hpp"
-#include "bounded_queue_semantic_suite.hpp"
-#include "bounded_queue_signatures_suite.hpp"
-#include "bounded_queue_single_threaded_lock_suite.hpp"
-#include "bounded_queue_student_suite.hpp"
+#include "BoundedQueueContentSuite.hpp"
+#include "BoundedQueueDefaultBehaviorSuite.hpp"
+#include "BoundedQueueHeapMemorySuite.hpp"
+#include "BoundedQueueMultiThreadedSuite.hpp"
+#include "BoundedQueueNonDefaultConstructibleElementTypeSuite.hpp"
+#include "BoundedQueueSemanticSuite.hpp"
+#include "BoundedQueueSignaturesSuite.hpp"
+#include "BoundedQueueSingleThreadedLockSuite.hpp"
+#include "BoundedQueueStudentSuite.hpp"
 
 #include <cute/cute.h>
 #include <cute/cute_runner.h>

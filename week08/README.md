@@ -34,7 +34,7 @@ Please form groups of 3 students for testat hand-in:
 * Specify if you have worked in a group.
 * Content: `BoundedQueue.hpp`
 * You will get feedback as soon as possible
-* Hand-in deadline: Friday 12. May 2023 23:59
+* Hand-in deadline: Thursday 02. May 2024 23:59
 
 ## a. Interface of `BoundedQueue`
 
