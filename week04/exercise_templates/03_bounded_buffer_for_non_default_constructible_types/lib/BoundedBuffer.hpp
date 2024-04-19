@@ -1,11 +1,9 @@
 #ifndef BOUNDEDBUFFER_HPP_
 #define BOUNDEDBUFFER_HPP_
 
-#include <__algorithm/ranges_for_each.h>
-#include <__algorithm/ranges_transform.h>
-#include <__memory/construct_at.h>
 #include <array>
 #include <cstddef>
+#include <iterator>
 #include <memory>
 #include <numeric>
 #include <stdexcept>
@@ -20,13 +18,11 @@
     class BoundedBuffer {
 
         public:
-
-        using container_type = std::unique_ptr<std::byte[]>;
         using value_type = T;
+        using container_type = std::unique_ptr<std::byte[]>;
         using reference = value_type &;
         using const_reference = value_type const &;
         using size_type = size_t;
-
 
         BoundedBuffer() : BoundedBuffer(10) { };
         BoundedBuffer(size_type size) : max_size{size} {
@@ -183,9 +179,8 @@
             auto buffy = BoundedBuffer{sizeof...(values)};
             buffy.push_many(std::forward<TValue>(values)...);
             return buffy;
-        }   
-        
-    };
+        }
+    }   ;
 
     template <typename... T>
     auto swap(BoundedBuffer<T...> & lhs, BoundedBuffer<T...> & rhs) noexcept -> void {
