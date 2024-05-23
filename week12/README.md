@@ -8,7 +8,7 @@ In this exercise...
 
 # 0. Important Notes and Preparation
 
-***Warning:*** The devcontainer is not setup for this exercise, as it requires running a Java GUI (you could implement an alternative version of the Java part, that just serializes the image into a file). To run the lecture example (which does not need a GUI) you need to install a JDK first on it using `pacman`. Reconfiguring CMake is required after the Java installation as these exercises are not compiled if it is not present.
+***Warning:*** The devcontainer is not setup for this exercise, as it requires running a Java GUI (you could implement an alternative version of the Java part, that just serializes the image into a file). To run the lecture example (which does not need a GUI) you need to install a JDK first on it using `apt`. Reconfiguring CMake is required after the Java installation as these exercises are not compiled if it is not present.
 
 You might encounter some problems when trying to use you dynamic libary, so make sure:
 
