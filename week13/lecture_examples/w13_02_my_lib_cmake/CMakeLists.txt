@@ -9,7 +9,7 @@ add_library("my_lib"
 )
 
 target_compile_features("my_lib" PUBLIC
-  "cxx_std_17"
+  "cxx_std_20"
 )
 
 set_target_properties("my_lib" PROPERTIES

@@ -9,7 +9,7 @@ add_executable("my_app"
 )
 
 target_compile_features("my_app" PUBLIC
-  "cxx_std_17"
+  "cxx_std_20"
 )
 
 set_target_properties("my_app" PROPERTIES
