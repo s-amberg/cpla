@@ -17,3 +17,7 @@ add_executable("w14_04_emscripten_cmake"
 target_link_libraries("w14_04_emscripten_cmake"
   "w14_04_emscripten_cmake_lib"
 )
+
+set_target_properties("w14_04_emscripten_cmake" PROPERTIES
+  SUFFIX ".html"
+)
