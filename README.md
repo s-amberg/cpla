@@ -61,7 +61,7 @@ Before we used [CUTE](https://www.cute-test.com/) but in the current run we try 
 | 11   | [L11](week11) | [E11](week11/README.md) ([PDF](http://cxx.pages.gitlab.ost.ch/cpla/week11.pdf)) | Advanced Library Design: Exception Safety / PIMPL     |                |
 | 12   | [L12](week12) | [E12](week12/README.md) ([PDF](http://cxx.pages.gitlab.ost.ch/cpla/week12.pdf)) | Hourglass Interfaces                                  |                |
 | 13   | [L13](week13) | [E13](week13/README.md) ([PDF](http://cxx.pages.gitlab.ost.ch/cpla/week13.pdf)) | Build Systems                                         |                |
-| 14   |  |  | TBD                                          |                |
+| 14   | [L14](week14) | [E14](week14/README.md) ([PDF](http://cxx.pages.gitlab.ost.ch/cpla/week14.pdf)) | WebAssembly & C++                                     |                |
 
 
 
