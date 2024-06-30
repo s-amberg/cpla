@@ -1,4 +1,4 @@
-add_library("${CPL_TARGET_WEEK_PREFIX}01_wizard"
+add_library("${CPL_TARGET_WEEK_PREFIX}01_wizard" SHARED
     "lib/src/Wizard.cpp"
     "lib/src/WizardHidden.cpp"
 )

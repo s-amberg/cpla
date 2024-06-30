@@ -272,7 +272,7 @@ TEST(test_swap_acquires_tries_multiple_times_to_try_lock) {
 
   //   queue.swap(other);
 
-  //   ASSERT_EQUAL(4, single_threaded_test_mutex::try_lock_count);
+  //   ASSERT_EQUAL(7, single_threaded_test_mutex::try_lock_count);
 }
 
 TEST(test_swap_successful_after_delayed_lock) {

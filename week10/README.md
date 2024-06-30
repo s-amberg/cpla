@@ -16,6 +16,9 @@ Please make sure you can successfully build and run the application.
 If you are having troubles with port 8080 already being in use on your machine, you can change the port the server is running on in the file "app/main.cpp".
 
 When you have got the server up an running, you can test if it works by pointing your web browser at <http://127.0.0.1:8080> (adjust the port here if you had to change it in the server application).
+
+***Important:*** If you are working in the devcontainer, you need to forward the port to your host system. To do this press `F1` open the ports view `Ports: Focus on Ports View` command and forward the configured port (i.e. `8080` by default)! 
+
 If the server works correctly, you should be presented with the following Julia set:
 ![Default Julia set](julia.png)
 
