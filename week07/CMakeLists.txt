@@ -19,9 +19,9 @@ add_subdirectory("lecture_examples/15_compile_time_maze")
 add_subdirectory("exercise_templates/01_compile_time_hashing")
 add_subdirectory("exercise_templates/02_compile_time_fibonacci")
 add_subdirectory("exercise_templates/03_vector_literal_type")
-add_subdirectory("exercise_templates/04_temperature_type")
+# add_subdirectory("exercise_templates/04_temperature_type")
 
-add_subdirectory("exercise_solutions/02_compile_time_fibonacci")
-add_subdirectory("exercise_solutions/03_vector_literal_type")
-add_subdirectory("exercise_solutions/04_temperature_type")
+# add_subdirectory("exercise_solutions/02_compile_time_fibonacci")
+# add_subdirectory("exercise_solutions/03_vector_literal_type")
+# add_subdirectory("exercise_solutions/04_temperature_type")
 

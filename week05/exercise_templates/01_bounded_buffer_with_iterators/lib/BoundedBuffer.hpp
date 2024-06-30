@@ -1,18 +1,17 @@
 #ifndef BOUNDEDBUFFER_HPP_
 #define BOUNDEDBUFFER_HPP_
 
-#include <ranges>
-#include <array>
 #include <compare>
 #include <cstddef>
+#include <iterator>
 #include <memory>
 #include <numeric>
 #include <stdexcept>
-#include <string>
 #include <utility>
 #include <vector>
 #include <ranges>
 #include <boost/operators.hpp>
+#include <algorithm> 
 
 // namespace buffy {
 
@@ -28,12 +27,12 @@
         using size_type = size_t;
 
 
-        BoundedBuffer() : BoundedBuffer(10) { };
+        BoundedBuffer() : BoundedBuffer{10} { };
         BoundedBuffer(size_type size) : max_size{size} {
-            if(size <= 0) throw std::invalid_argument("size must be greater 0");
+            if(size <= 0) throw std::invalid_argument{"size must be greater 0"};
             allocate(size);
         };
-        BoundedBuffer(const BoundedBuffer & other) : max_size(other.max_size), front_index{other.front_index}, item_count{other.item_count} {
+        BoundedBuffer(const BoundedBuffer & other) : front_index{other.front_index}, item_count{other.item_count}, max_size(other.max_size) {
             allocate(max_size);
 
             if(!empty()){
@@ -43,11 +42,22 @@
                 });
             }
         }
-        BoundedBuffer(BoundedBuffer && other) {
+        BoundedBuffer(BoundedBuffer && other) noexcept {
             this->swap(other);
         }
 
-        ~BoundedBuffer(){
+        template <typename Iter>
+        BoundedBuffer(Iter begin, Iter end) {
+            max_size = std::distance(begin, end);
+
+            allocate(max_size);
+
+            std::for_each(begin, end, [this](auto element) {
+                push(element);
+            });
+        };
+
+        ~BoundedBuffer() noexcept {
             del();
         }
 
@@ -58,28 +68,27 @@
         size_type item_count = 0; //between 0 and max_size
         size_type max_size = 0; //between 0 and max_size
 
-        [[nodiscard]] auto calculate_index(size_type index) const -> size_type {
+        [[nodiscard]] auto calculate_index(size_type index) const noexcept -> size_type {
             return index % max_size;
         }
-        [[nodiscard]] auto back_index() const -> size_type {
+        [[nodiscard]] auto back_index() const noexcept -> size_type {
             return calculate_index(front_index + item_count - 1);
         }
-        [[nodiscard]] auto push_index() const -> size_type {
+        [[nodiscard]] auto push_index() const noexcept -> size_type {
             return calculate_index(front_index + item_count);
         }
 
-        auto push_many() -> void {
-            return;
-        }
         template<typename THead, typename... TRest>
         auto push_many(THead && current_value, TRest && ...values) -> void {
             push(std::forward<THead>(current_value));
+
+            if constexpr(sizeof...(values) == 0) return;
             push_many(std::forward<TRest>(values)...);
         }
 
 
         auto allocate(size_t size) -> void {
-            content = std::make_unique<std::byte[]>(sizeof(value_type[size]));
+            content = std::make_unique<std::byte[]>(sizeof(value_type) * size);
         }
         auto item_range() {
             auto numbers = std::vector<int>(size());
@@ -87,7 +96,7 @@
             return numbers;
         }
 
-        auto del() -> void {
+        auto del() noexcept -> void {
             
             std::ranges::for_each(item_range(), [this](size_type index) {
                 value_type * element = &element_at(calculate_index(index));
@@ -95,19 +104,23 @@
             });
         }
 
-        auto element_at(size_type index) const -> value_type & {
+        auto element_at(size_type index) -> reference {
+            return reinterpret_cast<value_type *>(content.get())[index];
+        }
+
+        auto element_at(size_type index) const -> const_reference {
             return reinterpret_cast<value_type *>(content.get())[index];
         }
 
         public:
 
-        [[nodiscard]] auto empty() const -> bool {
+        [[nodiscard]] auto empty() const noexcept -> bool {
             return size() == 0;
         }
-        [[nodiscard]] auto full() const -> bool{
+        [[nodiscard]] auto full() const noexcept -> bool{
             return size() == max_size;
         }
-        [[nodiscard]] auto size() const -> size_type {
+        [[nodiscard]] auto size() const noexcept -> size_type {
             return item_count;
         }
 
@@ -165,7 +178,7 @@
         auto operator=(BoundedBuffer const & other) -> BoundedBuffer & {
             if(std::addressof(other) != this) {
                 auto clone = BoundedBuffer{other};
-                swap(clone);
+                swap(clone); 
             }
             return *this;
         }
@@ -185,12 +198,17 @@
 
 
         template<typename V>
-        class RABuffIterator : boost::random_access_iterator_helper<BoundedBuffer<V>, typename BoundedBuffer<V>::value_type>{
-
-            using difference_type = ::ptrdiff_t;
+        class RABuffIterator : boost::random_access_iterator_helper<RABuffIterator<V>, typename BoundedBuffer<V>::value_type>{
 
             public:
-            explicit RABuffIterator(BoundedBuffer<V> & buffer, difference_type index) : buffer{buffer}, index{index} {
+            using difference_type = std::ptrdiff_t;
+            using iterator_category = std::random_access_iterator_tag;
+            using value_type = BoundedBuffer::value_type;
+            using reference = BoundedBuffer::value_type &;
+            using pointer = BoundedBuffer::value_type *;
+
+            
+            RABuffIterator(BoundedBuffer<V> & buffer, difference_type index) : buffer{buffer}, index{index} {
                 
             }
 
@@ -199,31 +217,15 @@
                 index++;
                 return *this;
             }
-            auto operator++(int) -> RABuffIterator {
-                auto const old = *this;
-                ++*this;
-                return old;
-            }
 
             auto operator--() -> RABuffIterator {
                 throwOnEmpty(index-1);
                 index--;
                 return *this;
             }
-            auto operator--(int) -> RABuffIterator {
-                auto const old = *this;
-                --*this;
-                return old;
-            }
-            auto throwOnFull(difference_type diff) const -> void {
-                if(diff > this->buffer.size()) throw std::logic_error{"full"};
-            }
-            
-            auto throwOnEmpty(difference_type diff) const -> void {
-                if(diff < 0) throw std::logic_error{"empty"};
-            }
+
             auto operator==(RABuffIterator const& rhs) const -> bool {
-                return this->buffer.front_index == rhs.buffer.front_index && this->buffer.size() == rhs.buffer.size() && this->index == rhs.index;
+                return this->index == rhs.index && std::addressof(rhs.buffer) == std::addressof(this->buffer);
             };
 
             auto operator+=(difference_type diff) const -> RABuffIterator & {
@@ -233,17 +235,14 @@
 
             auto operator*() const -> BoundedBuffer<T>::reference{ 
                 throwOnFull(index+1);
-                return buffer.element_at(buffer.front_index + index); 
+                return buffer.element_at(buffer.calculate_index(buffer.front_index + index)); 
             }
-
-            auto operator+(const difference_type diff) const -> RABuffIterator { throwOnFull(index+diff); return RABuffIterator(index + diff); }
 
             auto operator-=(difference_type diff) -> RABuffIterator & {
                 throwIfEmpty(index - diff); 
                 index =  index - diff;
                 return *this;
             };
-            auto operator-(const difference_type diff) const -> RABuffIterator { throwOnEmpty(index-diff); return RABuffIterator(buffer, index - diff); }
             
             auto operator-(RABuffIterator other) -> difference_type { 
                 if(std::addressof(other.buffer) != std::addressof(this->buffer)) throw std::logic_error{"wrong reference"};
@@ -256,45 +255,14 @@
             }
             constexpr auto operator[](std::size_t i) const -> reference { 
                 throwOnFull(i + index);
-                return buffer.element_at(i + index); 
+                return buffer.element_at(buffer.calculate_index(i + index)); 
             }
-            auto operator->() -> T* { return &(this->buffer.element_at(buffer.front_index + index)); }
+            auto operator->() -> T* { return &(this->buffer.element_at(buffer.calculate_index(buffer.front_index + index))); }
 
 
             private:
             BoundedBuffer<T> & buffer;
             difference_type index;
-        };
-
-        template<typename V>
-        class ConstRABuffIterator : boost::random_access_iterator_helper<BoundedBuffer<V>, typename BoundedBuffer<T>::value_type>{
-
-            using difference_type = ::ptrdiff_t;
-
-            public:
-            explicit ConstRABuffIterator(BoundedBuffer<V> const& buffer, difference_type index) : buffer{buffer}, index{index} {
-            }
-
-            auto operator++() -> ConstRABuffIterator const {
-                throwOnFull(index + 1);
-                index++;
-                return *this;
-            }
-            auto operator++(int) -> ConstRABuffIterator const {
-                auto const old = *this;
-                ++*this;
-                return old;
-            }
-            auto operator--() -> ConstRABuffIterator {
-                throwOnEmpty(index-1);
-                index--;
-                return *this;
-            }
-            auto operator--(int) -> ConstRABuffIterator {
-                auto const old = *this;
-                --*this;
-                return old;
-            }
 
             auto throwOnFull(difference_type diff) const -> void {
                 if(diff > this->buffer.size()) throw std::logic_error{"full"};
@@ -303,31 +271,58 @@
             auto throwOnEmpty(difference_type diff) const -> void {
                 if(diff < 0) throw std::logic_error{"empty"};
             }
+        };
+
+        template<typename V>
+        class ConstRABuffIterator : boost::random_access_iterator_helper<ConstRABuffIterator<V>, typename BoundedBuffer<T>::value_type>{
+
+            public:
+            using difference_type = ::ptrdiff_t;
+            using iterator_category = std::random_access_iterator_tag;
+            using value_type = BoundedBuffer::value_type const;
+            using reference = BoundedBuffer::value_type const &;
+            using pointer = BoundedBuffer::value_type *;
+            
+            
+            explicit ConstRABuffIterator(BoundedBuffer<V> const& buffer, difference_type index) : buffer{buffer}, index{index} {
+            }
+
+            auto operator++() -> ConstRABuffIterator const {
+                throwOnFull(index + 1);
+                index++;
+                return *this;
+            }
+            auto operator--() -> ConstRABuffIterator {
+                throwOnEmpty(index-1);
+                index--;
+                return *this;
+            }
+            auto throwOnFull(difference_type diff) const -> void {
+                if(diff > this->buffer.size()) throw std::logic_error{"full"};
+            }
+            
+            auto throwOnEmpty(difference_type diff) const -> void {
+                if(diff < 0) throw std::logic_error{"empty"};
+            }
             auto operator==(ConstRABuffIterator const& rhs) const -> bool {
-                return this->buffer.front_index == rhs.buffer.front_index && this->buffer.size() == rhs.buffer.size() && this->index == rhs.index;
+                return this->index == rhs.index && std::addressof(rhs.buffer) == std::addressof(this->buffer);
             };
 
             auto operator+=(difference_type diff) -> ConstRABuffIterator & {
                 throwOnFull(index + diff); 
                 index =  index + diff;
                 return *this;
-            };
-            auto operator+(const difference_type diff) const -> ConstRABuffIterator { throwOnFull(index+diff); return ConstRABuffIterator(buffer, index + diff); }
-            
+            };            
 
             auto operator-=(difference_type diff) -> ConstRABuffIterator & {
                 throwOnEmpty(index - diff); 
                 index =  index - diff;
                 return *this;
             };
-            auto operator-(const difference_type diff) const -> ConstRABuffIterator { 
-                throwOnEmpty(index-diff); 
-                return ConstRABuffIterator(buffer, index - diff); 
-            }
-            auto operator*() const -> typename BoundedBuffer<T>::reference { 
+            auto operator*() const -> typename BoundedBuffer<T>::const_reference { 
                 throwOnFull(index+1);
-                return buffer.element_at(buffer.front_index + index); 
-            }
+                return buffer.element_at(buffer.calculate_index(buffer.front_index + index)); 
+            };
             auto operator-(const ConstRABuffIterator & other) const -> difference_type { 
                 if(std::addressof(other.buffer) != this->buffer) throw std::logic_error{"wrong reference"};
                 throwOnEmpty(index-other.index); 
@@ -338,13 +333,6 @@
                 if(std::addressof(rhs.buffer) != this->buffer) throw std::logic_error{"wrong reference"};
                 return index <=> rhs.index;
             }            
-            
-            constexpr auto operator[](std::size_t i) const -> reference { 
-                throwOnFull(i + index);
-                return buffer.element_at(i + index); 
-            }
-
-            auto operator->() -> T* { return &(this->buffer.element_at(buffer.front_index + index)); }
 
             private:
             BoundedBuffer<T> const& buffer;
@@ -380,6 +368,9 @@
     auto swap(BoundedBuffer<T...> & lhs, BoundedBuffer<T...> & rhs) noexcept -> void {
         return lhs.swap(rhs);
     }
+
+    template <typename Iter>
+    BoundedBuffer(Iter begin, Iter end) -> BoundedBuffer<typename std::iterator_traits<Iter>::value_type>;
 
 
 #endif /* BOUNDEDBUFFER_HPP_ */

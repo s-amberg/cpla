@@ -1,4 +1,4 @@
-// #include "BoundedQueue.hpp"
+#include "BoundedQueue.hpp"
 
 #include <catch2/catch_test_macros.hpp>
 
@@ -33,54 +33,54 @@ auto operator<<(std::ostream &out, std::future_status const &status) -> std::ost
 
 } // namespace std
 
-// auto launchProducer(std::size_t start, std::size_t end, BoundedQueue<unsigned> &small_queue) -> std::future<void> {
-//   return std::async(std::launch::async, [&, start, end]() mutable {
-//     while (start < end) {
-//       small_queue.push(start++);
-//     }
-//   });
-// }
+auto launchProducer(std::size_t start, std::size_t end, BoundedQueue<unsigned> &small_queue) -> std::future<void> {
+  return std::async(std::launch::async, [&, start, end]() mutable {
+    while (start < end) {
+      small_queue.push(start++);
+    }
+  });
+}
 
-// template <typename T>
-// auto launchConsumer(std::size_t nOfElements, BoundedQueue<T> &small_queue) -> std::future<std::vector<T>> {
-//   return std::async(std::launch::async, [&, nOfElements]() {
-//     std::vector<unsigned> popped_elements{};
-//     for (auto i = 0u; i < nOfElements; i++) {
-//       auto result = small_queue.pop();
-//       popped_elements.push_back(result);
-//     }
-//     return popped_elements;
-//   });
-// }
+template <typename T>
+auto launchConsumer(std::size_t nOfElements, BoundedQueue<T> &small_queue) -> std::future<std::vector<T>> {
+  return std::async(std::launch::async, [&, nOfElements]() {
+    std::vector<unsigned> popped_elements{};
+    for (auto i = 0u; i < nOfElements; i++) {
+      auto result = small_queue.pop();
+      popped_elements.push_back(result);
+    }
+    return popped_elements;
+  });
+}
 
 TEST_CASE("One producer and oe consumer", "[Multi Threaded Suite]") {
-  // const std::size_t nOfElements = 1000;
-  // std::vector<unsigned> expected(nOfElements, 0);
-  // std::iota(std::begin(expected), std::end(expected), 0);
-  // BoundedQueue<unsigned> small_queue{1};
-  // auto producer = launchProducer(0, nOfElements, small_queue);
-  // auto consumer = launchConsumer(nOfElements, small_queue);
-  // REQUIRE(producer.wait_for(std::chrono::seconds{1}) != std::future_status::timeout);
-  // REQUIRE(consumer.wait_for(std::chrono::seconds{1}) != std::future_status::timeout);
-  // std::vector<unsigned> popped_elements{consumer.get()};
-  // REQUIRE(popped_elements == expected);
+  const std::size_t nOfElements = 1000;
+  std::vector<unsigned> expected(nOfElements, 0);
+  std::iota(std::begin(expected), std::end(expected), 0);
+  BoundedQueue<unsigned> small_queue{1};
+  auto producer = launchProducer(0, nOfElements, small_queue);
+  auto consumer = launchConsumer(nOfElements, small_queue);
+  REQUIRE(producer.wait_for(std::chrono::seconds{1}) != std::future_status::timeout);
+  REQUIRE(consumer.wait_for(std::chrono::seconds{1}) != std::future_status::timeout);
+  std::vector<unsigned> popped_elements{consumer.get()};
+  REQUIRE(popped_elements == expected);
 }
 
 TEST_CASE("Two producers and one consumer", "[Multi Threaded Suite]") {
-  // const std::size_t nOfElements = 1000;
-  // std::vector<unsigned> expected(nOfElements, 0);
-  // std::iota(std::begin(expected), std::end(expected), 0);
-  // BoundedQueue<unsigned> small_queue{10};
-  // auto producer1 = launchProducer(0, nOfElements / 2, small_queue);
-  // auto producer2 = launchProducer(nOfElements / 2, nOfElements, small_queue);
-  // auto consumer = launchConsumer(nOfElements, small_queue);
+  const std::size_t nOfElements = 1000;
+  std::vector<unsigned> expected(nOfElements, 0);
+  std::iota(std::begin(expected), std::end(expected), 0);
+  BoundedQueue<unsigned> small_queue{10};
+  auto producer1 = launchProducer(0, nOfElements / 2, small_queue);
+  auto producer2 = launchProducer(nOfElements / 2, nOfElements, small_queue);
+  auto consumer = launchConsumer(nOfElements, small_queue);
 
-  // REQUIRE(producer1.wait_for(std::chrono::seconds{1}) != std::future_status::timeout);
-  // REQUIRE(producer2.wait_for(std::chrono::seconds{1}) != std::future_status::timeout);
-  // REQUIRE(consumer.wait_for(std::chrono::seconds{1}) != std::future_status::timeout);
-  // std::vector<unsigned> popped_elements{consumer.get()};
-  // std::sort(std::begin(popped_elements), std::end(popped_elements));
-  // REQUIRE(popped_elements == expected);
+  REQUIRE(producer1.wait_for(std::chrono::seconds{1}) != std::future_status::timeout);
+  REQUIRE(producer2.wait_for(std::chrono::seconds{1}) != std::future_status::timeout);
+  REQUIRE(consumer.wait_for(std::chrono::seconds{1}) != std::future_status::timeout);
+  std::vector<unsigned> popped_elements{consumer.get()};
+  std::sort(std::begin(popped_elements), std::end(popped_elements));
+  REQUIRE(popped_elements == expected);
 }
 
 template <typename T>

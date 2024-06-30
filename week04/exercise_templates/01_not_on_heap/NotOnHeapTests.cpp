@@ -1,10 +1,10 @@
 #include "NotOnHeap.hpp"
 
-#include <__algorithm/ranges_all_of.h>
 #include <catch2/catch_test_macros.hpp>
 #include <cstddef>
 #include <memory>
 #include <new>
+#include <algorithm>
 
 
 // Allocation as local variable

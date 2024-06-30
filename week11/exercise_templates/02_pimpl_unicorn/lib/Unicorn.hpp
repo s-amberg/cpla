@@ -1,10 +1,16 @@
 #ifndef UNICORN
 #define UNICORN
 
+#include <memory>
 #include <string>
 
 struct Unicorn {
   Unicorn(std::string name, std::string color);
+  ~Unicorn();
+  Unicorn(Unicorn const &);
+  Unicorn(Unicorn &&);
+  auto operator=(Unicorn const &) -> Unicorn &;
+  auto operator=(Unicorn &&) -> Unicorn &;
 
   void glitter(std::ostream & out) const;
 
@@ -14,10 +20,7 @@ struct Unicorn {
   auto operator!=(Unicorn const & other) const -> bool;
 
   private:
-    auto calculateAltitude() const -> int;
-
-    std::string m_name{};
-    std::string m_color{};
+    std::unique_ptr<class UnicornImpl> pImpl;
 };
 
 #endif

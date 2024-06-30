@@ -1,8 +1,6 @@
 #ifndef BOUNDEDBUFFER_HPP_
 #define BOUNDEDBUFFER_HPP_
 
-#include <__algorithm/ranges_for_each.h>
-#include <__algorithm/ranges_transform.h>
 #include <array>
 #include <cstddef>
 #include <memory>
@@ -11,6 +9,7 @@
 #include <utility>
 #include <vector>
 #include <ranges>
+#include <algorithm>
 
 // namespace buffy {
 

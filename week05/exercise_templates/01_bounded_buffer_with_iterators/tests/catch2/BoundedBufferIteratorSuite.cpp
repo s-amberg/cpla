@@ -413,3 +413,30 @@ TEST_CASE("test_arrow_operator", "[Iterator Suite]") {
 
    REQUIRE(23 == buffer.begin()->value);
 }
+
+TEST_CASE("test_iterator_constructor", "[Iterator Suite]") {
+   BoundedBuffer<int> it{createBufferWithFiveConsecutiveInts(0)};
+
+   BoundedBuffer buffer(it.begin(), it.end());
+
+   REQUIRE(5 == buffer.size());
+   REQUIRE(0 == buffer.front());
+}
+
+TEST_CASE("test_iterator_constructor_curly", "[Iterator Suite]") {
+   BoundedBuffer<int> it{createBufferWithFiveConsecutiveInts(0)};
+
+   BoundedBuffer buffer{it.begin(), it.end()};
+
+   REQUIRE(5 == buffer.size());
+   REQUIRE(0 == buffer.front());
+}
+
+TEST_CASE("test_empty_iterator_constructor", "[Iterator Suite]") {
+   std::vector<int> it{};
+
+   BoundedBuffer buffer(it.begin(), it.end());
+
+   REQUIRE(0 == buffer.size());
+   REQUIRE_THROWS_AS(buffer.front(), std::logic_error);
+}

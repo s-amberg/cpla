@@ -12,9 +12,9 @@ auto outputWhenReady(std::atomic_flag &flag, std::ostream &out) -> void {
 }
 
 auto main() -> int {
-  using std::cout;
-  using std::endl;
-  std::atomic_flag flag{};
-  std::jthread t{[&flag] { outputWhenReady(flag, cout); }};
-  outputWhenReady(flag, cout);
+  // using std::cout;
+  // using std::endl;
+  // std::atomic_flag flag{};
+  // std::jthread t{[&flag] { outputWhenReady(flag, cout); }};
+  // outputWhenReady(flag, cout);
 }

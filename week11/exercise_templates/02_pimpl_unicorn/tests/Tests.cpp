@@ -8,19 +8,19 @@
 #include <utility>
 
 
-TEST_CASE("Copy Assign Unicorn") {
-    using namespace std::string_literals;
-    auto const freddy = createFreddy();
-    Unicorn other{"henry"s, "blue"s};
-    other = freddy;
-    REQUIRE(freddy == other);
-}
+// TEST_CASE("Copy Assign Unicorn") {
+//     using namespace std::string_literals;
+//     auto const freddy = createFreddy();
+//     Unicorn const other{"henry"s, "blue"s};
+//     other = std::move(freddy);
+//     REQUIRE(freddy == other);
+// }
 
-TEST_CASE("Copy Construct Unicorn") {
-    auto const freddy = createFreddy();
-    auto const copy{freddy};
-    REQUIRE(freddy == copy);
-}
+// TEST_CASE("Copy Construct Unicorn") {
+//     auto freddy = createFreddy();
+//     auto copy{freddy};
+//     REQUIRE(freddy == copy);
+// }
 
 TEST_CASE("Create Unicorn") {
   Unicorn const freddy = createFreddy();

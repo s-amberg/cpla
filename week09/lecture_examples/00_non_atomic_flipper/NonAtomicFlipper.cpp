@@ -21,13 +21,13 @@ private:
 };
 
 auto main(int argc, char **argv) -> int {
-  Flipper flipper{};
-  std::jthread flipperThread{[&] { flipper.flip(); }};
-  std::cout << std::hex;
-  while (true) {
-    auto tmp = flipper.get();
-    if (tmp != 0ll && tmp != ~0ll) {
-      std::cout << "Surprise! Value is 0x" << std::setw(sizeof(tmp) * 2) << std::setfill('0') << tmp << std::endl;
-    }
-  }
+  // Flipper flipper{};
+  // std::jthread flipperThread{[&] { flipper.flip(); }};
+  // std::cout << std::hex;
+  // while (true) {
+  //   auto tmp = flipper.get();
+  //   if (tmp != 0ll && tmp != ~0ll) {
+  //     std::cout << "Surprise! Value is 0x" << std::setw(sizeof(tmp) * 2) << std::setfill('0') << tmp << std::endl;
+  //   }
+  // }
 }

@@ -11,6 +11,7 @@
 #include <utility>
 #include <vector>
 #include <ranges>
+#include <algorithm>
 
 // namespace buffy {
 

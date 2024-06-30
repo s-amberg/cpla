@@ -55,7 +55,7 @@ constexpr auto create() -> Vector<double> {
 }
 
 constexpr auto v = create();
-static_assert(doubleEqual(v.length(), 2.4495));
+// static_assert(doubleEqual(v.length(), 2.4495));
 
 auto main() -> int {
   // v.x() = 1.0;

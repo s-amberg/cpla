@@ -1,4 +1,4 @@
-// #include "BoundedQueue.hpp"
+#include "BoundedQueue.hpp"
 
 #include "TimesLiteral.hpp"
 
@@ -62,75 +62,75 @@ auto resetAllocationCounters() -> void {
 }
 
 TEST_CASE("No allocation of default BoundedQueue", "[Heap Memory Suite]") {
-  // resetAllocationCounters();
-  // { BoundedQueue<AllocationTracker> queue{2}; }
-  // REQUIRE(AllocationTracker::allocatedArrays.size() == 0);
+  resetAllocationCounters();
+  { BoundedQueue<AllocationTracker> queue{2}; }
+  REQUIRE(AllocationTracker::allocatedArrays.size() == 0);
 }
 
 TEST_CASE("No deallocation of default BoundedQueue", "[Heap Memory Suite]") {
-  // resetAllocationCounters();
-  // { BoundedQueue<AllocationTracker> queue{2}; }
-  // REQUIRE(AllocationTracker::deallocatedArrays.size() == 0);
+  resetAllocationCounters();
+  { BoundedQueue<AllocationTracker> queue{2}; }
+  REQUIRE(AllocationTracker::deallocatedArrays.size() == 0);
 }
 
 TEST_CASE("No undeleted allocation on exception", "[Heap Memory Suite]") {
-  // resetAllocationCounters();
-  // try {
-  //   BoundedQueue<AllocationTracker> queue{0};
-  //   FAIL("The tests expects the BoundedQueue not being constructible with size 0.");
-  // } catch (std::invalid_argument const &e) {
-  //   REQUIRE(AllocationTracker::deallocatedArrays.size() == AllocationTracker::allocatedArrays.size());
-  // }
+  resetAllocationCounters();
+  try {
+    BoundedQueue<AllocationTracker> queue{0};
+    FAIL("The tests expects the BoundedQueue not being constructible with size 0.");
+  } catch (std::invalid_argument const &e) {
+    REQUIRE(AllocationTracker::deallocatedArrays.size() == AllocationTracker::allocatedArrays.size());
+  }
 }
 
 TEST_CASE("Copy constructor does not allocate a new array", "[Heap Memory Suite]") {
-  // resetAllocationCounters();
-  // BoundedQueue<AllocationTracker> queue{15};
-  // BoundedQueue<AllocationTracker> copy{queue};
-  // REQUIRE(AllocationTracker::allocatedArrays.size() == 0);
+  resetAllocationCounters();
+  BoundedQueue<AllocationTracker> queue{15};
+  BoundedQueue<AllocationTracker> copy{queue};
+  REQUIRE(AllocationTracker::allocatedArrays.size() == 0);
 }
 
 TEST_CASE("Move constructor does not allocate a new array", "[Heap Memory Suite]") {
-  // resetAllocationCounters();
-  // BoundedQueue<AllocationTracker> queue{15};
-  // BoundedQueue<AllocationTracker> moved{std::move(queue)};
-  // REQUIRE(AllocationTracker::allocatedArrays.size() == 0);
+  resetAllocationCounters();
+  BoundedQueue<AllocationTracker> queue{15};
+  BoundedQueue<AllocationTracker> moved{std::move(queue)};
+  REQUIRE(AllocationTracker::allocatedArrays.size() == 0);
 }
 
 TEST_CASE("Copy assignment no additional allocation", "[Heap Memory Suite]") {
-  // resetAllocationCounters();
-  // BoundedQueue<AllocationTracker> queue{3}, copy{2};
-  // queue.push(AllocationTracker{});
-  // queue.push(AllocationTracker{});
-  // copy = queue;
-  // REQUIRE(AllocationTracker::allocatedArrays.size() == 0);
+  resetAllocationCounters();
+  BoundedQueue<AllocationTracker> queue{3}, copy{2};
+  queue.push(AllocationTracker{});
+  queue.push(AllocationTracker{});
+  copy = queue;
+  REQUIRE(AllocationTracker::allocatedArrays.size() == 0);
 }
 
 TEST_CASE("Move assignment no additional allocation", "[Heap Memory Suite]") {
-  // resetAllocationCounters();
-  // BoundedQueue<AllocationTracker> queue{3}, move{2};
-  // queue.push(AllocationTracker{});
-  // queue.push(AllocationTracker{});
-  // move = std::move(queue);
-  // REQUIRE(AllocationTracker::allocatedArrays.size() == 0);
+  resetAllocationCounters();
+  BoundedQueue<AllocationTracker> queue{3}, move{2};
+  queue.push(AllocationTracker{});
+  queue.push(AllocationTracker{});
+  move = std::move(queue);
+  REQUIRE(AllocationTracker::allocatedArrays.size() == 0);
 }
 
 TEST_CASE("Copy self-assignment no additional allocation", "[Heap Memory Suite]") {
-  // resetAllocationCounters();
-  // BoundedQueue<AllocationTracker> buffer{3};
-  // buffer.push(AllocationTracker{});
-  // buffer.push(AllocationTracker{});
-  // buffer = (buffer);
-  // REQUIRE(AllocationTracker::allocatedArrays.size() == 0);
+  resetAllocationCounters();
+  BoundedQueue<AllocationTracker> buffer{3};
+  buffer.push(AllocationTracker{});
+  buffer.push(AllocationTracker{});
+  buffer = (buffer);
+  REQUIRE(AllocationTracker::allocatedArrays.size() == 0);
 }
 
 TEST_CASE("Move self-assignment no additional allocation", "[Heap Memory Suite]") {
-  // resetAllocationCounters();
-  // BoundedQueue<AllocationTracker> buffer{3};
-  // buffer.push(AllocationTracker{});
-  // buffer.push(AllocationTracker{});
-  // buffer = std::move(buffer);
-  // REQUIRE(AllocationTracker::allocatedArrays.size() == 0);
+  resetAllocationCounters();
+  BoundedQueue<AllocationTracker> buffer{3};
+  buffer.push(AllocationTracker{});
+  buffer.push(AllocationTracker{});
+  buffer = std::move(buffer);
+  REQUIRE(AllocationTracker::allocatedArrays.size() == 0);
 }
 
 struct CopyCounter {
@@ -156,21 +156,21 @@ unsigned CopyCounter::copy_counter{0};
 using namespace times::literal;
 
 TEST_CASE("Copy only initialized elements in copy construction", "[Heap Memory Suite]") {
-  // CopyCounter::resetCopyCounter();
-  // BoundedQueue<CopyCounter> buffer{100};
-  // 100_times([&]() { buffer.push(CopyCounter{}); });
-  // 75_times([&]() { buffer.pop(); });
-  // 25_times([&]() { buffer.push(CopyCounter{}); });
-  // BoundedQueue<CopyCounter> copy{buffer};
-  // REQUIRE(CopyCounter::copy_counter == 50);
+  CopyCounter::resetCopyCounter();
+  BoundedQueue<CopyCounter> buffer{100};
+  100_times([&]() { buffer.push(CopyCounter{}); });
+  75_times([&]() { buffer.pop(); });
+  25_times([&]() { buffer.push(CopyCounter{}); });
+  BoundedQueue<CopyCounter> copy{buffer};
+  REQUIRE(CopyCounter::copy_counter == 50);
 }
 
 TEST_CASE("Copy only initialized elements in copy assignment", "[Heap Memory Suite]") {
-  // CopyCounter::resetCopyCounter();
-  // BoundedQueue<CopyCounter> buffer{100}, copy{1};
-  // 100_times([&]() { buffer.push(CopyCounter{}); });
-  // 75_times([&]() { buffer.pop(); });
-  // 25_times([&]() { buffer.push(CopyCounter{}); });
-  // copy = buffer;
-  // REQUIRE(CopyCounter::copy_counter == 50);
+  CopyCounter::resetCopyCounter();
+  BoundedQueue<CopyCounter> buffer{100}, copy{1};
+  100_times([&]() { buffer.push(CopyCounter{}); });
+  75_times([&]() { buffer.pop(); });
+  25_times([&]() { buffer.push(CopyCounter{}); });
+  copy = buffer;
+  REQUIRE(CopyCounter::copy_counter == 50);
 }

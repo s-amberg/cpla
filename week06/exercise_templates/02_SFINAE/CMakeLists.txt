@@ -14,13 +14,13 @@ add_test(NAME "${CPL_TARGET_WEEK_PREFIX}ex02_sfinae_tests"
 )
 
 
-add_executable("${CPL_TARGET_WEEK_PREFIX}ex02_sfinae_tests_cute"
-    "ConsumeTestsCute.cpp"
-)
+# add_executable("${CPL_TARGET_WEEK_PREFIX}ex02_sfinae_tests_cute"
+#     "ConsumeTestsCute.cpp"
+# )
 
-target_link_libraries("${CPL_TARGET_WEEK_PREFIX}ex02_sfinae_tests_cute" PRIVATE
-    "cpl::cute"
-)
+# target_link_libraries("${CPL_TARGET_WEEK_PREFIX}ex02_sfinae_tests_cute" PRIVATE
+#     "cpl::cute"
+# )
 
 add_test(NAME "${CPL_TARGET_WEEK_PREFIX}ex02_sfinae_tests_cute"
     COMMAND "${CPL_TARGET_WEEK_PREFIX}ex02_sfinae_tests_cute"

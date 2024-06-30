@@ -16,18 +16,21 @@ private:
    unsigned year;
 };
 
-// auto operator<<(std::ostream& os, Date const& date) -> std::ostream& {
-//   date.print(os);
-//   return os;
-// }
+auto operator<<(std::ostream& os, Date const& date) -> std::ostream& {
+  date.print(os);
+  return os;
+}
 
 
 template <typename T>
 concept LeftshiftOutputtable = requires (T const v, std::ostream& os) { {os << v} -> std::same_as<std::ostream&>; };
 
 template <typename T>
-concept Printable = requires (T const v, std::ostream& os) { 
-  v.print(os);
+concept Printable = requires {
+  requires !LeftshiftOutputtable<T>;
+  requires requires (T const v, std::ostream& os) { 
+    v.print(os);
+  };
 };
 
 auto print(Printable auto const& printable) {

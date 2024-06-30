@@ -2,6 +2,18 @@
 #include <iostream>
 #include <thread>
 #include <vector>
+#include <algorithm>
+#include <numeric>
+
+struct Functor {
+  auto operator()(std::ostream & out) -> void {
+    out << std::this_thread::get_id();
+  }
+};
+
+static void output(std::ostream & out) {
+    out << std::this_thread::get_id();
+}
 
 static auto isPrime(unsigned long long number) -> bool {
   for (auto factor = 2ull; factor * factor <= number; factor++) {
@@ -27,9 +39,15 @@ static auto countPrimesParallel(unsigned long long start, unsigned long long end
   std::vector<std::thread> threads{};
   std::vector<unsigned long long> results(numberOfThreads, 0);
 
-  // TODO: Implement parallel solution
+  for(unsigned t_id; t_id<numberOfThreads; t_id++) {
+    threads.push_back(std::thread{[=,&results] {
+      results.at(t_id) = countPrimes(start + t_id * range, std::min(start + (t_id + 1) * range, end));
+    }});
+  }
 
-  return 0;
+  std::for_each(std::begin(threads), std::end(threads), [](auto &thread) { thread.join(); });
+  return std::accumulate(std::begin(results), std::end(results), 0ull);
+
 }
 
 constexpr unsigned long long start = 1000000;
@@ -47,5 +65,14 @@ auto measure() -> void {
 }
 
 auto main() -> int {
-  measure();
+  // measure();
+  std::thread thread1{Functor{}, std::ref(std::cout)};
+  std::thread thread2{output, std::ref(std::cout)};
+  std::thread thread3{[](std::ostream & out) {
+    out << std::this_thread::get_id();
+  }, std::ref(std::cout)};
+
+  thread1.join();
+  thread2.join();
+  thread3.join();
 }
